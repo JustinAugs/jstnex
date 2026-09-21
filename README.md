@@ -1,34 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# JSTNEX
 
-## Getting Started
+**Global Supply Network Intelligence**
+_Mapping How The World Moves._
 
-First, run the development server:
+JSTNEX is an independent student project exploring how global trade, logistics,
+ports, companies and supply networks connect the world.
+
+Status: **V1.0 MVP — TASK 01 complete (project scaffolding + layout + Home skeleton)**
+
+## Tech stack
+
+| Layer    | Choice                                  |
+| -------- | --------------------------------------- |
+| Frontend | Next.js 16 (App Router) + React 19      |
+| Language | TypeScript                              |
+| Styling  | Tailwind CSS v4                         |
+| Backend  | Next.js API / server functions (V1)     |
+| Data     | JSON + TypeScript objects (V1)          |
+
+Planned for later versions: Python FastAPI, PostgreSQL, Recharts, crawler.
+
+## Run locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open <http://localhost:3000>.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Other commands:
 
-## Learn More
+```bash
+npm run build   # production build (also runs type checking)
+npm run lint    # ESLint
+```
 
-To learn more about Next.js, take a look at the following resources:
+> Note: on this machine Next.js telemetry writes to `~/Library/Preferences`, which
+> is blocked in some sandboxes. If a command fails with `EPERM`, prefix it with
+> `NEXT_TELEMETRY_DISABLED=1`, e.g. `NEXT_TELEMETRY_DISABLED=1 npm run dev`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Brand rules
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Palette: black, white, dark gray, and **deep blue only** for links, buttons,
+  data highlights and interactive states. No large colour gradients.
+- Logo: wordmark `JSTNEX` (geometric, modern, generous letter-spacing).
+- All non-authoritative numbers must be labelled **Demo Data**.
 
-## Deploy on Vercel
+## Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+app/
+  layout.tsx        root layout (Navbar + Footer + metadata)
+  page.tsx          Home
+  global/           GLOBAL NETWORK
+  supply-chain/     SUPPLY CHAIN knowledge base
+  companies/        company profiles
+  tools/            calculators
+components/
+  Navbar.tsx  Footer.tsx  Hero.tsx  SectionHeading.tsx  DataCard.tsx
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Directories planned for upcoming tasks: `data/` (countries.json, companies.json,
+supply-chain.json), `lib/` (utils.ts, calculations.ts), `public/`, `crawler/`.
+
+## Data policy
+
+Sample figures used for layout are marked `Demo Data` in the UI. Any real data
+must record source, URL and date.

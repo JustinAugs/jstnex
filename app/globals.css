@@ -1,1 +1,39 @@
 @import "tailwindcss";
+
+/*
+  品牌设计令牌（Design Tokens）
+  在 Tailwind v4 里，写在 @theme 里的变量会自动变成工具类：
+  --color-ink  →  bg-ink / text-ink / border-ink
+  --color-deep →  bg-deep / text-deep / hover:text-deep
+  以后要改品牌色，只需要改这一个文件，不用去每个页面里找颜色。
+*/
+@theme {
+  /* 黑白灰：构成整个网站的骨架 */
+  --color-ink: #0a0a0a; /* 近黑：主标题、正文 */
+  --color-ink-soft: #1c1c1c; /* 深灰：次级区块背景 */
+  --color-mist: #6b6b6b; /* 中灰：说明文字 */
+  --color-line: #e5e5e5; /* 浅灰：分割线、边框 */
+  --color-surface: #fafafa; /* 极浅灰：卡片/区块底色 */
+
+  /* 深蓝：只用做链接、按钮、数据高亮、交互状态 */
+  --color-deep: #0a2f5c;
+  --color-deep-hover: #0c3a73;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* 键盘导航时要能清楚看到焦点在哪（无障碍基础） */
+  :focus-visible {
+    outline: 2px solid var(--color-deep);
+    outline-offset: 2px;
+  }
+}

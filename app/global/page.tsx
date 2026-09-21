@@ -1,16 +1,19 @@
-import type { Metadata } from "next";
 import Section from "@/components/ui/Section";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+// 页面的 SEO 信息统一用 buildMetadata 生成（站点级配置在 lib/seo.ts）
+export const metadata = buildMetadata({
   title: "Global",
-  description: "Observe the global supply network by country, trade, port and logistics.",
-};
+  description:
+    "Observe the global supply network by country, trade, port and logistics.",
+  path: "/global",
+});
 
 // 占位页：结构已经在用 Design System（Section + 字号令牌），内容等 TASK 03 填
 export default function GlobalPage() {
   return (
     <Section>
-      <p className="font-medium tracking-[0.3em] text-caption text-mist uppercase">
+      <p className="font-medium tracking-label text-caption text-mist uppercase">
         Global
       </p>
       <h1 className="mt-4 text-h1 text-ink">GLOBAL NETWORK</h1>

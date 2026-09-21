@@ -35,7 +35,7 @@ export default function SectionHeader({
         {/* 左上角那道细横线是 JSTNEX 区块的标志 */}
         <div className="border-t border-ink pt-6">
           {eyebrow && (
-            <p className="font-medium tracking-[0.3em] text-caption text-mist uppercase">
+            <p className="font-medium tracking-label text-caption text-mist uppercase">
               {eyebrow}
             </p>
           )}

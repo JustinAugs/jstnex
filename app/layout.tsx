@@ -1,36 +1,29 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { LanguageProvider } from "@/components/providers/LanguageProvider";
+import { buildMetadata } from "@/lib/seo";
 
 /*
   layout.tsx 是「根布局」：所有页面都会被塞进这里的 children 里。
   Navbar 和 Footer 写在这里，就不需要在每个页面重复写一遍。
+
+  metadata（SEO）现在统一由 @/lib/seo 的 buildMetadata() 生成：
+  站点名、简介、地址、分享卡片都在那一个文件里维护，
+  子页面只需要填自己的标题和一句话。
 */
 
-export const metadata: Metadata = {
-  // template 会让子页面只需要写 title: "Global"，最终显示成 "Global | JSTNEX"
-  title: {
-    default: "JSTNEX — Global Supply Network Intelligence",
-    template: "%s | JSTNEX",
-  },
-  description:
-    "JSTNEX maps how the world moves — global trade, logistics, ports, companies and supply networks.",
-  applicationName: "JSTNEX",
-  keywords: [
-    "supply chain",
-    "global trade",
-    "logistics",
-    "ports",
-    "supply network intelligence",
-  ],
-  openGraph: {
-    title: "JSTNEX — Global Supply Network Intelligence",
-    description: "Mapping How The World Moves.",
-    siteName: "JSTNEX",
-    type: "website",
-  },
+export const metadata: Metadata = buildMetadata();
+
+/*
+  viewport —— 移动端显示方式，以及浏览器主题色。
+  现在放在这里，是因为未来可能要根据品牌视觉调整 themeColor。
+*/
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0A0A0A",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

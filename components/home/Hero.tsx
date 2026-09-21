@@ -27,7 +27,7 @@ export default function Hero({ content }: HeroProps) {
       />
 
       <div className="container-page relative py-24 md:py-32">
-        <p className="font-medium tracking-[0.3em] text-caption text-mist uppercase">
+        <p className="font-medium tracking-label text-caption text-mist uppercase">
           {content.eyebrow}
         </p>
 

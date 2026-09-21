@@ -12,6 +12,7 @@ type CompanyCardProps = {
   sector: string;
   focus: string;
   supplyChainModel: string;
+  modelLabel: string; // "Supply chain model" / "供应链模式"
 };
 
 export default function CompanyCard({
@@ -19,6 +20,7 @@ export default function CompanyCard({
   sector,
   focus,
   supplyChainModel,
+  modelLabel,
 }: CompanyCardProps) {
   return (
     <Link
@@ -36,7 +38,7 @@ export default function CompanyCard({
       {/* 上半部分讲「它是谁」，下半部分讲「它的供应链怎么运作」 */}
       <div className="mt-5 border-t border-line pt-4">
         <p className="text-[11px] font-medium tracking-[0.18em] text-mist uppercase">
-          Supply chain model
+          {modelLabel}
         </p>
         <p className="mt-2 text-xs leading-relaxed text-ink">
           {supplyChainModel}

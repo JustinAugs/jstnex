@@ -10,12 +10,14 @@ type InsightCardProps = {
   title: string;
   summary: string;
   href: string;
+  readLabel: string; // "Read" / "阅读"
 };
 
 export default function InsightCard({
   title,
   summary,
   href,
+  readLabel,
 }: InsightCardProps) {
   return (
     <Link
@@ -31,7 +33,7 @@ export default function InsightCard({
       </p>
 
       <span className="mt-6 flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] text-deep uppercase">
-        Read
+        {readLabel}
         <span
           aria-hidden
           className="h-px w-5 bg-deep transition-all group-hover:w-9"

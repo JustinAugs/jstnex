@@ -11,12 +11,14 @@ type NetworkCardProps = {
   title: string;
   description: string;
   href: string;
+  exploreLabel: string; // "Explore" / "查看"
 };
 
 export default function NetworkCard({
   title,
   description,
   href,
+  exploreLabel,
 }: NetworkCardProps) {
   return (
     <Link
@@ -34,7 +36,7 @@ export default function NetworkCard({
 
       {/* 箭头用一根横线表示，hover 时变长 —— 不引入图标库，保持克制 */}
       <span className="mt-8 flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] text-deep uppercase">
-        Explore
+        {exploreLabel}
         <span
           aria-hidden
           className="h-px w-5 bg-deep transition-all group-hover:w-9"

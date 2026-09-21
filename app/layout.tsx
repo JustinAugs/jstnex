@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { LanguageProvider } from "@/components/LanguageProvider";
 
 /*
   layout.tsx 是「根布局」：所有页面都会被塞进这里的 children 里。
@@ -36,10 +37,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en">
       <body className="flex min-h-screen flex-col">
-        <Navbar />
-        {/* flex-1 让主内容区撑开，把 Footer 顶到页面最底部 */}
-        <main className="flex-1">{children}</main>
-        <Footer />
+        {/* LanguageProvider 包住整个站点：Navbar、页面、Footer 都能拿到当前语言 */}
+        <LanguageProvider>
+          <Navbar />
+          {/* flex-1 让主内容区撑开，把 Footer 顶到页面最底部 */}
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );

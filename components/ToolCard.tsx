@@ -10,12 +10,14 @@ type ToolCardProps = {
   name: string;
   description: string;
   formula: string;
+  openLabel: string; // "Open" / "打开"
 };
 
 export default function ToolCard({
   name,
   description,
   formula,
+  openLabel,
 }: ToolCardProps) {
   return (
     <Link
@@ -31,7 +33,7 @@ export default function ToolCard({
       </p>
 
       <span className="mt-5 flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] text-deep uppercase">
-        Open
+        {openLabel}
         <span
           aria-hidden
           className="h-px w-4 bg-deep transition-all group-hover:w-8"

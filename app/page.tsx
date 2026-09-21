@@ -1,3 +1,19 @@
+"use client";
+
+/*
+  首页（Home）
+
+  这一页只做一件事：把各个区块按顺序「组装」起来。
+  文字从哪来？分两类：
+    1. 界面文字（区块标题、按钮、标签）→ lib/i18n 的字典，用 dict.xxx 取
+    2. 内容数据（公司、工具、洞察）  → data/home.ts，字段是 { en, zh }
+       用 pick(字段, language) 取出当前语言的那一条
+
+  为什么加 "use client"？
+  因为要调用 useLanguage() 读当前语言状态，这个必须在浏览器里跑。
+  注意：客户端组件依然会先在服务端渲染成 HTML，所以 SEO 不受影响。
+*/
+
 import Hero from "@/components/Hero";
 import SectionHeading from "@/components/SectionHeading";
 import DataCard from "@/components/DataCard";
@@ -6,8 +22,8 @@ import NetworkCard from "@/components/NetworkCard";
 import InsightCard from "@/components/InsightCard";
 import CompanyCard from "@/components/CompanyCard";
 import ToolCard from "@/components/ToolCard";
-
-// 首页的文字内容全部来自 data/home.ts
+import { useLanguage } from "@/components/LanguageProvider";
+import { pick } from "@/lib/i18n";
 import {
   SNAPSHOT,
   NETWORK_MODULES,
@@ -16,39 +32,34 @@ import {
   TOOLS,
 } from "@/data/home";
 
-/*
-  首页（Home）
-
-  这一页现在只做一件事：把各个区块按顺序「组装」起来。
-  所有文案在 data/home.ts，所有卡片样式在 components/ 下各自的组件里。
-  好处：以后要改内容不用碰布局，要改样式不用翻数据。
-*/
 export default function Home() {
+  const { language, dict } = useLanguage();
+
   return (
     <>
       {/* ---------- 2. Hero ---------- */}
-      <Hero />
+      <Hero content={dict.hero} />
 
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
         {/* ---------- 3. Global Snapshot ---------- */}
         <section>
           <div className="flex flex-wrap items-center justify-between gap-4">
             <SectionHeading
-              eyebrow="Global Snapshot"
-              title="The network in four numbers"
+              eyebrow={dict.snapshot.eyebrow}
+              title={dict.snapshot.title}
             />
-            {/* 演示数据必须明确标注 */}
-            <DemoBadge />
+            {/* 演示数据必须明确标注，文字跟着语言走 */}
+            <DemoBadge label={dict.snapshot.demoBadge} />
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {SNAPSHOT.map((item) => (
               <DataCard
-                key={item.label}
-                label={item.label}
+                key={pick(item.label, language)}
+                label={pick(item.label, language)}
                 value={item.value}
                 unit={item.unit}
-                note={item.note}
+                note={pick(item.note, language)}
               />
             ))}
           </div>
@@ -57,18 +68,19 @@ export default function Home() {
         {/* ---------- 4. Global Network ---------- */}
         <section className="mt-20 md:mt-24">
           <SectionHeading
-            eyebrow="Global Network"
-            title="Three ways to see the world"
-            description="Trade flows, transportation systems and the connections that bind them together."
+            eyebrow={dict.network.eyebrow}
+            title={dict.network.title}
+            description={dict.network.description}
           />
 
           <div className="grid gap-4 md:grid-cols-3">
             {NETWORK_MODULES.map((module) => (
               <NetworkCard
-                key={module.title}
-                title={module.title}
-                description={module.description}
+                key={pick(module.title, language)}
+                title={pick(module.title, language)}
+                description={pick(module.description, language)}
                 href={module.href}
+                exploreLabel={dict.network.explore}
               />
             ))}
           </div>
@@ -77,18 +89,19 @@ export default function Home() {
         {/* ---------- 5. Supply Chain Insights ---------- */}
         <section className="mt-20 md:mt-24">
           <SectionHeading
-            eyebrow="Supply Chain Insights"
-            title="Start with the fundamentals"
-            description="Short, practical explanations written for students — not textbook filler."
+            eyebrow={dict.insights.eyebrow}
+            title={dict.insights.title}
+            description={dict.insights.description}
           />
 
           <div className="grid gap-4 sm:grid-cols-2">
             {INSIGHTS.map((insight) => (
               <InsightCard
-                key={insight.title}
-                title={insight.title}
-                summary={insight.summary}
+                key={pick(insight.title, language)}
+                title={pick(insight.title, language)}
+                summary={pick(insight.summary, language)}
                 href={insight.href}
+                readLabel={dict.insights.read}
               />
             ))}
           </div>
@@ -97,9 +110,9 @@ export default function Home() {
         {/* ---------- 6. Companies ---------- */}
         <section className="mt-20 md:mt-24">
           <SectionHeading
-            eyebrow="Companies"
-            title="Global supply network companies"
-            description="Understood through their networks, assets and supply chain models."
+            eyebrow={dict.companies.eyebrow}
+            title={dict.companies.title}
+            description={dict.companies.description}
           />
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -107,9 +120,10 @@ export default function Home() {
               <CompanyCard
                 key={company.name}
                 name={company.name}
-                sector={company.sector}
-                focus={company.focus}
-                supplyChainModel={company.supplyChainModel}
+                sector={pick(company.sector, language)}
+                focus={pick(company.focus, language)}
+                supplyChainModel={pick(company.supplyChainModel, language)}
+                modelLabel={dict.companies.modelLabel}
               />
             ))}
           </div>
@@ -118,26 +132,26 @@ export default function Home() {
         {/* ---------- 7. Tools ---------- */}
         <section className="mt-20 md:mt-24">
           <SectionHeading
-            eyebrow="Tools"
-            title="Supply chain calculators"
-            description="Simple, transparent formulas with the reasoning shown."
+            eyebrow={dict.tools.eyebrow}
+            title={dict.tools.title}
+            description={dict.tools.description}
           />
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {TOOLS.map((tool) => (
               <ToolCard
-                key={tool.name}
-                name={tool.name}
-                description={tool.description}
+                key={pick(tool.name, language)}
+                name={pick(tool.name, language)}
+                description={pick(tool.description, language)}
                 formula={tool.formula}
+                openLabel={dict.tools.open}
               />
             ))}
           </div>
 
           {/* 诚实标注：不要把简单公式包装成企业级预测系统 */}
           <p className="mt-6 text-xs leading-relaxed text-mist">
-            Calculators use simplified educational models, not enterprise
-            forecasting systems.
+            {dict.tools.disclaimer}
           </p>
         </section>
       </div>

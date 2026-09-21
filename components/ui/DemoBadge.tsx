@@ -1,4 +1,4 @@
-import Badge from "./ui/Badge";
+import Badge from "./Badge";
 
 /*
   DemoBadge — 「演示数据」标签

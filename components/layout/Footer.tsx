@@ -8,7 +8,7 @@
 */
 
 import Link from "next/link";
-import { useLanguage } from "./LanguageProvider";
+import { useLanguage } from "../providers/LanguageProvider";
 
 export default function Footer() {
   const { dict } = useLanguage();

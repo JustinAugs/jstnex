@@ -1,5 +1,5 @@
 import type { Dictionary } from "@/lib/i18n";
-import { ButtonLink } from "./ui/Button";
+import { ButtonLink } from "../ui/Button";
 
 /*
   Hero = 页面最顶部的大标题区。

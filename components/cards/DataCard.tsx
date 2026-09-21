@@ -1,4 +1,4 @@
-import { cardStyles } from "./ui/Card";
+import { cardStyles } from "../ui/Card";
 
 /*
   DataCard — 首页 Global Snapshot 的一张数据卡（静态，不可点击）

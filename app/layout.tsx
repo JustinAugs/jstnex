@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import { LanguageProvider } from "@/components/LanguageProvider";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import { LanguageProvider } from "@/components/providers/LanguageProvider";
 
 /*
   layout.tsx 是「根布局」：所有页面都会被塞进这里的 children 里。

@@ -12,8 +12,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import LanguageSwitcher from "./LanguageSwitcher";
-import { useLanguage } from "./LanguageProvider";
+import LanguageSwitcher from "../ui/LanguageSwitcher";
+import { useLanguage } from "../providers/LanguageProvider";
 
 export default function Navbar() {
   const pathname = usePathname(); // 当前页面路径，例如 /global

@@ -1,4 +1,4 @@
-import { CardLink } from "./ui/Card";
+import { CardLink } from "../ui/Card";
 
 /*
   CompanyCard — 一家公司的卡片
@@ -13,6 +13,12 @@ type CompanyCardProps = {
   focus: string;
   supplyChainModel: string;
   modelLabel: string; // "Supply chain model" / "供应链模式"
+  /*
+    href 由调用方决定，而不是写死在组件里：
+    首页用它跳到 /companies，将来 Companies 页面用它跳到某家公司的详情页。
+    同一个组件因此能在两个地方复用。
+  */
+  href: string;
 };
 
 export default function CompanyCard({
@@ -21,9 +27,10 @@ export default function CompanyCard({
   focus,
   supplyChainModel,
   modelLabel,
+  href,
 }: CompanyCardProps) {
   return (
-    <CardLink href="/companies" className="flex h-full flex-col">
+    <CardLink href={href} className="flex h-full flex-col">
       <p className="font-medium tracking-label text-caption text-mist uppercase">
         {sector}
       </p>

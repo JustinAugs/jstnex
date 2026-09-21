@@ -1,4 +1,4 @@
-import { CardLink, CardAction } from "./ui/Card";
+import { CardLink, CardAction } from "../ui/Card";
 
 /*
   InsightCard — Supply Chain Insights 的一张内容卡

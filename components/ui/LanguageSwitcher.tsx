@@ -1,7 +1,7 @@
 "use client";
 
 import { LANGUAGES } from "@/lib/i18n";
-import { useLanguage } from "./LanguageProvider";
+import { useLanguage } from "../providers/LanguageProvider";
 
 /*
   LanguageSwitcher — Navbar 右侧的「中文 | EN」

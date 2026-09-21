@@ -1,4 +1,4 @@
-import { CardLink, CardAction } from "./ui/Card";
+import { CardLink, CardAction } from "../ui/Card";
 
 /*
   NetworkCard — Global Network 区块的一张卡片（Trade / Logistics / Networks）

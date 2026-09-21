@@ -9,24 +9,28 @@
     2. 内容数据（公司、工具、洞察）  → data/home.ts，字段是 { en, zh }
        用 pick(字段, language) 取出当前语言的那一条
 
-  每个区块都套在 <Section> 里：它自带统一的最大宽度、左右留白和上下呼吸感，
-  所以这里再也不用写 mx-auto / max-w-6xl / px-6 / mt-20 这些零散的样式。
+  组件从哪来？按职责分层（TASK 02.7）：
+    @/components/home/*       首页专属区块（Hero）
+    @/components/cards/*      业务卡片（数据卡 / 网络卡 / 洞察卡 / 公司卡 / 工具卡）
+    @/components/ui/*         通用原语（Section / SectionHeader / Badge…）
+
+  每个区块套在 <Section> 里：自带统一宽度、左右留白和上下呼吸感。
 
   为什么加 "use client"？
   因为要调用 useLanguage() 读当前语言状态，这个必须在浏览器里跑。
   注意：客户端组件依然会先在服务端渲染成 HTML，所以 SEO 不受影响。
 */
 
-import Hero from "@/components/Hero";
-import SectionHeading from "@/components/SectionHeading";
-import DataCard from "@/components/DataCard";
-import DemoBadge from "@/components/DemoBadge";
-import NetworkCard from "@/components/NetworkCard";
-import InsightCard from "@/components/InsightCard";
-import CompanyCard from "@/components/CompanyCard";
-import ToolCard from "@/components/ToolCard";
+import Hero from "@/components/home/Hero";
+import DataCard from "@/components/cards/DataCard";
+import NetworkCard from "@/components/cards/NetworkCard";
+import InsightCard from "@/components/cards/InsightCard";
+import CompanyCard from "@/components/cards/CompanyCard";
+import ToolCard from "@/components/cards/ToolCard";
 import Section from "@/components/ui/Section";
-import { useLanguage } from "@/components/LanguageProvider";
+import SectionHeader from "@/components/ui/SectionHeader";
+import DemoBadge from "@/components/ui/DemoBadge";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import { pick } from "@/lib/i18n";
 import {
   SNAPSHOT,
@@ -36,7 +40,7 @@ import {
   TOOLS,
 } from "@/data/home";
 
-// 网格间距也统一：gap-grid 是 Design System 里定的唯一卡片间距
+// 卡片网格间距也统一，避免每个区块自己定 gap
 const GRID = "grid gap-4";
 
 export default function Home() {
@@ -49,14 +53,12 @@ export default function Home() {
 
       {/* ---------- 3. Global Snapshot ---------- */}
       <Section>
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <SectionHeading
-            eyebrow={dict.snapshot.eyebrow}
-            title={dict.snapshot.title}
-          />
-          {/* 演示数据必须明确标注，文字跟着语言走 */}
-          <DemoBadge label={dict.snapshot.demoBadge} />
-        </div>
+        <SectionHeader
+          eyebrow={dict.snapshot.eyebrow}
+          title={dict.snapshot.title}
+          // Demo Data 标签放进标题自带的右上角插槽，页面不用再拼 flex
+          action={<DemoBadge label={dict.snapshot.demoBadge} />}
+        />
 
         <div className={`${GRID} sm:grid-cols-2 lg:grid-cols-4`}>
           {SNAPSHOT.map((item) => (
@@ -73,7 +75,7 @@ export default function Home() {
 
       {/* ---------- 4. Global Network ---------- */}
       <Section>
-        <SectionHeading
+        <SectionHeader
           eyebrow={dict.network.eyebrow}
           title={dict.network.title}
           description={dict.network.description}
@@ -94,7 +96,7 @@ export default function Home() {
 
       {/* ---------- 5. Supply Chain Insights ---------- */}
       <Section>
-        <SectionHeading
+        <SectionHeader
           eyebrow={dict.insights.eyebrow}
           title={dict.insights.title}
           description={dict.insights.description}
@@ -115,7 +117,7 @@ export default function Home() {
 
       {/* ---------- 6. Companies ---------- */}
       <Section>
-        <SectionHeading
+        <SectionHeader
           eyebrow={dict.companies.eyebrow}
           title={dict.companies.title}
           description={dict.companies.description}
@@ -130,6 +132,7 @@ export default function Home() {
               focus={pick(company.focus, language)}
               supplyChainModel={pick(company.supplyChainModel, language)}
               modelLabel={dict.companies.modelLabel}
+              href="/companies"
             />
           ))}
         </div>
@@ -137,7 +140,7 @@ export default function Home() {
 
       {/* ---------- 7. Tools ---------- */}
       <Section>
-        <SectionHeading
+        <SectionHeader
           eyebrow={dict.tools.eyebrow}
           title={dict.tools.title}
           description={dict.tools.description}
@@ -151,6 +154,7 @@ export default function Home() {
               description={pick(tool.description, language)}
               formula={tool.formula}
               openLabel={dict.tools.open}
+              href="/tools"
             />
           ))}
         </div>

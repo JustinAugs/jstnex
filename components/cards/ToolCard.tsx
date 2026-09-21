@@ -1,4 +1,4 @@
-import { CardLink, CardAction } from "./ui/Card";
+import { CardLink, CardAction } from "../ui/Card";
 
 /*
   ToolCard — 一个供应链计算器的入口卡
@@ -14,6 +14,11 @@ type ToolCardProps = {
   description: string;
   formula: string;
   openLabel: string; // "Open" / "打开"
+  /*
+    href 由调用方决定：首页跳到 /tools，将来 Tools 页面跳到该计算器本体。
+    同一个组件因此能在两个地方复用。
+  */
+  href: string;
 };
 
 export default function ToolCard({
@@ -21,9 +26,10 @@ export default function ToolCard({
   description,
   formula,
   openLabel,
+  href,
 }: ToolCardProps) {
   return (
-    <CardLink href="/tools" className="flex h-full flex-col">
+    <CardLink href={href} className="flex h-full flex-col">
       <h3 className="text-body font-semibold text-ink">{name}</h3>
 
       <p className="mt-2 text-small text-mist">{description}</p>

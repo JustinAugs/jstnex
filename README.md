@@ -6,7 +6,7 @@ _Mapping How The World Moves._
 JSTNEX is an independent student project exploring how global trade, logistics,
 ports, companies and supply networks connect the world.
 
-Status: **V1.0 MVP — TASK 01 complete (project scaffolding + layout + Home skeleton)**
+Status: **V1.0 MVP — Foundation phase (through TASK 02.9)**
 
 ## Tech stack
 
@@ -16,7 +16,7 @@ Status: **V1.0 MVP — TASK 01 complete (project scaffolding + layout + Home ske
 | Language | TypeScript                              |
 | Styling  | Tailwind CSS v4                         |
 | Backend  | Next.js API / server functions (V1)     |
-| Data     | JSON + TypeScript objects (V1)          |
+| Data     | JSON files loaded through `lib/data`    |
 
 Planned for later versions: Python FastAPI, PostgreSQL, Recharts, crawler.
 
@@ -62,6 +62,28 @@ components/
 
 Directories planned for upcoming tasks: `data/` (countries.json, companies.json,
 supply-chain.json), `lib/` (utils.ts, calculations.ts), `public/`, `crawler/`.
+
+## Environment variables
+
+Nothing is needed for V1.0. When a key becomes necessary (V2 database, V3 AI,
+external data APIs), do this once:
+
+```bash
+cp .env.example .env.local
+```
+
+Then put real values in `.env.local` only.
+
+### Security rules (non-negotiable)
+
+- Real keys, tokens, passwords and database URLs live **only** in `.env.local`,
+  which is git-ignored. Never in `app/`, `components/`, `data/*.json`, or
+  screenshots.
+- Variables prefixed `NEXT_PUBLIC_` are bundled into the browser and readable by
+  anyone who opens devtools. Use the prefix only for genuinely public values
+  (e.g. the site URL). Real secrets never get the prefix — they then stay on the
+  server side.
+- This repository is **Public**. Assume anything committed is permanent.
 
 ## Data policy
 

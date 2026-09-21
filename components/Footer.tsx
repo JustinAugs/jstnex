@@ -15,10 +15,10 @@ export default function Footer() {
           <p className="text-base font-bold tracking-[0.25em] text-ink">
             JSTNEX
           </p>
-          <p className="mt-3 text-sm text-mist">Mapping How The World Moves.</p>
-          <p className="mt-1 text-xs text-mist">
+          <p className="mt-3 text-xs font-medium tracking-[0.18em] text-mist uppercase">
             Global Supply Network Intelligence
           </p>
+          <p className="mt-2 text-sm text-ink">Mapping How The World Moves.</p>
         </div>
 
         <nav>

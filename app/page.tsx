@@ -1,80 +1,44 @@
-import Link from "next/link";
 import Hero from "@/components/Hero";
 import SectionHeading from "@/components/SectionHeading";
 import DataCard from "@/components/DataCard";
+import DemoBadge from "@/components/DemoBadge";
+import NetworkCard from "@/components/NetworkCard";
+import InsightCard from "@/components/InsightCard";
+import CompanyCard from "@/components/CompanyCard";
+import ToolCard from "@/components/ToolCard";
+
+// 首页的文字内容全部来自 data/home.ts
+import {
+  SNAPSHOT,
+  NETWORK_MODULES,
+  INSIGHTS,
+  COMPANIES,
+  TOOLS,
+} from "@/data/home";
 
 /*
-  首页由 6 个区块组成。
-  这些数组目前直接写在页面里（V1 阶段够用），
-  后面的任务会把它们搬到 data/*.json，方便统一维护和接爬虫/数据库。
+  首页（Home）
+
+  这一页现在只做一件事：把各个区块按顺序「组装」起来。
+  所有文案在 data/home.ts，所有卡片样式在 components/ 下各自的组件里。
+  好处：以后要改内容不用碰布局，要改样式不用翻数据。
 */
-
-// Global Snapshot：注意 — 这些是演示数字，不是实时统计
-const SNAPSHOT = [
-  { label: "Global Trade", value: "24.0", unit: "T USD", note: "Sample figure for layout only" },
-  { label: "Container Shipping", value: "180", unit: "M TEU", note: "Sample figure for layout only" },
-  { label: "Major Ports", value: "850", unit: "", note: "Sample figure for layout only" },
-  { label: "Countries", value: "195+", unit: "", note: "Recognised states and territories" },
-];
-
-// Global Network：三个观察全球供应网络的角度
-const NETWORK_MODULES = [
-  {
-    title: "Trade",
-    description: "Global import & export",
-  },
-  {
-    title: "Logistics",
-    description: "Global transportation",
-  },
-  {
-    title: "Networks",
-    description: "Supply chain connections",
-  },
-];
-
-// Supply Chain Insights：未来会进入 Supply Chain 知识库
-const INSIGHTS = [
-  "Why Inventory Matters",
-  "What Is Just-in-Time?",
-  "How Global Shipping Works",
-  "Supply Chain Risk Management",
-];
-
-// Companies：第一版 5 家，重点是「从供应链角度理解企业」
-const COMPANIES = [
-  { name: "DHL", focus: "Global express & contract logistics" },
-  { name: "Maersk", focus: "Ocean shipping & port terminals" },
-  { name: "UPS", focus: "Integrated parcel & air network" },
-  { name: "FedEx", focus: "Time-definite air express" },
-  { name: "Kuehne+Nagel", focus: "Sea freight & air logistics" },
-];
-
-// Tools：V1.0 要实现的 4 个计算器
-const TOOLS = [
-  { name: "EOQ Calculator", description: "Economic Order Quantity" },
-  { name: "Safety Stock Calculator", description: "Buffer against uncertainty" },
-  { name: "Inventory Turnover", description: "COGS / Average Inventory" },
-  { name: "Reorder Point", description: "When to place the next order" },
-];
-
 export default function Home() {
   return (
     <>
+      {/* ---------- 2. Hero ---------- */}
       <Hero />
 
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
-        {/* ---------- Global Snapshot ---------- */}
+        {/* ---------- 3. Global Snapshot ---------- */}
         <section>
-          <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="flex flex-wrap items-center justify-between gap-4">
             <SectionHeading
               eyebrow="Global Snapshot"
               title="The network in four numbers"
             />
-            {/* 演示数据必须明确标注，不能假装成实时数据 */}
-            <span className="border border-line px-3 py-1 text-xs font-medium tracking-[0.18em] text-mist uppercase">
-              Demo Data
-            </span>
+            {/* 演示数据必须明确标注 */}
+            <DemoBadge />
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -90,30 +54,27 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ---------- Global Network ---------- */}
+        {/* ---------- 4. Global Network ---------- */}
         <section className="mt-20 md:mt-24">
           <SectionHeading
             eyebrow="Global Network"
             title="Three ways to see the world"
-            description="Trade flows, transportation systems and the connections that bind them."
+            description="Trade flows, transportation systems and the connections that bind them together."
           />
 
           <div className="grid gap-4 md:grid-cols-3">
             {NETWORK_MODULES.map((module) => (
-              <div
+              <NetworkCard
                 key={module.title}
-                className="group border border-line p-6 transition-colors hover:border-ink"
-              >
-                <h3 className="text-sm font-semibold tracking-[0.18em] text-ink uppercase">
-                  {module.title}
-                </h3>
-                <p className="mt-3 text-sm text-mist">{module.description}</p>
-              </div>
+                title={module.title}
+                description={module.description}
+                href={module.href}
+              />
             ))}
           </div>
         </section>
 
-        {/* ---------- Supply Chain Insights ---------- */}
+        {/* ---------- 5. Supply Chain Insights ---------- */}
         <section className="mt-20 md:mt-24">
           <SectionHeading
             eyebrow="Supply Chain Insights"
@@ -121,26 +82,19 @@ export default function Home() {
             description="Short, practical explanations written for students — not textbook filler."
           />
 
-          <ul className="divide-y divide-line border-y border-line">
-            {INSIGHTS.map((title) => (
-              <li key={title}>
-                <Link
-                  href="/supply-chain"
-                  className="flex items-center justify-between py-5 transition-colors hover:bg-surface"
-                >
-                  <span className="text-sm font-medium text-ink">{title}</span>
-                  {/* 箭头是纯 CSS 画的一条线 + 折角，不引入图标库 */}
-                  <span
-                    aria-hidden
-                    className="h-px w-6 bg-mist transition-all group-hover:w-10"
-                  />
-                </Link>
-              </li>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {INSIGHTS.map((insight) => (
+              <InsightCard
+                key={insight.title}
+                title={insight.title}
+                summary={insight.summary}
+                href={insight.href}
+              />
             ))}
-          </ul>
+          </div>
         </section>
 
-        {/* ---------- Companies ---------- */}
+        {/* ---------- 6. Companies ---------- */}
         <section className="mt-20 md:mt-24">
           <SectionHeading
             eyebrow="Companies"
@@ -150,20 +104,18 @@ export default function Home() {
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {COMPANIES.map((company) => (
-              <div
+              <CompanyCard
                 key={company.name}
-                className="border border-line p-6 transition-colors hover:border-ink"
-              >
-                <h3 className="text-base font-semibold text-ink">
-                  {company.name}
-                </h3>
-                <p className="mt-2 text-sm text-mist">{company.focus}</p>
-              </div>
+                name={company.name}
+                sector={company.sector}
+                focus={company.focus}
+                supplyChainModel={company.supplyChainModel}
+              />
             ))}
           </div>
         </section>
 
-        {/* ---------- Tools ---------- */}
+        {/* ---------- 7. Tools ---------- */}
         <section className="mt-20 md:mt-24">
           <SectionHeading
             eyebrow="Tools"
@@ -173,15 +125,20 @@ export default function Home() {
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {TOOLS.map((tool) => (
-              <div
+              <ToolCard
                 key={tool.name}
-                className="border border-line p-6 transition-colors hover:border-ink"
-              >
-                <h3 className="text-sm font-semibold text-ink">{tool.name}</h3>
-                <p className="mt-2 text-xs text-mist">{tool.description}</p>
-              </div>
+                name={tool.name}
+                description={tool.description}
+                formula={tool.formula}
+              />
             ))}
           </div>
+
+          {/* 诚实标注：不要把简单公式包装成企业级预测系统 */}
+          <p className="mt-6 text-xs leading-relaxed text-mist">
+            Calculators use simplified educational models, not enterprise
+            forecasting systems.
+          </p>
         </section>
       </div>
     </>

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { CardLink, CardAction } from "./ui/Card";
 
 /*
   InsightCard — Supply Chain Insights 的一张内容卡
@@ -20,25 +20,14 @@ export default function InsightCard({
   readLabel,
 }: InsightCardProps) {
   return (
-    <Link
-      href={href}
-      className="group flex h-full flex-col border border-line p-6 transition-colors hover:border-ink hover:bg-surface"
-    >
-      <h3 className="text-base leading-snug font-semibold text-ink">
-        {title}
-      </h3>
+    <CardLink href={href} className="flex h-full flex-col">
+      <h3 className="text-h3 text-ink">{title}</h3>
 
-      <p className="mt-3 flex-1 text-sm leading-relaxed text-mist">
-        {summary}
-      </p>
+      <p className="mt-3 flex-1 text-body text-mist">{summary}</p>
 
-      <span className="mt-6 flex items-center gap-2 text-[11px] font-medium tracking-[0.18em] text-deep uppercase">
-        {readLabel}
-        <span
-          aria-hidden
-          className="h-px w-5 bg-deep transition-all group-hover:w-9"
-        />
-      </span>
-    </Link>
+      <div className="mt-6">
+        <CardAction label={readLabel} />
+      </div>
+    </CardLink>
   );
 }

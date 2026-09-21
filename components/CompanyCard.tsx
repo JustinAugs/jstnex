@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { CardLink } from "./ui/Card";
 
 /*
   CompanyCard — 一家公司的卡片
@@ -23,27 +23,22 @@ export default function CompanyCard({
   modelLabel,
 }: CompanyCardProps) {
   return (
-    <Link
-      href="/companies"
-      className="flex h-full flex-col border border-line p-6 transition-colors hover:border-ink hover:bg-surface"
-    >
-      <p className="text-[11px] font-medium tracking-[0.18em] text-mist uppercase">
+    <CardLink href="/companies" className="flex h-full flex-col">
+      <p className="font-medium tracking-label text-caption text-mist uppercase">
         {sector}
       </p>
 
-      <h3 className="mt-3 text-lg font-semibold text-ink">{name}</h3>
+      <h3 className="mt-3 text-h3 text-ink">{name}</h3>
 
-      <p className="mt-2 text-sm leading-relaxed text-mist">{focus}</p>
+      <p className="mt-2 text-body text-mist">{focus}</p>
 
       {/* 上半部分讲「它是谁」，下半部分讲「它的供应链怎么运作」 */}
       <div className="mt-5 border-t border-line pt-4">
-        <p className="text-[11px] font-medium tracking-[0.18em] text-mist uppercase">
+        <p className="font-medium tracking-label text-caption text-mist uppercase">
           {modelLabel}
         </p>
-        <p className="mt-2 text-xs leading-relaxed text-ink">
-          {supplyChainModel}
-        </p>
+        <p className="mt-2 text-small text-ink">{supplyChainModel}</p>
       </div>
-    </Link>
+    </CardLink>
   );
 }

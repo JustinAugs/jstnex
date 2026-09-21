@@ -4,6 +4,9 @@
   "use client" 表示这个组件在浏览器里运行（客户端组件）。
   原因：用到了 useState（保存菜单是否打开）、usePathname（读取当前网址），
   以及 useLanguage（读取当前语言）—— 这些都只能在浏览器里工作。
+
+  样式全部走 Design System：容器用 container-page，字号用 text-* 令牌，
+  小标签统一用 tracking-label，不再散写 tracking-[0.18em]。
 */
 
 import Link from "next/link";
@@ -36,12 +39,13 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-white/90 backdrop-blur">
-      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+      {/* sticky 导航自己不算「区块」，所以这里用 container-page 而不是 Section */}
+      <nav className="container-page flex h-16 items-center justify-between">
         {/* 文字 Logo：品牌名不翻译，任何语言下都显示 JSTNEX */}
         <Link
           href="/"
           onClick={() => setIsMenuOpen(false)}
-          className="text-lg font-bold tracking-[0.25em] text-ink"
+          className="text-h3 font-bold tracking-[0.25em] text-ink"
         >
           JSTNEX
         </Link>
@@ -54,7 +58,7 @@ export default function Navbar() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`text-xs font-medium tracking-[0.18em] uppercase transition-colors ${
+                  className={`font-medium tracking-label text-small uppercase transition-colors ${
                     isActive(link.href)
                       ? "text-deep"
                       : "text-mist hover:text-deep"
@@ -104,7 +108,7 @@ export default function Navbar() {
               <Link
                 href={link.href}
                 onClick={() => setIsMenuOpen(false)} // 点完链接自动收起菜单
-                className={`block py-3 text-xs font-medium tracking-[0.18em] uppercase ${
+                className={`block py-3 font-medium tracking-label text-small uppercase ${
                   isActive(link.href) ? "text-deep" : "text-mist"
                 }`}
               >

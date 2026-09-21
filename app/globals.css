@@ -1,23 +1,119 @@
 @import "tailwindcss";
 
 /*
-  品牌设计令牌（Design Tokens）
-  在 Tailwind v4 里，写在 @theme 里的变量会自动变成工具类：
-  --color-ink  →  bg-ink / text-ink / border-ink
-  --color-deep →  bg-deep / text-deep / hover:text-deep
-  以后要改品牌色，只需要改这一个文件，不用去每个页面里找颜色。
+  ============================================================
+  JSTNEX DESIGN SYSTEM  (TASK 02.6)
+  ============================================================
+
+  这个文件是整个网站「样式的唯一来源」。
+  以后所有页面都要用这里的令牌，不要再自己写颜色值、字号值。
+
+  在 Tailwind v4 里：
+    --color-xxx 写在 @theme 里 → 自动生成 bg-xxx / text-xxx / border-xxx
+    --text-xxx  写在 @theme 里 → 自动生成 text-xxx（并设置好行高、字距）
+
+  ------------------------------------------------------------
+  1. 颜色（Color System）
+  ------------------------------------------------------------
+  品牌只有四个颜色角色黑白灰 + 深蓝，深蓝只用于：
+  链接 / 按钮 / 数据高亮 / 交互状态。禁止大面积彩色渐变。
+
+  角色名            令牌              色值        用在哪
+  Background        （默认白）        #FFFFFF     页面底色
+  Primary text      --color-ink       #0a0a0a     主标题、正文
+  Secondary surface --color-ink-soft  #1c1c1c     深色区块背景
+  Secondary text    --color-mist      #6b6b6b     说明文字
+  Border            --color-line      #e5e5e5     分割线、边框
+  Subtle surface    --color-surface   #fafafa     卡片悬停底色
+  Accent            --color-deep      #0a2f5c     深蓝（克制使用）
+  Accent hover      --color-deep-hover #0c3a73    深蓝悬停
+
+  ------------------------------------------------------------
+  2. 字号（Typography）
+  ------------------------------------------------------------
+  每级字号用 clamp(最小值, 弹性值, 最大值) 一行搞定三种屏幕：
+  手机自动取最小值，桌面自动取最大值，中间平滑过渡 —— 不需要写 md: 断点。
+
+  ------------------------------------------------------------
+  3. 间距与布局（Spacing）
+  ------------------------------------------------------------
+  container-page   统一的容器：最大宽度 + 左右留白，所有区块共用
+  section-spacing  统一的区块上下留白
+  tracking-label   统一的小标签字距（全大写的小字用）
 */
+
 @theme {
-  /* 黑白灰：构成整个网站的骨架 */
+  /* ---------- 1. Color ---------- */
   --color-ink: #0a0a0a; /* 近黑：主标题、正文 */
   --color-ink-soft: #1c1c1c; /* 深灰：次级区块背景 */
   --color-mist: #6b6b6b; /* 中灰：说明文字 */
   --color-line: #e5e5e5; /* 浅灰：分割线、边框 */
   --color-surface: #fafafa; /* 极浅灰：卡片/区块底色 */
-
-  /* 深蓝：只用做链接、按钮、数据高亮、交互状态 */
-  --color-deep: #0a2f5c;
+  --color-deep: #0a2f5c; /* 深蓝：链接/按钮/数据高亮/交互态 */
   --color-deep-hover: #0c3a73;
+
+  /* ---------- 3. Layout ---------- */
+  --container-page: 72rem; /* 1152px，全站统一内容宽度 */
+
+  /* ---------- 2. Typography ---------- */
+  /* Display：只用于首页 Hero 的主标题，40px → 60px */
+  --text-display: clamp(2.5rem, 1.5rem + 3.6vw, 3.75rem);
+  --text-display--line-height: 1.05;
+  --text-display--letter-spacing: -0.025em;
+  --text-display--font-weight: 700;
+
+  /* Lead：Hero 里的标语（Mapping How...），20px → 24px */
+  --text-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.5rem);
+  --text-lead--line-height: 1.35;
+
+  /* H1：页面主标题（如 GLOBAL NETWORK），30px → 36px */
+  --text-h1: clamp(1.875rem, 1.5rem + 1.6vw, 2.25rem);
+  --text-h1--line-height: 1.15;
+  --text-h1--letter-spacing: -0.02em;
+  --text-h1--font-weight: 700;
+
+  /* H2：区块标题，24px → 30px */
+  --text-h2: clamp(1.5rem, 1.3rem + 0.9vw, 1.875rem);
+  --text-h2--line-height: 1.2;
+  --text-h2--letter-spacing: -0.015em;
+  --text-h2--font-weight: 700;
+
+  /* H3：卡片标题，16px → 18px */
+  --text-h3: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --text-h3--line-height: 1.35;
+  --text-h3--font-weight: 600;
+
+  /* Body：正文，14px → 16px */
+  --text-body: clamp(0.875rem, 0.83rem + 0.2vw, 1rem);
+  --text-body--line-height: 1.7;
+
+  /* Small：次要说明文字，13px */
+  --text-small: 0.8125rem;
+  --text-small--line-height: 1.6;
+
+  /* Caption：全大写小标签（eyebrow / 角标），11px */
+  --text-caption: 0.6875rem;
+  --text-caption--line-height: 1.4;
+}
+
+/* ---------- 3. 可复用的自定义工具类 ---------- */
+
+/* 统一容器：任何区块套上它，宽度和左右留白就自动一致 */
+@utility container-page {
+  width: 100%;
+  max-width: var(--container-page);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+/* 统一区块留白：区块之间的呼吸感由它决定，页面不再各写各的 py-20 */
+@utility section-spacing {
+  padding-block: clamp(3.5rem, 2rem + 5vw, 6rem);
+}
+
+/* 统一的小标签字距：所有全大写小字都用这个，避免出现好几种 tracking-[...] */
+@utility tracking-label {
+  letter-spacing: 0.18em;
 }
 
 @layer base {
@@ -31,7 +127,7 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* 键盘导航时要能清楚看到焦点在哪（无障碍基础） */
+  /* 4. 交互状态：键盘导航（Tab）时必须清楚看到焦点在哪 —— 无障碍基础 */
   :focus-visible {
     outline: 2px solid var(--color-deep);
     outline-offset: 2px;

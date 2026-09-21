@@ -12,7 +12,7 @@ export default function LanguageSwitcher() {
   const { language, setLanguage } = useLanguage();
 
   return (
-    <div className="flex items-center gap-2 text-xs font-medium tracking-[0.18em] uppercase">
+    <div className="flex items-center gap-2 font-medium tracking-label text-small uppercase">
       {LANGUAGES.map((item, index) => (
         <span key={item.code} className="flex items-center gap-2">
           {index > 0 && <span aria-hidden className="h-3 w-px bg-line" />}

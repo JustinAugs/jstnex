@@ -1,0 +1,66 @@
+[
+  {
+    "name": "DHL",
+    "industry": "Logistics",
+    "sector": { "en": "Express & Contract Logistics", "zh": "快递与合同物流" },
+    "focus": {
+      "en": "Global express, forwarding and warehousing",
+      "zh": "全球快递、货运代理与仓储"
+    },
+    "supplyChainModel": {
+      "en": "Owns the network: air hubs, ground fleets and warehouses run end to end.",
+      "zh": "重资产自建网络：航空枢纽、地面车队与仓库全程自控。"
+    },
+    "href": "/companies"
+  },
+  {
+    "name": "Maersk",
+    "industry": "Shipping",
+    "sector": { "en": "Ocean Shipping", "zh": "海运" },
+    "focus": {
+      "en": "Container shipping and port terminals",
+      "zh": "集装箱运输与港口码头"
+    },
+    "supplyChainModel": {
+      "en": "Controls both vessels and terminals, moving one box door to door.",
+      "zh": "同时掌控船舶与码头，让一个集装箱实现门到门运输。"
+    },
+    "href": "/companies"
+  },
+  {
+    "name": "UPS",
+    "industry": "Logistics",
+    "sector": { "en": "Parcel & Air Network", "zh": "包裹与航空网络" },
+    "focus": {
+      "en": "Integrated parcel and air delivery",
+      "zh": "一体化的包裹与航空递送"
+    },
+    "supplyChainModel": {
+      "en": "Hub-and-spoke network tuned for predictable, high-volume flows.",
+      "zh": "轴辐式网络，为可预测、大批量的货流量身调优。"
+    },
+    "href": "/companies"
+  },
+  {
+    "name": "FedEx",
+    "industry": "Logistics",
+    "sector": { "en": "Air Express", "zh": "航空快递" },
+    "focus": { "en": "Time-definite express delivery", "zh": "限时承诺的快递服务" },
+    "supplyChainModel": {
+      "en": "Central hub model built around speed and strict cut-off times.",
+      "zh": "以速度和严格截件时间为核心构建的中央枢纽模式。"
+    },
+    "href": "/companies"
+  },
+  {
+    "name": "Kuehne+Nagel",
+    "industry": "Freight Forwarding",
+    "sector": { "en": "Freight Forwarding", "zh": "货运代理" },
+    "focus": { "en": "Sea and air freight forwarding", "zh": "海运与空运货运代理" },
+    "supplyChainModel": {
+      "en": "Asset-light: buys capacity from others, sells coordination and visibility.",
+      "zh": "轻资产模式：向外购买运力，出售协调能力与可视化。"
+    },
+    "href": "/companies"
+  }
+]

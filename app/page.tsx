@@ -6,7 +6,7 @@
   这一页只做一件事：把各个区块按顺序「组装」起来。
   文字从哪来？分两类：
     1. 界面文字（区块标题、按钮、标签）→ lib/i18n 的字典，用 dict.xxx 取
-    2. 内容数据（公司、工具、洞察）  → data/home.ts，字段是 { en, zh }
+    2. 内容数据（公司、工具、洞察）  → data/*.json（由 lib/data 加载成带类型的数据）
        用 pick(字段, language) 取出当前语言的那一条
 
   组件从哪来？按职责分层（TASK 02.7）：
@@ -32,13 +32,14 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import DemoBadge from "@/components/ui/DemoBadge";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { pick } from "@/lib/i18n";
+// 内容数据全部来自 lib/data —— 它背后是 data/*.json，数量和文案改那里即可
 import {
   SNAPSHOT,
   NETWORK_MODULES,
   INSIGHTS,
   COMPANIES,
   TOOLS,
-} from "@/data/home";
+} from "@/lib/data";
 
 // 卡片网格间距也统一，避免每个区块自己定 gap
 const GRID = "grid gap-4";
@@ -132,7 +133,7 @@ export default function Home() {
               focus={pick(company.focus, language)}
               supplyChainModel={pick(company.supplyChainModel, language)}
               modelLabel={dict.companies.modelLabel}
-              href="/companies"
+              href={company.href}
             />
           ))}
         </div>
@@ -154,7 +155,7 @@ export default function Home() {
               description={pick(tool.description, language)}
               formula={tool.formula}
               openLabel={dict.tools.open}
-              href="/tools"
+              href={tool.href}
             />
           ))}
         </div>

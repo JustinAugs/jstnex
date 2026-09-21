@@ -1,0 +1,33 @@
+[
+  {
+    "name": { "en": "EOQ Calculator", "zh": "EOQ 经济订货批量计算器" },
+    "description": { "en": "Economic Order Quantity", "zh": "经济订货批量" },
+    "category": "Inventory",
+    "formula": "√(2DS / H)",
+    "href": "/tools"
+  },
+  {
+    "name": { "en": "Safety Stock Calculator", "zh": "安全库存计算器" },
+    "description": { "en": "Buffer against uncertainty", "zh": "应对不确定性的缓冲" },
+    "category": "Inventory",
+    "formula": "(Max × Lead) − (Avg × Lead)",
+    "href": "/tools"
+  },
+  {
+    "name": { "en": "Inventory Turnover", "zh": "库存周转率" },
+    "description": { "en": "How fast stock sells", "zh": "库存流转有多快" },
+    "category": "Inventory",
+    "formula": "COGS / Average Inventory",
+    "href": "/tools"
+  },
+  {
+    "name": { "en": "Reorder Point", "zh": "再订货点" },
+    "description": {
+      "en": "When to place the next order",
+      "zh": "何时下达下一笔订单"
+    },
+    "category": "Inventory",
+    "formula": "Demand × Lead Time + Safety Stock",
+    "href": "/tools"
+  }
+]

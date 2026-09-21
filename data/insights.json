@@ -1,0 +1,38 @@
+[
+  {
+    "title": { "en": "Why Inventory Matters", "zh": "为什么库存很重要" },
+    "summary": {
+      "en": "Inventory is capital standing still. Why firms hold it, what it really costs, and how it absorbs uncertainty.",
+      "zh": "库存就是静止不动的资金。企业为什么持有它、它的真实成本有多高，以及它如何吸收不确定性。"
+    },
+    "category": "Inventory",
+    "href": "/supply-chain"
+  },
+  {
+    "title": { "en": "What Is Just-in-Time?", "zh": "什么是准时制（JIT）？" },
+    "summary": {
+      "en": "JIT removes waste by receiving goods only as they are needed — and leaves you exposed when the network breaks.",
+      "zh": "准时制只在需要时才收货，以此消除浪费 —— 但网络一旦中断，你也会立刻暴露在风险中。"
+    },
+    "category": "Manufacturing",
+    "href": "/supply-chain"
+  },
+  {
+    "title": { "en": "How Global Shipping Works", "zh": "全球海运如何运作" },
+    "summary": {
+      "en": "From factory to port, vessel to shelf: the stages, documents and players behind a single container.",
+      "zh": "从工厂到港口、从船舶到货架：一个集装箱背后涉及的环节、单证与参与方。"
+    },
+    "category": "Transportation",
+    "href": "/supply-chain"
+  },
+  {
+    "title": { "en": "Supply Chain Risk Management", "zh": "供应链风险管理" },
+    "summary": {
+      "en": "How to identify, assess and mitigate disruption before it reaches the customer.",
+      "zh": "如何在中断影响到客户之前，识别、评估并降低风险。"
+    },
+    "category": "Risk Management",
+    "href": "/supply-chain"
+  }
+]

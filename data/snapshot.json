@@ -1,0 +1,36 @@
+[
+  {
+    "label": { "en": "Global Trade", "zh": "全球贸易" },
+    "value": "$24.0",
+    "unit": "T",
+    "note": {
+      "en": "Sample figure — not a live statistic",
+      "zh": "示例数值 — 非实时统计"
+    }
+  },
+  {
+    "label": { "en": "Container Shipping", "zh": "集装箱运输" },
+    "value": "180",
+    "unit": "M TEU",
+    "note": {
+      "en": "Sample figure — not a live statistic",
+      "zh": "示例数值 — 非实时统计"
+    }
+  },
+  {
+    "label": { "en": "Major Ports", "zh": "主要港口" },
+    "value": "850",
+    "note": {
+      "en": "Sample figure — not a live statistic",
+      "zh": "示例数值 — 非实时统计"
+    }
+  },
+  {
+    "label": { "en": "Countries", "zh": "国家与地区" },
+    "value": "195+",
+    "note": {
+      "en": "Recognised states and territories",
+      "zh": "被广泛承认的国家与地区"
+    }
+  }
+]

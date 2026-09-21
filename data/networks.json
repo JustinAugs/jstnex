@@ -1,0 +1,17 @@
+[
+  {
+    "title": { "en": "Trade", "zh": "贸易" },
+    "description": { "en": "Global import & export", "zh": "全球进口与出口" },
+    "href": "/global"
+  },
+  {
+    "title": { "en": "Logistics", "zh": "物流" },
+    "description": { "en": "Global transportation", "zh": "全球运输体系" },
+    "href": "/global"
+  },
+  {
+    "title": { "en": "Networks", "zh": "网络" },
+    "description": { "en": "Supply chain connections", "zh": "供应链连接关系" },
+    "href": "/global"
+  }
+]

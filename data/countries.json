@@ -1,0 +1,10 @@
+[
+  { "name": "China", "code": "CN", "region": "Asia" },
+  { "name": "United States", "code": "US", "region": "North America" },
+  { "name": "Japan", "code": "JP", "region": "Asia" },
+  { "name": "Germany", "code": "DE", "region": "Europe" },
+  { "name": "Singapore", "code": "SG", "region": "Asia" },
+  { "name": "South Korea", "code": "KR", "region": "Asia" },
+  { "name": "Vietnam", "code": "VN", "region": "Asia" },
+  { "name": "India", "code": "IN", "region": "Asia" }
+]

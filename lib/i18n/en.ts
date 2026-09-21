@@ -71,6 +71,27 @@ const en = {
       "All calculators use simplified educational models, not enterprise forecasting systems.",
   },
 
+  /*
+    states —— 三种「非正常 / 非内容」状态的统一文案。
+    将来接数据库、Python API、爬虫之后，加载慢、查不到、接口报错都是常态，
+    每个页面都要有一致的提示，不能各自发挥。
+  */
+  states: {
+    loading: {
+      title: "Loading global data...",
+      description: "Fetching the latest supply network data.",
+    },
+    empty: {
+      title: "No data available.",
+      description: "There is nothing to show here yet.",
+    },
+    error: {
+      title: "Unable to load data.",
+      description: "Something went wrong. Please try again later.",
+      retry: "Try again",
+    },
+  },
+
   footer: {
     tagline: "Global Supply Network Intelligence",
     slogan: "Mapping How The World Moves.",

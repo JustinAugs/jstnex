@@ -65,6 +65,23 @@ const zh: Dictionary = {
     disclaimer: "所有计算器均采用简化教学模型，并非企业级预测系统。",
   },
 
+  // 三种状态的中文文案（字段结构必须与 en.ts 一致）
+  states: {
+    loading: {
+      title: "正在加载全球数据……",
+      description: "正在获取最新的供应网络数据。",
+    },
+    empty: {
+      title: "暂无数据。",
+      description: "这里暂时没有可显示的内容。",
+    },
+    error: {
+      title: "数据加载失败。",
+      description: "出现了一点问题，请稍后再试。",
+      retry: "重试",
+    },
+  },
+
   footer: {
     tagline: "全球供应网络智能平台",
     slogan: "探索世界如何流动",

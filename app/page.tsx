@@ -38,6 +38,7 @@ import {
   NETWORK_MODULES,
   featuredConcepts,
   COMPANIES,
+  regionKey,
   TOOLS,
 } from "@/lib/data";
 
@@ -130,15 +131,28 @@ export default function Home() {
         />
 
         <div className={`${GRID} sm:grid-cols-2 lg:grid-cols-3`}>
-          {COMPANIES.map((company) => (
+          {/*
+            TASK 05 起，首页和 Companies 页读同一份 data/companies.json。
+            这里只取前 6 家（companies.json 的前 6 条刻意覆盖了不同行业 / 角色 / 大区），
+            保持和改造前接近的两行卡片密度，完整列表留给 /companies。
+          */}
+          {COMPANIES.slice(0, 6).map((company) => (
             <CompanyCard
-              key={company.name}
-              name={company.name}
-              sector={pick(company.sector, language)}
-              focus={pick(company.focus, language)}
-              supplyChainModel={pick(company.supplyChainModel, language)}
-              modelLabel={dict.companies.modelLabel}
-              href={company.href}
+              key={company.id}
+              name={pick(company.name, language)}
+              industry={dict.companies.industries[company.industry]}
+              role={dict.companies.roles[company.role]}
+              country={pick(company.country, language)}
+              region={dict.regions[regionKey(company.region)]}
+              summary={pick(company.summary, language)}
+              keyActivities={company.keyActivities.map((activity) =>
+                pick(activity, language),
+              )}
+              strength={pick(company.supplyChainStrength, language)}
+              risk={pick(company.supplyChainRisk, language)}
+              labels={dict.companies.labels}
+              // 沿用改造前的行为：首页卡片点进去是 /companies（真实存在的页面，不是死链）
+              href="/companies"
             />
           ))}
         </div>

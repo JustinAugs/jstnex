@@ -46,6 +46,19 @@ const en = {
     explore: "Explore",
   },
 
+  /*
+    regions —— 大区显示名（Global 页与 Companies 页共用）。
+
+    数据在 JSON 里存的是 "Asia" 这种英文值，由 lib/data 的 regionKey() 换算成这里的字段名。
+    TASK 03 时它放在 global 段里；TASK 05 因为 Companies 页也要按大区筛选，
+    把它提升为共享段 —— 同一个大区不能有两套翻译。
+  */
+  regions: {
+    asia: "Asia",
+    europe: "Europe",
+    northAmerica: "North America",
+  },
+
   global: {
     eyebrow: "Global network",
     title: "The network, country by country",
@@ -55,12 +68,6 @@ const en = {
     filterLabel: "Filter by region",
     filterAll: "All",
     countLabel: "countries",
-    // 地区名：数据在 JSON 里存的是 "Asia" 这种英文值，显示名在这里翻译
-    regions: {
-      asia: "Asia",
-      europe: "Europe",
-      northAmerica: "North America",
-    },
     labels: {
       role: "Role in the network",
       ports: "Key ports",
@@ -122,12 +129,83 @@ const en = {
     read: "Read",
   },
 
+  /*
+    companies —— 前三项（eyebrow / title / description）是首页 Companies 区块用的；
+    下面 page / search / filters / industries / roles / labels / empty 是
+    Companies 页面（TASK 05）用的界面文字。
+
+    注意：企业本身的内容（简介、优势、风险）放在 data/companies.json，不放字典 ——
+    字典管界面，数据文件管内容，这是本项目一直的规矩。
+  */
   companies: {
     eyebrow: "Companies",
     title: "Global supply network companies",
     description:
       "Understood through their networks, assets and supply chain models.",
-    modelLabel: "Supply chain model",
+
+    page: {
+      eyebrow: "Companies",
+      title: "Who participates in global supply networks?",
+      description:
+        "Explore companies through their roles in global supply chains — by industry, region and supply chain role, not by size or ranking.",
+      countLabel: "companies",
+      note: "Company entries are qualitative supply chain observations. No revenue, market share, ranking or performance figures are shown.",
+    },
+
+    search: {
+      label: "Search companies",
+      placeholder: "Search companies...",
+    },
+
+    filters: {
+      industry: "Industry",
+      region: "Region",
+      role: "Supply Chain Role",
+      all: "All",
+      filterByIndustry: "Filter by industry",
+      filterByRegion: "Filter by region",
+      filterByRole: "Filter by supply chain role",
+    },
+
+    // 行业显示名：数据里是 technology 这类稳定 id，中文模式下不能把它直接显示出来
+    industries: {
+      technology: "Technology",
+      automotive: "Automotive",
+      logistics: "Logistics",
+      manufacturing: "Manufacturing",
+      retail: "Retail",
+      energy: "Energy",
+      pharmaceuticals: "Pharmaceuticals",
+      semiconductors: "Semiconductors",
+    },
+
+    /*
+      供应链角色显示名。刻意没有「行业龙头 / 市场领先 / 最佳供应商」这类词 ——
+      这一页讲角色，不做排名。
+    */
+    roles: {
+      "brand-integrator": "Brand / System Integrator",
+      manufacturer: "Manufacturer",
+      supplier: "Supplier",
+      "logistics-provider": "Logistics Provider",
+      retailer: "Retailer",
+      "technology-provider": "Technology Provider",
+      "raw-material-energy": "Raw Material / Energy",
+    },
+
+    labels: {
+      industry: "Industry",
+      role: "Supply Chain Role",
+      location: "Location",
+      keyActivities: "Key Activities",
+      strength: "Strength",
+      risk: "Risk",
+    },
+
+    empty: {
+      title: "No companies found.",
+      description: "Try a different search term, or clear a filter.",
+    },
   },
 
   tools: {

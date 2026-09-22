@@ -61,7 +61,7 @@ export default function CountryDirectory() {
   const labelOf = (region: string) =>
     region === ALL
       ? dict.global.filterAll
-      : dict.global.regions[regionKey(region)];
+      : dict.regions[regionKey(region)];
 
   return (
     <Section>
@@ -121,7 +121,7 @@ export default function CountryDirectory() {
               code={country.code}
               // pick() 从 { en, zh } 里取出当前语言的那一条
               name={pick(country.name, language)}
-              region={dict.global.regions[regionKey(country.region)]}
+              region={dict.regions[regionKey(country.region)]}
               role={pick(country.role, language)}
               summary={pick(country.summary, language)}
               exports={pick(country.exports, language)}

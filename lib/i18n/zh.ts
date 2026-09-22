@@ -43,6 +43,13 @@ const zh: Dictionary = {
     explore: "查看",
   },
 
+  // regions —— 大区显示名（Global 页与 Companies 页共用，字段结构同 en.ts）
+  regions: {
+    asia: "亚洲",
+    europe: "欧洲",
+    northAmerica: "北美洲",
+  },
+
   global: {
     eyebrow: "全球网络",
     title: "一个国家，一张网络",
@@ -52,11 +59,6 @@ const zh: Dictionary = {
     filterLabel: "按大区筛选",
     filterAll: "全部",
     countLabel: "个国家",
-    regions: {
-      asia: "亚洲",
-      europe: "欧洲",
-      northAmerica: "北美洲",
-    },
     labels: {
       role: "网络中的角色",
       ports: "主要港口",
@@ -111,11 +113,72 @@ const zh: Dictionary = {
     read: "阅读",
   },
 
+  // companies —— 前三项给首页 Companies 区块用，其余给 Companies 页面用（字段结构同 en.ts）
   companies: {
     eyebrow: "企业",
     title: "全球供应网络企业",
     description: "从它们的网络、资产与供应链模式来理解。",
-    modelLabel: "供应链模式",
+
+    page: {
+      eyebrow: "企业",
+      title: "谁参与全球供应网络？",
+      description:
+        "从供应链角色的角度浏览企业——按行业、地区与供应链角色筛选，而不是按规模或排名。",
+      countLabel: "家企业",
+      note: "以上企业条目均为供应链视角的定性观察，不展示营收、市场份额、排名或业绩数字。",
+    },
+
+    search: {
+      label: "搜索企业",
+      placeholder: "搜索企业……",
+    },
+
+    filters: {
+      industry: "行业",
+      region: "地区",
+      role: "供应链角色",
+      all: "全部",
+      filterByIndustry: "按行业筛选",
+      filterByRegion: "按地区筛选",
+      filterByRole: "按供应链角色筛选",
+    },
+
+    // 行业显示名：数据里是 technology 这类稳定 id，不能直接显示给用户
+    industries: {
+      technology: "科技",
+      automotive: "汽车",
+      logistics: "物流",
+      manufacturing: "制造",
+      retail: "零售",
+      energy: "能源",
+      pharmaceuticals: "制药",
+      semiconductors: "半导体",
+    },
+
+    // 供应链角色：同样避开「行业龙头 / 市场领先 / 最佳供应商」这类主观评价
+    roles: {
+      "brand-integrator": "品牌 / 系统整合商",
+      manufacturer: "制造商",
+      supplier: "供应商",
+      "logistics-provider": "物流服务商",
+      retailer: "零售商",
+      "technology-provider": "技术提供商",
+      "raw-material-energy": "原材料 / 能源",
+    },
+
+    labels: {
+      industry: "行业",
+      role: "供应链角色",
+      location: "所在地",
+      keyActivities: "关键活动",
+      strength: "优势",
+      risk: "风险",
+    },
+
+    empty: {
+      title: "未找到相关企业。",
+      description: "换个搜索词，或清除某个筛选条件。",
+    },
   },
 
   tools: {

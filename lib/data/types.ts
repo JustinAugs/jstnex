@@ -105,13 +105,59 @@ export type Concept = {
 };
 
 /** Companies 页面的一家公司 */
+/*
+  行业 —— 受控清单（TASK 05 §5）。
+  数据里存稳定的英文 id，显示名放在字典里（dict.companies.industries），
+  这样中文模式下不会把 "semiconductors" 这种内部 id 暴露给用户。
+*/
+export type IndustryId =
+  | "technology"
+  | "automotive"
+  | "logistics"
+  | "manufacturing"
+  | "retail"
+  | "energy"
+  | "pharmaceuticals"
+  | "semiconductors";
+
+/*
+  供应链角色 —— 企业在供应网络里「扮演什么角色」（TASK 05 §6）。
+  刻意不使用「行业龙头 / 市场领先 / 最佳供应商」这类主观评价：
+  这一页讲的是角色，不是排名。
+*/
+export type SupplyChainRoleId =
+  | "brand-integrator"
+  | "manufacturer"
+  | "supplier"
+  | "logistics-provider"
+  | "retailer"
+  | "technology-provider"
+  | "raw-material-energy";
+
+/*
+  大区 —— 直接沿用 Global 页面的英文值（"Asia" / "Europe" / "North America"），
+  不另起一套。显示名复用字典里共享的 regions 段。
+*/
+export type CompanyRegion = "Asia" | "Europe" | "North America";
+
+/** Companies 页面的一家企业 */
 export type Company = {
-  name: string; // 品牌名不翻译
-  industry: string; // Logistics / Shipping / Freight Forwarding
-  sector: LocalizedText;
-  focus: LocalizedText;
-  supplyChainModel: LocalizedText; // 关键：从供应链角度理解这家公司
-  href: string;
+  id: string; // 稳定 slug，将来可能用作 URL
+  name: LocalizedText; // 公司名有通用中文写法（Apple → 苹果）
+  industry: IndustryId;
+  country: LocalizedText;
+  region: CompanyRegion;
+  role: SupplyChainRoleId;
+  summary: LocalizedText;
+  keyActivities: LocalizedText[];
+  supplyChainStrength: LocalizedText; // 定性描述，不给分数或百分比
+  supplyChainRisk: LocalizedText;
+  /*
+    relatedConcepts —— 未来 Companies → Supply Chain 的关联预留。
+    V1 只存数据、不做渲染：因为 /supply-chain/[slug] 还不存在，
+    做出来就是死链（指令 §21）。等详情页有了再启用。
+  */
+  relatedConcepts?: string[];
 };
 
 /** Tools 页面的一个计算器 */

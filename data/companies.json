@@ -1,66 +1,353 @@
 [
   {
-    "name": "DHL",
-    "industry": "Logistics",
-    "sector": { "en": "Express & Contract Logistics", "zh": "快递与合同物流" },
-    "focus": {
-      "en": "Global express, forwarding and warehousing",
-      "zh": "全球快递、货运代理与仓储"
+    "id": "apple",
+    "name": { "en": "Apple", "zh": "苹果" },
+    "industry": "technology",
+    "country": { "en": "United States", "zh": "美国" },
+    "region": "North America",
+    "role": "brand-integrator",
+    "summary": {
+      "en": "Designs and coordinates a global product network, with assembly concentrated among contract manufacturers in Asia.",
+      "zh": "设计并协调整个全球产品网络，组装环节集中于亚洲的代工制造商。"
     },
-    "supplyChainModel": {
-      "en": "Owns the network: air hubs, ground fleets and warehouses run end to end.",
-      "zh": "重资产自建网络：航空枢纽、地面车队与仓库全程自控。"
+    "keyActivities": [
+      { "en": "Product design and engineering", "zh": "产品设计与工程" },
+      { "en": "Global component sourcing", "zh": "全球零部件采购" },
+      { "en": "Contract manufacturing coordination", "zh": "代工制造协同" },
+      { "en": "Launch planning and demand shaping", "zh": "上市计划与需求引导" }
+    ],
+    "supplyChainStrength": {
+      "en": "Tight control over design, supplier qualification and launch timing across a highly coordinated network.",
+      "zh": "在高度协同的网络中，对设计、供应商认证与上市节奏保持严格控制。"
     },
-    "href": "/companies"
+    "supplyChainRisk": {
+      "en": "Dependence on concentrated assembly capacity and on a small number of critical component suppliers.",
+      "zh": "依赖高度集中的组装产能，以及少数几家关键零部件供应商。"
+    },
+    "relatedConcepts": ["lead-time", "total-landed-cost", "supply-chain-risk-management"]
   },
   {
-    "name": "Maersk",
-    "industry": "Shipping",
-    "sector": { "en": "Ocean Shipping", "zh": "海运" },
-    "focus": {
-      "en": "Container shipping and port terminals",
-      "zh": "集装箱运输与港口码头"
+    "id": "tsmc",
+    "name": { "en": "TSMC", "zh": "台积电" },
+    "industry": "semiconductors",
+    "country": { "en": "Taiwan, China", "zh": "中国台湾" },
+    "region": "Asia",
+    "role": "manufacturer",
+    "summary": {
+      "en": "A pure-play foundry that manufactures advanced chips designed by other companies.",
+      "zh": "纯晶圆代工企业，为其他公司设计的先进芯片提供制造。"
     },
-    "supplyChainModel": {
-      "en": "Controls both vessels and terminals, moving one box door to door.",
-      "zh": "同时掌控船舶与码头，让一个集装箱实现门到门运输。"
+    "keyActivities": [
+      { "en": "Wafer fabrication", "zh": "晶圆制造" },
+      { "en": "Advanced process node development", "zh": "先进制程节点开发" },
+      { "en": "Capacity planning with customers", "zh": "与客户协同的产能规划" },
+      { "en": "Yield management", "zh": "良率管理" }
+    ],
+    "supplyChainStrength": {
+      "en": "Process technology and scale that few alternatives can replace at the most advanced nodes.",
+      "zh": "在最先进制程节点上，其工艺技术与规模几乎无可替代。"
     },
-    "href": "/companies"
+    "supplyChainRisk": {
+      "en": "Extreme geographic concentration, plus long lead times for the equipment and materials it depends on.",
+      "zh": "地理分布高度集中，且所依赖的设备与材料交期很长。"
+    },
+    "relatedConcepts": ["lead-time", "make-to-order-vs-make-to-stock", "supply-chain-risk-management"]
   },
   {
-    "name": "UPS",
-    "industry": "Logistics",
-    "sector": { "en": "Parcel & Air Network", "zh": "包裹与航空网络" },
-    "focus": {
-      "en": "Integrated parcel and air delivery",
-      "zh": "一体化的包裹与航空递送"
+    "id": "toyota",
+    "name": { "en": "Toyota", "zh": "丰田" },
+    "industry": "automotive",
+    "country": { "en": "Japan", "zh": "日本" },
+    "region": "Asia",
+    "role": "manufacturer",
+    "summary": {
+      "en": "Runs one of the most studied production systems, built around levelled production and supplier co-development.",
+      "zh": "运营着被广泛研究的生产体系，核心是平准化生产与供应商协同开发。"
     },
-    "supplyChainModel": {
-      "en": "Hub-and-spoke network tuned for predictable, high-volume flows.",
-      "zh": "轴辐式网络，为可预测、大批量的货流量身调优。"
+    "keyActivities": [
+      { "en": "Vehicle assembly", "zh": "整车组装" },
+      { "en": "Tiered supplier coordination", "zh": "分层供应商协同" },
+      { "en": "Just-in-time parts delivery", "zh": "准时化零部件配送" },
+      { "en": "Regional production footprint", "zh": "区域化生产布局" }
+    ],
+    "supplyChainStrength": {
+      "en": "Long-standing supplier relationships and production discipline built to absorb disruption.",
+      "zh": "长期稳定的供应商关系，以及为吸收冲击而建立的生产纪律。"
     },
-    "href": "/companies"
+    "supplyChainRisk": {
+      "en": "Deep multi-tier supplier networks make visibility beyond the first tier difficult after a shock.",
+      "zh": "多层级的供应商网络很深，冲击发生后难以看清第一层以外的状况。"
+    },
+    "relatedConcepts": ["just-in-time", "bullwhip-effect", "lead-time"]
   },
   {
-    "name": "FedEx",
-    "industry": "Logistics",
-    "sector": { "en": "Air Express", "zh": "航空快递" },
-    "focus": { "en": "Time-definite express delivery", "zh": "限时承诺的快递服务" },
-    "supplyChainModel": {
-      "en": "Central hub model built around speed and strict cut-off times.",
-      "zh": "以速度和严格截件时间为核心构建的中央枢纽模式。"
+    "id": "maersk",
+    "name": { "en": "Maersk", "zh": "马士基" },
+    "industry": "logistics",
+    "country": { "en": "Denmark", "zh": "丹麦" },
+    "region": "Europe",
+    "role": "logistics-provider",
+    "summary": {
+      "en": "Moves containers across ocean networks and operates the terminal capacity at both ends of the route.",
+      "zh": "经营跨洋集装箱运输网络，并在航线两端运营码头吞吐能力。"
     },
-    "href": "/companies"
+    "keyActivities": [
+      { "en": "Ocean container transport", "zh": "远洋集装箱运输" },
+      { "en": "Port terminal operation", "zh": "港口码头运营" },
+      { "en": "Inland haulage and intermodal links", "zh": "内陆运输与多式联运衔接" },
+      { "en": "Shipment visibility and documentation", "zh": "货物可视化与单证处理" }
+    ],
+    "supplyChainStrength": {
+      "en": "Control of both vessels and terminals lets one container be tracked door to door.",
+      "zh": "同时掌握船舶与码头，使一个集装箱可以实现门到门追踪。"
+    },
+    "supplyChainRisk": {
+      "en": "Network reliability moves with freight cycles and with disruption at a few key chokepoints.",
+      "zh": "网络可靠性随运价周期波动，也受少数关键咽喉节点中断的影响。"
+    },
+    "relatedConcepts": ["how-global-shipping-works", "total-landed-cost", "supply-chain-risk-management"]
   },
   {
-    "name": "Kuehne+Nagel",
-    "industry": "Freight Forwarding",
-    "sector": { "en": "Freight Forwarding", "zh": "货运代理" },
-    "focus": { "en": "Sea and air freight forwarding", "zh": "海运与空运货运代理" },
-    "supplyChainModel": {
-      "en": "Asset-light: buys capacity from others, sells coordination and visibility.",
-      "zh": "轻资产模式：向外购买运力，出售协调能力与可视化。"
+    "id": "walmart",
+    "name": { "en": "Walmart", "zh": "沃尔玛" },
+    "industry": "retail",
+    "country": { "en": "United States", "zh": "美国" },
+    "region": "North America",
+    "role": "retailer",
+    "summary": {
+      "en": "Uses retail scale as a supply chain instrument: distribution centres, cross-docks and supplier data sharing.",
+      "zh": "把零售规模当作供应链工具来使用：配送中心、越库作业与供应商数据共享。"
     },
-    "href": "/companies"
+    "keyActivities": [
+      { "en": "Distribution centre network", "zh": "配送中心网络" },
+      { "en": "Cross-docking", "zh": "越库作业" },
+      { "en": "Supplier collaboration and data sharing", "zh": "供应商协同与数据共享" },
+      { "en": "Store replenishment", "zh": "门店补货" }
+    ],
+    "supplyChainStrength": {
+      "en": "Very high replenishment frequency supported by a dense distribution network and shared demand data.",
+      "zh": "凭借密集的配送网络与共享的需求数据，实现极高频率的补货。"
+    },
+    "supplyChainRisk": {
+      "en": "Thin margins and high volume leave little slack when demand swings faster than replenishment.",
+      "zh": "薄利与高销量意味着，当需求波动快于补货节奏时几乎不留缓冲。"
+    },
+    "relatedConcepts": ["cross-docking", "inventory-turnover", "bullwhip-effect", "service-level"]
+  },
+  {
+    "id": "shell",
+    "name": { "en": "Shell", "zh": "壳牌" },
+    "industry": "energy",
+    "country": { "en": "United Kingdom", "zh": "英国" },
+    "region": "Europe",
+    "role": "raw-material-energy",
+    "summary": {
+      "en": "Supplies the energy and feedstock that sit at the very start of many industrial supply chains.",
+      "zh": "提供位于众多工业供应链最上游的能源与原料。"
+    },
+    "keyActivities": [
+      { "en": "Upstream extraction", "zh": "上游开采" },
+      { "en": "Refining and processing", "zh": "炼制与加工" },
+      { "en": "Bulk shipping and storage", "zh": "散货运输与仓储" },
+      { "en": "Trading and distribution", "zh": "贸易与分销" }
+    ],
+    "supplyChainStrength": {
+      "en": "Integrated control reaching from extraction through refining to bulk logistics.",
+      "zh": "从开采、炼制到散货物流的一体化掌控。"
+    },
+    "supplyChainRisk": {
+      "en": "Exposure to geopolitical events, long-distance shipping routes and commodity price swings.",
+      "zh": "受地缘政治事件、远距离航运线路以及大宗商品价格波动的影响。"
+    },
+    "relatedConcepts": ["supply-chain-risk-management", "total-landed-cost", "how-global-shipping-works"]
+  },
+  {
+    "id": "microsoft",
+    "name": { "en": "Microsoft", "zh": "微软" },
+    "industry": "technology",
+    "country": { "en": "United States", "zh": "美国" },
+    "region": "North America",
+    "role": "technology-provider",
+    "summary": {
+      "en": "Provides the software and cloud infrastructure that many planning and coordination systems run on.",
+      "zh": "提供众多计划与协同系统所依赖的软件和云基础设施。"
+    },
+    "keyActivities": [
+      { "en": "Cloud infrastructure operation", "zh": "云基础设施运营" },
+      { "en": "Enterprise software platforms", "zh": "企业级软件平台" },
+      { "en": "Data centre build-out", "zh": "数据中心建设" },
+      { "en": "Device supply and assembly", "zh": "设备供应与组装" }
+    ],
+    "supplyChainStrength": {
+      "en": "Software and cloud platforms sit upstream of many supply chain planning systems.",
+      "zh": "软件与云平台位于众多供应链计划系统的上游。"
+    },
+    "supplyChainRisk": {
+      "en": "Data centre expansion depends on long-lead equipment and on regional power and construction capacity.",
+      "zh": "数据中心扩张依赖交期长的设备，以及各地的电力与施工能力。"
+    },
+    "relatedConcepts": ["service-level", "supply-chain-risk-management"]
+  },
+  {
+    "id": "asml",
+    "name": { "en": "ASML", "zh": "阿斯麦" },
+    "industry": "semiconductors",
+    "country": { "en": "Netherlands", "zh": "荷兰" },
+    "region": "Europe",
+    "role": "supplier",
+    "summary": {
+      "en": "Builds the lithography equipment that advanced chip production cannot run without.",
+      "zh": "制造先进芯片生产所不可或缺的光刻设备。"
+    },
+    "keyActivities": [
+      { "en": "Lithography system development", "zh": "光刻系统开发" },
+      { "en": "Precision assembly and testing", "zh": "精密组装与测试" },
+      { "en": "Field service and upgrades", "zh": "现场服务与升级" },
+      { "en": "Supplier co-development", "zh": "供应商协同开发" }
+    ],
+    "supplyChainStrength": {
+      "en": "A bottleneck supplier of equipment with almost no substitute at the most advanced nodes.",
+      "zh": "在最先进制程节点上几乎没有替代品的瓶颈型设备供应商。"
+    },
+    "supplyChainRisk": {
+      "en": "Capacity is limited by a very small number of highly specialised upstream suppliers.",
+      "zh": "产能受制于数量极少、高度专业化的上游供应商。"
+    },
+    "relatedConcepts": ["lead-time", "supply-chain-risk-management"]
+  },
+  {
+    "id": "volkswagen",
+    "name": { "en": "Volkswagen", "zh": "大众" },
+    "industry": "automotive",
+    "country": { "en": "Germany", "zh": "德国" },
+    "region": "Europe",
+    "role": "manufacturer",
+    "summary": {
+      "en": "Manufactures across many plants and brands, sourcing through wide multi-tier supplier networks.",
+      "zh": "在众多工厂与品牌之间组织制造，通过广泛的多层级供应商网络采购。"
+    },
+    "keyActivities": [
+      { "en": "Multi-brand vehicle production", "zh": "多品牌整车生产" },
+      { "en": "Global platform sourcing", "zh": "全球化平台采购" },
+      { "en": "Battery and component supply development", "zh": "电池与零部件供应开发" },
+      { "en": "Regional assembly", "zh": "区域化组装" }
+    ],
+    "supplyChainStrength": {
+      "en": "Platform sharing across brands gives purchasing scale and flexible plant allocation.",
+      "zh": "跨品牌共用平台带来采购规模，也让产能分配更灵活。"
+    },
+    "supplyChainRisk": {
+      "en": "Complex multi-brand sourcing makes it hard to trace exposure deep in the supplier tiers.",
+      "zh": "多品牌采购结构复杂，难以追查供应商层级深处的敞口。"
+    },
+    "relatedConcepts": ["lead-time", "bullwhip-effect", "supply-chain-risk-management"]
+  },
+  {
+    "id": "dhl",
+    "name": { "en": "DHL", "zh": "DHL" },
+    "industry": "logistics",
+    "country": { "en": "Germany", "zh": "德国" },
+    "region": "Europe",
+    "role": "logistics-provider",
+    "summary": {
+      "en": "Runs express, forwarding and contract logistics networks across more than one transport mode.",
+      "zh": "跨多种运输方式运营快递、货代与合同物流网络。"
+    },
+    "keyActivities": [
+      { "en": "Express parcel delivery", "zh": "快递包裹递送" },
+      { "en": "Air and ocean freight forwarding", "zh": "空运与海运货代" },
+      { "en": "Contract warehousing", "zh": "合同仓储" },
+      { "en": "Customs and documentation", "zh": "报关与单证" }
+    ],
+    "supplyChainStrength": {
+      "en": "Breadth of modes and geographies lets customers shift between speed and cost.",
+      "zh": "运输方式与地理覆盖广，客户可以在时效与成本之间切换。"
+    },
+    "supplyChainRisk": {
+      "en": "Network performance depends on labour availability, air capacity and customs throughput.",
+      "zh": "网络表现取决于劳动力供给、航空运力与通关效率。"
+    },
+    "relatedConcepts": ["how-global-shipping-works", "cross-docking", "total-landed-cost"]
+  },
+  {
+    "id": "foxconn",
+    "name": { "en": "Foxconn", "zh": "富士康" },
+    "industry": "manufacturing",
+    "country": { "en": "Taiwan, China", "zh": "中国台湾" },
+    "region": "Asia",
+    "role": "manufacturer",
+    "summary": {
+      "en": "Contract manufacturer that assembles electronics at scale for brand-owning customers.",
+      "zh": "为品牌方客户大规模组装电子产品的代工制造商。"
+    },
+    "keyActivities": [
+      { "en": "Electronics assembly", "zh": "电子产品组装" },
+      { "en": "Component sourcing and integration", "zh": "零部件采购与集成" },
+      { "en": "Factory and workforce management", "zh": "工厂与人力管理" },
+      { "en": "Final assembly and testing", "zh": "总装与测试" }
+    ],
+    "supplyChainStrength": {
+      "en": "Ability to scale assembly capacity and labour quickly for new product launches.",
+      "zh": "能为新产品上市快速扩张组装产能与人力。"
+    },
+    "supplyChainRisk": {
+      "en": "Concentrated production sites and a workforce model sensitive to demand swings and local disruption.",
+      "zh": "生产基地集中，且用工模式对需求波动和当地扰动较为敏感。"
+    },
+    "relatedConcepts": ["just-in-time", "lead-time", "make-to-order-vs-make-to-stock"]
+  },
+  {
+    "id": "amazon",
+    "name": { "en": "Amazon", "zh": "亚马逊" },
+    "industry": "retail",
+    "country": { "en": "United States", "zh": "美国" },
+    "region": "North America",
+    "role": "retailer",
+    "summary": {
+      "en": "Combines retail with a fulfilment network it largely operates itself.",
+      "zh": "将零售与主要由自身运营的履约网络结合在一起。"
+    },
+    "keyActivities": [
+      { "en": "Fulfilment centre operation", "zh": "履约中心运营" },
+      { "en": "Last-mile delivery", "zh": "末端配送" },
+      { "en": "Marketplace logistics services", "zh": "平台物流服务" },
+      { "en": "Demand forecasting and inventory placement", "zh": "需求预测与库存布点" }
+    ],
+    "supplyChainStrength": {
+      "en": "Inventory is placed close to demand, supported by its own fulfilment and delivery network.",
+      "zh": "依托自营的履约与配送网络，把库存布置在贴近需求的位置。"
+    },
+    "supplyChainRisk": {
+      "en": "Very large seasonal swings require rapid capacity changes in both labour and transport.",
+      "zh": "极大的季节性波动要求人力和运力都能快速调整。"
+    },
+    "relatedConcepts": ["inventory-turnover", "cross-docking", "service-level"]
+  },
+  {
+    "id": "pfizer",
+    "name": { "en": "Pfizer", "zh": "辉瑞" },
+    "industry": "pharmaceuticals",
+    "country": { "en": "United States", "zh": "美国" },
+    "region": "North America",
+    "role": "manufacturer",
+    "summary": {
+      "en": "Manufactures medicines under strict quality and temperature controls across a global network.",
+      "zh": "在严格的质量与温控要求下，通过全球网络生产药品。"
+    },
+    "keyActivities": [
+      { "en": "Active ingredient production", "zh": "原料药生产" },
+      { "en": "Formulation and packaging", "zh": "制剂与包装" },
+      { "en": "Cold-chain distribution", "zh": "冷链配送" },
+      { "en": "Regulatory documentation", "zh": "法规文件管理" }
+    ],
+    "supplyChainStrength": {
+      "en": "Tight process control and validated production lines that are slow to replace.",
+      "zh": "严格的工艺控制与经过验证的生产线，难以被快速替代。"
+    },
+    "supplyChainRisk": {
+      "en": "Cold-chain dependence and lengthy validation make rapid source or site changes difficult.",
+      "zh": "对冷链的依赖加上漫长的验证流程，使更换供应来源或厂址变得困难。"
+    },
+    "relatedConcepts": ["safety-stock", "service-level", "supply-chain-risk-management"]
   }
 ]

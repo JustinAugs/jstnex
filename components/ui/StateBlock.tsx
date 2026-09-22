@@ -80,13 +80,28 @@ export function LoadingState({ className }: { className?: string }) {
   );
 }
 
-/* 2. 暂无数据 —— 请求成功了，但结果是空的（这不是错误，不要当成报错处理） */
-export function EmptyState({ className }: { className?: string }) {
+/*
+  2. 暂无数据 —— 请求成功了，但结果是空的（这不是错误，不要当成报错处理）
+
+  title / description 是可选的「文案覆盖」：
+  默认的「暂无数据」太笼统，筛选场景里用户更需要知道「没找到什么」。
+  所以 Companies 页会传入「未找到相关企业」。
+  不传就用字典里的默认值 —— 已有的 Global / Supply Chain 页行为完全不变。
+*/
+export function EmptyState({
+  className,
+  title,
+  description,
+}: {
+  className?: string;
+  title?: string;
+  description?: string;
+}) {
   const { dict } = useLanguage();
   return (
     <StateBlock
-      title={dict.states.empty.title}
-      description={dict.states.empty.description}
+      title={title ?? dict.states.empty.title}
+      description={description ?? dict.states.empty.description}
       className={className}
     />
   );

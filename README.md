@@ -9,8 +9,8 @@ companies that move goods between them.
 
 It is built in public, one task at a time, by one student learning to code.
 
-> **Current status:** Home, **Global** and **Supply Chain** pages are real.
-> `/companies` and `/tools` are placeholders that will be built in TASK 05–06.
+> **Current status:** Home, **Global**, **Supply Chain** and **Companies** pages
+> are real. `/tools` is the last placeholder and will be built in TASK 06.
 > Every figure shown today is **Demo Data**.
 
 ---
@@ -79,6 +79,14 @@ Built and working today:
   concepts. Seven SCOR Digital Standard processes set the frame; each concept
   records what it is, why it matters, how it is measured and which process it
   belongs to. Filter by topic.
+- **Companies page** (`/companies`) — a supply-chain-oriented company directory.
+  It answers *who* participates in global supply networks: each company records
+  its industry, region and **supply chain role** (brand / system integrator,
+  manufacturer, supplier, logistics provider, retailer, technology provider,
+  raw material / energy), plus key activities, its supply chain strength and its
+  supply chain risk. Searchable, filterable by industry / region / role.
+  Company entries are qualitative observations — no revenue, market share,
+  ranking or performance figures.
 - **Bilingual UI (EN / ZH)** — every visible string comes from `lib/i18n/en.ts`.
   `zh.ts` is type-checked against it, so a missing translation is a build error,
   not a silent blank. Language is remembered in `localStorage`.
@@ -96,8 +104,8 @@ Built and working today:
 - **SEO foundation** — page metadata via `lib/seo.ts`, plus a generated
   Open Graph image (`app/opengraph-image.tsx`).
 
-Not built yet: real pages under `/companies` and `/tools`; concept detail pages;
-any real dataset; any chart; any backend.
+Not built yet: the real `/tools` page; concept detail pages; company detail
+pages; any real dataset; any chart; any backend.
 
 ## Project structure
 
@@ -110,7 +118,8 @@ app/
   opengraph-image.tsx     generated social share image
   icon.svg                favicon
   supply-chain/page.tsx     Supply Chain — concept knowledge base (TASK 04)
-  companies/ tools/         placeholders for TASK 05–06
+  companies/page.tsx        Companies — company directory (TASK 05)
+  tools/                    placeholder for TASK 06
 components/
   ui/         primitives: Button, Card, Badge, Input, Section, SectionHeader,
               Field (label + value row), DemoBadge, LanguageSwitcher, StateBlock
@@ -121,6 +130,7 @@ components/
   home/       Hero
   global/     CountryDirectory (country list + region filter)
   supplyChain/ SupplyChainView, ScorFramework, ConceptLibrary
+  companies/  CompaniesView, CompanyDirectory, CompanyFilters
 lib/
   i18n/       en.ts (source of truth), zh.ts, index.ts, languageStore.ts
   data/       types.ts, index.ts  — typed access to data/*.json
@@ -197,8 +207,8 @@ date**. A number without a source is not data, it is decoration.
 | 02.5–02.12 | Foundation: i18n, design system, components, data layer, SEO, docs | Done |
 | 03   | **Global** — country / region view                  | Done        |
 | 04   | **Supply Chain** — knowledge base                   | Done        |
-| 05   | **Companies** — company profiles                    | Next        |
-| 06   | **Tools** — calculators (landed cost, lead time…)   | Planned     |
+| 05   | **Companies** — supply chain role directory         | Done        |
+| 06   | **Tools** — calculators (landed cost, lead time…)   | Next        |
 | 07   | Data layer normalisation (shared types, validation) | Planned     |
 | 08   | Python crawlers for real datasets                   | Planned     |
 | 09   | PostgreSQL + FastAPI backend                        | Planned     |

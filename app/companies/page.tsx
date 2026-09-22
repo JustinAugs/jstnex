@@ -1,29 +1,32 @@
-import Section from "@/components/ui/Section";
+import CompanyDirectory from "@/components/companies/CompanyDirectory";
 import { buildMetadata } from "@/lib/seo";
 
-// 页面的 SEO 信息统一用 buildMetadata 生成（站点级配置在 lib/seo.ts）
+/*
+  Companies 页面（TASK 05）
+
+  这个文件刻意保持得很短，只做两件事：
+    1. 导出 metadata（SEO）—— 统一用 buildMetadata，站点级配置在 lib/seo.ts
+    2. 渲染页面内容组件
+
+  为什么不把内容直接写在这里？
+  和 Global 页同一个原因："use client" 的文件不允许 export const metadata，
+  而整页文案都要跟随语言（语言状态在客户端），所以内容必须放在客户端组件里。
+
+  为什么直接渲染 CompanyDirectory，不再加一层 XxxView？
+  Supply Chain 页有三个并列区块（页头 / SCOR / 概念库），所以需要一个组合层把它们排好；
+  Companies 页只有「页头 + 企业目录」一块，页头已经放进 CompanyDirectory 里
+  （和 Global 页的 CountryDirectory 完全一致），再多一层就是多余抽象。
+
+  这一页不做筛选逻辑、不加 "use client" —— 保持薄。
+*/
+
 export const metadata = buildMetadata({
   title: "Companies",
   description:
-    "Global supply network companies, explained from a supply chain perspective.",
+    "Companies explained through their role in global supply networks — by industry, region and supply chain role.",
   path: "/companies",
 });
 
-// 占位页：结构已经在用 Design System（Section + 字号令牌），内容等后续任务填
 export default function CompaniesPage() {
-  return (
-    <Section>
-      <p className="font-medium tracking-label text-caption text-mist uppercase">
-        Companies
-      </p>
-      <h1 className="mt-4 text-h1 text-ink">GLOBAL SUPPLY NETWORK COMPANIES</h1>
-      <p className="mt-4 max-w-2xl text-body text-mist">
-        DHL, Maersk, UPS, FedEx and Kuehne+Nagel — understood through their
-        networks, assets and supply chain models.
-      </p>
-      <p className="mt-10 border-t border-line pt-6 text-caption text-mist">
-        Page content is planned for an upcoming task. (TASK 01: layout only)
-      </p>
-    </Section>
-  );
+  return <CompanyDirectory />;
 }

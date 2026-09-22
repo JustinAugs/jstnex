@@ -33,6 +33,9 @@ import type {
   Topic,
   ScorProcess,
   Company,
+  IndustryId,
+  SupplyChainRoleId,
+  CompanyRegion,
   Tool,
   Country,
 } from "./types";
@@ -87,8 +90,69 @@ export function topicName(topicId: string): Topic | undefined {
   return TOPICS.find((topic) => topic.id === topicId);
 }
 
-/** 首页展示的五家公司 */
-export const COMPANIES: Company[] = companiesJson;
+/*
+  Companies（TASK 05）。
+
+  为什么这里要写 as Company[]？和 CONCEPTS 同一个原因：
+  JSON 里的 "industry": "technology" 只会被推断成普通的 string，
+  而我们需要它是 IndustryId 这个联合类型，TypeScript 自己收窄不了，只能断言一次。
+
+  代价要清楚：断言之后，如果 JSON 里写错成 "tech"，编译器不再报错。
+  所以 industry / role / region 的取值请对照 lib/data/types.ts。
+*/
+export const COMPANIES: Company[] = companiesJson as Company[];
+
+/*
+  行业 / 角色 / 大区的「受控清单」：
+  顺序写死（决定筛选按钮的显示顺序），但只保留数据里真实出现过的项 ——
+  这样以后往 companies.json 加一家新行业的公司，按钮会自动多出来，
+  而不会凭空显示一个点进去 0 结果的分类。
+*/
+const INDUSTRY_ORDER: IndustryId[] = [
+  "technology",
+  "automotive",
+  "logistics",
+  "manufacturing",
+  "retail",
+  "energy",
+  "pharmaceuticals",
+  "semiconductors",
+];
+
+const ROLE_ORDER: SupplyChainRoleId[] = [
+  "brand-integrator",
+  "manufacturer",
+  "supplier",
+  "logistics-provider",
+  "retailer",
+  "technology-provider",
+  "raw-material-energy",
+];
+
+export const INDUSTRIES: IndustryId[] = INDUSTRY_ORDER.filter((id) =>
+  COMPANIES.some((company) => company.industry === id),
+);
+
+export const COMPANY_ROLES: SupplyChainRoleId[] = ROLE_ORDER.filter((id) =>
+  COMPANIES.some((company) => company.role === id),
+);
+
+export const COMPANY_REGIONS: CompanyRegion[] = (
+  ["Asia", "Europe", "North America"] as CompanyRegion[]
+).filter((region) => COMPANIES.some((company) => company.region === region));
+
+/* 筛选按钮上的个数 —— 一律从数据算出来，绝不手写死数字 */
+export function countCompaniesByIndustry(industry: IndustryId): number {
+  return COMPANIES.filter((company) => company.industry === industry).length;
+}
+
+export function countCompaniesByRole(role: SupplyChainRoleId): number {
+  return COMPANIES.filter((company) => company.role === role).length;
+}
+
+export function countCompaniesByRegion(region: CompanyRegion): number {
+  return COMPANIES.filter((company) => company.region === region).length;
+}
 
 /** 四个计算器工具 */
 export const TOOLS: Tool[] = toolsJson;
@@ -98,7 +162,8 @@ export const COUNTRIES: Country[] = countriesJson;
 
 /*
   大区的英文值（"Asia" / "Europe" / "North America"）只是一把钥匙，
-  真正显示给用户的大区名放在字典里（见 en.ts 的 global.regions）。
+  真正显示给用户的大区名放在字典里（见 en.ts 的 regions —— TASK 05 起由 Global 与
+  Companies 共用，所以不再放在 global 段内）。
   这个函数负责把「数据里的英文值」翻译成「字典的字段名」。
 */
 export type RegionKey = "asia" | "europe" | "northAmerica";
@@ -125,6 +190,9 @@ export type {
   Topic,
   ScorProcess,
   Company,
+  IndustryId,
+  SupplyChainRoleId,
+  CompanyRegion,
   Tool,
   Country,
 };

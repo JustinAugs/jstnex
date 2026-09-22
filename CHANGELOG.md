@@ -11,6 +11,62 @@ explanation.
 
 ---
 
+## 0.5.0 — Companies page (supply chain role directory)
+
+**Added**
+
+- `data/companies.json` — 13 companies (Apple, Microsoft, TSMC, ASML, Toyota,
+  Volkswagen, DHL, Maersk, Foxconn, Walmart, Amazon, Shell, Pfizer), each with
+  bilingual name / country / summary / key activities / supply chain strength /
+  supply chain risk. **Qualitative only: the file contains no digits at all** —
+  no revenue, market share, ranking or performance figures.
+- Controlled vocabularies in `lib/data/types.ts`: `IndustryId` (8 industries),
+  `SupplyChainRoleId` (7 roles — deliberately no "industry leader" style
+  subjective labels), `CompanyRegion` (reuses the Global page's regions).
+- `components/companies/CompanyFilters.tsx` — search box + three button groups
+  (industry / region / role), each with a data-derived count.
+- `components/companies/CompanyDirectory.tsx` — the whole Companies page body:
+  page header, search, filters, result count, card grid, data-honesty footnote.
+- `components/cards/CompanyCard.tsx` — rewritten for the new data model. Not
+  clickable by default (no `/companies/[slug]` exists); keeps an optional `href`
+  only so the Home section can still link to `/companies` as before.
+- Company search: matches EN + ZH company names, countries, and the display
+  labels of industry / role (plus their stable ids), case-insensitive.
+
+**Changed**
+
+- `lib/data/index.ts` — `COMPANIES` now typed against the new model; added
+  `INDUSTRIES` / `COMPANY_ROLES` / `COMPANY_REGIONS` (controlled order, only
+  categories that actually occur) and count helpers.
+- `lib/i18n/*` — extended the `companies` section; **promoted `regions` out of
+  `global` to a shared top-level section** so Global and Companies use one
+  region vocabulary instead of two.
+- `components/ui/StateBlock.tsx` — `EmptyState` accepts optional `title` /
+  `description` overrides so Companies can say "No companies found." instead of
+  the generic message. Existing pages are unaffected.
+- Home page — the Companies section now reads the same shared data (first 6
+  entries, chosen to cover different industries / roles / regions).
+- `components/global/CountryDirectory.tsx` — reads `dict.regions` instead of
+  `dict.global.regions` (the only code change caused by the promotion).
+
+**Removed**
+
+- The old 5-company logistics-only dataset (UPS / FedEx / Kuehne+Nagel dropped;
+  DHL and Maersk kept under the new model).
+
+**Testing**
+
+- `npm run lint` — 0 errors; `npm run build` — passes, all routes prerendered.
+- Verified in a real browser (desktop 1440 / tablet 768 / mobile 390): no
+  horizontal overflow, no console errors.
+- Filters: industry / region / role each sum to 13; combined
+  manufacturer+Asia → 3; supplier+automotive → 0 (empty state shown).
+- Search: "apple" → 1, "半导体" → 2, "苹果" → 1; language toggle renders the
+  full page in Chinese, including "Taiwan, China / 中国台湾".
+- No dead links: zero `/companies/…` or `/global/…` links on the page.
+
+---
+
 ## 0.4.0 — Supply Chain page (concept knowledge base)
 
 **Added**

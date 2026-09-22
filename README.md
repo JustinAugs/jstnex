@@ -9,9 +9,9 @@ companies that move goods between them.
 
 It is built in public, one task at a time, by one student learning to code.
 
-> **Current status:** Home and **Global** pages are real.
-> `/supply-chain`, `/companies` and `/tools` are placeholders that will be built
-> in TASK 04–06. Every figure shown today is **Demo Data**.
+> **Current status:** Home, **Global** and **Supply Chain** pages are real.
+> `/companies` and `/tools` are placeholders that will be built in TASK 05–06.
+> Every figure shown today is **Demo Data**.
 
 ---
 
@@ -75,6 +75,10 @@ Built and working today:
 - **Global page** (`/global`) — a directory of the economies that shape how
   goods move. Each country records its role in the network, key ports, main
   exports, its structural strength and its main vulnerability. Filter by region.
+- **Supply Chain page** (`/supply-chain`) — a knowledge base of supply chain
+  concepts. Seven SCOR Digital Standard processes set the frame; each concept
+  records what it is, why it matters, how it is measured and which process it
+  belongs to. Filter by topic.
 - **Bilingual UI (EN / ZH)** — every visible string comes from `lib/i18n/en.ts`.
   `zh.ts` is type-checked against it, so a missing translation is a build error,
   not a silent blank. Language is remembered in `localStorage`.
@@ -92,8 +96,8 @@ Built and working today:
 - **SEO foundation** — page metadata via `lib/seo.ts`, plus a generated
   Open Graph image (`app/opengraph-image.tsx`).
 
-Not built yet: real pages under `/supply-chain`, `/companies`, `/tools`; any real
-dataset; any chart; any backend.
+Not built yet: real pages under `/companies` and `/tools`; concept detail pages;
+any real dataset; any chart; any backend.
 
 ## Project structure
 
@@ -105,22 +109,25 @@ app/
   globals.css             design tokens and type scale
   opengraph-image.tsx     generated social share image
   icon.svg                favicon
-  supply-chain/ companies/ tools/   placeholders for TASK 04–06
+  supply-chain/page.tsx     Supply Chain — concept knowledge base (TASK 04)
+  companies/ tools/         placeholders for TASK 05–06
 components/
   ui/         primitives: Button, Card, Badge, Input, Section, SectionHeader,
-              DemoBadge, LanguageSwitcher, StateBlock
+              Field (label + value row), DemoBadge, LanguageSwitcher, StateBlock
   cards/      DataCard, NetworkCard, InsightCard, CompanyCard, ToolCard,
-              CountryCard
+              CountryCard, ConceptCard
   layout/     Navbar, Footer
   providers/  LanguageProvider
   home/       Hero
   global/     CountryDirectory (country list + region filter)
+  supplyChain/ SupplyChainView, ScorFramework, ConceptLibrary
 lib/
   i18n/       en.ts (source of truth), zh.ts, index.ts, languageStore.ts
   data/       types.ts, index.ts  — typed access to data/*.json
   seo.ts      metadata helper
 data/
-  snapshot.json networks.json insights.json companies.json tools.json countries.json
+  snapshot.json networks.json concepts.json companies.json tools.json countries.json
+  supply-chain-topics.json scor-processes.json
 ```
 
 ## Getting started
@@ -189,8 +196,8 @@ date**. A number without a source is not data, it is decoration.
 | 02   | Home page                                           | Done        |
 | 02.5–02.12 | Foundation: i18n, design system, components, data layer, SEO, docs | Done |
 | 03   | **Global** — country / region view                  | Done        |
-| 04   | **Supply Chain** — knowledge base                   | Next        |
-| 05   | **Companies** — company profiles                    | Planned     |
+| 04   | **Supply Chain** — knowledge base                   | Done        |
+| 05   | **Companies** — company profiles                    | Next        |
 | 06   | **Tools** — calculators (landed cost, lead time…)   | Planned     |
 | 07   | Data layer normalisation (shared types, validation) | Planned     |
 | 08   | Python crawlers for real datasets                   | Planned     |

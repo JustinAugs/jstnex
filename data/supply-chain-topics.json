@@ -1,0 +1,37 @@
+[
+  {
+    "id": "inventory",
+    "name": { "en": "Inventory", "zh": "库存" },
+    "order": 1
+  },
+  {
+    "id": "transportation",
+    "name": { "en": "Transportation", "zh": "运输" },
+    "order": 2
+  },
+  {
+    "id": "procurement",
+    "name": { "en": "Procurement", "zh": "采购" },
+    "order": 3
+  },
+  {
+    "id": "manufacturing",
+    "name": { "en": "Manufacturing", "zh": "制造" },
+    "order": 4
+  },
+  {
+    "id": "planning",
+    "name": { "en": "Planning", "zh": "计划" },
+    "order": 5
+  },
+  {
+    "id": "warehousing",
+    "name": { "en": "Warehousing", "zh": "仓储" },
+    "order": 6
+  },
+  {
+    "id": "risk",
+    "name": { "en": "Risk", "zh": "风险" },
+    "order": 7
+  }
+]

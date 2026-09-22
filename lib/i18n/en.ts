@@ -71,6 +71,49 @@ const en = {
     note: "Descriptions reflect general characteristics, not official statistics. Ports are listed by their common English names.",
   },
 
+  /*
+    supplyChain —— Supply Chain 页面（TASK 04）
+
+    这里只放界面文字。概念的定义、意义、公式等内容一律放在
+    data/concepts.json 里，不放字典 —— 字典管界面，数据文件管内容。
+  */
+  supplyChain: {
+    eyebrow: "Supply chain",
+    title: "How supply chains work.",
+    description:
+      "Concepts, processes and metrics — the mechanics behind how goods are sourced, made, moved and returned.",
+    scor: {
+      eyebrow: "SCOR digital standard",
+      title: "Seven processes that cover every supply chain",
+      description:
+        "SCOR describes any supply chain as seven processes. Each concept below sits inside one of them.",
+    },
+    library: {
+      eyebrow: "Concept library",
+      title: "Concepts, one at a time",
+      description:
+        "Each entry answers four questions: what it is, why it matters, how it is measured, and which process it belongs to.",
+      filterLabel: "Filter by topic",
+      filterAll: "All",
+      countLabel: "concepts",
+    },
+    labels: {
+      topic: "Topic",
+      level: "Level",
+      definition: "Definition",
+      whyItMatters: "Why it matters",
+      metrics: "How it is measured",
+      relatedCountries: "Related countries",
+      scorProcess: "SCOR process",
+    },
+    levels: {
+      fundamental: "Fundamental",
+      intermediate: "Intermediate",
+      advanced: "Advanced",
+    },
+    note: "Knowledge content is manually curated. Statistical data will be added when verified data sources are connected.",
+  },
+
   insights: {
     eyebrow: "Supply Chain Insights",
     title: "Start with the fundamentals",

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "orchestrate",
+    "name": { "en": "Orchestrate", "zh": "编排" },
+    "summary": {
+      "en": "Sets strategy, governance and risk posture for the entire network — deciding how the chain should behave before any order exists.",
+      "zh": "在订单产生之前就决定整条链应该如何运作：设定战略、治理方式，以及面对风险时的姿态。"
+    }
+  },
+  {
+    "id": "plan",
+    "name": { "en": "Plan", "zh": "计划" },
+    "summary": {
+      "en": "Balances demand against supply through forecasting, capacity, inventory and replenishment decisions.",
+      "zh": "通过预测、产能、库存与补货决策，平衡需求与供给。"
+    }
+  },
+  {
+    "id": "order",
+    "name": { "en": "Order", "zh": "订单" },
+    "summary": {
+      "en": "Captures and commits customer demand: order entry, validation, pricing and delivery promises.",
+      "zh": "承接并承诺客户需求：订单录入、校验、定价与交期承诺。"
+    }
+  },
+  {
+    "id": "source",
+    "name": { "en": "Source", "zh": "采购" },
+    "summary": {
+      "en": "Selects suppliers and procures goods and services, including contracts and supplier performance.",
+      "zh": "选择供应商并采购物料与服务，涵盖合同管理与供应商绩效。"
+    }
+  },
+  {
+    "id": "transform",
+    "name": { "en": "Transform", "zh": "转化" },
+    "summary": {
+      "en": "Converts materials into finished products: production, assembly, testing and packaging.",
+      "zh": "把物料转化为成品：生产、装配、检测与包装。"
+    }
+  },
+  {
+    "id": "fulfill",
+    "name": { "en": "Fulfill", "zh": "履行" },
+    "summary": {
+      "en": "Stores, picks, packs and moves finished goods to the customer, including warehousing and transport.",
+      "zh": "存储、拣选、包装并把成品送达客户，包含仓储与运输。"
+    }
+  },
+  {
+    "id": "return",
+    "name": { "en": "Return", "zh": "退货" },
+    "summary": {
+      "en": "Handles returns, repairs, recycling and the reverse flow of goods and packaging.",
+      "zh": "处理退货、维修、回收，以及货物与包装的逆向流动。"
+    }
+  }
+]

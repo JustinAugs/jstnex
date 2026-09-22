@@ -1,29 +1,28 @@
-import Section from "@/components/ui/Section";
+import SupplyChainView from "@/components/supplyChain/SupplyChainView";
 import { buildMetadata } from "@/lib/seo";
 
-// 页面的 SEO 信息统一用 buildMetadata 生成（站点级配置在 lib/seo.ts）
+/*
+  Supply Chain 页面（TASK 04）
+
+  这个文件刻意保持得很短，只做两件事：
+    1. 导出 metadata（SEO）—— 统一用 buildMetadata，站点级配置在 lib/seo.ts
+    2. 渲染页面内容组件
+
+  为什么不把内容直接写在这里？
+  "use client" 的文件不允许 export const metadata。
+  而整页文案都要跟随语言（语言状态在客户端），所以内容必须放在客户端组件里。
+  于是这里留在服务端负责 SEO，内容交给 components/supplyChain/SupplyChainView.tsx。
+
+  这一页不做筛选逻辑、不加 "use client" —— 保持薄。
+*/
+
 export const metadata = buildMetadata({
   title: "Supply Chain",
   description:
-    "A knowledge base of supply chain concepts, from procurement to risk management.",
+    "Supply chain concepts, processes and metrics — how goods are sourced, made, moved and returned.",
   path: "/supply-chain",
 });
 
-// 占位页：结构已经在用 Design System（Section + 字号令牌），内容等后续任务填
 export default function SupplyChainPage() {
-  return (
-    <Section>
-      <p className="font-medium tracking-label text-caption text-mist uppercase">
-        Supply Chain
-      </p>
-      <h1 className="mt-4 text-h1 text-ink">SUPPLY CHAIN</h1>
-      <p className="mt-4 max-w-2xl text-body text-mist">
-        Procurement, manufacturing, inventory, warehousing, transportation,
-        distribution and risk management.
-      </p>
-      <p className="mt-10 border-t border-line pt-6 text-caption text-mist">
-        Page content is planned for an upcoming task. (TASK 01: layout only)
-      </p>
-    </Section>
-  );
+  return <SupplyChainView />;
 }

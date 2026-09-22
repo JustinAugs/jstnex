@@ -11,6 +11,72 @@ explanation.
 
 ---
 
+## 0.4.0 — Supply Chain page (concept knowledge base)
+
+**Added**
+
+- `data/scor-processes.json` — the seven **SCOR Digital Standard** processes:
+  Orchestrate / Plan / Order / Source / Transform / Fulfill / Return, each with a
+  bilingual name and a short bilingual summary.
+- `data/supply-chain-topics.json` — seven topics: inventory, transportation,
+  procurement, manufacturing, planning, warehousing, risk.
+- `components/supplyChain/ScorFramework.tsx` — the seven-process list.
+- `components/supplyChain/ConceptLibrary.tsx` — concept grid plus topic filter,
+  with counts generated from the data.
+- `components/supplyChain/SupplyChainView.tsx` — thin composition layer.
+- `components/cards/ConceptCard.tsx` — one card per concept.
+- `components/ui/Field.tsx` — the label + value row, extracted from
+  `CountryCard` so both cards share one definition.
+- `supplyChain` section in `lib/i18n/{en,zh}.ts`.
+
+**Changed**
+
+- `data/insights.json` evolved into **`data/concepts.json`** (13 concepts). The
+  four former home insights became `featured` concepts. `insights.json` was
+  deleted rather than kept alongside — one knowledge source, not two.
+- `lib/data/types.ts`: `Insight` replaced by `Concept`, `Topic`, `ScorProcess`,
+  `ConceptLevel`, `ConceptMetric`, `ConceptSource`.
+- `lib/data/index.ts`: `INSIGHTS` replaced by `CONCEPTS` / `TOPICS` /
+  `SCOR_PROCESSES`, plus helpers `featuredConcepts()`, `countConceptsByTopic()`
+  and `topicName()`.
+- `app/supply-chain/page.tsx`: the placeholder is now a thin server component.
+- `app/page.tsx`: the home Insights section reads `featuredConcepts()`, so Home
+  and Supply Chain consume the same concept data.
+- `components/cards/CountryCard.tsx`: its local `Field` moved to
+  `components/ui/Field.tsx`.
+
+**Two deliberate deviations from the implementation instruction**
+
+1. **`ScorFramework` is a Client Component**, although Rule 4 asked for a Server
+   Component. Language state lives on the client (`LanguageProvider` +
+   localStorage), so a server component cannot know the active language — the
+   seven processes would have stayed English forever, violating the bilingual
+   requirement. Correctness was chosen over literal compliance.
+2. **`SupplyChainView.tsx` was added.** The page intro heading also needs the
+   client language state, so a thin composition layer sits between the server
+   `page.tsx` and the two content blocks.
+
+**Data honesty**
+
+- No fabricated statistics anywhere. `source` and `updatedAt` are `null` on all
+  13 concepts; the UI renders nothing rather than showing "Source: —".
+- Definitions and principles carry **no** Demo badge, and the page has no
+  full-page Demo Data badge: this is curated educational content, not simulated
+  data. Calling it "Demo Data" would misrepresent it.
+- Formulas, symbols, units and abbreviations (DIO / TEU / MTO / MTS / %) are
+  never translated.
+
+Notes for whoever comes next:
+
+- Concept cards are deliberately **not** clickable — there is no
+  `/supply-chain/[slug]` yet. The `id` field is already a URL-ready slug.
+- TASK 06 (Tools) should reuse this metric data to build calculators rather than
+  copying the formulas into a second place.
+- `relatedCountries` renders country names as plain text on purpose: `/global`
+  has no per-country destination yet, so a link would be dead.
+
+---
+
 ## 0.3.0 — Global page (country directory)
 
 **Added**

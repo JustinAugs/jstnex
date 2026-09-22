@@ -31,12 +31,77 @@ export type NetworkModule = {
   href: string; // 点击后去哪个页面
 };
 
-/** Supply Chain Insights 的一篇内容 */
-export type Insight = {
+/* ---------- Supply Chain 知识库（TASK 04） ---------- */
+
+/** 概念的学习层级。V1 主要用 fundamental / intermediate */
+export type ConceptLevel = "fundamental" | "intermediate" | "advanced";
+
+/*
+  ConceptMetric —— 一个概念「怎么衡量」。
+
+  重要分工：Supply Chain 页只解释指标，Tools 页（TASK 06）才负责计算。
+  两边将来共用同一份指标数据，不各抄一份公式。
+
+  formula 和 unit 刻意保持普通 string：
+  数学符号与单位（DIO / TEU / VMI / %）在任何语言下都一样，不做翻译。
+*/
+export type ConceptMetric = {
+  name: LocalizedText;
+  formula: string;
+  unit?: string;
+};
+
+/*
+  ConceptSource —— 数据来源溯源。
+
+  V1 全部为 null：内容是我们自己整理的教学内容，不是抓取来的统计数据。
+  将来接 Python 爬虫 / 数据库时填上真实来源；
+  UI 只在 source 不为 null 时才渲染「来源 + 日期」，绝不显示 "Source: —"。
+*/
+export type ConceptSource = {
+  name: string;
+  url: string;
+  retrievedAt: string;
+};
+
+/** 知识库的一个主题（库存 / 运输 / 采购 …）。id 是稳定英文 key，不随语言变 */
+export type Topic = {
+  id: string;
+  name: LocalizedText;
+  order: number;
+};
+
+/** SCOR Digital Standard 的一个流程（Orchestrate … Return，共 7 个） */
+export type ScorProcess = {
+  id: string;
+  name: LocalizedText;
+  summary: LocalizedText;
+};
+
+/*
+  知识库的一个概念 —— 同时也是首页 Insights 区块的数据源（featured = true）。
+
+  字段分三层：
+    必需：id / title / summary / topicId / level / definition / whyItMatters / featured
+    建议：scorProcess / metrics / relatedCountries
+    预留：source / updatedAt / relatedConcepts   ← 现在就用 null / [] 占位，
+                                                   将来接 API 与真实数据源不用改结构
+*/
+export type Concept = {
+  id: string; // 稳定英文 slug，将来可能成为 /supply-chain/[slug] 的 URL
   title: LocalizedText;
   summary: LocalizedText;
-  category: string; // Inventory / Transportation / Risk Management…
-  href: string;
+  topicId: string;
+  level: ConceptLevel;
+  definition: LocalizedText;
+  whyItMatters: LocalizedText;
+  featured: boolean;
+  scorProcess: string | null;
+  metrics: ConceptMetric[] | null;
+  relatedCountries: string[] | null; // ISO 代码，复用 countries.json 的 code
+  source: ConceptSource | null;
+  updatedAt: string | null;
+  relatedConcepts: string[];
 };
 
 /** Companies 页面的一家公司 */

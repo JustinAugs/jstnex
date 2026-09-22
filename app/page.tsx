@@ -36,7 +36,7 @@ import { pick } from "@/lib/i18n";
 import {
   SNAPSHOT,
   NETWORK_MODULES,
-  INSIGHTS,
+  featuredConcepts,
   COMPANIES,
   TOOLS,
 } from "@/lib/data";
@@ -104,12 +104,17 @@ export default function Home() {
         />
 
         <div className={`${GRID} sm:grid-cols-2`}>
-          {INSIGHTS.map((insight) => (
+          {/*
+            数据来自 concepts.json 里 featured = true 的那几条 ——
+            和 Supply Chain 页是同一份数据，不留两份内容各自维护。
+            跳转目标固定为 /supply-chain（V1 还没有概念详情子页）。
+          */}
+          {featuredConcepts().map((concept) => (
             <InsightCard
-              key={pick(insight.title, language)}
-              title={pick(insight.title, language)}
-              summary={pick(insight.summary, language)}
-              href={insight.href}
+              key={concept.id}
+              title={pick(concept.title, language)}
+              summary={pick(concept.summary, language)}
+              href="/supply-chain"
               readLabel={dict.insights.read}
             />
           ))}

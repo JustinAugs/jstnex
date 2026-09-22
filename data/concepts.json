@@ -1,0 +1,372 @@
+[
+  {
+    "id": "why-inventory-matters",
+    "title": { "en": "Why Inventory Matters", "zh": "为什么库存很重要" },
+    "summary": {
+      "en": "Inventory is capital standing still. Why firms hold it, what it really costs, and how it absorbs uncertainty.",
+      "zh": "库存就是静止不动的资金。企业为什么持有它、它的真实成本有多高，以及它如何吸收不确定性。"
+    },
+    "topicId": "inventory",
+    "level": "fundamental",
+    "definition": {
+      "en": "Inventory is any raw material, work-in-process or finished good held in anticipation of future demand.",
+      "zh": "库存是为了满足未来需求而持有的原材料、在制品或成品。"
+    },
+    "whyItMatters": {
+      "en": "Inventory ties up cash and hides problems such as unreliable suppliers or inaccurate forecasts — but holding none at all leaves you unable to absorb any disruption.",
+      "zh": "库存占用现金，也会掩盖供应商不稳定、预测不准等问题；但一点都不持有，则完全失去吸收扰动的能力。"
+    },
+    "featured": true,
+    "scorProcess": "plan",
+    "metrics": [
+      {
+        "name": { "en": "Days of inventory outstanding (DIO)", "zh": "库存持有天数（DIO）" },
+        "formula": "DIO = 365 ÷ Inventory turnover",
+        "unit": "days"
+      }
+    ],
+    "relatedCountries": null,
+    "source": null,
+    "updatedAt": null,
+    "relatedConcepts": ["safety-stock", "inventory-turnover"]
+  },
+  {
+    "id": "safety-stock",
+    "title": { "en": "Safety Stock", "zh": "安全库存" },
+    "summary": {
+      "en": "Buffer inventory carried to protect against variability in demand and supply.",
+      "zh": "为应对需求和供应的波动而额外持有的缓冲库存。"
+    },
+    "topicId": "inventory",
+    "level": "fundamental",
+    "definition": {
+      "en": "The extra inventory held above expected demand to reduce the chance of a stockout during the replenishment lead time.",
+      "zh": "在补货提前期内，为降低缺货概率而在预期需求之外额外持有的库存。"
+    },
+    "whyItMatters": {
+      "en": "Safety stock is the price paid for uncertainty: more buffer means better service but more tied-up cash. The real question is not whether to hold it, but how much is worth holding.",
+      "zh": "安全库存是为不确定性付出的代价：缓冲越多，服务水平越高，但占用的现金也越多。真正的问题不是「要不要备」，而是「备多少才划算」。"
+    },
+    "featured": false,
+    "scorProcess": "plan",
+    "metrics": [
+      {
+        "name": { "en": "Safety stock", "zh": "安全库存" },
+        "formula": "SS = Z × σd × √L",
+        "unit": "units"
+      }
+    ],
+    "relatedCountries": null,
+    "source": null,
+    "updatedAt": null,
+    "relatedConcepts": ["reorder-point", "lead-time"]
+  },
+  {
+    "id": "reorder-point",
+    "title": { "en": "Reorder Point", "zh": "再订货点" },
+    "summary": {
+      "en": "The inventory level that triggers a new purchase or production order.",
+      "zh": "触发新一轮采购或生产订单的库存水位。"
+    },
+    "topicId": "inventory",
+    "level": "intermediate",
+    "definition": {
+      "en": "The stock position at which a replenishment order should be placed so that new stock arrives before the existing stock runs out.",
+      "zh": "应当下达补货订单的库存水位，确保新货在现有库存耗尽之前到达。"
+    },
+    "whyItMatters": {
+      "en": "Set it too low and you stock out; set it too high and you over-order. It only works when both lead time and demand are estimated honestly.",
+      "zh": "定得太低会缺货，定得太高会过量采购。它只有在提前期和需求都被诚实估计的前提下才有效。"
+    },
+    "featured": false,
+    "scorProcess": "plan",
+    "metrics": [
+      {
+        "name": { "en": "Reorder point", "zh": "再订货点" },
+        "formula": "ROP = d × L + SS",
+        "unit": "units"
+      }
+    ],
+    "relatedCountries": null,
+    "source": null,
+    "updatedAt": null,
+    "relatedConcepts": ["safety-stock", "lead-time"]
+  },
+  {
+    "id": "inventory-turnover",
+    "title": { "en": "Inventory Turnover", "zh": "库存周转率" },
+    "summary": {
+      "en": "How many times a company cycles through its inventory in a year.",
+      "zh": "一年内库存被周转更新的次数。"
+    },
+    "topicId": "inventory",
+    "level": "intermediate",
+    "definition": {
+      "en": "A ratio comparing the cost of goods sold against the average inventory held during the same period.",
+      "zh": "同一时期内销货成本与平均库存持有量之间的比值。"
+    },
+    "whyItMatters": {
+      "en": "Higher turnover generally means less cash trapped on shelves, but what counts as good depends entirely on the industry — comparing a supermarket with a shipbuilder says nothing.",
+      "zh": "周转率越高，通常意味着积压在货架上的现金越少。但多少算好完全取决于行业——把超市和造船厂放在一起比较说明不了任何问题。"
+    },
+    "featured": false,
+    "scorProcess": "plan",
+    "metrics": [
+      {
+        "name": { "en": "Inventory turnover", "zh": "库存周转率" },
+        "formula": "Inventory turnover = COGS ÷ Average inventory",
+        "unit": "times / year"
+      }
+    ],
+    "relatedCountries": null,
+    "source": null,
+    "updatedAt": null,
+    "relatedConcepts": ["why-inventory-matters"]
+  },
+  {
+    "id": "lead-time",
+    "title": { "en": "Lead Time", "zh": "提前期" },
+    "summary": {
+      "en": "The total time between placing an order and having the goods available.",
+      "zh": "从下单到货物可用的总时间。"
+    },
+    "topicId": "planning",
+    "level": "fundamental",
+    "definition": {
+      "en": "The elapsed time from order placement to receipt, including order processing, production or handling, and transportation.",
+      "zh": "从下单到收货所经过的时间，包括订单处理、生产或搬运，以及运输。"
+    },
+    "whyItMatters": {
+      "en": "Lead time is the single input that most safety-stock and reorder-point calculations depend on — and it is also the one most often underestimated.",
+      "zh": "提前期是安全库存和再订货点计算中最关键的输入，同时也是最容易被低估的一项。"
+    },
+    "featured": false,
+    "scorProcess": "plan",
+    "metrics": [
+      {
+        "name": { "en": "Lead time", "zh": "提前期" },
+        "formula": "L = T_order + T_transit + T_handling",
+        "unit": "days"
+      }
+    ],
+    "relatedCountries": null,
+    "source": null,
+    "updatedAt": null,
+    "relatedConcepts": ["safety-stock", "reorder-point", "bullwhip-effect"]
+  },
+  {
+    "id": "bullwhip-effect",
+    "title": { "en": "Bullwhip Effect", "zh": "牛鞭效应" },
+    "summary": {
+      "en": "Small changes in customer demand become larger and larger swings further upstream.",
+      "zh": "客户需求的微小变化，会沿着供应链向上逐级放大。"
+    },
+    "topicId": "planning",
+    "level": "intermediate",
+    "definition": {
+      "en": "The tendency for order variability to increase at every stage moving from the retailer back to the raw material supplier.",
+      "zh": "从零售商回溯到原材料供应商，订单波动幅度逐级放大的现象。"
+    },
+    "whyItMatters": {
+      "en": "It produces overproduction, expedited freight and chronic excess inventory. In practice it usually comes from information delay and order batching, not from customers actually changing behaviour that much.",
+      "zh": "它会造成过量生产、加急运输和长期库存积压。实践中其成因通常是信息延迟与批量下单，而不是客户的真实需求真的波动得那么厉害。"
+    },
+    "featured": false,
+    "scorProcess": "plan",
+    "metrics": null,
+    "relatedCountries": null,
+    "source": null,
+    "updatedAt": null,
+    "relatedConcepts": ["lead-time"]
+  },
+  {
+    "id": "service-level",
+    "title": { "en": "Service Level", "zh": "服务水平" },
+    "summary": {
+      "en": "The measured ability to meet demand from available stock.",
+      "zh": "用现有库存满足需求的实测能力。"
+    },
+    "topicId": "planning",
+    "level": "intermediate",
+    "definition": {
+      "en": "The proportion of demand met on time and in full, most commonly measured as fill rate or perfect order rate.",
+      "zh": "按时、按量满足的需求占比，通常用订单满足率或完美订单率来衡量。"
+    },
+    "whyItMatters": {
+      "en": "Service level is traded directly against inventory cost: promising 99% instead of 95% can require far more buffer stock than the extra sales actually justify.",
+      "zh": "服务水平直接与库存成本相交换：把承诺从 95% 提高到 99%，可能需要的缓冲库存远超增量销售带来的收益。"
+    },
+    "featured": false,
+    "scorProcess": "plan",
+    "metrics": [
+      {
+        "name": { "en": "Fill rate", "zh": "订单满足率" },
+        "formula": "Fill rate = Filled order lines ÷ Total order lines × 100%",
+        "unit": "%"
+      }
+    ],
+    "relatedCountries": null,
+    "source": null,
+    "updatedAt": null,
+    "relatedConcepts": ["safety-stock"]
+  },
+  {
+    "id": "total-landed-cost",
+    "title": { "en": "Total Landed Cost", "zh": "到岸总成本" },
+    "summary": {
+      "en": "What a product really costs once freight, duty and handling are included.",
+      "zh": "把运费、关税和杂费都算进去之后，一件商品的真实成本。"
+    },
+    "topicId": "procurement",
+    "level": "intermediate",
+    "definition": {
+      "en": "The full cost of getting a product to its destination, including product price, freight, insurance, duties and handling fees.",
+      "zh": "把产品送到目的地所发生的全部成本，包含货价、运费、保险费、关税与操作费。"
+    },
+    "whyItMatters": {
+      "en": "A supplier with a lower unit price can end up more expensive once freight and duty are added. Sourcing decisions made on unit price alone routinely hide the real cost.",
+      "zh": "单价更低的供应商，加上运费和关税后可能反而更贵。只按单价做寻源决策，通常会掩盖真实成本。"
+    },
+    "featured": false,
+    "scorProcess": "source",
+    "metrics": null,
+    "relatedCountries": ["CN", "VN", "IN"],
+    "source": null,
+    "updatedAt": null,
+    "relatedConcepts": []
+  },
+  {
+    "id": "just-in-time",
+    "title": { "en": "What Is Just-in-Time?", "zh": "什么是准时制（JIT）？" },
+    "summary": {
+      "en": "JIT removes waste by receiving goods only as they are needed — and leaves you exposed when the network breaks.",
+      "zh": "准时制只在需要时才收货，以此消除浪费 —— 但网络一旦中断，你也会立刻暴露在风险中。"
+    },
+    "topicId": "manufacturing",
+    "level": "fundamental",
+    "definition": {
+      "en": "A production and inventory approach in which materials arrive exactly when the process needs them, rather than being held in advance.",
+      "zh": "一种生产与库存方式：物料在生产过程中恰好需要时才到达，而不是提前持有。"
+    },
+    "whyItMatters": {
+      "en": "JIT reduces inventory and exposes inefficiency, which is why it improves quality and cash flow — but it removes the buffer, so any disruption stops production almost immediately.",
+      "zh": "准时制降低库存、暴露低效，因此能改善质量与现金流；但它同时拿走了缓冲，任何中断几乎都会立刻让生产停下来。"
+    },
+    "featured": true,
+    "scorProcess": "transform",
+    "metrics": null,
+    "relatedCountries": null,
+    "source": null,
+    "updatedAt": null,
+    "relatedConcepts": ["make-to-order-vs-make-to-stock", "safety-stock"]
+  },
+  {
+    "id": "make-to-order-vs-make-to-stock",
+    "title": {
+      "en": "Make-to-Order vs Make-to-Stock",
+      "zh": "按单生产与备货生产（MTO / MTS）"
+    },
+    "summary": {
+      "en": "Two opposite answers to the same question: do you build it before or after the customer asks?",
+      "zh": "同一个问题的两种相反答案：在客户下单之前生产，还是之后生产。"
+    },
+    "topicId": "manufacturing",
+    "level": "fundamental",
+    "definition": {
+      "en": "Make-to-stock produces against a forecast and sells from inventory; make-to-order starts production only after a confirmed customer order.",
+      "zh": "备货生产按预测生产并从库存销售；按单生产则在收到客户确认订单后才开始生产。"
+    },
+    "whyItMatters": {
+      "en": "This choice fixes the decoupling point of the whole chain and decides who carries the risk: forecast error in make-to-stock, delivery delay in make-to-order.",
+      "zh": "这个选择决定了整条链的解耦点，也决定了风险由谁承担：备货生产承担预测误差，按单生产承担交付延迟。"
+    },
+    "featured": false,
+    "scorProcess": "transform",
+    "metrics": null,
+    "relatedCountries": null,
+    "source": null,
+    "updatedAt": null,
+    "relatedConcepts": ["just-in-time"]
+  },
+  {
+    "id": "how-global-shipping-works",
+    "title": { "en": "How Global Shipping Works", "zh": "全球海运如何运作" },
+    "summary": {
+      "en": "From factory to port, vessel to shelf: the stages, documents and players behind a single container.",
+      "zh": "从工厂到港口、从船舶到货架：一个集装箱背后涉及的环节、单证与参与方。"
+    },
+    "topicId": "transportation",
+    "level": "fundamental",
+    "definition": {
+      "en": "The movement of a containerised shipment from shipper to consignee, covering booking, export handling, ocean carriage, customs clearance and inland delivery.",
+      "zh": "集装箱货物从发货人到收货人的全流程，涵盖订舱、出口操作、海运、清关与内陆配送。"
+    },
+    "whyItMatters": {
+      "en": "Most delays do not happen on the water — they happen at the handoffs: documentation errors, customs holds and missing inland capacity.",
+      "zh": "大多数延误并不发生在海上，而发生在交接环节：单证错误、海关查验，以及内陆运力不足。"
+    },
+    "featured": true,
+    "scorProcess": "fulfill",
+    "metrics": [
+      {
+        "name": { "en": "Twenty-foot equivalent unit (TEU)", "zh": "标准箱（TEU）" },
+        "formula": "1 TEU = one 20-foot container",
+        "unit": "TEU"
+      }
+    ],
+    "relatedCountries": ["CN", "SG", "US"],
+    "source": null,
+    "updatedAt": null,
+    "relatedConcepts": []
+  },
+  {
+    "id": "cross-docking",
+    "title": { "en": "Cross-Docking", "zh": "越库作业" },
+    "summary": {
+      "en": "Moving goods from inbound to outbound without putting them into storage.",
+      "zh": "货物不进入存储环节，直接从入库侧转到出库侧。"
+    },
+    "topicId": "warehousing",
+    "level": "intermediate",
+    "definition": {
+      "en": "A distribution practice where incoming goods are sorted and loaded directly onto outbound vehicles, with little or no storage in between.",
+      "zh": "一种配送做法：到货经分拣后直接装上出港车辆，中间几乎不经过存储。"
+    },
+    "whyItMatters": {
+      "en": "It cuts storage cost and handling time, but only works with reliable inbound timing and accurate advance information — otherwise the dock itself becomes the bottleneck.",
+      "zh": "它能降低仓储成本、缩短搬运时间，但前提是到货时间可靠、预先信息准确，否则月台本身会变成瓶颈。"
+    },
+    "featured": false,
+    "scorProcess": "fulfill",
+    "metrics": null,
+    "relatedCountries": null,
+    "source": null,
+    "updatedAt": null,
+    "relatedConcepts": ["how-global-shipping-works"]
+  },
+  {
+    "id": "supply-chain-risk-management",
+    "title": { "en": "Supply Chain Risk Management", "zh": "供应链风险管理" },
+    "summary": {
+      "en": "How to identify, assess and mitigate disruption before it reaches the customer.",
+      "zh": "如何在中断影响到客户之前，识别、评估并降低风险。"
+    },
+    "topicId": "risk",
+    "level": "intermediate",
+    "definition": {
+      "en": "The systematic identification, assessment and mitigation of disruptions before they reach the customer.",
+      "zh": "在中断影响到客户之前，系统地识别、评估并降低风险。"
+    },
+    "whyItMatters": {
+      "en": "Risk cannot be eliminated, only repositioned: dual sourcing, buffer inventory and better visibility each cost something. The real decision is which exposure is acceptable.",
+      "zh": "风险无法消除，只能重新摆放：双源采购、缓冲库存和信息可见性各有代价。真正的决策是哪种敞口可以接受。"
+    },
+    "featured": true,
+    "scorProcess": "orchestrate",
+    "metrics": null,
+    "relatedCountries": ["CN", "VN", "IN"],
+    "source": null,
+    "updatedAt": null,
+    "relatedConcepts": ["why-inventory-matters"]
+  }
+]

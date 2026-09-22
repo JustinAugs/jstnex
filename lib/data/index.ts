@@ -16,7 +16,9 @@
 
 import snapshotJson from "@/data/snapshot.json";
 import networksJson from "@/data/networks.json";
-import insightsJson from "@/data/insights.json";
+import conceptsJson from "@/data/concepts.json";
+import topicsJson from "@/data/supply-chain-topics.json";
+import scorProcessesJson from "@/data/scor-processes.json";
 import companiesJson from "@/data/companies.json";
 import toolsJson from "@/data/tools.json";
 import countriesJson from "@/data/countries.json";
@@ -24,7 +26,12 @@ import countriesJson from "@/data/countries.json";
 import type {
   SnapshotItem,
   NetworkModule,
-  Insight,
+  Concept,
+  ConceptLevel,
+  ConceptMetric,
+  ConceptSource,
+  Topic,
+  ScorProcess,
   Company,
   Tool,
   Country,
@@ -41,8 +48,44 @@ export const SNAPSHOT: SnapshotItem[] = snapshotJson;
 /** Global Network 的三个入口模块 */
 export const NETWORK_MODULES: NetworkModule[] = networksJson;
 
-/** 首页展示的四篇供应链洞察 */
-export const INSIGHTS: Insight[] = insightsJson;
+/*
+  Supply Chain 知识库（TASK 04）。
+
+  这里是「唯一的知识源」：Supply Chain 页读它，首页 Insights 区块也读它
+  （取 featured = true 的那几条）。以前那份 insights.json 已删除 ——
+  同一份内容留两份，迟早会不同步。
+*/
+/*
+  为什么这里要写 as Concept[]？
+  JSON 文件里 "level": "fundamental" 只会被推断成普通的 string，
+  而我们需要它是 "fundamental" | "intermediate" | "advanced" 这个联合类型，
+  TypeScript 自己收窄不了，只能在这里断言一次。
+
+  代价要清楚：断言之后，如果 JSON 里写错成 "basic"，编译器不再报错。
+  所以 level 的取值请对照 lib/data/types.ts 里的 ConceptLevel。
+*/
+export const CONCEPTS: Concept[] = conceptsJson as Concept[];
+
+/** 知识库的 7 个主题（库存 / 运输 / 采购 …） */
+export const TOPICS: Topic[] = topicsJson;
+
+/** SCOR Digital Standard 的 7 个流程 */
+export const SCOR_PROCESSES: ScorProcess[] = scorProcessesJson;
+
+/** 首页 Insights 区块展示的概念（featured），与 Supply Chain 页同源 */
+export function featuredConcepts(): Concept[] {
+  return CONCEPTS.filter((concept) => concept.featured);
+}
+
+/* 主题筛选按钮上显示的个数 —— 一律从数据算出来，不手写死数字 */
+export function countConceptsByTopic(topicId: string): number {
+  return CONCEPTS.filter((concept) => concept.topicId === topicId).length;
+}
+
+/** 按主题 id 取出显示名（找不到就退回 id，避免页面直接把内部 id 暴露给用户） */
+export function topicName(topicId: string): Topic | undefined {
+  return TOPICS.find((topic) => topic.id === topicId);
+}
 
 /** 首页展示的五家公司 */
 export const COMPANIES: Company[] = companiesJson;
@@ -75,7 +118,12 @@ export const REGIONS: string[] = Array.from(
 export type {
   SnapshotItem,
   NetworkModule,
-  Insight,
+  Concept,
+  ConceptLevel,
+  ConceptMetric,
+  ConceptSource,
+  Topic,
+  ScorProcess,
   Company,
   Tool,
   Country,

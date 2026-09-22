@@ -1,5 +1,7 @@
 import { Card } from "../ui/Card";
 import Badge from "../ui/Badge";
+// 字段名 + 内容这一行，现在统一用 ui/Field（TASK 04 从本文件提炼出去，ConceptCard 也用）
+import Field from "../ui/Field";
 
 /*
   CountryCard — Global 页面的一张国家卡
@@ -18,18 +20,6 @@ import Badge from "../ui/Badge";
   港口是「多个并列的事物」，用数组存最自然；
   页面上用 · 连接显示，不做成 pill（屏幕上会太吵）。
 */
-
-/* 卡内的小字段：上行是字段名，下行是内容 */
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <div className="flex gap-4 border-t border-line py-3 first:border-t-0 first:pt-0">
-      <dt className="w-28 shrink-0 pt-0.5 font-medium tracking-label text-caption text-mist uppercase">
-        {label}
-      </dt>
-      <dd className="text-small text-ink">{children}</dd>
-    </div>
-  );
-}
 
 type CountryCardProps = {
   code: string; // 国家代码，例如 CN

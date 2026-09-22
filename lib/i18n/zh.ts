@@ -67,6 +67,43 @@ const zh: Dictionary = {
     note: "以上描述为一般性特征，并非官方统计数据；港口以通用英文名称列出。",
   },
 
+  supplyChain: {
+    eyebrow: "供应链",
+    title: "供应链如何运作",
+    description:
+      "概念、流程与指标——货物如何被采购、制造、运输与退回的全部机理。",
+    scor: {
+      eyebrow: "SCOR 数字标准",
+      title: "七个流程，覆盖每一条供应链",
+      description:
+        "SCOR 把任何供应链都描述为七个流程。下面每个概念都落在其中之一。",
+    },
+    library: {
+      eyebrow: "概念库",
+      title: "一个一个讲清楚的概念",
+      description:
+        "每条都回答四个问题：它是什么、为什么重要、怎么衡量、属于哪个流程。",
+      filterLabel: "按主题筛选",
+      filterAll: "全部",
+      countLabel: "个概念",
+    },
+    labels: {
+      topic: "主题",
+      level: "层级",
+      definition: "定义",
+      whyItMatters: "为什么重要",
+      metrics: "如何衡量",
+      relatedCountries: "相关国家",
+      scorProcess: "SCOR 流程",
+    },
+    levels: {
+      fundamental: "基础",
+      intermediate: "进阶",
+      advanced: "高级",
+    },
+    note: "知识内容由人工整理。统计数据将在接入经过验证的数据源后补充。",
+  },
+
   insights: {
     eyebrow: "供应链洞察",
     title: "从基础开始",

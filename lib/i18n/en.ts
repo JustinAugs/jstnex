@@ -46,6 +46,31 @@ const en = {
     explore: "Explore",
   },
 
+  global: {
+    eyebrow: "Global network",
+    title: "The network, country by country",
+    description:
+      "The economies that shape how goods move — their role in the network, the ports that serve as their gateways, and where each one is exposed.",
+    demoBadge: "Demo Data",
+    filterLabel: "Filter by region",
+    filterAll: "All",
+    countLabel: "countries",
+    // 地区名：数据在 JSON 里存的是 "Asia" 这种英文值，显示名在这里翻译
+    regions: {
+      asia: "Asia",
+      europe: "Europe",
+      northAmerica: "North America",
+    },
+    labels: {
+      role: "Role in the network",
+      ports: "Key ports",
+      exports: "Main exports",
+      strength: "Structural strength",
+      risk: "Key vulnerability",
+    },
+    note: "Descriptions reflect general characteristics, not official statistics. Ports are listed by their common English names.",
+  },
+
   insights: {
     eyebrow: "Supply Chain Insights",
     title: "Start with the fundamentals",

@@ -58,9 +58,30 @@ export type Tool = {
   href: string;
 };
 
-/** Global 页面的一个国家 / 地区（TASK 03 会继续补充字段） */
+/*
+  Global 页面的一个国家 / 地区（TASK 03 从 3 个字段扩到 9 个）
+
+  为什么 role / summary / exports 这些用 LocalizedText？
+  因为它们是「描述性内容」，中英文都要有，比如「制造中枢」和 "Manufacturing hub"。
+
+  为什么 name 也要翻译？
+  国家名不像品牌名，它有天然的中文写法（中国 / 印度），直接显示英文体验很差。
+
+  为什么 ports 是 string[] 且不翻译？
+  港口名是专有名词，上海港在英文语境里就叫 Shanghai，保持原样最具可读性。
+
+  为什么要有 strength 和 risk 两个字段？
+  这是供应链视角区别于普通国家简介的地方：
+  一个看「它凭什么不可替代」，一个看「它哪里最容易断」。
+*/
 export type Country = {
-  name: string;
+  name: LocalizedText;
   code: string; // ISO 3166-1 alpha-2，例如 CN
-  region: string; // Asia / Europe / North America
+  region: string; // 大区 key：Asia / Europe / North America（显示名走字典翻译）
+  role: LocalizedText; // 在全球供应链里的角色
+  summary: LocalizedText; // 两三句说明它为什么重要
+  ports: string[]; // 主要港口，专有名词不翻译
+  exports: LocalizedText; // 主要出口品类
+  strength: LocalizedText; // 结构性优势
+  risk: LocalizedText; // 主要脆弱点
 };

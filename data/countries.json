@@ -1,10 +1,210 @@
 [
-  { "name": "China", "code": "CN", "region": "Asia" },
-  { "name": "United States", "code": "US", "region": "North America" },
-  { "name": "Japan", "code": "JP", "region": "Asia" },
-  { "name": "Germany", "code": "DE", "region": "Europe" },
-  { "name": "Singapore", "code": "SG", "region": "Asia" },
-  { "name": "South Korea", "code": "KR", "region": "Asia" },
-  { "name": "Vietnam", "code": "VN", "region": "Asia" },
-  { "name": "India", "code": "IN", "region": "Asia" }
+  {
+    "name": { "en": "China", "zh": "中国" },
+    "code": "CN",
+    "region": "Asia",
+    "role": {
+      "en": "Manufacturing hub",
+      "zh": "制造中枢"
+    },
+    "summary": {
+      "en": "The world's largest manufacturing base. Countless consumer goods begin their journey here, and its export network reaches nearly every economy.",
+      "zh": "全球规模最大的制造业基地。大量消费品从这里出发，出口网络几乎覆盖每一个经济体。"
+    },
+    "ports": ["Shanghai", "Ningbo-Zhoushan", "Shenzhen", "Qingdao"],
+    "exports": {
+      "en": "Machinery, electronics, textiles and consumer goods",
+      "zh": "机械设备、电子产品、纺织品与消费品"
+    },
+    "strength": {
+      "en": "Dense industrial clusters — components and finished goods can be completed within the same region.",
+      "zh": "产业集群密集——零部件到成品可在同一区域内完成配套。"
+    },
+    "risk": {
+      "en": "Heavy export dependence means local disruptions can cascade through global networks quickly.",
+      "zh": "高度依赖出口，本地扰动会迅速传导至全球网络。"
+    }
+  },
+  {
+    "name": { "en": "United States", "zh": "美国" },
+    "code": "US",
+    "region": "North America",
+    "role": {
+      "en": "Consumption market",
+      "zh": "消费市场"
+    },
+    "summary": {
+      "en": "One of the largest import markets in the world. Demand from its retailers and technology firms shapes trans-Pacific freight flows.",
+      "zh": "全球最大的进口市场之一。零售与科技企业的需求塑造着跨太平洋的货物流向。"
+    },
+    "ports": ["Los Angeles", "Long Beach", "New York / New Jersey", "Savannah"],
+    "exports": {
+      "en": "Capital goods, aircraft, semiconductors and agricultural products",
+      "zh": "资本设备、飞机、半导体与农产品"
+    },
+    "strength": {
+      "en": "Enormous, stable end demand backed by a mature distribution network.",
+      "zh": "终端需求庞大且稳定，分销网络成熟。"
+    },
+    "risk": {
+      "en": "Imports concentrate in a handful of West Coast gateways, so congestion spreads nationwide.",
+      "zh": "进口高度集中于少数西海岸门户港口，拥堵会扩散至全国。"
+    }
+  },
+  {
+    "name": { "en": "Japan", "zh": "日本" },
+    "code": "JP",
+    "region": "Asia",
+    "role": {
+      "en": "Advanced manufacturing",
+      "zh": "高端制造"
+    },
+    "summary": {
+      "en": "Known for precision components, advanced materials and the automotive industry — often sitting upstream in critical supply chains.",
+      "zh": "以精密零部件、先进材料与汽车工业著称，常处在关键供应链的上游环节。"
+    },
+    "ports": ["Tokyo", "Yokohama", "Osaka", "Nagoya"],
+    "exports": {
+      "en": "Automobiles, precision machinery, electronic components and materials",
+      "zh": "汽车、精密机械、电子零部件与材料"
+    },
+    "strength": {
+      "en": "Hard to replace in upstream materials and core components.",
+      "zh": "在上游材料与核心零部件环节难以替代。"
+    },
+    "risk": {
+      "en": "Frequent natural disasters combined with an export-led economy create recurring exposure.",
+      "zh": "自然灾害频发，叠加出口导向型经济，风险敞口反复出现。"
+    }
+  },
+  {
+    "name": { "en": "Germany", "zh": "德国" },
+    "code": "DE",
+    "region": "Europe",
+    "role": {
+      "en": "Industrial exports",
+      "zh": "工业出口"
+    },
+    "summary": {
+      "en": "Europe's largest economy. Its automotive, machinery and chemical exports underpin the wider European manufacturing network.",
+      "zh": "欧洲最大经济体。汽车、机械与化工出口支撑着整个欧洲制造网络。"
+    },
+    "ports": ["Hamburg", "Bremerhaven", "Wilhelmshaven"],
+    "exports": {
+      "en": "Automobiles, machinery, chemicals and industrial equipment",
+      "zh": "汽车、机械设备、化工产品与工业装备"
+    },
+    "strength": {
+      "en": "High-end manufacturing combined with a central logistics position in Europe.",
+      "zh": "高端制造能力叠加位于欧洲中部的物流位置。"
+    },
+    "risk": {
+      "en": "Energy dependence and export orientation make it sensitive to geopolitical shocks.",
+      "zh": "能源依赖与出口导向使其对地缘冲击高度敏感。"
+    }
+  },
+  {
+    "name": { "en": "Singapore", "zh": "新加坡" },
+    "code": "SG",
+    "region": "Asia",
+    "role": {
+      "en": "Transshipment hub",
+      "zh": "转运枢纽"
+    },
+    "summary": {
+      "en": "Guarding the entrance to the Strait of Malacca, it is one of the world's most important container transshipment and bunkering hubs.",
+      "zh": "扼守马六甲海峡出入口，是全球最重要的集装箱中转与船舶加油枢纽之一。"
+    },
+    "ports": ["Port of Singapore", "Tuas"],
+    "exports": {
+      "en": "Refined petroleum, chemicals and re-exported electronics",
+      "zh": "成品油、化工产品与转口电子产品"
+    },
+    "strength": {
+      "en": "Geographic position paired with unusually efficient port operations.",
+      "zh": "地理位置优越，配合极高的港口运营效率。"
+    },
+    "risk": {
+      "en": "Almost entirely dependent on transit volumes and regional trade patterns; rival ports compete aggressively.",
+      "zh": "几乎完全依赖中转货量与区域贸易格局，周边港口竞争激烈。"
+    }
+  },
+  {
+    "name": { "en": "South Korea", "zh": "韩国" },
+    "code": "KR",
+    "region": "Asia",
+    "role": {
+      "en": "Advanced manufacturing",
+      "zh": "高端制造"
+    },
+    "summary": {
+      "en": "A global leader in semiconductors, shipbuilding and automobiles, sitting at chokepoints of several high-technology supply chains.",
+      "zh": "在半导体、造船与汽车领域全球领先，处于多条高科技供应链的咽喉位置。"
+    },
+    "ports": ["Busan", "Incheon", "Ulsan"],
+    "exports": {
+      "en": "Semiconductors, ships, automobiles and petrochemicals",
+      "zh": "半导体、船舶、汽车与石化产品"
+    },
+    "strength": {
+      "en": "Dominant global share in memory chips and shipbuilding.",
+      "zh": "在存储芯片与造船领域占据全球主导份额。"
+    },
+    "risk": {
+      "en": "Highly concentrated exports mean a shock in one industry moves the whole economy.",
+      "zh": "出口集中度过高，单一产业波动会牵动整体经济。"
+    }
+  },
+  {
+    "name": { "en": "Vietnam", "zh": "越南" },
+    "code": "VN",
+    "region": "Asia",
+    "role": {
+      "en": "Emerging production base",
+      "zh": "新兴生产基地"
+    },
+    "summary": {
+      "en": "A primary destination for manufacturing capacity relocating out of China, now a major base for electronics assembly and garments.",
+      "zh": "承接制造业产能转移的主要目的地，已成为电子组装与纺织服装的重要基地。"
+    },
+    "ports": ["Cat Lai (Ho Chi Minh City)", "Haiphong", "Da Nang"],
+    "exports": {
+      "en": "Electronics assembly, textiles, footwear and furniture",
+      "zh": "电子组装、纺织品、鞋类与家具"
+    },
+    "strength": {
+      "en": "Cost advantage with close proximity to established Chinese supply chains.",
+      "zh": "成本优势明显，且紧邻成熟的中国供应链。"
+    },
+    "risk": {
+      "en": "Infrastructure and power supply struggle to keep pace with rapid capacity expansion.",
+      "zh": "基础设施与电力供应难以跟上产能的快速扩张。"
+    }
+  },
+  {
+    "name": { "en": "India", "zh": "印度" },
+    "code": "IN",
+    "region": "Asia",
+    "role": {
+      "en": "Emerging production base",
+      "zh": "新兴生产基地"
+    },
+    "summary": {
+      "en": "Huge domestic demand alongside fast-growing manufacturing, making it a key destination for supply chain diversification.",
+      "zh": "庞大的内需与快速增长的制造业并存，是供应链多元化的重要目的地。"
+    },
+    "ports": ["JNPT (Mumbai)", "Mundra", "Chennai", "Kandla"],
+    "exports": {
+      "en": "Pharmaceuticals, refined petroleum, textiles and engineering goods",
+      "zh": "药品、成品油、纺织品与工程制品"
+    },
+    "strength": {
+      "en": "A large labour force paired with a fast-growing domestic market.",
+      "zh": "劳动力规模庞大，且内需市场增长迅速。"
+    },
+    "risk": {
+      "en": "Logistics efficiency, customs procedures and infrastructure remain persistent bottlenecks.",
+      "zh": "物流效率、通关流程与基础设施仍是长期瓶颈。"
+    }
+  }
 ]

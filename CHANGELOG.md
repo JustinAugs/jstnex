@@ -11,6 +11,47 @@ explanation.
 
 ---
 
+## 0.3.0 — Global page (country directory)
+
+**Added**
+
+- `components/global/CountryDirectory.tsx` — the country list plus a region
+  filter (All / Asia / Europe / North America) showing a count on each button.
+- `components/cards/CountryCard.tsx` — one card per country: role in the network,
+  key ports, main exports, structural strength, main vulnerability.
+- `global` section in `lib/i18n/{en,zh}.ts` — page copy, region names
+  (Asia / Europe / North America) and card field labels.
+
+**Changed**
+
+- `data/countries.json`: every country grows from 3 fields to 9. `name` is now
+  bilingual (`中国` / `China`); new fields are `role`, `summary`, `ports`,
+  `exports`, `strength` and `risk`.
+- `lib/data/types.ts` and `lib/data/index.ts`: `Country` type updated; new
+  `regionKey()` helper maps a region value like `"North America"` to its
+  dictionary key; `REGIONS` provides a de-duplicated list that drives the
+  filter buttons.
+- `app/global/page.tsx`: the 29-line placeholder is replaced by a thin server
+  component that exports metadata and renders `CountryDirectory`.
+- `README.md`: status, features, project structure and roadmap updated — it no
+  longer lists `/global` as unbuilt.
+
+Why the page was split in two: a file marked `"use client"` is not allowed to
+`export const metadata`. So the page stays a server component (SEO) and the
+interactive part lives in its own client component. This is the standard Next.js
+pattern, and it will repeat on every page that needs interaction.
+
+Notes for whoever comes next:
+
+- There are **no country detail pages** yet, so the cards are deliberately not
+  clickable. A link that goes nowhere is worse than no link. Adding
+  `/global/[code]` later means swapping the card shell to `CardLink`.
+- The content is **qualitative only**. Port names stay in English because they
+  are proper nouns. No throughput statistics were invented — a fabricated number
+  is worse than an absent one.
+
+---
+
 ## 0.2.12 — Documentation
 
 **Changed**

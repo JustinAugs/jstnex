@@ -1,7 +1,19 @@
-import Section from "@/components/ui/Section";
+import CountryDirectory from "@/components/global/CountryDirectory";
 import { buildMetadata } from "@/lib/seo";
 
-// 页面的 SEO 信息统一用 buildMetadata 生成（站点级配置在 lib/seo.ts）
+/*
+  Global 页面（TASK 03）
+
+  这个文件刻意保持得很短，只做两件事：
+    1. 导出 metadata（SEO 信息）—— 统一用 buildMetadata 生成，站点级配置在 lib/seo.ts
+    2. 渲染真正的页面内容组件
+
+  为什么不把内容也写在这里？
+  因为内容组件需要筛选交互，必须是客户端组件（"use client"）；
+  而客户端组件里不允许 export metadata。两者不能混在一个文件里。
+  所以：这个服务端外壳负责 SEO，交互部分在 components/global/CountryDirectory.tsx。
+*/
+
 export const metadata = buildMetadata({
   title: "Global",
   description:
@@ -9,21 +21,6 @@ export const metadata = buildMetadata({
   path: "/global",
 });
 
-// 占位页：结构已经在用 Design System（Section + 字号令牌），内容等 TASK 03 填
 export default function GlobalPage() {
-  return (
-    <Section>
-      <p className="font-medium tracking-label text-caption text-mist uppercase">
-        Global
-      </p>
-      <h1 className="mt-4 text-h1 text-ink">GLOBAL NETWORK</h1>
-      <p className="mt-4 max-w-2xl text-body text-mist">
-        Countries, trade flows, ports and logistics — the building blocks of the
-        global supply network.
-      </p>
-      <p className="mt-10 border-t border-line pt-6 text-caption text-mist">
-        Page content is planned for an upcoming task. (TASK 01: layout only)
-      </p>
-    </Section>
-  );
+  return <CountryDirectory />;
 }

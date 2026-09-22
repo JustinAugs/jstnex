@@ -43,6 +43,30 @@ const zh: Dictionary = {
     explore: "查看",
   },
 
+  global: {
+    eyebrow: "全球网络",
+    title: "一个国家，一张网络",
+    description:
+      "塑造货物流向的经济体——它们在网络中扮演什么角色、哪些港口是它们的门户、各自最脆弱的环节在哪里。",
+    demoBadge: "演示数据",
+    filterLabel: "按大区筛选",
+    filterAll: "全部",
+    countLabel: "个国家",
+    regions: {
+      asia: "亚洲",
+      europe: "欧洲",
+      northAmerica: "北美洲",
+    },
+    labels: {
+      role: "网络中的角色",
+      ports: "主要港口",
+      exports: "主要出口",
+      strength: "结构性优势",
+      risk: "主要脆弱点",
+    },
+    note: "以上描述为一般性特征，并非官方统计数据；港口以通用英文名称列出。",
+  },
+
   insights: {
     eyebrow: "供应链洞察",
     title: "从基础开始",

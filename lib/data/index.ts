@@ -50,8 +50,26 @@ export const COMPANIES: Company[] = companiesJson;
 /** 四个计算器工具 */
 export const TOOLS: Tool[] = toolsJson;
 
-/** 国家列表（目前只有基础字段，TASK 03 做 Global 页面时再扩展） */
+/** Global 页面的国家列表（TASK 03：每个国家 9 个字段） */
 export const COUNTRIES: Country[] = countriesJson;
+
+/*
+  大区的英文值（"Asia" / "Europe" / "North America"）只是一把钥匙，
+  真正显示给用户的大区名放在字典里（见 en.ts 的 global.regions）。
+  这个函数负责把「数据里的英文值」翻译成「字典的字段名」。
+*/
+export type RegionKey = "asia" | "europe" | "northAmerica";
+
+export function regionKey(region: string): RegionKey {
+  if (region === "Europe") return "europe";
+  if (region === "North America") return "northAmerica";
+  return "asia";
+}
+
+/* 数据里实际出现过的大区，按顺序去重 —— 筛选按钮直接遍历它生成 */
+export const REGIONS: string[] = Array.from(
+  new Set(COUNTRIES.map((country) => country.region)),
+);
 
 // 类型也顺手导出，将来写页面时不用到处找它定义在哪
 export type {

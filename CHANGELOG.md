@@ -11,6 +11,77 @@ explanation.
 
 ---
 
+## 0.6.0 — Tools page (inventory calculators)
+
+**Added**
+
+- `/tools` — four working calculators: **EOQ**, **Safety Stock**, **Reorder
+  Point** and **Inventory Turnover**. In-page switching (no detail pages), with
+  the selected calculator clearly marked and state reset on every switch.
+- `lib/formulas.ts` — the **single source** for the four formulas: expression,
+  symbols, units, input metadata (type / decimal allowance / default / hint) and
+  assumptions. The concept library and the calculators both reference it, so a
+  formula is never maintained twice.
+- `lib/calculators.ts` — typed input interfaces and two deliberately separate
+  layers: `parseXxx()` (string → number, empty is never coerced to 0) and
+  `calculateXxx()` (number → three-state result: `ok` / `invalid` /
+  `undefined`). No NaN or Infinity ever reaches the UI.
+- `data/calculators.json` — thin metadata (id, formulaId, title, summary,
+  order); no formula strings.
+- `components/tools/Calculator.tsx` — shared calculator shell: formula,
+  assumption note, field-level errors, exact value, optional integer reference,
+  result panel.
+- `components/tools/ToolDirectory.tsx` — switcher + current calculator.
+- Safety Stock — four reference service-level chips (90% = 1.28, 95% = 1.645,
+  98% = 2.054, 99% = 2.326). Z can always be typed manually; the note explains
+  these are common normal-distribution approximations, not a universal rule.
+- New **EOQ** concept in `data/concepts.json`, linked to the same formula.
+- `dict.tools` extended with calculator UI, field errors and domain-reason
+  messages in EN and ZH.
+
+**Changed**
+
+- `data/concepts.json` — safety stock, reorder point and inventory turnover
+  metrics now store `formulaId` instead of a hand-written formula string.
+  `lib/data/index.ts` fills `formula` from `lib/formulas.ts` at load time, so
+  `ConceptCard` and `ConceptLibrary` keep the same interface.
+- `lib/data/index.ts` — added `CALCULATORS`; `TOOLS` is now a derived view for
+  the Home `ToolCard` (keeps the existing shape, so `app/page.tsx` is
+  unchanged). An invalid `formulaId` throws instead of failing silently.
+- `app/tools/page.tsx` — placeholder replaced by the real page; still a thin
+  server component that only exports metadata.
+- Inventory Turnover is explicitly **annual basis**: inputs are annual COGS and
+  average annual inventory; the UI states that V1 does not convert periods.
+- `package.json` version → `0.6.0`.
+
+**Removed**
+
+- `data/tools.json` — replaced by `data/calculators.json`. The old file had no
+  stable ids, four self-referencing `href`s and an inconsistent safety-stock
+  formula.
+
+**Testing**
+
+- `npm run lint` — 0 errors.
+- `npm run build` — passes; all routes prerendered (`/`, `/global`,
+  `/supply-chain`, `/companies`, `/tools`).
+- Browser (real Chromium): EOQ 1000/50/2 → 223.61 exact / 224 integer;
+  Safety Stock 1.645/10/4 → 32.9 / 33; Reorder Point 100 + 30 → 130 / 130;
+  Inventory Turnover 500000 / 100000 → 5.00 with no integer reference.
+- Validation: empty → "Enter a value."; `abc` / `Infinity` → "Enter a valid
+  number."; H = 0 → "Holding cost must be greater than zero."; average
+  inventory = 0 → "Average inventory must be greater than zero."; Z = -1 →
+  "The service level factor (Z) must be zero or greater."
+- Switching calculators resets inputs and results; Reset clears the current
+  calculator; EN/ZH switching is complete (formula, symbols and units stay
+  unchanged by design).
+- 390 × 844: no horizontal overflow; no console errors.
+- Regression check: Home (4 tool cards, shared formulas), Global (8 countries),
+  Supply Chain (14 concepts, inventory count 5, all four formulas), Companies
+  (13 companies, search present) all render normally.
+
+---
+
 ## 0.5.0 — Companies page (supply chain role directory)
 
 **Added**

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "eoq",
+    "formulaId": "eoq",
+    "title": { "en": "EOQ Calculator", "zh": "EOQ 经济订货量计算器" },
+    "summary": {
+      "en": "Find the order quantity that balances ordering and holding costs.",
+      "zh": "找出在订货成本与持有成本之间取得平衡的订货批量。"
+    },
+    "order": 1
+  },
+  {
+    "id": "safetyStock",
+    "formulaId": "safetyStock",
+    "title": { "en": "Safety Stock Calculator", "zh": "安全库存计算器" },
+    "summary": {
+      "en": "Estimate the buffer needed for a target service level.",
+      "zh": "估算达到目标服务水平所需的缓冲库存。"
+    },
+    "order": 2
+  },
+  {
+    "id": "reorderPoint",
+    "formulaId": "reorderPoint",
+    "title": { "en": "Reorder Point Calculator", "zh": "再订货点计算器" },
+    "summary": {
+      "en": "Find the stock level that should trigger a new order.",
+      "zh": "找出应当触发补货订单的库存水位。"
+    },
+    "order": 3
+  },
+  {
+    "id": "inventoryTurnover",
+    "formulaId": "inventoryTurnover",
+    "title": { "en": "Inventory Turnover Calculator", "zh": "库存周转率计算器" },
+    "summary": {
+      "en": "Measure how many times inventory is cycled per year, on an annual basis.",
+      "zh": "按年度口径衡量库存一年被周转的次数。"
+    },
+    "order": 4
+  }
+]

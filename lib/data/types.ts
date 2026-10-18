@@ -15,6 +15,7 @@
 */
 
 import type { LocalizedText } from "@/lib/i18n";
+import type { FormulaId } from "@/lib/formulas";
 
 /** 首页 Global Snapshot 的一个指标（例如 Global Trade） */
 export type SnapshotItem = {
@@ -48,6 +49,25 @@ export type ConceptLevel = "fundamental" | "intermediate" | "advanced";
 export type ConceptMetric = {
   name: LocalizedText;
   formula: string;
+  unit?: string;
+};
+
+/*
+  ConceptMetricRaw —— JSON 文件里的原始形状（TASK 06）。
+
+  四个计算器相关的指标不再手写 formula 字符串，而是写 formulaId，
+  由 lib/data/index.ts 在加载时从 lib/formulas.ts 回填 formula。
+  这样「概念卡」和「计算器」永远用同一条公式，不会各写一份。
+
+  为什么单独定义 Raw 类型？
+  因为公开的 ConceptMetric 要求 formula 必填（组件直接渲染它），
+  而 JSON 里这四条只有 formulaId。用 Raw 类型接住 JSON，
+  回填后再变成 ConceptMetric，组件的接口一行都不用改。
+*/
+export type ConceptMetricRaw = {
+  name: LocalizedText;
+  formula?: string; // 非计算器指标（例如 DIO）仍然直接写公式
+  formulaId?: FormulaId; // 计算器指标引用共享公式
   unit?: string;
 };
 
@@ -160,7 +180,28 @@ export type Company = {
   relatedConcepts?: string[];
 };
 
-/** Tools 页面的一个计算器 */
+/*
+  Tools 页面的一个计算器（TASK 06）。
+
+  data/calculators.json 只存「哪个公式 + 标题 + 简介 + 顺序」，
+  公式表达式、输入字段、单位全部来自 lib/formulas.ts。
+  id 是稳定的英文 slug；formulaId 必须是 FormulaId 之一。
+*/
+export type CalculatorMeta = {
+  id: string;
+  formulaId: FormulaId;
+  title: LocalizedText;
+  summary: LocalizedText;
+  order: number;
+};
+
+/*
+  Tool —— 首页 ToolCard 的兼容形状（TASK 06 起改为派生视图）。
+
+  以前它直接等于 data/tools.json；现在 data/tools.json 已删除，
+  由 lib/data/index.ts 从 CALCULATORS + FORMULAS 生成。
+  保留这个类型，是为了让首页 app/page.tsx 一行都不用改。
+*/
 export type Tool = {
   name: LocalizedText;
   description: LocalizedText;

@@ -20,8 +20,10 @@ import conceptsJson from "@/data/concepts.json";
 import topicsJson from "@/data/supply-chain-topics.json";
 import scorProcessesJson from "@/data/scor-processes.json";
 import companiesJson from "@/data/companies.json";
-import toolsJson from "@/data/tools.json";
+import calculatorsJson from "@/data/calculators.json";
 import countriesJson from "@/data/countries.json";
+
+import { formulaFor } from "@/lib/formulas";
 
 import type {
   SnapshotItem,
@@ -29,6 +31,7 @@ import type {
   Concept,
   ConceptLevel,
   ConceptMetric,
+  ConceptMetricRaw,
   ConceptSource,
   Topic,
   ScorProcess,
@@ -36,6 +39,7 @@ import type {
   IndustryId,
   SupplyChainRoleId,
   CompanyRegion,
+  CalculatorMeta,
   Tool,
   Country,
 } from "./types";
@@ -67,7 +71,54 @@ export const NETWORK_MODULES: NetworkModule[] = networksJson;
   代价要清楚：断言之后，如果 JSON 里写错成 "basic"，编译器不再报错。
   所以 level 的取值请对照 lib/data/types.ts 里的 ConceptLevel。
 */
-export const CONCEPTS: Concept[] = conceptsJson as Concept[];
+/*
+  TASK 06：概念里的「计算器指标」不再手写公式字符串，
+  而是写 formulaId；这里统一从 lib/formulas.ts 回填 formula。
+
+  为什么要多一层 enrich？
+  因为 ConceptCard / ConceptLibrary 仍然只认 { name, formula, unit }。
+  在加载层把 Raw 形状补全成公开形状，组件一行都不用改。
+*/
+type ConceptRaw = Omit<Concept, "metrics"> & {
+  metrics: ConceptMetricRaw[] | null;
+};
+
+function enrichConcept(concept: ConceptRaw): Concept {
+  if (!concept.metrics) {
+    return { ...concept, metrics: null };
+  }
+
+  return {
+    ...concept,
+    metrics: concept.metrics.map((metric) => {
+      if (!metric.formulaId) {
+        if (!metric.formula) {
+          throw new Error(
+            `Concept metric "${metric.name.en}" has neither formula nor formulaId.`,
+          );
+        }
+
+        return {
+          name: metric.name,
+          formula: metric.formula,
+          unit: metric.unit,
+        };
+      }
+
+      const formula = formulaFor(metric.formulaId);
+
+      return {
+        name: metric.name,
+        formula: formula.expression,
+        unit: metric.unit ?? formula.resultUnit,
+      };
+    }),
+  };
+}
+
+export const CONCEPTS: Concept[] = (conceptsJson as ConceptRaw[]).map(
+  enrichConcept,
+);
 
 /** 知识库的 7 个主题（库存 / 运输 / 采购 …） */
 export const TOPICS: Topic[] = topicsJson;
@@ -154,8 +205,33 @@ export function countCompaniesByRegion(region: CompanyRegion): number {
   return COMPANIES.filter((company) => company.region === region).length;
 }
 
-/** 四个计算器工具 */
-export const TOOLS: Tool[] = toolsJson;
+/*
+  Tools（TASK 06）。
+
+  data/calculators.json 是唯一的计算器数据集：只写 formulaId + 标题 + 简介 + 顺序。
+  公式、输入字段、单位全部来自 lib/formulas.ts —— 不再有第二份公式字符串。
+
+  为什么这里要写 as CalculatorMeta[]？
+  和 CONCEPTS / COMPANIES 一样：JSON 里的 "formulaId": "eoq" 只会推断成 string，
+  收窄不到 FormulaId。断言一次，代价是写错 id 编译器不再报错 ——
+  所以 formulaFor() 在运行时还会再检查一次，写错会直接抛错，绝不静默失败。
+*/
+export const CALCULATORS: CalculatorMeta[] = [
+  ...(calculatorsJson as CalculatorMeta[]),
+].sort((a, b) => a.order - b.order);
+
+/*
+  首页 ToolCard 仍然读 TOOLS（为了不修改已完成的首页）。
+  但 TOOLS 现在是从 CALCULATORS + FORMULAS 派生出来的视图，不是第二份数据：
+  首页和 /tools 永远读同一份 calculators.json、同一条公式。
+*/
+export const TOOLS: Tool[] = CALCULATORS.map((calculator) => ({
+  name: calculator.title,
+  description: calculator.summary,
+  category: "Inventory",
+  formula: formulaFor(calculator.formulaId).expression,
+  href: "/tools",
+}));
 
 /** Global 页面的国家列表（TASK 03：每个国家 9 个字段） */
 export const COUNTRIES: Country[] = countriesJson;
@@ -193,6 +269,7 @@ export type {
   IndustryId,
   SupplyChainRoleId,
   CompanyRegion,
+  CalculatorMeta,
   Tool,
   Country,
 };

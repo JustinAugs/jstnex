@@ -215,6 +215,42 @@ const en = {
     open: "Open",
     disclaimer:
       "All calculators use simplified educational models, not enterprise forecasting systems.",
+
+    /* ---------- TASK 06：计算器界面 ---------- */
+    selectLabel: "Choose a calculator",
+    calculate: "Calculate",
+    reset: "Reset",
+    formulaLabel: "Formula",
+    assumptionsLabel: "Assumptions",
+    exactValue: "Exact value",
+    integerReference: "Integer reference",
+    integerReferenceNote:
+      "Rounded up for reference when inventory is counted in whole units. If fractional units are allowed, use the exact value.",
+    enterValues: "Enter all values, then calculate.",
+    errors: {
+      required: "Enter a value.",
+      notANumber: "Enter a valid number.",
+      notInteger: "Enter a whole number.",
+    },
+    reasons: {
+      demandMustBePositive: "Annual demand must be greater than zero.",
+      orderingCostMustBePositive: "Ordering cost must be greater than zero.",
+      holdingCostMustBePositive: "Holding cost must be greater than zero.",
+      serviceLevelMustBeNonNegative:
+        "The service level factor (Z) must be zero or greater.",
+      stdDevMustBeNonNegative:
+        "Demand standard deviation cannot be negative.",
+      leadTimeMustBeNonNegative: "Lead time cannot be negative.",
+      valuesMustBeNonNegative:
+        "Demand during lead time and safety stock must be zero or greater.",
+      cogsMustBeNonNegative: "COGS cannot be negative.",
+      averageInventoryMustBePositive:
+        "Average inventory must be greater than zero.",
+      resultNotFinite: "The result cannot be computed with these inputs.",
+    },
+    safetyStock: {
+      serviceLevelReference: "Reference service levels",
+    },
   },
 
   /*

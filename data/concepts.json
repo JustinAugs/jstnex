@@ -31,6 +31,40 @@
     "relatedConcepts": ["safety-stock", "inventory-turnover"]
   },
   {
+    "id": "eoq",
+    "title": {
+      "en": "Economic Order Quantity (EOQ)",
+      "zh": "经济订货批量（EOQ）"
+    },
+    "summary": {
+      "en": "The order size that balances ordering cost against holding cost.",
+      "zh": "在订货成本与持有成本之间取得平衡的订货批量。"
+    },
+    "topicId": "inventory",
+    "level": "fundamental",
+    "definition": {
+      "en": "A model that estimates the order quantity that minimises the combined cost of ordering and holding inventory, under a set of simplifying assumptions.",
+      "zh": "在一组简化假设下，使订货成本与库存持有成本之和最小的订货批量模型。"
+    },
+    "whyItMatters": {
+      "en": "It makes the trade-off explicit: ordering more often lowers inventory but raises ordering cost. EOQ is a teaching model, not a universal answer — it assumes constant demand, immediate replenishment and no quantity discounts.",
+      "zh": "它把权衡讲清楚：订得更频繁会降低库存，但提高订货成本。EOQ 是教学模型，不是通用答案——它假设需求恒定、瞬时补货且没有数量折扣。"
+    },
+    "featured": false,
+    "scorProcess": "plan",
+    "metrics": [
+      {
+        "name": { "en": "Economic order quantity", "zh": "经济订货批量" },
+        "formulaId": "eoq",
+        "unit": "units"
+      }
+    ],
+    "relatedCountries": null,
+    "source": null,
+    "updatedAt": null,
+    "relatedConcepts": ["safety-stock", "reorder-point"]
+  },
+  {
     "id": "safety-stock",
     "title": { "en": "Safety Stock", "zh": "安全库存" },
     "summary": {
@@ -52,7 +86,7 @@
     "metrics": [
       {
         "name": { "en": "Safety stock", "zh": "安全库存" },
-        "formula": "SS = Z × σd × √L",
+        "formulaId": "safetyStock",
         "unit": "units"
       }
     ],
@@ -83,7 +117,7 @@
     "metrics": [
       {
         "name": { "en": "Reorder point", "zh": "再订货点" },
-        "formula": "ROP = d × L + SS",
+        "formulaId": "reorderPoint",
         "unit": "units"
       }
     ],
@@ -114,7 +148,7 @@
     "metrics": [
       {
         "name": { "en": "Inventory turnover", "zh": "库存周转率" },
-        "formula": "Inventory turnover = COGS ÷ Average inventory",
+        "formulaId": "inventoryTurnover",
         "unit": "times / year"
       }
     ],

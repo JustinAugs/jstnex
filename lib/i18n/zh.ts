@@ -187,6 +187,38 @@ const zh: Dictionary = {
     description: "公式简单透明，并把计算逻辑直接展示出来。",
     open: "打开",
     disclaimer: "所有计算器均采用简化教学模型，并非企业级预测系统。",
+
+    // TASK 06：计算器界面（字段结构必须与 en.ts 一致）
+    selectLabel: "选择计算器",
+    calculate: "计算",
+    reset: "重置",
+    formulaLabel: "公式",
+    assumptionsLabel: "适用假设",
+    exactValue: "数学计算值",
+    integerReference: "整数参考值",
+    integerReferenceNote:
+      "库存按整数单位计数时，向上取整可作为参考；若业务允许小数，应保留实际计算值。",
+    enterValues: "填写全部数值后点击「计算」。",
+    errors: {
+      required: "请输入数值。",
+      notANumber: "请输入有效数字。",
+      notInteger: "请输入整数。",
+    },
+    reasons: {
+      demandMustBePositive: "年需求量必须大于零。",
+      orderingCostMustBePositive: "每次订货成本必须大于零。",
+      holdingCostMustBePositive: "单位年持有成本必须大于零。",
+      serviceLevelMustBeNonNegative: "服务水平系数（Z）必须大于或等于零。",
+      stdDevMustBeNonNegative: "需求标准差不能为负数。",
+      leadTimeMustBeNonNegative: "提前期不能为负数。",
+      valuesMustBeNonNegative: "提前期内需求与安全库存都必须大于或等于零。",
+      cogsMustBeNonNegative: "销货成本（COGS）不能为负数。",
+      averageInventoryMustBePositive: "平均库存必须大于零。",
+      resultNotFinite: "当前输入无法得到可计算的结果。",
+    },
+    safetyStock: {
+      serviceLevelReference: "参考服务水平",
+    },
   },
 
   // 三种状态的中文文案（字段结构必须与 en.ts 一致）

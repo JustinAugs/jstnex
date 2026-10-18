@@ -9,9 +9,10 @@ companies that move goods between them.
 
 It is built in public, one task at a time, by one student learning to code.
 
-> **Current status:** Home, **Global**, **Supply Chain** and **Companies** pages
-> are real. `/tools` is the last placeholder and will be built in TASK 06.
-> Every figure shown today is **Demo Data**.
+> **Current status:** Home, **Global**, **Supply Chain**, **Companies** and
+> **Tools** pages are real — the V1.0 MVP is complete. Every figure shown today
+> is **Demo Data**; the calculators are transparent teaching models, not
+> forecasts.
 
 ---
 
@@ -87,6 +88,13 @@ Built and working today:
   supply chain risk. Searchable, filterable by industry / region / role.
   Company entries are qualitative observations — no revenue, market share,
   ranking or performance figures.
+- **Tools page** (`/tools`) — four inventory calculators: **EOQ**, **Safety
+  Stock**, **Reorder Point** and **Inventory Turnover**. Each one shows its
+  formula and assumptions, separates input validation from calculation, and
+  never displays `NaN` or `Infinity`. EOQ / safety stock / reorder point show
+  both the exact value and an optional integer reference; turnover shows the
+  ratio only. A shared formula source (`lib/formulas.ts`) keeps the concept
+  library and the calculators on the same definition.
 - **Bilingual UI (EN / ZH)** — every visible string comes from `lib/i18n/en.ts`.
   `zh.ts` is type-checked against it, so a missing translation is a build error,
   not a silent blank. Language is remembered in `localStorage`.
@@ -104,8 +112,8 @@ Built and working today:
 - **SEO foundation** — page metadata via `lib/seo.ts`, plus a generated
   Open Graph image (`app/opengraph-image.tsx`).
 
-Not built yet: the real `/tools` page; concept detail pages; company detail
-pages; any real dataset; any chart; any backend.
+Not built yet: concept detail pages; company detail pages; any real dataset;
+any chart; any backend.
 
 ## Project structure
 
@@ -119,7 +127,7 @@ app/
   icon.svg                favicon
   supply-chain/page.tsx     Supply Chain — concept knowledge base (TASK 04)
   companies/page.tsx        Companies — company directory (TASK 05)
-  tools/                    placeholder for TASK 06
+  tools/page.tsx            Tools — four inventory calculators (TASK 06)
 components/
   ui/         primitives: Button, Card, Badge, Input, Section, SectionHeader,
               Field (label + value row), DemoBadge, LanguageSwitcher, StateBlock
@@ -131,13 +139,16 @@ components/
   global/     CountryDirectory (country list + region filter)
   supplyChain/ SupplyChainView, ScorFramework, ConceptLibrary
   companies/  CompaniesView, CompanyDirectory, CompanyFilters
+  tools/      ToolDirectory (switcher), Calculator (shared shell)
 lib/
   i18n/       en.ts (source of truth), zh.ts, index.ts, languageStore.ts
   data/       types.ts, index.ts  — typed access to data/*.json
+  formulas.ts     shared formula definitions (single source)
+  calculators.ts  typed input parsing + pure calculation functions
   seo.ts      metadata helper
 data/
-  snapshot.json networks.json concepts.json companies.json tools.json countries.json
-  supply-chain-topics.json scor-processes.json
+  snapshot.json networks.json concepts.json companies.json calculators.json
+  countries.json supply-chain-topics.json scor-processes.json
 ```
 
 ## Getting started
@@ -208,8 +219,8 @@ date**. A number without a source is not data, it is decoration.
 | 03   | **Global** — country / region view                  | Done        |
 | 04   | **Supply Chain** — knowledge base                   | Done        |
 | 05   | **Companies** — supply chain role directory         | Done        |
-| 06   | **Tools** — calculators (landed cost, lead time…)   | Next        |
-| 07   | Data layer normalisation (shared types, validation) | Planned     |
+| 06   | **Tools** — EOQ, safety stock, reorder point, turnover | Done     |
+| 07   | Data layer normalisation (shared types, validation) | Next        |
 | 08   | Python crawlers for real datasets                   | Planned     |
 | 09   | PostgreSQL + FastAPI backend                        | Planned     |
 | 10   | Data visualisation (charts, maps)                   | Planned     |

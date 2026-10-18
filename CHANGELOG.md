@@ -11,6 +11,29 @@ explanation.
 
 ---
 
+## 0.6.1 — Display precision and small hardening
+
+**Fixed**
+
+- `components/tools/Calculator.tsx` — a tiny non-zero result is no longer shown
+  as `0`. Values below `0.01` now use three significant digits (`0.00128`),
+  values below `1e-6` use scientific notation, while ordinary numbers keep two
+  decimals and integers keep no trailing zeros. The calculation itself is
+  unchanged; only display formatting.
+- `data/concepts.json` — the four calculator-backed metrics (EOQ, safety stock,
+  reorder point, inventory turnover) no longer store a duplicate `unit`. Their
+  units come from `resultUnit` in `lib/formulas.ts`, so each unit exists in one
+  place. Displayed units are unchanged (`units` / `times / year`).
+
+**Changed**
+
+- `components/tools/Calculator.tsx` — the formula `switch` now ends with an
+  exhaustiveness guard (`assertNever`). Adding a new `FormulaId` without a
+  matching branch becomes a compile error instead of a silent no-op.
+- `package.json` / `package-lock.json` version → `0.6.1`.
+
+---
+
 ## 0.6.0 — Tools page (inventory calculators)
 
 **Added**

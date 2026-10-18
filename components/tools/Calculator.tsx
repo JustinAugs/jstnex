@@ -52,12 +52,46 @@ function createInitialValues(formula: FormulaDefinition): Record<string, string>
   );
 }
 
-/* 显示用：最多两位小数。存储的 value 本身不四舍五入。 */
+/*
+  显示用：常规数字最多两位小数。存储的 value 本身不四舍五入。
+
+  为什么分三档？
+  如果一律按两位小数，0.00128 会被显示成 "0" —— 计算是对的，
+  但用户会以为没有结果。所以只对「极小值」提高精度，其余保持简洁：
+    · |value| ≥ 0.01        → 最多两位小数（223.61、130、5）
+    · 1e-6 ≤ |value| < 0.01 → 三位有效数字（0.00128）
+    · 0 < |value| < 1e-6    → 科学计数法（1.28E-7），避免一长串 0
+*/
 function formatNumber(value: number, language: Language): string {
   if (!Number.isFinite(value)) return "—";
+
+  const abs = Math.abs(value);
+
+  if (abs > 0 && abs < 1e-6) {
+    return new Intl.NumberFormat(language, {
+      notation: "scientific",
+      maximumFractionDigits: 3,
+    }).format(value);
+  }
+
+  if (abs > 0 && abs < 0.01) {
+    return new Intl.NumberFormat(language, {
+      maximumSignificantDigits: 3,
+    }).format(value);
+  }
+
   return new Intl.NumberFormat(language, { maximumFractionDigits: 2 }).format(
     value,
   );
+}
+
+/*
+  穷尽性兜底：参数类型是 never，只有「所有 FormulaId 分支都已处理」时才编译通过。
+  将来新增 FormulaId 却忘记加 case，这里会直接类型报错，而不是静默无反应。
+  运行时抛出异常（而不是返回空结果），既不吞掉问题，也不会把内部细节渲染给用户。
+*/
+function assertNever(value: never): never {
+  throw new Error(`Unhandled formula id: ${String(value)}`);
 }
 
 function formatInteger(value: number, language: Language): string {
@@ -152,6 +186,10 @@ export default function Calculator({ calculator, formula }: CalculatorProps) {
         setResult(calculateInventoryTurnover(parsed.value));
         return;
       }
+
+      default:
+        // formula.id 在这里已经是 never；新增 FormulaId 时若漏写分支会编译失败。
+        return assertNever(formula.id);
     }
   }
 

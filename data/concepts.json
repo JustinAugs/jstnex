@@ -55,8 +55,7 @@
     "metrics": [
       {
         "name": { "en": "Economic order quantity", "zh": "经济订货批量" },
-        "formulaId": "eoq",
-        "unit": "units"
+        "formulaId": "eoq"
       }
     ],
     "relatedCountries": null,
@@ -86,8 +85,7 @@
     "metrics": [
       {
         "name": { "en": "Safety stock", "zh": "安全库存" },
-        "formulaId": "safetyStock",
-        "unit": "units"
+        "formulaId": "safetyStock"
       }
     ],
     "relatedCountries": null,
@@ -117,8 +115,7 @@
     "metrics": [
       {
         "name": { "en": "Reorder point", "zh": "再订货点" },
-        "formulaId": "reorderPoint",
-        "unit": "units"
+        "formulaId": "reorderPoint"
       }
     ],
     "relatedCountries": null,
@@ -148,8 +145,7 @@
     "metrics": [
       {
         "name": { "en": "Inventory turnover", "zh": "库存周转率" },
-        "formulaId": "inventoryTurnover",
-        "unit": "times / year"
+        "formulaId": "inventoryTurnover"
       }
     ],
     "relatedCountries": null,

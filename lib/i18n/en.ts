@@ -32,6 +32,13 @@ const en = {
     secondaryCta: "Explore Supply Chain",
     // Hero 主视觉下方的说明：明确它是示意图，不是真实贸易数据
     illustrationCaption: "Global Network Illustration",
+    // 交互式地球的界面文案（TASK 06.12C）
+    globe: {
+      label: "Interactive global network illustration",
+      hint: "Select a country on the network.",
+      viewDetail: "View country",
+      close: "Close",
+    },
   },
 
   snapshot: {

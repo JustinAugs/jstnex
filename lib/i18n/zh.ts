@@ -29,6 +29,12 @@ const zh: Dictionary = {
     primaryCta: "探索全球",
     secondaryCta: "探索供应链",
     illustrationCaption: "全球供应网络示意图",
+    globe: {
+      label: "交互式全球供应网络示意图",
+      hint: "在网络中选择一个国家。",
+      viewDetail: "查看国家详情",
+      close: "关闭",
+    },
   },
 
   snapshot: {

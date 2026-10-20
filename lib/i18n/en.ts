@@ -81,6 +81,23 @@ const en = {
   },
 
   /*
+    countryDetail —— 国家详情页（TASK 06.12B）
+
+    只有界面文字；国家的具体内容（角色 / 简介 / 港口 / 出口等）
+    一律来自 data/countries.json，不在这里重复。
+  */
+  countryDetail: {
+    back: "Back to Global",
+    note: "Descriptions reflect general characteristics, not official statistics. Ports are listed by their common English names.",
+    labels: {
+      ports: "Key ports",
+      exports: "Main exports",
+      strength: "Structural strength",
+      risk: "Key vulnerability",
+    },
+  },
+
+  /*
     supplyChain —— Supply Chain 页面（TASK 04）
 
     这里只放界面文字。概念的定义、意义、公式等内容一律放在

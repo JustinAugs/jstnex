@@ -1,4 +1,4 @@
-import { Card } from "../ui/Card";
+import { CardLink } from "../ui/Card";
 import Badge from "../ui/Badge";
 // 字段名 + 内容这一行，现在统一用 ui/Field（TASK 04 从本文件提炼出去，ConceptCard 也用）
 import Field from "../ui/Field";
@@ -11,10 +11,10 @@ import Field from "../ui/Field";
   翻译的工作由页面做（页面调用 useLanguage + pick），这样卡片组件
   将来搬到别的地方、或者换成服务端渲染，都不用改。
 
-  为什么不用 <CardLink>？
-  因为 TASK 03 的范围是「列表页 + 筛选」，没有国家详情子页。
-  没有目标页面就不要做可点击的样子 —— 点了没反应比不能点更糟。
-  等 TASK 03.5 做了 /global/[code]，再把外壳换成 CardLink 即可。
+  TASK 06.12B：外壳从 <Card> 换成 <CardLink>，新增 href。
+  之前（TASK 03）没有国家详情子页，所以故意不用 CardLink ——
+  没有目标页面就不做可点击的样子，点了没反应比不能点更糟。
+  现在 /global/[code] 详情页已建好，卡片可以真实跳转了。
 
   为什么 ports 是数组而别的字段是字符串？
   港口是「多个并列的事物」，用数组存最自然；
@@ -23,6 +23,7 @@ import Field from "../ui/Field";
 
 type CountryCardProps = {
   code: string; // 国家代码，例如 CN
+  href: string; // 详情页链接，例如 /global/cn（由页面传入，不在组件里写死路由）
   name: string;
   region: string; // 已翻译好的地区名，例如 亚洲
   role: string; // 供应链角色，例如 制造中枢
@@ -41,6 +42,7 @@ type CountryCardProps = {
 
 export default function CountryCard({
   code,
+  href,
   name,
   region,
   role,
@@ -52,7 +54,7 @@ export default function CountryCard({
   labels,
 }: CountryCardProps) {
   return (
-    <Card className="flex flex-col">
+    <CardLink href={href} className="flex flex-col">
       {/* 第一行：国家代码 + 所属大区 */}
       <div className="flex items-center gap-2">
         <Badge tone="accent">{code}</Badge>
@@ -80,6 +82,6 @@ export default function CountryCard({
         <Field label={labels.strength}>{strength}</Field>
         <Field label={labels.risk}>{risk}</Field>
       </dl>
-    </Card>
+    </CardLink>
   );
 }

@@ -119,6 +119,8 @@ export default function CountryDirectory() {
             <CountryCard
               key={country.code}
               code={country.code}
+              // 详情页链接：小写 ISO code，例如 /global/cn
+              href={`/global/${country.code.toLowerCase()}`}
               // pick() 从 { en, zh } 里取出当前语言的那一条
               name={pick(country.name, language)}
               region={dict.regions[regionKey(country.region)]}

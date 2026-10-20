@@ -70,6 +70,17 @@ const zh: Dictionary = {
     note: "以上描述为一般性特征，并非官方统计数据；港口以通用英文名称列出。",
   },
 
+  countryDetail: {
+    back: "返回全球目录",
+    note: "以上描述为一般性特征，并非官方统计数据；港口以通用英文名称列出。",
+    labels: {
+      ports: "主要港口",
+      exports: "主要出口",
+      strength: "结构性优势",
+      risk: "主要脆弱点",
+    },
+  },
+
   supplyChain: {
     eyebrow: "供应链",
     title: "供应链如何运作",

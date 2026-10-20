@@ -66,7 +66,12 @@ export default function CountryCard({
 
       <p className="mt-4 text-small text-mist">{summary}</p>
 
-      <dl className="mt-6">
+      {/*
+        @container 声明一个「容器查询上下文」：
+        Field 里的 @md: 判断依据是这个 dl 自己的宽度（也就是卡片内部可用宽度），
+        而不是屏幕宽度 —— 卡片有几列、在哪个页面都不会判断错。
+      */}
+      <dl className="@container mt-6">
         <Field label={labels.ports}>
           {/* join(" · ") 把数组拼成一行，比做成一堆小标签干净 */}
           {ports.join(" · ")}

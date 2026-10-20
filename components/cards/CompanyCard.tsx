@@ -69,7 +69,8 @@ export default function CompanyCard({
 
       <p className="mt-4 text-small text-mist">{summary}</p>
 
-      <dl className="mt-6">
+      {/* @container：让 Field 的并排/堆叠按这个 dl 的实际宽度决定，而不是按屏幕宽度 */}
+      <dl className="@container mt-6">
         <Field label={labels.location}>
           {country} · {region}
         </Field>

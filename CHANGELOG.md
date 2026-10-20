@@ -11,6 +11,64 @@ explanation.
 
 ---
 
+## 0.7.0 — Visual upgrade: Field density, Hero illustration, SCOR structure
+
+One release grouping three visual improvements (TASK 06.8, 06.9, 06.10).
+Data, copy, formulas, calculator logic and filters are unchanged throughout.
+
+**Changed — Field layout (TASK 06.8)**
+
+- `components/ui/Field.tsx` — the label column no longer takes a fixed
+  `112px` out of every card. Inside a narrow card the value now flows under
+  its label and uses the full card width (previously squeezed into ~179px,
+  which made Country/Company/Concept cards grow to 579–746px tall); short
+  values still sit beside their label when there is room. When the card is
+  wide enough (≥448px, e.g. two-column layouts), the label returns to a
+  fixed aligned column. The switch is driven by the card's real width
+  (container query on the `<dl>`), not by the screen width, so it behaves
+  the same in any grid.
+- `components/cards/CountryCard.tsx`, `components/cards/CompanyCard.tsx`,
+  `components/cards/ConceptCard.tsx` — their `<dl>` elements declare
+  `@container` so `Field` can measure the card it lives in. No markup,
+  data, copy or logic changes.
+- Measured effect (1440px viewport, English): tallest company card
+  746px → 637px, tallest concept card 645px → 536px, Companies page
+  4710px → 4294px, Supply Chain page 5152px → 4862px. Country cards are
+  roughly unchanged in height — their text is short, so stacking labels
+  cannot win back more than it costs — but their reading width doubles
+  from 179px to 307px. Chinese pages are 30–60px shorter overall.
+
+**Changed — Home Hero visual (TASK 06.9)**
+
+- `components/home/NetworkIllustration.tsx` — new self-drawn inline SVG,
+  a global supply-network illustration (globe, graticule, nodes, arcs) for
+  the Hero's right-hand side. Zero new dependencies and zero external
+  requests; colours come from the existing Design System tokens.
+- `components/home/Hero.tsx` — the Hero is now a two-column layout on
+  desktop (`2fr : 1fr`, chosen from measured title width so the headline
+  keeps its two-line break) and stacks on tablet/mobile. No fixed height.
+- `lib/i18n/en.ts`, `lib/i18n/zh.ts` — one new key
+  `hero.illustrationCaption` ("Global Network Illustration" / "全球供应网络示意图").
+  The caption states plainly that this is an illustration, not real trade
+  routes or geographic data.
+
+**Changed — Supply Chain structure (TASK 06.10)**
+
+- `components/supplyChain/SupplyChainView.tsx` — the page header and the
+  SCOR framework now share one section (matching the existing Global and
+  Companies pages), removing a large empty gap below the header.
+- `components/supplyChain/ScorFramework.tsx` — the seven SCOR processes
+  changed from a plain text list into a "process strip + explanation grid":
+  numbered nodes joined by connector lines and arrows (one row at ≥1280px,
+  fewer columns below that), plus a one-line summary per process. Process
+  names, order (01–07) and bilingual copy are unchanged.
+
+**Version**
+
+- `package.json` / `package-lock.json` version → `0.7.0`.
+
+---
+
 ## 0.6.1 — Display precision and small hardening
 
 **Fixed**

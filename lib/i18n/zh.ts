@@ -28,6 +28,7 @@ const zh: Dictionary = {
     description: "探索全球贸易、物流、企业与供应网络。",
     primaryCta: "探索全球",
     secondaryCta: "探索供应链",
+    illustrationCaption: "全球供应网络示意图",
   },
 
   snapshot: {

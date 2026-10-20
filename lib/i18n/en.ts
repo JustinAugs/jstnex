@@ -30,6 +30,8 @@ const en = {
       "Explore global trade, logistics, companies and supply networks.",
     primaryCta: "Explore Global",
     secondaryCta: "Explore Supply Chain",
+    // Hero 主视觉下方的说明：明确它是示意图，不是真实贸易数据
+    illustrationCaption: "Global Network Illustration",
   },
 
   snapshot: {

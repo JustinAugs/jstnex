@@ -72,7 +72,8 @@ export default function ConceptCard({
         </p>
       ) : null}
 
-      <dl className="mt-5">
+      {/* @container：让 Field 的并排/堆叠按这个 dl 的实际宽度决定，而不是按屏幕宽度 */}
+      <dl className="@container mt-5">
         <Field label={labels.definition}>{definition}</Field>
         <Field label={labels.whyItMatters}>{whyItMatters}</Field>
 

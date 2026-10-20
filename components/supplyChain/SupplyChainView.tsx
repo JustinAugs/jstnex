@@ -18,22 +18,37 @@ import ScorFramework from "./ScorFramework";
 import ConceptLibrary from "./ConceptLibrary";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 
+/*
+  TASK 06.10：页头不再单独占一个 Section。
+
+  原来的结构是这样的：
+    <Section>页头</Section>       ← 391px 高，内容只有 159px，中间空了一大截
+    <ScorFramework />             ← 又一个 Section（又一个 96px 上下留白）
+    <ConceptLibrary />
+
+  两段各带 96px 的上下留白，中间就凭空多出近 200px 的空白带，
+  用户点进来要滚一下才看得到「七个流程」。
+
+  现在把页头和 SCOR 放进同一个 Section —— 和 Global 的 CountryDirectory、
+  Companies 的 CompanyDirectory 完全一致（那两个页面本来就是这么做的）。
+  这样页面顶部是连续的一块，进入页面立刻看到流程。
+*/
 export default function SupplyChainView() {
   const { dict } = useLanguage();
 
   return (
     <>
-      {/* 1. 页头：这一页回答什么问题 */}
+      {/* 1 + 2. 页头 + SCOR 七个流程（同一区块） */}
       <Section>
         <SectionHeader
           eyebrow={dict.supplyChain.eyebrow}
           title={dict.supplyChain.title}
           description={dict.supplyChain.description}
         />
-      </Section>
 
-      {/* 2. SCOR 七个流程 —— 给整页一个坐标系 */}
-      <ScorFramework />
+        {/* SCOR：给整页一个坐标系 */}
+        <ScorFramework />
+      </Section>
 
       {/* 3. 概念库（含主题筛选） */}
       <ConceptLibrary />

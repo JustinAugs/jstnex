@@ -242,17 +242,19 @@ Data Pipeline), by which point the five-page MVP will long since have shipped.
 | 05   | **Companies** — supply chain role directory         | v0.5.x   | Done        |
 | 06   | **Tools** — EOQ, safety stock, reorder point, turnover | v0.6.x | Done      |
 | 06 + | v0.7.0 visual upgrades (Field density, Hero, SCOR); then country detail pages, interactive globe, layout-shift fix and the TASK 07.02 Global audit fixes (historical sub-numbers 06.8–06.12) | v0.7.0 / v0.7.1 | Done |
-| 07   | **Product Experience** — page-level visual audits and improvements (07.01 Global audit, 07.02 Global improvement) | v0.7.x | Next |
+| 07   | **Product Experience** — page-level visual audits and improvements (07.01 Global audit, 07.02 Global improvement, 07.03 audit closure) | v0.7.x | Done |
 | 08   | Data foundation & quality (shared types, validation) | v0.8.x   | Planned     |
 | 09   | Data acquisition — Python crawlers for real datasets | v0.9.x   | Planned     |
 | 10   | Database & data pipeline — PostgreSQL + FastAPI     | v1.0.x   | Planned     |
 | 11   | Analytics & visualisation (charts, maps)            | v1.1.x   | Planned     |
 | 12   | Intelligence & AI (RAG over curated sources)        | v1.2.x   | Planned     |
 
-TASK 01–06 delivered the five-page MVP (the **V1 — Structure** phase). Each
-task ends with one commit on `main`. The next task is
-**TASK 07.01 — Global Page Visualization Audit**: audit and design only;
-TASK 07.02 implements after the audit is approved.
+TASK 01–06 delivered the five-page MVP (the **V1 — Structure** phase). TASK 07
+closed out that work: **07.01** audited the Global page, **07.02** implemented
+the six findings the audit accepted, and **07.03** closed the audit as
+documentation only — no product change and no new feature phase. Each task ends
+with one commit on `main`. The next task is **TASK 08 — Data Foundation &
+Quality**.
 
 ## Long-term vision
 

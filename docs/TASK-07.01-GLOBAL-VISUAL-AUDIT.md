@@ -395,3 +395,52 @@ G-05（卡片 ports 信息密度，P2——现状无溢出，数据诚实优先�
 ---
 
 *报告结束。本文件为 TASK 07.01 唯一新增文件；未修改任何其他文件。*
+
+---
+
+# Implementation Follow-up — 2026-10-25
+
+> 本节为 TASK 07.03 追加，记录 TASK 07.02 实施后的最终状态。
+> **上面 §1–§11 的内容保持 2026-10-21 审计时点的原样，未做任何改写**——包括 §4 中
+> V11（筛选重置）、V12（浏览器默认焦点环）、V14（其他页面缺 h1）这些**已在 07.02 修复**
+> 的历史观测。阅读当前状态请以本节为准。
+
+## 证据层级（先说明证据强度）
+
+- **代码已修改**：可在当前 `main` 的源码中核对（实施提交 `80a8da7`）。
+- **已有测试证据**：2026-10-25 用 agent-browser + 本地 dev server（Chromium）实测，记录于
+  `docs/TASK-07.02-GLOBAL-IMPROVEMENTS.md`；**完整 V1–V14 明细未持久化到仓库**，仅有结论性记录。
+- **本次未重新验证**：下列任何一项都未在 TASK 07.03 重新执行。
+- 后续提交 `4f591e2` 只改文档；`components/`、`lib/`、`app/`、`data/` 自 `80a8da7` 起无改动
+  （`git diff 80a8da7..HEAD -- components lib app data` 为空），因此 07.02 的行为结论仍适用于
+  当前 HEAD。
+
+## 逐项处置
+
+| ID | 原优先级 | 最终状态 | 实施提交 / 归属 | 证据 | 是否需复测 |
+|----|---------|---------|----------------|------|-----------|
+| G-01 | P1 | **已解决** | `80a8da7` | 代码：`SectionHeader` 新增 `headingLevel`（默认 `h2`），Global / Companies / Supply Chain / Tools 四处传 `h1`。测试：四页各 1 个 `<h1>`，`/supply-chain` 另有 2 个 `<h2>` 属页内子区块 | 否（改动该共享组件时作回归点） |
+| G-02 | P2 | **已解决** | `80a8da7` | 代码：`CountryDirectory` 改用模块级 store + `useSyncExternalStore`，`getServerSnapshot` 返回 `null` 以保证与预渲染 HTML 一致。测试：Europe→德国→返回仍 1 卡；Asia 6 卡；All 8 卡；`history.back/forward` UI 与结果一致；整页刷新回 All | 否 |
+| G-03 | P2 | **已解决** | `80a8da7` | 代码：`Button` BASE、`Card` BASE、详情页返回链接各加一套 `focus-visible:outline-*`；`Button.tsx` 注释改为与实现一致。测试：计算样式 `outline: solid 2px rgb(10,10,10)`、`offset 2px`、`:focus-visible` 命中 | 否 |
+| G-04 | P2 | **已解决** | `80a8da7` | 代码：`countryDetail.back` 改为 `Back to country directory` / 「返回国家目录」；返回链接加焦点样式。测试：EN/ZH 详情页实测文案正确。原审计的取样偏差已在本文件 G-04 卡内更正 | 否 |
+| G-05 | P2 | **暂缓（维持现状）** | 未实施 | 代码：`ports.join(" · ")` 与 `Field` 布局未改动。测试（07.01 测量）：US 卡 ports 占满 307px、距内容边界 1px、`scrollWidth === clientWidth`，**无溢出** | 否。进一步调整主要属观感优化，当前无溢出证据支持必须改动 |
+| G-06 | P2 | **已解决** | `80a8da7` | 代码：`zh.ts` `global.title` →「按国家，看懂全球网络」；英文未动。测试：390px 单行不异常 | 否 |
+| G-07 | P2 | **已解决** | `80a8da7` | 代码：`CountryCard` 新增 `actionLabel` prop + `<CardAction />`；仅 `CountryDirectory` 一处调用。测试：8 张卡均有 `View profile` / 「查看档案」，动作行在卡片边界内；1440 卡高 615→631px | 否（触屏"可发现性"未做真机测试） |
+| G-08 | P3 | **转交 TASK 08** | 待 TASK 08 数据字段规范 | 代码：`data/countries.json` 仍为 9 字段，无 `source` / `updatedAt`（脚本核验确认） | 否。数据结构变更应在 TASK 08 统一评估，避免两次改数据 |
+| G-09 | P3 | **暂缓** | 未实施 | 代码：`/global` 无搜索控件（grep 0 命中）。**保留原触发条件：国家数量达到 12 个时重新评估搜索需求** | 否 |
+| G-10 | P3 | **暂缓** | 未实施 | 代码：`CountryDetail` 无 prev/next（grep 0 命中）。G-02 修复后，"返回目录"的摩擦已大幅下降；若未来导航需求或目录规模变化，再重新评估 | 否 |
+| G-11 | P3 | **建议关闭** | — | 数据：Asia 6 / Europe 1 / North America 1，筛选计数如实显示。现有计数如实呈现当前数据分布；仅为均衡视觉而添加解释性文案，反而可能误导用户 | 否 |
+
+## 最终处置汇总
+
+- **已解决（6）**：G-01、G-02、G-03、G-04、G-06、G-07
+- **暂缓（3）**：G-05、G-09、G-10
+- **转交 TASK 08（1）**：G-08
+- **建议关闭（1）**：G-11 —— 仅为当前审计问题的处置建议，不代表代码被修改，也不代表未来不能重新评估
+
+## 本附录的局限
+
+- 上述"测试"结论全部来自 TASK 07.02 的一次 Chromium 实测，**未**在 Firefox / Safari 复核。
+- 真实屏幕阅读器朗读、OS 级 `prefers-reduced-motion`、线上页面实际渲染（本环境无法访问
+  `*.vercel.app`）仍未验证。
+- TASK 07.02 的完整 V1–V14 逐项结果未落盘到仓库；本附录只引用能够核实的结论，未补齐明细。

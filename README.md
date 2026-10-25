@@ -10,10 +10,11 @@ companies that move goods between them.
 It is built in public, one task at a time, by one student learning to code.
 
 > **Current status:** Home, **Global**, **Supply Chain**, **Companies** and
-> **Tools** pages are real — the five-page MVP is complete. Since the v0.7.0
-> release, country detail pages and an interactive network globe on the Home
-> hero have also shipped. These are documented as the **v0.7.1** candidate:
-> a follow-up within the v0.7.x line, prepared but not yet a formal release.
+> **Tools** pages are real — the five-page MVP is complete. **v0.7.1** collects
+> the work shipped since the v0.7.0 release: country detail pages, the
+> interactive network globe on the Home hero, the Hero layout-shift fix and the
+> Global directory audit fixes. Its release notes are checked against the code,
+> the commits are on `main`, and the Vercel Production deployment is confirmed.
 > Every figure shown today is **Demo Data**; the calculators are transparent
 > teaching models, not forecasts.
 
@@ -240,7 +241,7 @@ Data Pipeline), by which point the five-page MVP will long since have shipped.
 | 04   | **Supply Chain** — knowledge base                   | v0.4.x   | Done        |
 | 05   | **Companies** — supply chain role directory         | v0.5.x   | Done        |
 | 06   | **Tools** — EOQ, safety stock, reorder point, turnover | v0.6.x | Done      |
-| 06 + | v0.7.0 visual upgrades (Field density, Hero, SCOR); then country detail pages, interactive globe, layout-shift fix (historical sub-numbers 06.8–06.12) | v0.7.0 / v0.7.1 | Done |
+| 06 + | v0.7.0 visual upgrades (Field density, Hero, SCOR); then country detail pages, interactive globe, layout-shift fix and the TASK 07.02 Global audit fixes (historical sub-numbers 06.8–06.12) | v0.7.0 / v0.7.1 | Done |
 | 07   | **Product Experience** — page-level visual audits and improvements (07.01 Global audit, 07.02 Global improvement) | v0.7.x | Next |
 | 08   | Data foundation & quality (shared types, validation) | v0.8.x   | Planned     |
 | 09   | Data acquisition — Python crawlers for real datasets | v0.9.x   | Planned     |

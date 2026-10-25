@@ -21,11 +21,12 @@ explanation.
 
 ---
 
-## 0.7.1 — Country detail pages and interactive globe
+## 0.7.1 — Country detail pages, interactive globe and directory audit fixes
 
 These changes were previously tracked under historical task numbers
 06.12B–06.12C and are now documented within the TASK 07 Product Experience
-phase. Data, copy, formulas, calculator logic and filters are unchanged.
+phase. Country and company source datasets, formulas and calculator logic are
+unchanged in this release.
 
 **Added**
 
@@ -42,12 +43,36 @@ phase. Data, copy, formulas, calculator logic and filters are unchanged.
   the other seven nodes stay decorative and only the five interactive nodes
   are exposed to screen readers.
 
+**Changed**
+
+- **Page headings (Global, Companies, Supply Chain, Tools)** — each page title
+  is now a real `<h1>` instead of an `<h2>`. Font size, spacing and layout are
+  unchanged; only the HTML semantics and the document outline are corrected.
+- **Global region filter** — the selected region now survives a trip into a
+  country page and back, so returning to the directory no longer resets to
+  "All". A full page load still starts at All.
+- **Chinese Global title** — reworded from 「一个国家，一张网络」 to
+  「按国家，看懂全球网络」. The English title is unchanged.
+
 **Fixed**
 
 - **Hero layout shift** — opening, switching or closing the country card no
   longer moves the headline, description, CTAs or the illustration. The card
   slot reserves a fixed 208px (tallest measured card: 178px at 1440px in
   English), so the two-column Hero keeps a constant height.
+- **Keyboard focus rings** — buttons, clickable cards and the country-detail
+  back link now use a `:focus-visible` ring from the design system (2px ink,
+  2px offset) instead of the browser default. Pointer clicks do not show it.
+- **Country detail back link** — now reads "Back to country directory" /
+  「返回国家目录」, which states the destination instead of naming a section.
+- **Country cards** — each card gained a "View profile" / 「查看档案」 action
+  row, so the whole-card link is visible on touch screens, where there is no
+  hover cue.
+
+This release does not include the deferred country-card port-density
+refinement or other deferred audit follow-ups. The TASK 07.01 audit record was
+also corrected for an evidence-sampling error — documentation only, no product
+change.
 
 ---
 

@@ -77,6 +77,8 @@ const en = {
     filterLabel: "Filter by region",
     filterAll: "All",
     countLabel: "countries",
+    // 卡片底部的动作行：让「整张卡可点」这件事对触屏用户也可见（G-07）
+    cardAction: "View profile",
     labels: {
       role: "Role in the network",
       ports: "Key ports",
@@ -94,7 +96,8 @@ const en = {
     一律来自 data/countries.json，不在这里重复。
   */
   countryDetail: {
-    back: "Back to Global",
+    // 动作 + 目标，链接文本本身就说明去向（G-04）
+    back: "Back to country directory",
     note: "Descriptions reflect general characteristics, not official statistics. Ports are listed by their common English names.",
     labels: {
       ports: "Key ports",

@@ -1,4 +1,4 @@
-import { CardLink } from "../ui/Card";
+import { CardAction, CardLink } from "../ui/Card";
 import Badge from "../ui/Badge";
 // 字段名 + 内容这一行，现在统一用 ui/Field（TASK 04 从本文件提炼出去，ConceptCard 也用）
 import Field from "../ui/Field";
@@ -32,6 +32,7 @@ type CountryCardProps = {
   strength: string; // 结构性优势
   risk: string; // 主要脆弱点
   ports: string[]; // 港口名列表（不翻译）
+  actionLabel: string; // 卡片底部动作行的文案（如「查看档案」，由页面传入）
   labels: {
     ports: string;
     exports: string;
@@ -51,6 +52,7 @@ export default function CountryCard({
   strength,
   risk,
   ports,
+  actionLabel,
   labels,
 }: CountryCardProps) {
   return (
@@ -82,6 +84,14 @@ export default function CountryCard({
         <Field label={labels.strength}>{strength}</Field>
         <Field label={labels.risk}>{risk}</Field>
       </dl>
+
+      {/*
+        TASK 07.02 G-07：卡片底部的动作行。
+        整张卡本来就是链接（CardLink），但触屏没有 hover，「可点」这件事
+        需要一个看得见的提示。复用首页卡片同一个 CardAction：
+        mt-auto 把它推到底部，group-hover 让那根横线在悬停时变长。
+      */}
+      <CardAction label={actionLabel} />
     </CardLink>
   );
 }

@@ -15,7 +15,9 @@
     sm  小按钮
     md  常规按钮
 
-  状态都统一处理：hover（悬停）/ focus（键盘聚焦）/ disabled（禁用）。
+  状态都统一处理：hover（悬停）/ focus-visible（仅键盘聚焦）/ disabled（禁用）。
+  焦点环用 :focus-visible —— 键盘 Tab 时显示，鼠标点击时不显示，
+  这样既保证键盘用户能看见当前位置，又不会在点击时留下多余的描边。
   动画只用颜色过渡，克制，不做弹跳或位移。
 */
 
@@ -25,9 +27,13 @@ import type { ComponentProps } from "react";
 type ButtonVariant = "primary" | "secondary" | "ghost";
 type ButtonSize = "sm" | "md";
 
-// 所有按钮共有的骨架：横向布局、居中、字距、过渡、禁用态
+/*
+  所有按钮共有的骨架：横向布局、居中、字距、过渡、禁用态、键盘焦点环。
+  焦点环的颜色用 ink（品牌黑），与边框/hover 的取值一致；
+  outline-offset-2 让环落在按钮外侧，不会被按钮自身的边框盖住。
+*/
 const BASE =
-  "inline-flex items-center justify-center font-medium uppercase tracking-label transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-40";
+  "inline-flex items-center justify-center font-medium uppercase tracking-label transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-ink";
 
 const VARIANTS: Record<ButtonVariant, string> = {
   primary: "bg-deep text-white hover:bg-deep-hover",

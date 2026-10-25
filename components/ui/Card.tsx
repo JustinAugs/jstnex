@@ -20,7 +20,8 @@ import type { ReactNode } from "react";
 
 type CardTone = "default" | "surface";
 
-const BASE = "border border-line p-6 transition-colors duration-200";
+const BASE =
+  "border border-line p-6 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-ink";
 
 const TONES: Record<CardTone, string> = {
   default: "bg-white",

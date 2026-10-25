@@ -31,10 +31,13 @@ export default function CountryDetail({ country }: CountryDetailProps) {
 
   return (
     <Section>
-      {/* 返回 Global 目录的明确入口（顶部，一眼可见） */}
+      {/* 返回 Global 目录的明确入口（顶部，一眼可见）
+          文案是动作 + 目标（「返回国家目录」），本身就是清晰的可访问名称，
+          不再额外加 aria-label —— 否则读屏器会把同一句读两遍。
+          焦点环与按钮/卡片用同一套 focus-visible 规则（G-03 / G-04）。 */}
       <Link
         href="/global"
-        className="inline-flex items-center gap-2 font-medium tracking-label text-caption text-deep uppercase transition-colors hover:text-deep-hover"
+        className="inline-flex items-center gap-2 font-medium tracking-label text-caption text-deep uppercase transition-colors hover:text-deep-hover focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-ink"
       >
         {/* 一个朝左的小箭头，克制、不引入图标库 */}
         <span aria-hidden className="h-px w-5 bg-deep" />

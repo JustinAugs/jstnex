@@ -44,6 +44,8 @@ export default function SupplyChainView() {
           eyebrow={dict.supplyChain.eyebrow}
           title={dict.supplyChain.title}
           description={dict.supplyChain.description}
+          // 页面唯一主标题用 h1（G-01）；视觉仍是 text-h2，只改语义
+          headingLevel="h1"
         />
 
         {/* SCOR：给整页一个坐标系 */}

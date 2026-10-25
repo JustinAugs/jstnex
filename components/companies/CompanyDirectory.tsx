@@ -136,6 +136,8 @@ export default function CompanyDirectory() {
         eyebrow={dict.companies.page.eyebrow}
         title={dict.companies.page.title}
         description={dict.companies.page.description}
+        // 页面唯一主标题用 h1（G-01）；视觉仍是 text-h2，只改语义
+        headingLevel="h1"
       />
 
       <div className="mt-10">

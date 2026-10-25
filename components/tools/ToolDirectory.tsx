@@ -44,6 +44,8 @@ export default function ToolDirectory() {
         eyebrow={dict.tools.eyebrow}
         title={dict.tools.title}
         description={dict.tools.description}
+        // 页面唯一主标题用 h1（G-01）；视觉仍是 text-h2，只改语义
+        headingLevel="h1"
       />
 
       {/* ---------- 计算器切换 ---------- */}

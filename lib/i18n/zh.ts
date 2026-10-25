@@ -59,13 +59,17 @@ const zh: Dictionary = {
 
   global: {
     eyebrow: "全球网络",
-    title: "一个国家，一张网络",
+    // G-06：原标题「一个国家，一张网络」是 "country by country" 的直译，
+    // 「一张网络」的量词搭配生硬。改成动作 + 对象，读起来更像产品而不是口号。
+    title: "按国家，看懂全球网络",
     description:
       "塑造货物流向的经济体——它们在网络中扮演什么角色、哪些港口是它们的门户、各自最脆弱的环节在哪里。",
     demoBadge: "演示数据",
     filterLabel: "按大区筛选",
     filterAll: "全部",
     countLabel: "个国家",
+    // 卡片底部的动作行：让「整张卡可点」这件事对触屏用户也可见（G-07）
+    cardAction: "查看档案",
     labels: {
       role: "网络中的角色",
       ports: "主要港口",
@@ -77,7 +81,8 @@ const zh: Dictionary = {
   },
 
   countryDetail: {
-    back: "返回全球目录",
+    // 动作 + 目标，链接文本本身就说明去向（G-04）
+    back: "返回国家目录",
     note: "以上描述为一般性特征，并非官方统计数据；港口以通用英文名称列出。",
     labels: {
       ports: "主要港口",

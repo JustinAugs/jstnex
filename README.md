@@ -10,9 +10,12 @@ companies that move goods between them.
 It is built in public, one task at a time, by one student learning to code.
 
 > **Current status:** Home, **Global**, **Supply Chain**, **Companies** and
-> **Tools** pages are real — the V1.0 MVP is complete. Every figure shown today
-> is **Demo Data**; the calculators are transparent teaching models, not
-> forecasts.
+> **Tools** pages are real — the five-page MVP is complete. Since the v0.7.0
+> release, country detail pages and an interactive network globe on the Home
+> hero have also shipped. These are documented as the **v0.7.1** candidate:
+> a follow-up within the v0.7.x line, prepared but not yet a formal release.
+> Every figure shown today is **Demo Data**; the calculators are transparent
+> teaching models, not forecasts.
 
 ---
 
@@ -28,8 +31,8 @@ supply networks can be **seen** (maps and flows), **read** (a knowledge base),
 **looked up** (company and country profiles) and **calculated** (simple, honest
 tools).
 
-The scope is deliberately narrow at the start. V1.0 is five pages and no
-backend. The point is to get the structure right before adding weight.
+The scope is deliberately narrow at the start. The V1 stage is five pages and
+no backend. The point is to get the structure right before adding weight.
 
 ## Why I'm building this
 
@@ -71,11 +74,15 @@ only when a task actually needs them.
 
 Built and working today:
 
-- **Home page** — hero, global snapshot, network entry points, insights,
+- **Home page** — hero with an **interactive network globe** (hover, click or
+  keyboard-focus a country node to open its summary card; the card links to
+  the country detail page), global snapshot, network entry points, insights,
   featured companies, tools.
 - **Global page** (`/global`) — a directory of the economies that shape how
   goods move. Each country records its role in the network, key ports, main
-  exports, its structural strength and its main vulnerability. Filter by region.
+  exports, its structural strength and its main vulnerability. Filter by
+  region. Each card links to a **country detail page** (`/global/[code]`,
+  e.g. `/global/cn`) with the full profile.
 - **Supply Chain page** (`/supply-chain`) — a knowledge base of supply chain
   concepts. Seven SCOR Digital Standard processes set the frame; each concept
   records what it is, why it matters, how it is measured and which process it
@@ -122,6 +129,7 @@ app/
   layout.tsx              root layout: Navbar + Footer + metadata
   page.tsx                Home
   global/page.tsx         Global — country directory (TASK 03)
+  global/[code]/page.tsx  Country detail — one static page per country (SSG)
   globals.css             design tokens and type scale
   opengraph-image.tsx     generated social share image
   icon.svg                favicon
@@ -211,22 +219,39 @@ date**. A number without a source is not data, it is decoration.
 
 ## Roadmap
 
-| Task | Goal                                                | Status      |
-| ---- | --------------------------------------------------- | ----------- |
-| 01   | Project skeleton, Git, deploy pipeline              | Done        |
-| 02   | Home page                                           | Done        |
-| 02.5–02.12 | Foundation: i18n, design system, components, data layer, SEO, docs | Done |
-| 03   | **Global** — country / region view                  | Done        |
-| 04   | **Supply Chain** — knowledge base                   | Done        |
-| 05   | **Companies** — supply chain role directory         | Done        |
-| 06   | **Tools** — EOQ, safety stock, reorder point, turnover | Done     |
-| 07   | Data layer normalisation (shared types, validation) | Next        |
-| 08   | Python crawlers for real datasets                   | Planned     |
-| 09   | PostgreSQL + FastAPI backend                        | Planned     |
-| 10   | Data visualisation (charts, maps)                   | Planned     |
-| 11   | AI layer (RAG over curated sources)                 | Planned     |
+**Numbering standard** (set by TASK 07.00, 2026-10): a task number maps to the
+first two segments of the version it belongs to — TASK 07 → v0.7.x, TASK 08 →
+v0.8.x, TASK 10 → v1.0.x, and so on. Sub-tasks use `TASK 07.01`, `07.02`, …
+(two-digit sequence). The mapping is forward planning only — it does not mean
+those versions are finished or released. Old letter-suffixed sub-numbers
+(06.8, 06.12B, 06.12C …) are historical and kept for traceability; new work
+uses the standard form only.
 
-TASK 03–06 complete the **V1.0 MVP**. Each task ends with one commit on `main`.
+Note on wording: the product phases in the long-term vision below —
+**V1 Structure / V2 Real data / V3 Intelligence** — are stages, not version
+numbers. The version `v1.0.0` itself will be reached at TASK 10 (Database &
+Data Pipeline), by which point the five-page MVP will long since have shipped.
+
+| Task | Goal                                                | Version  | Status      |
+| ---- | --------------------------------------------------- | -------- | ----------- |
+| 01   | Project skeleton, Git, deploy pipeline              | v0.1.x   | Done        |
+| 02   | Home page (02.5–02.12: i18n, design system, components, data layer, SEO, docs) | v0.2.x | Done |
+| 03   | **Global** — country / region view                  | v0.3.x   | Done        |
+| 04   | **Supply Chain** — knowledge base                   | v0.4.x   | Done        |
+| 05   | **Companies** — supply chain role directory         | v0.5.x   | Done        |
+| 06   | **Tools** — EOQ, safety stock, reorder point, turnover | v0.6.x | Done      |
+| 06 + | v0.7.0 visual upgrades (Field density, Hero, SCOR); then country detail pages, interactive globe, layout-shift fix (historical sub-numbers 06.8–06.12) | v0.7.0 / v0.7.1 | Done |
+| 07   | **Product Experience** — page-level visual audits and improvements (07.01 Global audit, 07.02 Global improvement) | v0.7.x | Next |
+| 08   | Data foundation & quality (shared types, validation) | v0.8.x   | Planned     |
+| 09   | Data acquisition — Python crawlers for real datasets | v0.9.x   | Planned     |
+| 10   | Database & data pipeline — PostgreSQL + FastAPI     | v1.0.x   | Planned     |
+| 11   | Analytics & visualisation (charts, maps)            | v1.1.x   | Planned     |
+| 12   | Intelligence & AI (RAG over curated sources)        | v1.2.x   | Planned     |
+
+TASK 01–06 delivered the five-page MVP (the **V1 — Structure** phase). Each
+task ends with one commit on `main`. The next task is
+**TASK 07.01 — Global Page Visualization Audit**: audit and design only;
+TASK 07.02 implements after the audit is approved.
 
 ## Long-term vision
 

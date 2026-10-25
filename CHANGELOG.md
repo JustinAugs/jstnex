@@ -6,8 +6,48 @@ These are **development milestones**, not published releases — the package is
 private, so the version numbers track progress rather than npm tags.
 Each entry corresponds to one task and one commit on `main`.
 
+Versions follow semver (`major.minor.patch`): a patch release fixes defects or
+makes small adjustments (v0.7.1); a minor release adds a stage of
+functionality (v0.8.0); a major release marks a product milestone (v1.0.0).
+Since TASK 07.00 (2026-10), the task number maps to the first two segments of
+its version — TASK 08 → v0.8.x, TASK 10 → v1.0.x, … — and sub-tasks use the
+two-digit form (TASK 07.01, 07.02, …). Task numbers are not version numbers:
+finishing a sub-task does not by itself warrant a release. Earlier
+letter-suffixed sub-numbers (06.8, 06.12C …) are historical and kept as
+written.
+
 Format: `Added` / `Changed` / `Fixed`, in plain language, no jargon without
 explanation.
+
+---
+
+## 0.7.1 — Country detail pages and interactive globe
+
+These changes were previously tracked under historical task numbers
+06.12B–06.12C and are now documented within the TASK 07 Product Experience
+phase. Data, copy, formulas, calculator logic and filters are unchanged.
+
+**Added**
+
+- **Country detail pages** — `/global/[code]` (e.g. `/global/cn`): one static
+  page per country, generated at build time (`generateStaticParams`; unknown
+  codes return 404). Each page shows the bilingual profile — role in the
+  network, key ports, main exports, structural strength, main vulnerability —
+  with its own SEO metadata (title, description, canonical). Country cards on
+  `/global` now link to their detail page.
+- **Interactive network globe** — the Home hero illustration exposes five
+  country nodes (CN / US / SG / DE / JP) to hover, click and keyboard. Hover
+  or focus previews a summary card; Enter / Space selects; Escape closes; the
+  card links to the country detail page. Inline SVG, zero new dependencies;
+  the other seven nodes stay decorative and only the five interactive nodes
+  are exposed to screen readers.
+
+**Fixed**
+
+- **Hero layout shift** — opening, switching or closing the country card no
+  longer moves the headline, description, CTAs or the illustration. The card
+  slot reserves a fixed 208px (tallest measured card: 178px at 1440px in
+  English), so the two-column Hero keeps a constant height.
 
 ---
 

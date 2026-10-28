@@ -32,6 +32,7 @@ import {
   COUNTRIES,
   countConceptsByTopic,
   topicName,
+  provenanceOf,
 } from "@/lib/data";
 
 /* 筛选状态的一种特殊值：不筛选，显示全部 */
@@ -126,6 +127,7 @@ export default function ConceptLibrary() {
           {visible.map((concept) => (
             <ConceptCard
               key={concept.id}
+              provenance={provenanceOf(concept)}
               title={pick(concept.title, language)}
               topic={topicLabel(concept.topicId)}
               level={dict.supplyChain.levels[concept.level]}

@@ -17,6 +17,23 @@
 import type { LocalizedText } from "@/lib/i18n";
 import type { FormulaId } from "@/lib/formulas";
 
+/*
+  TASK 08.01：受控词表搬到 lib/data/enums.ts，溯源类型在 lib/data/provenance.ts。
+
+  为什么这里要「import 进来再 re-export」？
+  因为下面 Country / Company / Concept 的定义要用到这些类型，
+  同时又不希望外部代码改成从 enums.ts 导入 —— 页面一直只认 @/lib/data 这一层。
+  在这里统一转出，等于保持「数据层只有一个入口」的既有约定。
+
+  `import type` 编译后会被完全擦除，所以这些运行时数组（REGIONS 等）
+  不会被带进任何组件的 bundle。
+*/
+import type { Region, IndustryId, SupplyChainRoleId, ConceptLevel } from "./enums";
+import type { Provenance } from "./provenance";
+
+export type { Region, IndustryId, SupplyChainRoleId, ConceptLevel };
+export type { Provenance, ProvenanceKind } from "./provenance";
+
 /** 首页 Global Snapshot 的一个指标（例如 Global Trade） */
 export type SnapshotItem = {
   label: LocalizedText; // 指标名称
@@ -34,8 +51,7 @@ export type NetworkModule = {
 
 /* ---------- Supply Chain 知识库（TASK 04） ---------- */
 
-/** 概念的学习层级。V1 主要用 fundamental / intermediate */
-export type ConceptLevel = "fundamental" | "intermediate" | "advanced";
+/* 概念的学习层级（ConceptLevel）的取值清单在 lib/data/enums.ts。 */
 
 /*
   ConceptMetric —— 一个概念「怎么衡量」。
@@ -71,19 +87,6 @@ export type ConceptMetricRaw = {
   unit?: string;
 };
 
-/*
-  ConceptSource —— 数据来源溯源。
-
-  V1 全部为 null：内容是我们自己整理的教学内容，不是抓取来的统计数据。
-  将来接 Python 爬虫 / 数据库时填上真实来源；
-  UI 只在 source 不为 null 时才渲染「来源 + 日期」，绝不显示 "Source: —"。
-*/
-export type ConceptSource = {
-  name: string;
-  url: string;
-  retrievedAt: string;
-};
-
 /** 知识库的一个主题（库存 / 运输 / 采购 …）。id 是稳定英文 key，不随语言变 */
 export type Topic = {
   id: string;
@@ -104,7 +107,7 @@ export type ScorProcess = {
   字段分三层：
     必需：id / title / summary / topicId / level / definition / whyItMatters / featured
     建议：scorProcess / metrics / relatedCountries
-    预留：source / updatedAt / relatedConcepts   ← 现在就用 null / [] 占位，
+    预留：provenance / relatedConcepts          ← 现在用 null / [] 占位，
                                                    将来接 API 与真实数据源不用改结构
 */
 export type Concept = {
@@ -119,46 +122,33 @@ export type Concept = {
   scorProcess: string | null;
   metrics: ConceptMetric[] | null;
   relatedCountries: string[] | null; // ISO 代码，复用 countries.json 的 code
-  source: ConceptSource | null;
-  updatedAt: string | null;
+  /*
+    溯源（TASK 08.01）—— 取代原来的 `source` + `updatedAt` 两个字段。
+
+    可缺省：concepts.json 里 14 条目前一条都没填（不为现有内容编造来源）。
+    缺省时的语义由 lib/data/provenance.ts 的 provenanceOf() 明确给出
+    （即 kind = "curated"），不要在这里自己判空。
+  */
+  provenance?: Provenance | null;
   relatedConcepts: string[];
 };
 
-/** Companies 页面的一家公司 */
 /*
-  行业 —— 受控清单（TASK 05 §5）。
-  数据里存稳定的英文 id，显示名放在字典里（dict.companies.industries），
+  行业 id（IndustryId）与角色 id（SupplyChainRoleId）的取值清单
+  已移到 lib/data/enums.ts（TASK 08.01），这里不再重复定义。
+
+  字段本身的约定没变：数据里存稳定的英文 id，显示名放在字典里
+  （dict.companies.industries / dict.companies.roles），
   这样中文模式下不会把 "semiconductors" 这种内部 id 暴露给用户。
 */
-export type IndustryId =
-  | "technology"
-  | "automotive"
-  | "logistics"
-  | "manufacturing"
-  | "retail"
-  | "energy"
-  | "pharmaceuticals"
-  | "semiconductors";
 
 /*
-  供应链角色 —— 企业在供应网络里「扮演什么角色」（TASK 05 §6）。
-  刻意不使用「行业龙头 / 市场领先 / 最佳供应商」这类主观评价：
-  这一页讲的是角色，不是排名。
-*/
-export type SupplyChainRoleId =
-  | "brand-integrator"
-  | "manufacturer"
-  | "supplier"
-  | "logistics-provider"
-  | "retailer"
-  | "technology-provider"
-  | "raw-material-energy";
+  大区 —— TASK 08.01 起国家与企业共用 enums.ts 里的 `Region`。
 
-/*
-  大区 —— 直接沿用 Global 页面的英文值（"Asia" / "Europe" / "North America"），
-  不另起一套。显示名复用字典里共享的 regions 段。
+  以前这里叫 CompanyRegion 且只约束企业，而 Country.region 是裸 string：
+  同一个概念两套约束，国家数据写错地区照样编译通过。现在统一了。
+  显示名复用字典里共享的 regions 段。
 */
-export type CompanyRegion = "Asia" | "Europe" | "North America";
 
 /** Companies 页面的一家企业 */
 export type Company = {
@@ -166,12 +156,17 @@ export type Company = {
   name: LocalizedText; // 公司名有通用中文写法（Apple → 苹果）
   industry: IndustryId;
   country: LocalizedText;
-  region: CompanyRegion;
+  region: Region;
   role: SupplyChainRoleId;
   summary: LocalizedText;
   keyActivities: LocalizedText[];
   supplyChainStrength: LocalizedText; // 定性描述，不给分数或百分比
   supplyChainRisk: LocalizedText;
+  /*
+    溯源（TASK 08.01）。可缺省 —— companies.json 目前一条都没填，
+    缺省语义见 lib/data/provenance.ts 的 provenanceOf()。
+  */
+  provenance?: Provenance | null;
   /*
     relatedConcepts —— 未来 Companies → Supply Chain 的关联预留。
     V1 只存数据、不做渲染：因为 /supply-chain/[slug] 还不存在，
@@ -205,7 +200,6 @@ export type CalculatorMeta = {
 export type Tool = {
   name: LocalizedText;
   description: LocalizedText;
-  category: string;
   formula: string; // 数学符号，不翻译
   href: string;
 };
@@ -229,11 +223,23 @@ export type Tool = {
 export type Country = {
   name: LocalizedText;
   code: string; // ISO 3166-1 alpha-2，例如 CN
-  region: string; // 大区 key：Asia / Europe / North America（显示名走字典翻译）
+  /*
+    大区（TASK 08.01）。以前是裸 string，写错地区也能编译通过；
+    现在与国家/企业共用的 `Region` 联合类型一致。
+  */
+  region: Region;
   role: LocalizedText; // 在全球供应链里的角色
   summary: LocalizedText; // 两三句说明它为什么重要
   ports: string[]; // 主要港口，专有名词不翻译
   exports: LocalizedText; // 主要出口品类
   strength: LocalizedText; // 结构性优势
   risk: LocalizedText; // 主要脆弱点
+  /*
+    溯源（TASK 08.01，对应 TASK 07.01 的 G-08）。
+
+    可缺省 —— countries.json 目前 8 条一条都没填：本任务不为现有描述
+    编造来源、链接或日期。缺省语义由 provenanceOf() 给出（kind = "curated"），
+    也就是「人工整理的定性描述」，这正是当前内容的真实性质。
+  */
+  provenance?: Provenance | null;
 };

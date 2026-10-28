@@ -31,6 +31,7 @@ import CountryCard from "@/components/cards/CountryCard";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { pick } from "@/lib/i18n";
 import { COUNTRIES, REGIONS, regionKey } from "@/lib/data";
+import type { Region } from "@/lib/data";
 
 /* 筛选状态的一种特殊值：不筛选，显示全部 */
 const ALL = "all";
@@ -106,8 +107,13 @@ export default function CountryDirectory() {
       ? COUNTRIES
       : COUNTRIES.filter((country) => country.region === selected);
 
-  /* 每个筛选按钮后面要显示的个数 */
-  const countOf = (region: string) =>
+  /*
+    筛选按钮有两种值：「全部」和某个大区。
+    TASK 08.01 起 regionKey() 只接受 `Region`（不再接受任意 string），
+    所以这里把参数类型写清楚：`typeof ALL | Region`。
+    写成 string 的话，regionKey(region) 就编译不过了 —— 这正是我们想要的约束。
+  */
+  const countOf = (region: typeof ALL | Region) =>
     region === ALL
       ? COUNTRIES.length
       : COUNTRIES.filter((country) => country.region === region).length;
@@ -117,10 +123,13 @@ export default function CountryDirectory() {
     ALL 显示「全部 / All」，其余显示字典里翻译好的地区名。
     字典的 key 由 lib/data 的 regionKey() 从 "North America" 这种英文值换算得来。
   */
-  const labelOf = (region: string) =>
+  const labelOf = (region: typeof ALL | Region) =>
     region === ALL
       ? dict.global.filterAll
       : dict.regions[regionKey(region)];
+
+  /* 「全部」+ 数据里出现过的大区。显式标类型，避免字面量被放宽成 string[] */
+  const regionFilters: (typeof ALL | Region)[] = [ALL, ...REGIONS];
 
   return (
     <Section>
@@ -140,7 +149,15 @@ export default function CountryDirectory() {
         aria-label={dict.global.filterLabel}
         className="flex flex-wrap gap-3"
       >
-        {[ALL, ...REGIONS].map((region) => {
+        {/*
+          为什么要先声明 regionFilters 再 map，而不是直接写 [ALL, ...REGIONS]？
+
+          数组字面量会把 "all" 这个字面量放宽（widen）成普通 string，
+          整个数组就变成 string[]，再传给 labelOf() / regionKey() 就类型不匹配了。
+          （CompanyDirectory 里也踩过同一个坑，注释写着同样的原因。）
+          TASK 08.01 之后 regionKey 只接受 Region，这里必须先标好类型。
+        */}
+        {regionFilters.map((region) => {
           const active = selected === region;
           return (
             <button

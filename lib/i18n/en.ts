@@ -104,6 +104,7 @@ const en = {
       exports: "Main exports",
       strength: "Structural strength",
       risk: "Key vulnerability",
+      source: "Source",
     },
   },
 
@@ -141,6 +142,7 @@ const en = {
       metrics: "How it is measured",
       relatedCountries: "Related countries",
       scorProcess: "SCOR process",
+      source: "Source",
     },
     levels: {
       fundamental: "Fundamental",

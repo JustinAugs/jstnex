@@ -89,6 +89,7 @@ const zh: Dictionary = {
       exports: "主要出口",
       strength: "结构性优势",
       risk: "主要脆弱点",
+      source: "来源",
     },
   },
 
@@ -120,6 +121,7 @@ const zh: Dictionary = {
       metrics: "如何衡量",
       relatedCountries: "相关国家",
       scorProcess: "SCOR 流程",
+      source: "来源",
     },
     levels: {
       fundamental: "基础",

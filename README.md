@@ -172,9 +172,10 @@ Then open <http://localhost:3000>.
 ```bash
 npm run build   # production build (also type-checks)
 npm run lint    # ESLint
+npm run validate:data # JSON structure, references, enums and bilingual fields
 ```
 
-Requires Node.js 20+.
+Requires Node.js 22.18+ (22.22.2 is the verified local version). The data validator imports erasable TypeScript directly.
 
 > **Sandbox note:** Next.js telemetry writes to `~/Library/Preferences`, which is
 > blocked in some sandboxes. The scripts above already set
@@ -243,7 +244,7 @@ Data Pipeline), by which point the five-page MVP will long since have shipped.
 | 06   | **Tools** — EOQ, safety stock, reorder point, turnover | v0.6.x | Done      |
 | 06 + | v0.7.0 visual upgrades (Field density, Hero, SCOR); then country detail pages, interactive globe, layout-shift fix and the TASK 07.02 Global audit fixes (historical sub-numbers 06.8–06.12) | v0.7.0 / v0.7.1 | Done |
 | 07   | **Product Experience** — page-level visual audits and improvements (07.01 Global audit, 07.02 Global improvement, 07.03 audit closure) | v0.7.x | Done |
-| 08   | Data foundation & quality (shared types, validation) | v0.8.x   | Planned     |
+| 08   | Data foundation & quality (shared types, validation) | v0.8.x   | In progress |
 | 09   | Data acquisition — Python crawlers for real datasets | v0.9.x   | Planned     |
 | 10   | Database & data pipeline — PostgreSQL + FastAPI     | v1.0.x   | Planned     |
 | 11   | Analytics & visualisation (charts, maps)            | v1.1.x   | Planned     |
@@ -277,3 +278,7 @@ global trade visible, and never present uncertainty as fact.**
 Science & Technology.
 
 Built with NEX. Detailed history lives in [CHANGELOG.md](./CHANGELOG.md).
+
+### TASK 08 checkpoint (not a v0.8.0 release)
+
+08.01–08.04 implement shared enums, data validation, conditional provenance on concept cards and country details, and stable region ordering. Current content remains curated without invented sources. Data schema documentation (08.05), independent network-anchor and Demo-label follow-ups, and the final v0.8.0 closeout remain pending.

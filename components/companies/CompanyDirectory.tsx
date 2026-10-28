@@ -40,7 +40,7 @@ import {
   countCompaniesByRegion,
   regionKey,
 } from "@/lib/data";
-import type { Company, IndustryId, SupplyChainRoleId, CompanyRegion } from "@/lib/data";
+import type { Company, IndustryId, SupplyChainRoleId, Region } from "@/lib/data";
 
 /* 筛选状态的一种特殊值：不筛选，显示全部 */
 const ALL = "all";
@@ -63,7 +63,7 @@ export default function CompanyDirectory() {
     id === ALL ? allLabel : dict.companies.roles[id];
 
   /* 大区复用 Global 那套：regionKey() 把 "North America" 换算成字典字段名 */
-  const regionLabel = (id: CompanyRegion | typeof ALL) =>
+  const regionLabel = (id: Region | typeof ALL) =>
     id === ALL ? allLabel : dict.regions[regionKey(id)];
 
   /*
@@ -81,7 +81,7 @@ export default function CompanyDirectory() {
     count: id === ALL ? COMPANIES.length : countCompaniesByIndustry(id),
   }));
 
-  const regionIds: (CompanyRegion | typeof ALL)[] = [ALL, ...COMPANY_REGIONS];
+  const regionIds: (Region | typeof ALL)[] = [ALL, ...COMPANY_REGIONS];
   const regionOptions: FilterOption[] = regionIds.map((id) => ({
     id,
     label: regionLabel(id),

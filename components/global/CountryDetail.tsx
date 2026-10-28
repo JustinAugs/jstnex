@@ -18,7 +18,7 @@ import Badge from "@/components/ui/Badge";
 import Field from "@/components/ui/Field";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { pick } from "@/lib/i18n";
-import { regionKey, type Country } from "@/lib/data";
+import { regionKey, provenanceOf, type Country } from "@/lib/data";
 
 type CountryDetailProps = {
   country: Country;
@@ -28,6 +28,7 @@ export default function CountryDetail({ country }: CountryDetailProps) {
   const { language, dict } = useLanguage();
 
   const labels = dict.countryDetail.labels;
+  const provenance = provenanceOf(country);
 
   return (
     <Section>
@@ -72,6 +73,22 @@ export default function CountryDetail({ country }: CountryDetailProps) {
           {pick(country.strength, language)}
         </Field>
         <Field label={labels.risk}>{pick(country.risk, language)}</Field>
+        {provenance.kind !== "curated" && provenance.name?.trim() ? (
+          <Field label={labels.source}>
+            {provenance.url && /^https?:\/\//i.test(provenance.url) ? (
+              <a
+                href={provenance.url}
+                className="break-words underline underline-offset-4 hover:text-deep"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {provenance.name}
+              </a>
+            ) : (
+              provenance.name
+            )}
+          </Field>
+        ) : null}
       </dl>
 
       {/* 数据说明：明确这些是定性描述，不是官方统计 */}

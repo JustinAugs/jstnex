@@ -25,6 +25,23 @@ import countriesJson from "@/data/countries.json";
 
 import { formulaFor } from "@/lib/formulas";
 
+/*
+  TASK 08.01：受控词表的运行时清单来自 ./enums（单一来源）。
+
+  这里把三个 allowlist 用 ALL_ 前缀导入，是为了和下面「数据里实际出现过的值」
+  区分开 —— 后者才是页面筛选按钮要用的（不能凭空显示一个点进去 0 结果的分类）：
+
+      ALL_INDUSTRIES   8 个合法行业（词表全集）
+      INDUSTRIES       这 8 个里，companies.json 真正用到的那些
+
+  两者名字相近但职责不同，所以刻意用前缀拉开。
+*/
+import {
+  REGIONS as ALL_REGIONS,
+  INDUSTRIES as ALL_INDUSTRIES,
+  SUPPLY_CHAIN_ROLES as ALL_ROLES,
+} from "./enums";
+
 import type {
   SnapshotItem,
   NetworkModule,
@@ -32,13 +49,14 @@ import type {
   ConceptLevel,
   ConceptMetric,
   ConceptMetricRaw,
-  ConceptSource,
   Topic,
   ScorProcess,
   Company,
   IndustryId,
   SupplyChainRoleId,
-  CompanyRegion,
+  Region,
+  Provenance,
+  ProvenanceKind,
   CalculatorMeta,
   Tool,
   Country,
@@ -69,7 +87,7 @@ export const NETWORK_MODULES: NetworkModule[] = networksJson;
   TypeScript 自己收窄不了，只能在这里断言一次。
 
   代价要清楚：断言之后，如果 JSON 里写错成 "basic"，编译器不再报错。
-  所以 level 的取值请对照 lib/data/types.ts 里的 ConceptLevel。
+  所以 level 的取值请对照 lib/data/enums.ts 里的 CONCEPT_LEVELS。
 */
 /*
   TASK 06：概念里的「计算器指标」不再手写公式字符串，
@@ -79,8 +97,20 @@ export const NETWORK_MODULES: NetworkModule[] = networksJson;
   因为 ConceptCard / ConceptLibrary 仍然只认 { name, formula, unit }。
   在加载层把 Raw 形状补全成公开形状，组件一行都不用改。
 */
+/*
+  TASK 08.01：Concept 原来的 `source` / `updatedAt` 已合并成一个 `provenance`
+  （定义见 lib/data/provenance.ts）。但 concepts.json 里这两个旧字段还在
+  —— 14 条全是 null，本任务按「优先不改数据文件」的原则不动它。
+
+  所以这里把旧字段声明成「只允许 null」：
+    · 现在数据合规，编译通过；
+    · 哪天有人往里面填了真实值，类型立刻报错，提醒他改用 provenance，
+      而不是让旧字段悄悄复活、变成第二套并存的溯源结构。
+*/
 type ConceptRaw = Omit<Concept, "metrics"> & {
   metrics: ConceptMetricRaw[] | null;
+  source?: null;
+  updatedAt?: null;
 };
 
 function enrichConcept(concept: ConceptRaw): Concept {
@@ -149,48 +179,31 @@ export function topicName(topicId: string): Topic | undefined {
   而我们需要它是 IndustryId 这个联合类型，TypeScript 自己收窄不了，只能断言一次。
 
   代价要清楚：断言之后，如果 JSON 里写错成 "tech"，编译器不再报错。
-  所以 industry / role / region 的取值请对照 lib/data/types.ts。
+  所以 industry / role / region 的取值请对照 lib/data/enums.ts
+  （TASK 08.02 会加一个运行时校验脚本，专门补上断言丢掉的这层检查）。
 */
 export const COMPANIES: Company[] = companiesJson as Company[];
 
 /*
-  行业 / 角色 / 大区的「受控清单」：
-  顺序写死（决定筛选按钮的显示顺序），但只保留数据里真实出现过的项 ——
-  这样以后往 companies.json 加一家新行业的公司，按钮会自动多出来，
-  而不会凭空显示一个点进去 0 结果的分类。
+  行业 / 角色 / 大区的筛选清单：
+  只保留数据里真实出现过的项 —— 这样以后往 companies.json 加一家新行业的公司，
+  按钮会自动多出来，而不会凭空显示一个点进去 0 结果的分类。
+
+  顺序来自 ./enums 的 allowlist（TASK 08.01 之前的 INDUSTRY_ORDER / ROLE_ORDER
+  就是手工抄了一遍同样 8 项、7 项，属于同一份清单的第二份来源，已删除）。
 */
-const INDUSTRY_ORDER: IndustryId[] = [
-  "technology",
-  "automotive",
-  "logistics",
-  "manufacturing",
-  "retail",
-  "energy",
-  "pharmaceuticals",
-  "semiconductors",
-];
-
-const ROLE_ORDER: SupplyChainRoleId[] = [
-  "brand-integrator",
-  "manufacturer",
-  "supplier",
-  "logistics-provider",
-  "retailer",
-  "technology-provider",
-  "raw-material-energy",
-];
-
-export const INDUSTRIES: IndustryId[] = INDUSTRY_ORDER.filter((id) =>
+export const INDUSTRIES: IndustryId[] = ALL_INDUSTRIES.filter((id) =>
   COMPANIES.some((company) => company.industry === id),
 );
 
-export const COMPANY_ROLES: SupplyChainRoleId[] = ROLE_ORDER.filter((id) =>
+export const COMPANY_ROLES: SupplyChainRoleId[] = ALL_ROLES.filter((id) =>
   COMPANIES.some((company) => company.role === id),
 );
 
-export const COMPANY_REGIONS: CompanyRegion[] = (
-  ["Asia", "Europe", "North America"] as CompanyRegion[]
-).filter((region) => COMPANIES.some((company) => company.region === region));
+/* 大区顺序来自 ./enums 的 REGIONS（TASK 08.01 之前是这里手写字面量，已删除） */
+export const COMPANY_REGIONS: Region[] = ALL_REGIONS.filter((region) =>
+  COMPANIES.some((company) => company.region === region),
+);
 
 /* 筛选按钮上的个数 —— 一律从数据算出来，绝不手写死数字 */
 export function countCompaniesByIndustry(industry: IndustryId): number {
@@ -201,7 +214,7 @@ export function countCompaniesByRole(role: SupplyChainRoleId): number {
   return COMPANIES.filter((company) => company.role === role).length;
 }
 
-export function countCompaniesByRegion(region: CompanyRegion): number {
+export function countCompaniesByRegion(region: Region): number {
   return COMPANIES.filter((company) => company.region === region).length;
 }
 
@@ -228,13 +241,12 @@ export const CALCULATORS: CalculatorMeta[] = [
 export const TOOLS: Tool[] = CALCULATORS.map((calculator) => ({
   name: calculator.title,
   description: calculator.summary,
-  category: "Inventory",
   formula: formulaFor(calculator.formulaId).expression,
   href: "/tools",
 }));
 
-/** Global 页面的国家列表（TASK 03：每个国家 9 个字段） */
-export const COUNTRIES: Country[] = countriesJson;
+/** Global 页面的国家列表（TASK 03：每个国家 9 个字段 + 可选 provenance） */
+export const COUNTRIES: Country[] = countriesJson as Country[];
 
 /*
   大区的英文值（"Asia" / "Europe" / "North America"）只是一把钥匙，
@@ -244,15 +256,48 @@ export const COUNTRIES: Country[] = countriesJson;
 */
 export type RegionKey = "asia" | "europe" | "northAmerica";
 
-export function regionKey(region: string): RegionKey {
-  if (region === "Europe") return "europe";
-  if (region === "North America") return "northAmerica";
-  return "asia";
+/*
+  TASK 08.01：改成穷尽 switch，不再有「兜底算亚洲」的分支。
+
+  以前是 if / if / return "asia" —— 于是 "Africa"、拼错的 "Aisa"、甚至空字符串
+  都会被当成亚洲显示出来。筛选按钮和卡片都拿这个结果去查字典，
+  页面看起来一切正常，只是地区名错了，没有任何报错。这是最难发现的一类错。
+
+  现在：
+    · 参数类型是 `Region`（联合类型），传进未知字符串编译就过不去；
+    · `default` 分支把 region 赋给 `never` —— 往 REGIONS 里加一个地区却忘了
+      在这里处理，编译立刻失败；
+    · 万一运行时真的收到脏数据（JSON 被手改、未来接口返回异常值），
+      抛错而不是伪装成一个合法地区 —— 宁可整页报错，也不要静默显示错的地区名。
+*/
+export function regionKey(region: Region): RegionKey {
+  switch (region) {
+    case "Asia":
+      return "asia";
+    case "Europe":
+      return "europe";
+    case "North America":
+      return "northAmerica";
+    default: {
+      // 编译期检查：新增地区若未处理，下面这行会报错（Region 不能赋给 never）
+      const unhandled: never = region;
+      // 运行时兜底：脏数据必须显式失败
+      throw new Error(
+        `Unknown region: ${String(unhandled)}. Expected one of ${ALL_REGIONS.join(", ")}.`,
+      );
+    }
+  }
 }
 
-/* 数据里实际出现过的大区，按顺序去重 —— 筛选按钮直接遍历它生成 */
-export const REGIONS: string[] = Array.from(
-  new Set(COUNTRIES.map((country) => country.region)),
+/*
+  数据里实际出现过的大区，按权威词表的固定顺序排列 —— 筛选按钮直接遍历它生成。
+
+  注意：这里给的是「数据里有国家的大区」，不等于 enums.ts 的 REGIONS（合法值全集）。
+  两者刻意分开：合法但暂时没有国家的大区，不应该在筛选器里显示成 0 结果的按钮。
+  TASK 08.04：固定 Asia → Europe → North America，不依赖 JSON 的书写顺序。
+*/
+export const REGIONS: Region[] = ALL_REGIONS.filter((region) =>
+  COUNTRIES.some((country) => country.region === region),
 );
 
 // 类型也顺手导出，将来写页面时不用到处找它定义在哪
@@ -262,14 +307,20 @@ export type {
   Concept,
   ConceptLevel,
   ConceptMetric,
-  ConceptSource,
   Topic,
   ScorProcess,
   Company,
   IndustryId,
   SupplyChainRoleId,
-  CompanyRegion,
+  /* TASK 08.01：国家与企业共用的大区类型（原来的 CompanyRegion 已合并进它） */
+  Region,
+  /* TASK 08.01：统一的溯源类型（取代原来的 ConceptSource） */
+  Provenance,
+  ProvenanceKind,
   CalculatorMeta,
   Tool,
   Country,
 };
+
+// 统一的缺省溯源语义，供 UI 从数据层入口读取。
+export { provenanceOf } from "./provenance";

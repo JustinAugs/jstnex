@@ -1,3 +1,5 @@
+import type { Provenance } from "@/lib/data";
+
 import { Card } from "../ui/Card";
 import Badge from "../ui/Badge";
 import Field from "../ui/Field";
@@ -14,10 +16,12 @@ import Field from "../ui/Field";
   slug 已经在数据里准备好了（concept.id）。
 
   展示什么、不展示什么：
-  数据里还有 summary / source / updatedAt / relatedConcepts 四个字段，
+  数据里还有 summary / provenance / relatedConcepts 三个字段，
   但这里刻意不全部铺出来 —— 卡片信息过载就没人看了。
     · summary  首页 Insights 已经用过了，概念卡里换成更正式的 definition
-    · source   按数据诚实原则，V1 全是 null，所以「有才显示、没有就不显示」
+    · provenance  溯源信息（TASK 08.01 引入，取代原来的 source / updatedAt）。
+                  TASK 08.03：仅非 curated 且有名称时渲染，原则是
+                  「只有真实来源才显示」，绝不显示 "Source: —" 这种空占位
     · relatedConcepts  留给将来的图谱 / 详情页，V1 不渲染
 */
 export type ConceptMetricView = {
@@ -32,6 +36,7 @@ type ConceptCardProps = {
   level: string; // 已翻译好的层级（基础 / 进阶）
   definition: string;
   whyItMatters: string;
+  provenance: Provenance; // 调用方通过 provenanceOf() 统一读取
   metrics: ConceptMetricView[] | null;
   scorProcess: string | null; // 已翻译好的流程名，没有则传 null
   relatedCountries: string[] | null; // 已翻译好的国家名，没有则传 null
@@ -41,6 +46,7 @@ type ConceptCardProps = {
     metrics: string;
     relatedCountries: string;
     scorProcess: string;
+    source: string;
   };
 };
 
@@ -50,6 +56,7 @@ export default function ConceptCard({
   level,
   definition,
   whyItMatters,
+  provenance,
   metrics,
   scorProcess,
   relatedCountries,
@@ -101,6 +108,22 @@ export default function ConceptCard({
         {relatedCountries && relatedCountries.length > 0 ? (
           <Field label={labels.relatedCountries}>
             {relatedCountries.join(" · ")}
+          </Field>
+        ) : null}
+        {provenance.kind !== "curated" && provenance.name?.trim() ? (
+          <Field label={labels.source}>
+            {provenance.url && /^https?:\/\//i.test(provenance.url) ? (
+              <a
+                href={provenance.url}
+                className="break-words underline underline-offset-4 hover:text-deep"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {provenance.name}
+              </a>
+            ) : (
+              provenance.name
+            )}
           </Field>
         ) : null}
       </dl>

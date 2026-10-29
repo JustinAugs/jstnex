@@ -28,9 +28,8 @@
      除非项目已有明确约束（例如 concepts.json 的旧 source/updatedAt 字段
      按类型约定只允许 null，填了值就是错误）。
 
-  注意：运行时会出现 MODULE_TYPELESS_PACKAGE_JSON 警告 —— 那是 Node 提示
-  package.json 没写 "type" 字段（性能提示，非错误）。刻意不加 "type": "module"，
-  因为那会改变 Next 配置文件的模块语义，收益为零。
+  lib/package.json 显式声明 lib 下的 ES module 语义，避免 Node 猜测 TS 模块类型。
+  根 package.json 与 Next 配置的模块语义保持不变。
 */
 
 import { readFileSync } from "node:fs";

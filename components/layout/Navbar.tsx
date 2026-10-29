@@ -11,11 +11,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import LanguageSwitcher from "../ui/LanguageSwitcher";
 import { useLanguage } from "../providers/LanguageProvider";
 
 export default function Navbar() {
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname(); // 当前页面路径，例如 /global
   const [isMenuOpen, setIsMenuOpen] = useState(false); // false = 手机菜单关闭
   const { dict } = useLanguage();
@@ -38,7 +39,13 @@ export default function Navbar() {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-white/90 backdrop-blur">
+    <header onKeyDown={(event) => {
+      if (event.key === "Escape" && isMenuOpen) {
+        event.preventDefault();
+        setIsMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    }} className="sticky top-0 z-50 border-b border-line bg-white/90 backdrop-blur">
       {/* sticky 导航自己不算「区块」，所以这里用 container-page 而不是 Section */}
       <nav className="container-page flex h-16 items-center justify-between">
         {/* 文字 Logo：品牌名不翻译，任何语言下都显示 JSTNEX */}
@@ -58,6 +65,7 @@ export default function Navbar() {
               <li key={link.href}>
                 <Link
                   href={link.href}
+                  aria-current={isActive(link.href) ? "page" : undefined}
                   className={`font-medium tracking-label text-small uppercase transition-colors ${
                     isActive(link.href)
                       ? "text-deep"
@@ -75,6 +83,8 @@ export default function Navbar() {
 
           {/* 手机端汉堡按钮：md 以上隐藏 */}
           <button
+            ref={menuButtonRef}
+            aria-controls="mobile-navigation"
             type="button"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={dict.nav.openMenu}
@@ -101,12 +111,13 @@ export default function Navbar() {
       </nav>
 
       {/* 手机端展开的菜单：isMenuOpen 为 true 时才渲染 */}
-      {isMenuOpen && (
-        <ul className="border-t border-line bg-white px-6 py-4 md:hidden">
+      {
+        <ul id="mobile-navigation" hidden={!isMenuOpen} className="border-t border-line bg-white px-6 py-4 md:hidden">
           {navLinks.map((link) => (
             <li key={link.href} className="border-b border-line last:border-0">
               <Link
                 href={link.href}
+                  aria-current={isActive(link.href) ? "page" : undefined}
                 onClick={() => setIsMenuOpen(false)} // 点完链接自动收起菜单
                 className={`block py-3 font-medium tracking-label text-small uppercase ${
                   isActive(link.href) ? "text-deep" : "text-mist"
@@ -117,7 +128,7 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-      )}
+      }
     </header>
   );
 }

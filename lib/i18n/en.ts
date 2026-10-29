@@ -262,10 +262,10 @@ const en = {
     reset: "Reset",
     formulaLabel: "Formula",
     assumptionsLabel: "Assumptions",
-    exactValue: "Exact value",
+    exactValue: "Calculated value",
     integerReference: "Integer reference",
     integerReferenceNote:
-      "Rounded up for reference when inventory is counted in whole units. If fractional units are allowed, use the exact value.",
+      "Rounded up for reference when inventory is counted in whole units. Displayed values are rounded. If fractional units are allowed, retain the unrounded calculation.",
     enterValues: "Enter all values, then calculate.",
     errors: {
       required: "Enter a value.",

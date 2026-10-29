@@ -17,16 +17,32 @@ import type { Metadata } from "next";
 /*
   站点地址。
   上线后把真实网址写进 .env.local 的 NEXT_PUBLIC_SITE_URL 即可；
-  没配的时候退回 localhost，本地开发不会报错。
+  本地开发缺省 localhost；生产构建必须显式配置公共 HTTPS origin。
 
   关于 NEXT_PUBLIC_ 前缀：这个变量本来就是公开信息（网址），所以用前缀没问题。
   真正的密钥永远不加这个前缀 —— 见 README 的安全规则。
 */
 const rawSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
 
-export const SITE_URL = (
-  rawSiteUrl && rawSiteUrl.length > 0 ? rawSiteUrl : "http://localhost:3000"
-).replace(/\/$/, ""); // 去掉结尾多余的斜杠，拼路径时不会变成 //global
+function resolveSiteUrl(): string {
+  if (!rawSiteUrl && process.env.NODE_ENV === "production") {
+    throw new Error("Production requires NEXT_PUBLIC_SITE_URL (public HTTPS origin).");
+  }
+  const url = new URL(rawSiteUrl || "http://localhost:3000");
+  if (!["http:", "https:"].includes(url.protocol) || url.username || url.password ||
+      url.pathname !== "/" || url.search || url.hash) {
+    throw new Error("NEXT_PUBLIC_SITE_URL must be an HTTP(S) origin without credentials, path, query or hash.");
+  }
+  const hostname = url.hostname.toLowerCase();
+  if (process.env.NODE_ENV === "production" &&
+      (url.protocol !== "https:" || hostname === "localhost" || hostname.endsWith(".localhost") ||
+       hostname === "[::1]" || hostname === "0.0.0.0" || hostname.startsWith("127."))) {
+    throw new Error("Production NEXT_PUBLIC_SITE_URL requires HTTPS and a non-loopback hostname.");
+  }
+  return url.origin;
+}
+
+export const SITE_URL = resolveSiteUrl();
 
 export const SITE_NAME = "JSTNEX";
 

@@ -231,7 +231,7 @@ const zh: Dictionary = {
     exactValue: "数学计算值",
     integerReference: "整数参考值",
     integerReferenceNote:
-      "库存按整数单位计数时，向上取整可作为参考；若业务允许小数，应保留实际计算值。",
+      "显示值经过舍入。库存按整数单位计数时，向上取整可作为参考；若业务允许小数，应保留未舍入的计算值。",
     enterValues: "填写全部数值后点击「计算」。",
     errors: {
       required: "请输入数值。",

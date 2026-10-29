@@ -283,3 +283,13 @@ provenance policy, validation limits and instructions for adding records.
 The validator checks structure, controlled values and references; it does not
 fact-check descriptions or prove source authenticity. Five coverage warnings
 remain intentional. Home network cards now target actual Global sections. Snapshot labels distinguish three illustrative figures from a dynamically derived directory coverage count.
+
+### Production site origin
+
+Set `NEXT_PUBLIC_SITE_URL=https://jstnex.vercel.app` in the deployment environment
+(or the verified custom domain), then rebuild/redeploy. Production builds require
+an explicit HTTPS origin without a path, credentials, query or fragment; missing
+values and loopback addresses fail instead of publishing localhost canonical/OG
+URLs. Local `npm run dev` may omit it. For a local production build:
+`NEXT_PUBLIC_SITE_URL=https://jstnex.vercel.app npm run build`.
+Changing an environment variable alone does not update already-built metadata.

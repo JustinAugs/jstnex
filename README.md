@@ -9,14 +9,12 @@ companies that move goods between them.
 
 It is built in public, one task at a time, by one student learning to code.
 
-> **Current status:** Home, **Global**, **Supply Chain**, **Companies** and
-> **Tools** pages are real — the five-page MVP is complete. **v0.7.1** collects
-> the work shipped since the v0.7.0 release: country detail pages, the
-> interactive network globe on the Home hero, the Hero layout-shift fix and the
-> Global directory audit fixes. Its release notes are checked against the code,
-> the commits are on `main`, and the Vercel Production deployment is confirmed.
-> Every figure shown today is **Demo Data**; the calculators are transparent
-> teaching models, not forecasts.
+> **Current status:** The five-page MVP is complete. **v0.8.0** adds shared
+> data types and controlled values, a repeatable data validator, conditional
+> source display on concept cards and country details, stable region ordering,
+> and a data maintenance guide. Content remains manually curated; no real data
+> acquisition or new statistical claims are included. Deployment evidence is
+> recorded separately from local acceptance. Calculators are teaching models.
 
 ---
 
@@ -151,7 +149,7 @@ components/
   tools/      ToolDirectory (switcher), Calculator (shared shell)
 lib/
   i18n/       en.ts (source of truth), zh.ts, index.ts, languageStore.ts
-  data/       types.ts, index.ts  — typed access to data/*.json
+  data/       types.ts, enums.ts, provenance.ts, index.ts — typed data access
   formulas.ts     shared formula definitions (single source)
   calculators.ts  typed input parsing + pure calculation functions
   seo.ts      metadata helper
@@ -244,7 +242,7 @@ Data Pipeline), by which point the five-page MVP will long since have shipped.
 | 06   | **Tools** — EOQ, safety stock, reorder point, turnover | v0.6.x | Done      |
 | 06 + | v0.7.0 visual upgrades (Field density, Hero, SCOR); then country detail pages, interactive globe, layout-shift fix and the TASK 07.02 Global audit fixes (historical sub-numbers 06.8–06.12) | v0.7.0 / v0.7.1 | Done |
 | 07   | **Product Experience** — page-level visual audits and improvements (07.01 Global audit, 07.02 Global improvement, 07.03 audit closure) | v0.7.x | Done |
-| 08   | Data foundation & quality (shared types, validation) | v0.8.x   | In progress |
+| 08   | Data foundation & quality (shared types, validation) | v0.8.x   | Done        |
 | 09   | Data acquisition — Python crawlers for real datasets | v0.9.x   | Planned     |
 | 10   | Database & data pipeline — PostgreSQL + FastAPI     | v1.0.x   | Planned     |
 | 11   | Analytics & visualisation (charts, maps)            | v1.1.x   | Planned     |
@@ -254,8 +252,8 @@ TASK 01–06 delivered the five-page MVP (the **V1 — Structure** phase). TASK 
 closed out that work: **07.01** audited the Global page, **07.02** implemented
 the six findings the audit accepted, and **07.03** closed the audit as
 documentation only — no product change and no new feature phase. Each task ends
-with one commit on `main`. The next task is **TASK 08 — Data Foundation &
-Quality**.
+with one commit on `main`. TASK 08.01–08.05 are now complete. Independent network-anchor and Demo-label
+follow-ups remain open before the next acquisition phase is designed.
 
 ## Long-term vision
 
@@ -279,6 +277,11 @@ Science & Technology.
 
 Built with NEX. Detailed history lives in [CHANGELOG.md](./CHANGELOG.md).
 
-### TASK 08 checkpoint (not a v0.8.0 release)
+### Data maintenance (TASK 08)
 
-08.01–08.04 implement shared enums, data validation, conditional provenance on concept cards and country details, and stable region ordering. Current content remains curated without invented sources. Data schema documentation (08.05), independent network-anchor and Demo-label follow-ups, and the final v0.8.0 closeout remain pending.
+See [docs/DATA-SCHEMA.md](docs/DATA-SCHEMA.md) for fields, IDs, references,
+provenance policy, validation limits and instructions for adding records.
+The validator checks structure, controlled values and references; it does not
+fact-check descriptions or prove source authenticity. Five coverage warnings
+remain intentional. D-03 network anchors and D-04 per-item Demo labelling / the
+meaning of 195+ remain independent follow-ups, not completed features.

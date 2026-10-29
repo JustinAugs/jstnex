@@ -21,6 +21,38 @@ explanation.
 
 ---
 
+## 0.8.0 — Data foundation and quality (2026-10-29)
+
+**Added**
+
+- Shared runtime enums and inferred types, including a common Region type.
+- A unified optional Provenance model with a curated default; concept cards
+  and country details display a source only when a non-curated name exists.
+- Zero-dependency `npm run validate:data`: structure, required fields,
+  bilingual text, IDs, content slugs, enums, references and formula metadata.
+- `docs/DATA-SCHEMA.md`, including nullability, source policy and maintenance.
+
+**Changed**
+
+- Country region filters use Asia → Europe → North America, excluding empty
+  regions. Removed the unused Home tool category field.
+- Documented Node 22.18+ for direct erasable TypeScript imports in validation.
+
+**Fixed**
+
+- Unknown runtime regions throw instead of silently displaying Asia.
+- Required nullable concept keys cannot be omitted unnoticed.
+- Malformed records and metric collections produce validation errors instead
+  of crashing reference collection; cross-check and global summaries remain
+  separate. Removed unused validator helpers/parameters.
+
+No JSON content, formulas, calculator behavior or dependency versions changed.
+Five coverage warnings remain non-blocking. No invented sources were added.
+Company source UI, network anchors and Demo-label / 195+ follow-ups are not
+included. Production rendering is not inferred from a successful local build.
+
+---
+
 ## 0.7.1 — Country detail pages, interactive globe and directory audit fixes
 
 These changes were previously tracked under historical task numbers

@@ -42,6 +42,7 @@ type CompanyCardProps = {
   };
   /* 可选。传了整张卡变成链接（首页用它跳 /companies）；不传就是静态卡片。 */
   href?: string;
+  detailsLabel?: string;
 };
 
 export default function CompanyCard({
@@ -56,6 +57,7 @@ export default function CompanyCard({
   risk,
   labels,
   href,
+  detailsLabel,
 }: CompanyCardProps) {
   const content = (
     <>
@@ -70,7 +72,10 @@ export default function CompanyCard({
       <p className="mt-4 text-small text-mist">{summary}</p>
 
       {/* @container：让 Field 的并排/堆叠按这个 dl 的实际宽度决定，而不是按屏幕宽度 */}
-      <dl className="@container mt-6">
+      <p className="mt-3 text-small text-mist">{country} · {region}</p>
+      {!href && <details className="mt-5">
+      <summary className="cursor-pointer text-small font-medium text-deep">{detailsLabel}</summary>
+      <dl className="@container mt-4">
         <Field label={labels.location}>
           {country} · {region}
         </Field>
@@ -88,6 +93,7 @@ export default function CompanyCard({
         <Field label={labels.strength}>{strength}</Field>
         <Field label={labels.risk}>{risk}</Field>
       </dl>
+      </details>}
     </>
   );
 

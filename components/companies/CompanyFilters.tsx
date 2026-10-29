@@ -18,6 +18,7 @@
 
 import { useId } from "react";
 
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import Input from "@/components/ui/Input";
 import { buttonStyles } from "@/components/ui/Button";
 
@@ -124,6 +125,7 @@ export default function CompanyFilters({
     组件可能在页面上出现多次，写死 "search" 会撞车。
   */
   const searchId = useId();
+  const { dict } = useLanguage();
 
   return (
     <div className="space-y-6">
@@ -146,7 +148,9 @@ export default function CompanyFilters({
       </div>
 
       {/* ---------- 三组筛选 ---------- */}
-      <div className="grid gap-6 md:grid-cols-3">
+      <details className="border-b border-line pb-4">
+        <summary className="cursor-pointer text-small font-medium text-ink">{dict.review.filters}</summary>
+        <div className="mt-4 grid gap-6 md:grid-cols-3">
         <FilterGroup
           label={labels.industry}
           groupLabel={labels.filterByIndustry}
@@ -169,6 +173,7 @@ export default function CompanyFilters({
           onChange={onRoleChange}
         />
       </div>
+      </details>
     </div>
   );
 }

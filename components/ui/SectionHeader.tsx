@@ -40,10 +40,10 @@ export default function SectionHeader({
   // 视觉完全相同（text-h2），改的只是 HTML 语义。
   const Heading = headingLevel === "h1" ? "h1" : "h2";
   return (
-    <div className="mb-10">
+    <div className="mb-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         {/* 左上角那道细横线是 JSTNEX 区块的标志 */}
-        <div className="border-t border-ink pt-6">
+        <div className="pt-2">
           {eyebrow && (
             <p className="font-medium tracking-label text-caption text-mist uppercase">
               {eyebrow}

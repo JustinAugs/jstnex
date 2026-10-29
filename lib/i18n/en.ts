@@ -314,6 +314,10 @@ const en = {
     },
   },
 
+  review: {
+    conceptDetails: "Concept details",
+    filters: "Advanced filters", clear: "Clear filters", details: "Full supply chain profile", concepts: "Concept library", scor: "SCOR processes", countries: "Countries", ports: "Ports", explore: "Explore networks", countryScope: "Region filters apply to the country directory only.", allCompanies: "Browse all companies", learn: "Open the calculators",
+  },
   footer: {
     tagline: "Global Supply Network Intelligence",
     slogan: "Mapping How The World Moves.",

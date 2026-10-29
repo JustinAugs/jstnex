@@ -45,7 +45,7 @@ export default function ScorFramework() {
   const { language, dict } = useLanguage();
 
   return (
-    <div className="mt-12">
+    <div id="scor-processes" className="scroll-mt-24">
       {/* ---------- SCOR 小标题 ---------- */}
       <div className="border-t border-line pt-6">
         <p className="font-medium uppercase tracking-label text-caption text-mist">
@@ -57,92 +57,20 @@ export default function ScorFramework() {
         </p>
       </div>
 
-      {/* ---------- 流程条：七个节点串成一条链 ---------- */}
-      <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7 xl:gap-x-0">
-        {SCOR_PROCESSES.map((process, index) => {
-          const isFirst = index === 0;
-          const isLast = index === SCOR_PROCESSES.length - 1;
-
-          return (
-            <li
-              key={process.id}
-              className="relative flex items-center gap-3 xl:flex-col xl:gap-2 xl:px-2 xl:text-center"
-            >
-              {/*
-                连接线只在「七个排成一横排」时出现（xl）。
-                做法：每个格子画自己那半截（左半 / 右半），拼起来就是一条通线；
-                圆点是白色实心，会盖住线，看起来就像线把七个节点串起来。
-                xl:gap-x-0 是为了让相邻格子的半截线严丝合缝地接上。
-
-                为什么不用「箭头元素插在节点之间」？
-                因为一旦换行，箭头会掉到下一行的行首，看起来很乱。
-              */}
-              {!isFirst && (
-                <span
-                  aria-hidden
-                  className="absolute top-5 left-0 hidden h-px w-1/2 bg-line xl:block"
-                />
-              )}
-              {!isLast && (
-                <>
-                  <span
-                    aria-hidden
-                    className="absolute top-5 right-0 hidden h-px w-1/2 bg-line xl:block"
-                  />
-                  {/* 箭头：只表示「顺序」，不代表任何业务流向或流量 */}
-                  <svg
-                    aria-hidden
-                    viewBox="0 0 8 12"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.4"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="absolute top-[14px] right-1 hidden h-3 w-2 text-line xl:block"
-                  >
-                    <path d="M1.5 1.5 L6 6 L1.5 10.5" />
-                  </svg>
-                </>
-              )}
-
-              {/* 编号节点：白底 + 深蓝数字（深蓝只做数据高亮，不铺色） */}
-              <span className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line bg-white text-caption font-medium text-deep">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-
-              <div className="min-w-0">
-                <p className="text-small font-medium text-ink">
-                  {pick(process.name, language)}
-                </p>
-                <p className="text-caption text-mist">
-                  {pick(process.name, language === "en" ? "zh" : "en")}
-                </p>
-              </div>
-            </li>
-          );
-        })}
-      </ol>
-
-      {/* ---------- 每个流程的一句话说明 ---------- */}
-      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <ol className="mt-6 grid gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
         {SCOR_PROCESSES.map((process, index) => (
-          <div key={process.id} className="border-t border-line pt-4">
-            <p className="text-small font-medium text-ink">
-              {/* 编号和上面流程条一一对应，是两块的唯一「连接」 */}
-              <span className="mr-2 text-caption text-mist">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              {pick(process.name, language)}
-              <span className="ml-2 text-caption text-mist">
-                {pick(process.name, language === "en" ? "zh" : "en")}
-              </span>
-            </p>
-            <p className="mt-2 text-small text-mist">
-              {pick(process.summary, language)}
-            </p>
-          </div>
+          <li key={process.id} className="border-b border-line py-4">
+            <details>
+              <summary className="cursor-pointer text-small font-medium text-ink">
+                <span className="mr-3 text-mist">{index + 1}.</span>
+                {pick(process.name, language)}
+                <span className="ml-2 text-caption text-mist">{pick(process.name, language === "en" ? "zh" : "en")}</span>
+              </summary>
+              <p className="mt-3 text-small text-mist">{pick(process.summary, language)}</p>
+            </details>
+          </li>
         ))}
-      </div>
+      </ol>
     </div>
   );
 }

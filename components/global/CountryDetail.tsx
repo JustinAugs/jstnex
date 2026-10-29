@@ -66,7 +66,7 @@ export default function CountryDetail({ country }: CountryDetailProps) {
       </p>
 
       {/* 字段区：复用 Field + @container，窄容器自动堆叠 */}
-      <dl className="@container mt-10 border-t border-line">
+      <dl className="@container mt-8 border-t border-line max-w-4xl">
         <Field label={labels.ports}>{country.ports.join(" · ")}</Field>
         <Field label={labels.exports}>{pick(country.exports, language)}</Field>
         <Field label={labels.strength}>

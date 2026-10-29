@@ -194,7 +194,7 @@ export default function Calculator({ calculator, formula }: CalculatorProps) {
   }
 
   return (
-    <Card className="max-w-3xl">
+    <Card className="calculator-panel">
       <h3 className="text-h3 text-ink">{pick(calculator.title, language)}</h3>
       <p className="mt-2 max-w-xl text-small text-mist">
         {pick(calculator.summary, language)}
@@ -208,7 +208,8 @@ export default function Calculator({ calculator, formula }: CalculatorProps) {
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="mt-6">
+      <div className="mt-6 grid items-start gap-8 lg:grid-cols-2">
+      <form onSubmit={handleSubmit}>
         <div className="flex flex-col gap-6">
           {formula.variables.map((variable) => {
             const error = fieldErrors[variable.key];
@@ -333,7 +334,7 @@ export default function Calculator({ calculator, formula }: CalculatorProps) {
 
       {/* ---------- 结果 ---------- */}
       <div
-        className="mt-6 border-t border-line pt-6"
+        className="border-t border-line bg-surface p-5 lg:border-t-0 lg:border-l lg:p-6"
         aria-live="polite"
       >
         {result === null ? (
@@ -375,6 +376,8 @@ export default function Calculator({ calculator, formula }: CalculatorProps) {
               : dict.tools.reasons.resultNotFinite}
           </p>
         )}
+      </div>
+
       </div>
 
       {/* ---------- 假设说明 ---------- */}

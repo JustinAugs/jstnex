@@ -17,10 +17,10 @@ export default function Input({ className = "", ...rest }: ComponentProps<"input
   return (
     <input
       className={[
-        "w-full border border-line bg-white px-4 py-3 text-small text-ink",
+        "w-full border border-[#a3a3a3] bg-white px-4 py-3 text-small text-ink",
         "placeholder:text-mist",
         "transition-colors duration-200 hover:border-mist",
-        "focus:border-ink focus:outline-none",
+        "focus:border-ink focus-visible:outline-2 focus-visible:outline-deep",
         "disabled:cursor-not-allowed disabled:bg-surface disabled:text-mist",
         className,
       ]

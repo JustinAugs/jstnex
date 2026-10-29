@@ -88,11 +88,11 @@
   --text-body--line-height: 1.7;
 
   /* Small：次要说明文字，13px */
-  --text-small: 0.8125rem;
+  --text-small: 0.875rem;
   --text-small--line-height: 1.6;
 
   /* Caption：全大写小标签（eyebrow / 角标），11px */
-  --text-caption: 0.6875rem;
+  --text-caption: 0.75rem;
   --text-caption--line-height: 1.4;
 }
 
@@ -108,12 +108,12 @@
 
 /* 统一区块留白：区块之间的呼吸感由它决定，页面不再各写各的 py-20 */
 @utility section-spacing {
-  padding-block: clamp(3.5rem, 2rem + 5vw, 6rem);
+  padding-block: clamp(2rem, 1.5rem + 2vw, 3.5rem);
 }
 
 /* 统一的小标签字距：所有全大写小字都用这个，避免出现好几种 tracking-[...] */
 @utility tracking-label {
-  letter-spacing: 0.18em;
+  letter-spacing: 0.08em;
 }
 
 @layer base {
@@ -133,3 +133,5 @@
     outline-offset: 2px;
   }
 }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }

@@ -45,7 +45,7 @@ export default function Navbar() {
         setIsMenuOpen(false);
         menuButtonRef.current?.focus();
       }
-    }} className="sticky top-0 z-50 border-b border-line bg-white/90 backdrop-blur">
+    }} className="sticky top-0 z-50 border-b border-line bg-white">
       {/* sticky 导航自己不算「区块」，所以这里用 container-page 而不是 Section */}
       <nav className="container-page flex h-16 items-center justify-between">
         {/* 文字 Logo：品牌名不翻译，任何语言下都显示 JSTNEX */}

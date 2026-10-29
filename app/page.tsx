@@ -131,12 +131,8 @@ export default function Home() {
         />
 
         <div className={`${GRID} sm:grid-cols-2 lg:grid-cols-3`}>
-          {/*
-            TASK 05 起，首页和 Companies 页读同一份 data/companies.json。
-            这里只取前 6 家（companies.json 的前 6 条刻意覆盖了不同行业 / 角色 / 大区），
-            保持和改造前接近的两行卡片密度，完整列表留给 /companies。
-          */}
-          {COMPANIES.slice(0, 6).map((company) => (
+          {/* Three company summaries; full profiles remain in the directory. */}
+          {COMPANIES.slice(0, 3).map((company) => (
             <CompanyCard
               key={company.id}
               name={pick(company.name, language)}
@@ -158,6 +154,7 @@ export default function Home() {
         </div>
       </Section>
 
+      <div className="container-page pb-8"><a href="/companies" className="text-small font-medium text-deep underline underline-offset-4">{dict.review.allCompanies}</a></div>
       {/* ---------- 7. Tools ---------- */}
       <Section>
         <SectionHeader

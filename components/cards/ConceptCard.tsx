@@ -31,6 +31,7 @@ export type ConceptMetricView = {
 };
 
 type ConceptCardProps = {
+  detailsLabel: string;
   title: string;
   topic: string; // 已翻译好的主题名
   level: string; // 已翻译好的层级（基础 / 进阶）
@@ -52,6 +53,7 @@ type ConceptCardProps = {
 
 export default function ConceptCard({
   title,
+  detailsLabel,
   topic,
   level,
   definition,
@@ -82,6 +84,9 @@ export default function ConceptCard({
       {/* @container：让 Field 的并排/堆叠按这个 dl 的实际宽度决定，而不是按屏幕宽度 */}
       <dl className="@container mt-5">
         <Field label={labels.definition}>{definition}</Field>
+      </dl>
+      <details className="mt-4"><summary className="cursor-pointer text-small font-medium text-deep">{detailsLabel}</summary>
+      <dl className="@container mt-3">
         <Field label={labels.whyItMatters}>{whyItMatters}</Field>
 
         {/* 指标：只解释，不计算（计算是 Tools 页的事） */}
@@ -127,6 +132,7 @@ export default function ConceptCard({
           </Field>
         ) : null}
       </dl>
+      </details>
     </Card>
   );
 }

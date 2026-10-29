@@ -272,6 +272,10 @@ const zh: Dictionary = {
     },
   },
 
+  review: {
+    conceptDetails: "概念详解",
+    filters: "高级筛选", clear: "清除筛选", details: "完整供应链档案", concepts: "概念库", scor: "SCOR 流程", countries: "国家目录", ports: "港口索引", explore: "网络探索", countryScope: "地区筛选仅作用于国家目录。", allCompanies: "查看全部企业", learn: "打开计算器",
+  },
   footer: {
     tagline: "全球供应网络智能平台",
     slogan: "探索世界如何流动",

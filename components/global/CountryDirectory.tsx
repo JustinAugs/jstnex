@@ -219,6 +219,10 @@ export default function CountryDirectory() {
         })}
       </div>
 
+      <nav aria-label={dict.global.title} className="my-5 flex flex-wrap gap-4 text-small font-medium text-deep">
+        <a href="#country-directory">{dict.review.countries}</a><a href="#port-directory">{dict.review.ports}</a><a href="#network-exploration">{dict.review.explore}</a>
+      </nav>
+      <p className="text-small text-mist">{dict.review.countryScope}</p>
       {/* 当前显示多少个 */}
       <p className="mt-6 text-caption text-mist">
         {visible.length} {dict.global.countLabel}
@@ -267,10 +271,10 @@ export default function CountryDirectory() {
       <SectionHeader title={dict.global.exploration.portsTitle} description={dict.global.exploration.portsNote} />
       <div className="grid gap-4 md:grid-cols-2">
         {COUNTRIES.map((country) => (
-          <div key={country.code} className="border border-line p-6">
-            <h3 className="text-h3 text-ink"><Link className="text-deep underline underline-offset-4" href={`/global/${country.code.toLowerCase()}`}>{pick(country.name, language)}</Link></h3>
+          <details key={country.code} className="border-b border-line py-4">
+            <summary className="cursor-pointer text-small font-medium text-ink">{pick(country.name, language)} <span className="text-mist">({country.ports.length})</span></summary>
             <ul className="mt-3 flex flex-col gap-2 text-small text-mist">{country.ports.map((port) => <li key={port}>{port}</li>)}</ul>
-          </div>
+          </details>
         ))}
       </div>
     </Section>

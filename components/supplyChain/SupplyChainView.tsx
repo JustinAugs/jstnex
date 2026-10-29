@@ -49,11 +49,16 @@ export default function SupplyChainView() {
         />
 
         {/* SCOR：给整页一个坐标系 */}
-        <ScorFramework />
+        <nav aria-label={dict.supplyChain.title} className="flex flex-wrap gap-4 text-small font-medium text-deep">
+          <a href="#concept-library" className="underline underline-offset-4">{dict.review.concepts}</a>
+          <a href="#scor-processes" className="underline underline-offset-4">{dict.review.scor}</a>
+          <a href="/tools" className="underline underline-offset-4">{dict.review.learn}</a>
+        </nav>
       </Section>
 
       {/* 3. 概念库（含主题筛选） */}
       <ConceptLibrary />
+      <Section><ScorFramework /></Section>
     </>
   );
 }

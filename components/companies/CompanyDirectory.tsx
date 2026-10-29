@@ -140,7 +140,7 @@ export default function CompanyDirectory() {
         headingLevel="h1"
       />
 
-      <div className="mt-10">
+      <div className="mt-6">
         <CompanyFilters
         search={search}
         onSearchChange={setSearch}
@@ -166,8 +166,12 @@ export default function CompanyDirectory() {
         />
       </div>
 
+      <div className="mt-4 flex flex-wrap items-center gap-3 text-small">
+        <span>{[industry !== ALL ? industryLabel(industry as IndustryId) : "", region !== ALL ? regionLabel(region as Region) : "", role !== ALL ? roleLabel(role as SupplyChainRoleId) : ""].filter(Boolean).join(" · ")}</span>
+        {(search || industry !== ALL || region !== ALL || role !== ALL) && <button type="button" className="underline underline-offset-4" onClick={() => {setSearch("");setIndustry(ALL);setRegion(ALL);setRole(ALL);}}>{dict.review.clear}</button>}
+      </div>
       {/* 结果数量 —— 数字来自筛选后的数据，不是写死的 */}
-      <p className="mt-6 text-caption text-mist">
+      <p role="status" className="mt-4 text-small text-mist">
         {visible.length} {dict.companies.page.countLabel}
       </p>
 
@@ -181,6 +185,7 @@ export default function CompanyDirectory() {
         <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {visible.map((company) => (
             <CompanyCard
+              detailsLabel={dict.review.details}
               key={company.id}
               name={pick(company.name, language)}
               industry={dict.companies.industries[company.industry]}

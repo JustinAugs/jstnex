@@ -32,22 +32,16 @@ type HeroProps = {
 
 export default function Hero({ content }: HeroProps) {
   return (
-    <section className="relative overflow-hidden border-b border-line">
-      {/* 极淡的网格背景（纯黑白灰，不用彩色渐变），aria-hidden 表示屏幕阅读器忽略它 */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-60 [background-image:linear-gradient(to_right,#ececec_1px,transparent_1px),linear-gradient(to_bottom,#ececec_1px,transparent_1px)] [background-size:64px_64px] [mask-image:radial-gradient(ellipse_at_top,black,transparent_75%)]"
-      />
-
-      <div className="container-page relative py-20 md:py-24">
-        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+    <section className="relative overflow-hidden bg-surface">
+      <div className="container-page relative py-10 md:py-16">
+        <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           {/* ---------- 左：文字（品牌介绍 → 标题 → 标语 → 描述 → CTA） ---------- */}
           <div>
             <p className="font-medium uppercase tracking-label text-caption text-mist">
               {content.eyebrow}
             </p>
 
-            <h1 className="mt-6 text-display text-ink">
+            <h1 className="mt-4 text-[clamp(1.75rem,4.2vw,3.75rem)] leading-[1.08] font-bold tracking-tight text-ink">
               {content.titleTop}
               <br />
               {content.titleBottom}
@@ -77,7 +71,7 @@ export default function Hero({ content }: HeroProps) {
           */}
           <NetworkIllustration
             caption={content.illustrationCaption}
-            className="mx-auto w-full max-w-[420px] lg:mx-0 lg:max-w-none"
+            className="mx-auto w-full max-w-[240px] md:max-w-[340px] lg:mx-0 lg:max-w-none"
           />
         </div>
       </div>

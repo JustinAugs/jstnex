@@ -79,7 +79,7 @@ export default function ConceptLibrary() {
   };
 
   return (
-    <Section>
+    <Section id="concept-library" className="scroll-mt-24 !pt-4">
       <SectionHeader
         eyebrow={dict.supplyChain.library.eyebrow}
         title={dict.supplyChain.library.title}
@@ -125,7 +125,7 @@ export default function ConceptLibrary() {
       ) : (
         <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {visible.map((concept) => (
-            <ConceptCard
+            <ConceptCard detailsLabel={dict.review.conceptDetails}
               key={concept.id}
               provenance={provenanceOf(concept)}
               title={pick(concept.title, language)}

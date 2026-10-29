@@ -422,13 +422,10 @@ export default function NetworkIllustration({
         })}
       </svg>
 
-      {/* 信息卡：放在 SVG 下方正常文档流，不用绝对定位，不遮挡 Hero 标题/CTA。
-          槽高固定（h-52 = 208px）：实测最高卡片 178px（1440px 英文最长摘要），
-          预留余量防字体度量差异。槽高恒定 → Hero 两栏高度恒定 →
-          卡片出现/切换/关闭时标题与 CTA 零位移（items-center 布局对行高敏感）。 */}
+      {/* Country detail stays in normal flow; no empty reserved slot. */}
       <div
         aria-live="polite"
-        className="mt-5 h-52"
+        className={activeCountry ? "mt-4" : "mt-2"}
       >
         {activeCountry ? (
           <div className="rounded-sm border border-line bg-white p-4">

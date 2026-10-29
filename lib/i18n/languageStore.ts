@@ -41,9 +41,11 @@ export function subscribe(onChange: () => void) {
 export function getSnapshot(): Language {
   if (!hasReadFromStorage) {
     hasReadFromStorage = true;
-    const stored = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
-    if (isLanguage(stored)) {
-      currentLanguage = stored;
+    try {
+      const stored = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
+      if (isLanguage(stored)) currentLanguage = stored;
+    } catch {
+      // Storage can be blocked by browser policy; keep the in-memory language.
     }
   }
   return currentLanguage;
@@ -57,6 +59,10 @@ export function getServerSnapshot(): Language {
 /** 切换语言：写入 localStorage，并通知所有组件重新渲染 */
 export function setLanguage(next: Language) {
   currentLanguage = next;
-  window.localStorage.setItem(LANGUAGE_STORAGE_KEY, next);
+  try {
+    window.localStorage.setItem(LANGUAGE_STORAGE_KEY, next);
+  } catch {
+    // Switching language must still work when persistence is unavailable.
+  }
   listeners.forEach((listener) => listener());
 }

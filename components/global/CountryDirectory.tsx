@@ -63,6 +63,7 @@ const ALL = "all";
     与 lib/i18n/languageStore.ts 的模式一致。
 */
 let savedRegion: string | null = null;
+let directoryReturn: { href: string; y: number } | null = null;
 
 const regionListeners = new Set<() => void>();
 
@@ -117,6 +118,24 @@ export default function CountryDirectory() {
     getRegionServerSnapshot,
   );
   const selected = rememberedRegion ?? ALL;
+
+  useEffect(() => {
+    const destination = directoryReturn;
+    if (!destination || window.location.hash) return;
+    let cancelled = false;
+    void document.fonts.ready.then(() => {
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        if (cancelled) return;
+        const link = Array.from(document.querySelectorAll<HTMLAnchorElement>("#country-directory a"))
+          .find((element) => element.getAttribute("href") === destination.href);
+        if (!link) return;
+        link.focus({ preventScroll: true });
+        window.scrollTo({ top: destination.y, behavior: "instant" });
+        directoryReturn = null;
+      }));
+    });
+    return () => { cancelled = true; };
+  }, [selected]);
 
   // 根据选中项算出「这次要显示哪些国家」
   const visible =
@@ -210,7 +229,13 @@ export default function CountryDirectory() {
         // 现在的数据一定筛得出来，这里是为将来数据变动态准备的保险
         <EmptyState className="mt-6" />
       ) : (
-        <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3"
+          onClickCapture={(event) => {
+            if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+            const link = (event.target as HTMLElement).closest<HTMLAnchorElement>("a[href]");
+            if (link) directoryReturn = { href: link.getAttribute("href")!, y: window.scrollY };
+          }}
+        >
           {visible.map((country) => (
             <CountryCard
               key={country.code}

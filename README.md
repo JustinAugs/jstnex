@@ -9,7 +9,7 @@ companies that move goods between them.
 
 It is built in public, one task at a time, by one student learning to code.
 
-> **Current status:** The five-page MVP is complete. **v0.8.0** adds shared
+> **Current status:** The five-page MVP is complete. **v0.8.1** includes shared
 > data types and controlled values, a repeatable data validator, conditional
 > source display on concept cards and country details, stable region ordering,
 > and a data maintenance guide. Content remains manually curated; no real data
@@ -252,8 +252,7 @@ TASK 01–06 delivered the five-page MVP (the **V1 — Structure** phase). TASK 
 closed out that work: **07.01** audited the Global page, **07.02** implemented
 the six findings the audit accepted, and **07.03** closed the audit as
 documentation only — no product change and no new feature phase. Each task ends
-with one commit on `main`. TASK 08.01–08.05 are now complete. Independent network-anchor and Demo-label
-follow-ups remain open before the next acquisition phase is designed.
+with one commit on `main`. TASK 08.01–08.05 are now complete. Network-anchor and per-card Demo-label follow-ups are also complete; the next phase is TASK 09 acquisition design.
 
 ## Long-term vision
 
@@ -283,5 +282,4 @@ See [docs/DATA-SCHEMA.md](docs/DATA-SCHEMA.md) for fields, IDs, references,
 provenance policy, validation limits and instructions for adding records.
 The validator checks structure, controlled values and references; it does not
 fact-check descriptions or prove source authenticity. Five coverage warnings
-remain intentional. D-03 network anchors and D-04 per-item Demo labelling / the
-meaning of 195+ remain independent follow-ups, not completed features.
+remain intentional. Home network cards now target actual Global sections. Snapshot labels distinguish three illustrative figures from a dynamically derived directory coverage count.

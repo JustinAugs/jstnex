@@ -29,6 +29,7 @@ import CompanyCard from "@/components/cards/CompanyCard";
 import ToolCard from "@/components/cards/ToolCard";
 import Section from "@/components/ui/Section";
 import SectionHeader from "@/components/ui/SectionHeader";
+import Badge from "@/components/ui/Badge";
 import DemoBadge from "@/components/ui/DemoBadge";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { pick } from "@/lib/i18n";
@@ -58,8 +59,6 @@ export default function Home() {
         <SectionHeader
           eyebrow={dict.snapshot.eyebrow}
           title={dict.snapshot.title}
-          // Demo Data 标签放进标题自带的右上角插槽，页面不用再拼 flex
-          action={<DemoBadge label={dict.snapshot.demoBadge} />}
         />
 
         <div className={`${GRID} sm:grid-cols-2 lg:grid-cols-4`}>
@@ -67,6 +66,7 @@ export default function Home() {
             <DataCard
               key={pick(item.label, language)}
               label={pick(item.label, language)}
+              badge={item.kind === "demo" ? <DemoBadge label={dict.snapshot.demoBadge} /> : <Badge>{dict.snapshot.coverageBadge}</Badge>}
               value={item.value}
               unit={item.unit}
               note={pick(item.note, language)}

@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { cardStyles } from "../ui/Card";
 
 /*
@@ -7,18 +8,20 @@ import { cardStyles } from "../ui/Card";
   数字用深蓝 —— 对应品牌规范里深蓝的四种允许用法之一：数据高亮。
 */
 type DataCardProps = {
+  badge?: ReactNode;
   label: string; // 指标名称，例如 GLOBAL TRADE
   value: string; // 数值，例如 24.0
   unit?: string; // 单位，例如 T / M TEU
   note?: string; // 一句话补充说明
 };
 
-export default function DataCard({ label, value, unit, note }: DataCardProps) {
+export default function DataCard({ label, value, unit, note, badge }: DataCardProps) {
   return (
     <div className={cardStyles({ tone: "surface" })}>
       <p className="font-medium tracking-label text-caption text-mist uppercase">
         {label}
       </p>
+      {badge && <div className="mt-3">{badge}</div>}
       {/* 数字是数据平台的重点，所以字号最大、用深蓝做高亮 */}
       <p className="mt-4 text-h1 text-deep">
         {value}

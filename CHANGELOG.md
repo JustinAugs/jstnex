@@ -21,6 +21,22 @@ explanation.
 
 ---
 
+## 0.8.1 — Network entrances and honest snapshot labels (2026-10-29)
+
+**Added**
+- Port index derived from existing country profiles and explicit company/knowledge exploration entrances on Global.
+
+**Changed**
+- Home network cards point to three stable Global anchors with matching descriptions.
+- Three illustrative snapshot figures carry their own Demo Data labels.
+- Replaced ambiguous 195+ with Countries in this directory, derived from country records. This is site coverage, not a global statistical total.
+- Snapshot kind is required; coverage forbids stored value/unit. Updated data guide and validation.
+
+No new real statistics, formulas, dependencies or country/company content.
+This patch groups the independent product follow-ups after the v0.8.0 milestone; the v0.8.0 tag is unchanged.
+
+---
+
 ## 0.8.0 — Data foundation and quality (2026-10-29)
 
 **Added**

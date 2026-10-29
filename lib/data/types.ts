@@ -36,6 +36,7 @@ export type { Provenance, ProvenanceKind } from "./provenance";
 
 /** 首页 Global Snapshot 的一个指标（例如 Global Trade） */
 export type SnapshotItem = {
+  kind: "demo" | "coverage";
   label: LocalizedText; // 指标名称
   value: string; // 数值，例如 $24.0
   unit?: string; // 单位，例如 T / M TEU（可选）

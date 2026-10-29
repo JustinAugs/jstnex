@@ -66,9 +66,13 @@ import type {
   演示数据说明（重要）：
   snapshot.json 里的数字是示例值，不是实时统计。
   每一项自带 note 写明 "Sample figure — not a live statistic"，
-  页面上还会统一挂 Demo Data 标签，绝不让读者误以为是真实数据。
+  页面按条目标注 Demo Data 或站内覆盖，绝不让读者误以为是真实数据。
 */
-export const SNAPSHOT: SnapshotItem[] = snapshotJson;
+type SnapshotRaw = Omit<SnapshotItem, "value"> & { value?: string };
+export const SNAPSHOT: SnapshotItem[] = (snapshotJson as SnapshotRaw[]).map((item) => ({
+  ...item,
+  value: item.kind === "coverage" ? String(countriesJson.length) : item.value!,
+}));
 
 /** Global Network 的三个入口模块 */
 export const NETWORK_MODULES: NetworkModule[] = networksJson;

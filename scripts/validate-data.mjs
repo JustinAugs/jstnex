@@ -218,7 +218,9 @@ if (snapshot) {
     const id = `records[${i}] (${item?.label?.en ?? "?"})`;
     checkLocalized("data/snapshot.json", id, "label", item?.label);
     checkLocalized("data/snapshot.json", id, "note", item?.note);
-    if (!isNonEmptyString(item?.value)) {
+    if (item?.kind !== "demo" && item?.kind !== "coverage") err("data/snapshot.json", `${id} · kind`, "应为 demo 或 coverage");
+    if (item?.kind === "coverage" && ("value" in item || "unit" in item)) err("data/snapshot.json", id, "coverage 数值必须从国家数据派生，不允许 value/unit");
+    if (item?.kind !== "coverage" && !isNonEmptyString(item?.value)) {
       err("data/snapshot.json", `${id} · value`, `应为非空字符串，实际: ${JSON.stringify(item?.value)}`);
     }
     if (item?.unit !== undefined && !isNonEmptyString(item.unit)) {

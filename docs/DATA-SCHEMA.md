@@ -123,15 +123,16 @@ Adding a new calculator needs a separately scoped code change to the formula reg
 | Dataset | Field | Requirement |
 |---|---|---|
 | snapshot | label: LT | required; English label unique for React key |
-| snapshot | value: string | required display text, not a numeric computation input |
+| snapshot | kind: "demo" or "coverage" | required; demo is illustrative, coverage is directory count |
+| snapshot | value: string | required only for demo; forbidden in coverage raw JSON, derived at load time |
 | snapshot | unit: string | optional, nonempty if present |
 | snapshot | note: LT | required explanation of the figure |
 | networks | title: LT | required; English title unique for React key |
 | networks | description: LT | required |
 | networks | href: string | required nonempty path beginning with `/` |
 
-The path check does not prove a destination or anchor exists. Three current network entrances still target `/global`; D-03 is a separate follow-up.
-Snapshot figures used for layout are Demo Data. The existing `195+` item has unresolved meaning/evidence and must not be treated as a verified statistic. D-04 separately covers verification and per-item labelling; this schema guide does not resolve it.
+The path check does not prove a destination or anchor exists. Network entrances target `/global#country-directory`, `/global#port-directory`, and `/global#network-exploration`. The port index is derived from existing countries; exploration links to existing Companies and Supply Chain pages.
+Snapshot figures used for layout are Demo Data. The old `195+` item was replaced with directory coverage. Coverage forbids raw value/unit and derives its value from countriesJson.length in the loader. It is not a global country total. Three demo items carry per-card Demo Data labels; coverage carries Site coverage.
 
 ## 7. Controlled values and region views
 
@@ -212,6 +213,6 @@ The known MODULE_TYPELESS_PACKAGE_JSON notice is a runtime module-detection perf
 
 ## 12. Out of scope and source files
 
-No database tables, API contracts, CI integration, external acquisition or AI pipeline are implemented by this document. Network anchors, Demo-label verification and final v0.8.0 release closeout remain separate tasks.
+No database tables, API contracts, CI integration, external acquisition or AI pipeline are implemented by this document. D-03/D-04 anchor and labelling follow-ups are implemented after v0.8.0; no global country count is claimed.
 
 Implementation references: `lib/data/types.ts`, `lib/data/enums.ts`, `lib/data/provenance.ts`, `lib/data/index.ts`, `lib/formulas.ts`, `lib/calculators.ts`, `scripts/validate-data.mjs`, `components/cards/ConceptCard.tsx`, `components/global/CountryDetail.tsx`, and `lib/i18n/{en,zh}.ts`.

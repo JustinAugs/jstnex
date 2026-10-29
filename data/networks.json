@@ -1,17 +1,35 @@
 [
   {
-    "title": { "en": "Trade", "zh": "贸易" },
-    "description": { "en": "Global import & export", "zh": "全球进口与出口" },
-    "href": "/global"
+    "title": {
+      "en": "Trade",
+      "zh": "贸易"
+    },
+    "description": {
+      "en": "Country roles and export profiles",
+      "zh": "国家角色与出口档案"
+    },
+    "href": "/global#country-directory"
   },
   {
-    "title": { "en": "Logistics", "zh": "物流" },
-    "description": { "en": "Global transportation", "zh": "全球运输体系" },
-    "href": "/global"
+    "title": {
+      "en": "Logistics",
+      "zh": "物流"
+    },
+    "description": {
+      "en": "Ports listed in the country directory",
+      "zh": "国家档案中的港口索引"
+    },
+    "href": "/global#port-directory"
   },
   {
-    "title": { "en": "Networks", "zh": "网络" },
-    "description": { "en": "Supply chain connections", "zh": "供应链连接关系" },
-    "href": "/global"
+    "title": {
+      "en": "Networks",
+      "zh": "网络"
+    },
+    "description": {
+      "en": "Explore companies and supply chain concepts",
+      "zh": "探索企业与供应链知识"
+    },
+    "href": "/global#network-exploration"
   }
 ]

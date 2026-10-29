@@ -43,15 +43,16 @@ const en = {
 
   snapshot: {
     eyebrow: "Global Snapshot",
-    title: "The network in four numbers",
+    title: "Illustrative figures and site coverage",
     demoBadge: "Demo Data",
+    coverageBadge: "Site coverage",
   },
 
   network: {
     eyebrow: "Global Network",
     title: "Three ways to see the world",
     description:
-      "Trade flows, transportation systems and the connections that bind them.",
+      "Explore country profiles, listed ports and supply chain knowledge.",
     explore: "Explore",
   },
 
@@ -79,6 +80,14 @@ const en = {
     countLabel: "countries",
     // 卡片底部的动作行：让「整张卡可点」这件事对触屏用户也可见（G-07）
     cardAction: "View profile",
+    exploration: {
+      "portsTitle": "Port directory",
+      "portsNote": "Ports from our country profiles, grouped by country. This is a curated index, not a ranking or live traffic map.",
+      "networkTitle": "Explore supply networks",
+      "networkNote": "Browse company roles and supply chain concepts. These are directory entrances, not a verified relationship graph.",
+      "companies": "Explore companies",
+      "concepts": "Explore concepts"
+},
     labels: {
       role: "Role in the network",
       ports: "Key ports",

@@ -39,14 +39,15 @@ const zh: Dictionary = {
 
   snapshot: {
     eyebrow: "全球概览",
-    title: "四个数字看懂全球网络",
+    title: "示例数值与站内覆盖",
     demoBadge: "演示数据",
+    coverageBadge: "站内覆盖",
   },
 
   network: {
     eyebrow: "全球网络",
     title: "观察世界的三个角度",
-    description: "贸易流向、运输体系，以及把它们连接在一起的网络关系。",
+    description: "浏览国家档案、港口索引与供应链知识。",
     explore: "查看",
   },
 
@@ -70,6 +71,14 @@ const zh: Dictionary = {
     countLabel: "个国家",
     // 卡片底部的动作行：让「整张卡可点」这件事对触屏用户也可见（G-07）
     cardAction: "查看档案",
+    exploration: {
+      "portsTitle": "港口索引",
+      "portsNote": "按国家整理现有档案中的港口。这是人工整理的索引，并非排名或实时流量地图。",
+      "networkTitle": "探索供应网络",
+      "networkNote": "从企业角色与供应链知识继续探索。这里提供目录入口，不代表已核验的关系图谱。",
+      "companies": "浏览企业",
+      "concepts": "浏览供应链知识"
+},
     labels: {
       role: "网络中的角色",
       ports: "主要港口",

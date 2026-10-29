@@ -19,7 +19,8 @@
   这是 Next.js 最常见的写法：外壳留在服务端，交互拆到客户端。
 */
 
-import { useSyncExternalStore } from "react";
+import Link from "next/link";
+import { useEffect, useSyncExternalStore } from "react";
 
 import Section from "@/components/ui/Section";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -87,6 +88,22 @@ function setSavedRegion(next: string) {
 }
 
 export default function CountryDirectory() {
+  // Align after hydration/fonts settle; translated content can change section positions.
+  useEffect(() => {
+    let cancelled = false;
+    const align = () => {
+      const id = window.location.hash.slice(1);
+      if (["country-directory", "port-directory", "network-exploration"].includes(id)) {
+        requestAnimationFrame(() => {
+          if (!cancelled) document.getElementById(id)?.scrollIntoView({ block: "start" });
+        });
+      }
+    };
+    void document.fonts.ready.then(align);
+    window.addEventListener("hashchange", align);
+    return () => { cancelled = true; window.removeEventListener("hashchange", align); };
+  }, []);
+
   const { language, dict } = useLanguage();
 
   /*
@@ -132,7 +149,8 @@ export default function CountryDirectory() {
   const regionFilters: (typeof ALL | Region)[] = [ALL, ...REGIONS];
 
   return (
-    <Section>
+    <>
+    <Section id="country-directory" className="scroll-mt-24">
       <SectionHeader
         eyebrow={dict.global.eyebrow}
         title={dict.global.title}
@@ -220,5 +238,24 @@ export default function CountryDirectory() {
         {dict.global.note}
       </p>
     </Section>
+    <Section id="port-directory" className="scroll-mt-24">
+      <SectionHeader title={dict.global.exploration.portsTitle} description={dict.global.exploration.portsNote} />
+      <div className="grid gap-4 md:grid-cols-2">
+        {COUNTRIES.map((country) => (
+          <div key={country.code} className="border border-line p-6">
+            <h3 className="text-h3 text-ink"><Link className="text-deep underline underline-offset-4" href={`/global/${country.code.toLowerCase()}`}>{pick(country.name, language)}</Link></h3>
+            <ul className="mt-3 flex flex-col gap-2 text-small text-mist">{country.ports.map((port) => <li key={port}>{port}</li>)}</ul>
+          </div>
+        ))}
+      </div>
+    </Section>
+    <Section id="network-exploration" className="scroll-mt-24">
+      <SectionHeader title={dict.global.exploration.networkTitle} description={dict.global.exploration.networkNote} />
+      <div className="flex flex-wrap gap-4">
+        <Link href="/companies" className={buttonStyles({variant:"secondary"})}>{dict.global.exploration.companies}</Link>
+        <Link href="/supply-chain" className={buttonStyles({variant:"secondary"})}>{dict.global.exploration.concepts}</Link>
+      </div>
+    </Section>
+    </>
   );
 }

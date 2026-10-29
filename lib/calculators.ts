@@ -194,9 +194,16 @@ export function calculateEoq(input: EoqInput): CalcResult {
   if (!(input.orderingCost > 0)) return invalid("orderingCostMustBePositive");
   if (!(input.holdingCost > 0)) return invalid("holdingCostMustBePositive");
 
-  const value = Math.sqrt(
+  let value = Math.sqrt(
     (2 * input.annualDemand * input.orderingCost) / input.holdingCost,
   );
+  // Intermediate products may overflow/underflow even when the final root fits.
+  // Keep ordinary arithmetic unchanged; use log-space only for extreme inputs.
+  if ((!Number.isFinite(value) || value === 0) &&
+      [input.annualDemand, input.orderingCost, input.holdingCost].every(Number.isFinite)) {
+    value = Math.exp((Math.log(2) + Math.log(input.annualDemand) +
+      Math.log(input.orderingCost) - Math.log(input.holdingCost)) / 2);
+  }
 
   return ok(value, Math.ceil(value));
 }

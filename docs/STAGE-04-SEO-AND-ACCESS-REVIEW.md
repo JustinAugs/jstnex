@@ -2,7 +2,7 @@
 
 ## 04.01-A Agent Reach
 
-Installed official Agent Reach1.6.0 from Panniantong/Agent-Reach releases/latest/download/agent-reach.zip using uv, in /Users/justin/Documents/Codex/agent-reach-runtime. The PyPI homonym points to another author and was not installed. JSTNEX dependencies unchanged. GitHub read JustinAugs/jstnex succeeded and returned public repository README. This is evidence of repository reading, not a deployment status or branch-head check. Web read of jstnex.vercel.app/global returned TIMEOUT; stopped retries per skill. Official setup's optional media tooling is not evidence of these read actions being verified.
+Installed official Agent Reach1.6.0 from Panniantong/Agent-Reach releases/latest/download/agent-reach.zip using uv, in /Users/justin/Documents/Codex/agent-reach-runtime. The PyPI homonym points to another author and was not installed. JSTNEX dependencies unchanged. GitHub read JustinAugs/jstnex succeeded and returned public repository README. This is evidence of repository reading, not a deployment status or branch-head check. Web read of jstnex.vercel.app/global returned TIMEOUT; stopped retries per skill. Full setup was interrupted after its FFmpeg helper remained running for several minutes; no installation_report was generated. CLI installation and GitHub read are verified, but full default-channel initialization is incomplete. No need to install media tooling for this deployment task.
 
 ## 04.01-B Vercel
 

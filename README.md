@@ -293,3 +293,12 @@ values and loopback addresses fail instead of publishing localhost canonical/OG
 URLs. Local `npm run dev` may omit it. For a local production build:
 `NEXT_PUBLIC_SITE_URL=https://jstnex.vercel.app npm run build`.
 Changing an environment variable alone does not update already-built metadata.
+
+### Search indexing by environment
+
+Production emits a sitemap for the five public entry pages and all country detail
+routes, with no invented last-modified dates. Vercel Preview/Development builds
+emit noindex metadata, disallow crawling, return an empty sitemap and set
+X-Robots-Tag on responses. Both Production and Preview require an explicit
+NEXT_PUBLIC_SITE_URL at build time; use the canonical production origin for
+Preview. robots.txt is crawler guidance, not access control. Local dev is noindex.

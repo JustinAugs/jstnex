@@ -44,6 +44,11 @@ function resolveSiteUrl(): string {
 
 export const SITE_URL = resolveSiteUrl();
 
+// Vercel preview/development builds must not compete with the canonical site.
+export const IS_INDEXABLE = process.env.VERCEL_ENV
+  ? process.env.VERCEL_ENV === "production"
+  : process.env.NODE_ENV === "production";
+
 export const SITE_NAME = "JSTNEX";
 
 /** 站点定位的一句话说明（英文 —— JSTNEX 是全球化定位） */
@@ -114,8 +119,8 @@ export function buildMetadata({
       description,
     },
     robots: {
-      index: true,
-      follow: true,
+      index: IS_INDEXABLE,
+      follow: IS_INDEXABLE,
     },
   };
 }

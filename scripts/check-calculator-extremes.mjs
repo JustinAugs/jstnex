@@ -26,5 +26,14 @@ try {
   assert.equal(c.calculateInventoryTurnover({cogs:1e308,averageInventory:1e-308}).status,'undefined');
   assert.equal(c.calculateReorderPoint({demandDuringLeadTime:1e308,safetyStock:1e308}).status,'undefined');
   assert.equal(c.calculateSafetyStock({serviceLevelZ:0,demandStdDev:10,leadTime:4}).value,0);
-  console.log('Calculator extreme regression passed: representable EOQ roots, normal result, true overflow and zero.');
+  for (const [z, sigma, lead, expected] of [
+    [1e-200, 1e-200, 1e200, 1e-300],
+    [1e200, 1e200, 1e-200, 1e300],
+  ]) {
+    const result = c.calculateSafetyStock({serviceLevelZ:z,demandStdDev:sigma,leadTime:lead});
+    assert.equal(result.status, 'ok');
+    assert.ok(Math.abs(result.value / expected - 1) < 1e-12);
+  }
+  assert.equal(c.calculateSafetyStock({serviceLevelZ:1.65,demandStdDev:10,leadTime:4}).value,33);
+  console.log('Calculator extreme regression passed: representable EOQ roots and safety stock extremes, normal results, true overflow and zero.');
 } finally { rmSync(dir, {recursive:true,force:true}); }

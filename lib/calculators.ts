@@ -213,8 +213,16 @@ export function calculateSafetyStock(input: SafetyStockInput): CalcResult {
   if (!(input.demandStdDev >= 0)) return invalid("stdDevMustBeNonNegative");
   if (!(input.leadTime >= 0)) return invalid("leadTimeMustBeNonNegative");
 
-  const value =
+  let value =
     input.serviceLevelZ * input.demandStdDev * Math.sqrt(input.leadTime);
+
+  // Preserve representable results when the intermediate product under/overflows.
+  if ((!Number.isFinite(value) || value === 0) &&
+      [input.serviceLevelZ, input.demandStdDev, input.leadTime]
+        .every((operand) => Number.isFinite(operand) && operand > 0)) {
+    value = Math.exp(Math.log(input.serviceLevelZ) + Math.log(input.demandStdDev) +
+      Math.log(input.leadTime) / 2);
+  }
 
   return ok(value, Math.ceil(value));
 }

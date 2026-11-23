@@ -85,3 +85,21 @@ export function provenanceOf(record: {
 }): Provenance {
   return record.provenance ?? { kind: "curated" };
 }
+
+/** Strict calendar labels; a fetch date never substitutes for a statistical period. */
+export function isCalendarDate(value: string): boolean {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value) || value.startsWith("0000")) return false;
+  const date = new Date(`${value}T00:00:00.000Z`);
+  return Number.isFinite(date.getTime()) && date.toISOString().slice(0, 10) === value;
+}
+
+/** Public source links only; parsing does not certify accessibility or authority. */
+export function isSourceUrl(value: string): boolean {
+  if (value.trim() !== value || !/^https?:\/\//i.test(value)) return false;
+  try {
+    const url = new URL(value);
+    return Boolean(url.hostname) && !url.username && !url.password;
+  } catch {
+    return false;
+  }
+}

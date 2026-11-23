@@ -18,7 +18,8 @@ import { buildMetadata } from "@/lib/seo";
 
   大小写规则：数据里 countries.json 的 code 是大写 ISO alpha-2（如 CN），
   但 URL 用小写（/global/cn）。generateStaticParams 输出小写，
-  页面里用 toLowerCase() 比对，两边统一，避免 /global/CN 和 /global/cn 分叉。
+  站内链接和 canonical 仅使用小写。dynamicParams=false 会先拒绝大写路径；
+  页面里的 toLowerCase() 仅是内部匹配防御，不能让 /global/CN 获得兼容。
 */
 
 /*

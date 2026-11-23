@@ -1,5 +1,7 @@
 "use client";
 
+import SourceField from "@/components/ui/SourceField";
+
 /*
   CountryDetail —— 国家详情页的客户端组件（TASK 06.12B）
 
@@ -73,22 +75,7 @@ export default function CountryDetail({ country }: CountryDetailProps) {
           {pick(country.strength, language)}
         </Field>
         <Field label={labels.risk}>{pick(country.risk, language)}</Field>
-        {provenance.kind !== "curated" && provenance.name?.trim() ? (
-          <Field label={labels.source}>
-            {provenance.url && /^https?:\/\//i.test(provenance.url) ? (
-              <a
-                href={provenance.url}
-                className="break-words underline underline-offset-4 hover:text-deep"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {provenance.name}
-              </a>
-            ) : (
-              provenance.name
-            )}
-          </Field>
-        ) : null}
+        <SourceField provenance={provenance} label={labels.source} />
       </dl>
 
       {/* 数据说明：明确这些是定性描述，不是官方统计 */}

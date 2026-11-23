@@ -1,3 +1,4 @@
+import SourceField from "@/components/ui/SourceField";
 import type { Provenance } from "@/lib/data";
 
 import { Card } from "../ui/Card";
@@ -115,22 +116,7 @@ export default function ConceptCard({
             {relatedCountries.join(" · ")}
           </Field>
         ) : null}
-        {provenance.kind !== "curated" && provenance.name?.trim() ? (
-          <Field label={labels.source}>
-            {provenance.url && /^https?:\/\//i.test(provenance.url) ? (
-              <a
-                href={provenance.url}
-                className="break-words underline underline-offset-4 hover:text-deep"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {provenance.name}
-              </a>
-            ) : (
-              provenance.name
-            )}
-          </Field>
-        ) : null}
+        <SourceField provenance={provenance} label={labels.source} />
       </dl>
       </details>
     </Card>

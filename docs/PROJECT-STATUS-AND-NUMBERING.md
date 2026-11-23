@@ -1,3 +1,5 @@
+> 2026-11-23补充：L01—L15实施/处置及新增L16见 [遗留收口报告](LEGACY-CLOSEOUT-2026-11-23.md)，来源准入见 [规则](SOURCE-ADMISSION-POLICY.md)，H04发布证据见 [摘要](evidence/H04-release-2026-11-22.json)。下文第5节为收口前快照，状态由收口报告更新。
+
 # JSTNEX 总体计划、统一编号与当前进度
 
 核对日期：2026-11-23（Asia/Shanghai）。产品/部署基线：`9a7c3f4`。

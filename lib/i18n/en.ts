@@ -234,6 +234,7 @@ const en = {
     },
 
     labels: {
+      source: "Source",
       industry: "Industry",
       role: "Supply Chain Role",
       location: "Location",

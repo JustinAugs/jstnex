@@ -1,3 +1,5 @@
+> 历史快照：保留当时检查结果。当前状态见 [项目索引](PROJECT-STATUS-AND-NUMBERING.md) 和 [遗留收口报告](LEGACY-CLOSEOUT-2026-11-23.md)。
+
 # 04.01-A/B and 04.02 progress — 2026-10-30
 
 ## 04.01-A Agent Reach

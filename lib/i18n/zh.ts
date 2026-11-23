@@ -201,6 +201,7 @@ const zh: Dictionary = {
     },
 
     labels: {
+      source: "来源",
       industry: "行业",
       role: "供应链角色",
       location: "所在地",

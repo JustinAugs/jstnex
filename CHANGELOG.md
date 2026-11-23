@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased — 接管维护与遗留收口
+
+- H01/H02：生产站点地址约束、移动导航与语言存储容错、目录返回、计算器边界与极端浮点修复。
+- H03：首页入口及企业预览、企业检索与展开、概念/SCOR层级、工具双栏、Global 分区及详情阅读优化。
+- H04：依赖安全升级、生产/Preview SEO 隔离与发布验收。历史产品基线 9a7c3f4；非 v0.8.1 标签内容的重述。
+- L02/L14：独立地球节点配置与校验、有效日历日期和安全来源链接检查、真实来源必填项、企业来源展示与三域共用组件。
+- L05：字段内容允许长词换行并可在窄栏收缩，保留全文。
+- L01—L15：来源准入规则、隔离回归和遗留状态归档；缺少实机/读屏/浏览器环境的验证保持明确限制。
+
+本节尚未对应新版本标签；package 仍为 0.8.1，不移动旧标签，不因 TASK09 的编号直接发布 v0.9.0。
+
+
 All notable changes to JSTNEX, oldest first.
 
 These are **development milestones**, not published releases — the package is

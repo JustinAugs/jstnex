@@ -59,25 +59,14 @@ import { useLanguage } from "@/components/providers/LanguageProvider";
 import { pick } from "@/lib/i18n";
 import { COUNTRIES, regionKey } from "@/lib/data";
 
-/*
-  球心和半径：整个图形都按它算，改这一个数就能整体缩放。
-*/
-const CENTER = 200;
-const RADIUS = 150;
-
-/* ---------- 节点：坐标全部落在球内（离球心 < RADIUS） ---------- */
+// Selected display nodes and geometry share the validator's configuration.
+import {
+  GLOBE_NODES,
+  GLOBE_CENTER as CENTER,
+  GLOBE_RADIUS as RADIUS,
+} from "@/lib/data/globe-nodes";
 
 type NodeKind = "secondary" | "tertiary";
-
-/*
-  交互节点：带国家代码，可 hover / 聚焦 / 选中。
-  坐标沿用 06.9 原图的 hub + secondary 位置，不重新摆布构图。
-*/
-type GlobeNode = {
-  code: string; // ISO alpha-2，对应 COUNTRIES 里的 code
-  x: number;
-  y: number;
-};
 
 /*
   装饰节点：纯视觉，不承载交互。
@@ -88,15 +77,6 @@ type DecorNode = {
   y: number;
   kind: NodeKind;
 };
-
-/* 五个交互国家节点（复用原 3 个 hub + 2 个 secondary 的坐标） */
-const GLOBE_NODES: GlobeNode[] = [
-  { code: "CN", x: 150, y: 118 }, // 原 hub #0
-  { code: "US", x: 262, y: 158 }, // 原 hub #1
-  { code: "SG", x: 188, y: 272 }, // 原 hub #2
-  { code: "DE", x: 108, y: 196 }, // 原 secondary #3
-  { code: "JP", x: 276, y: 232 }, // 原 secondary #5
-];
 
 /* 剩余的 7 个装饰节点（原 12 个节点里去掉上面 5 个交互节点） */
 const DECOR_NODES: DecorNode[] = [

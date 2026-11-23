@@ -216,3 +216,12 @@ The known MODULE_TYPELESS_PACKAGE_JSON notice is a runtime module-detection perf
 No database tables, API contracts, CI integration, external acquisition or AI pipeline are implemented by this document. D-03/D-04 anchor and labelling follow-ups are implemented after v0.8.0; no global country count is claimed.
 
 Implementation references: `lib/data/types.ts`, `lib/data/enums.ts`, `lib/data/provenance.ts`, `lib/data/index.ts`, `lib/formulas.ts`, `lib/calculators.ts`, `scripts/validate-data.mjs`, `components/cards/ConceptCard.tsx`, `components/global/CountryDetail.tsx`, and `lib/i18n/{en,zh}.ts`.
+
+
+## 13. 2026-11-23 遗留收口补充
+
+来源准入以 [SOURCE-ADMISSION-POLICY.md](SOURCE-ADMISSION-POLICY.md) 为准。official/dataset 现在要求名称、HTTP(S)无凭据链接及有效取用日期；日期校验包含公历有效性。缺省 curated 仍合法。国家、概念、企业目录共用 SourceField；未新增真实来源。
+
+首页精选地球节点在 `lib/data/globe-nodes.ts`，不代表全部目录或真实地理位置。校验器检查存在国家、唯一 code、有限坐标及球内边界；新增国家不自动生成坐标。
+
+覆盖警告继续为 5 条，处置与触发条件已归档；不把零 schema 错误解释成知识覆盖完整。补充命令：`node scripts/check-data-contracts.mjs`、`node scripts/check-component-contracts.mjs`。后者是 SSR 契约检查，不代表浏览器交互通过。

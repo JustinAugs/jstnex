@@ -40,10 +40,9 @@ import type { ReactNode } from "react";
   同一台机器上，两列布局的卡片可能 560px，三列布局只有 357px。
   所以用了容器查询（@md: + <dl> 上的 @container），而不是媒体查询（md:）。
 
-  窄栏时为什么给 dt 加 whitespace-nowrap？
-  因为一旦宽受限到 112px，"STRUCTURAL STRENGTH" 这类标签会折成两行，
-  白占一行高度。不换行 + 宽度随文字，它就永远是一行。
-  容器变宽以后会恢复成 w-28 的对齐列（@md:w-28 + @md:whitespace-normal）。
+  长内容保护（L05）：标签和正文都允许安全词内换行；正文以 12rem 为换行基准，
+  但 min-width 为 0，避免极窄视窗或放大文字时被固定最小宽度撑破卡片。
+  这保留完整港口名、来源名和长链接，不截断内容。
 */
 export default function Field({
   label,
@@ -54,10 +53,10 @@ export default function Field({
 }) {
   return (
     <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 border-t border-line py-3 first:border-t-0 first:pt-0 @md:flex-nowrap">
-      <dt className="font-medium tracking-label text-caption text-mist uppercase whitespace-nowrap @md:w-28 @md:shrink-0 @md:whitespace-normal @md:pt-0.5">
+      <dt className="font-medium tracking-label text-caption text-mist uppercase max-w-full wrap-anywhere whitespace-normal @md:w-28 @md:shrink-0 @md:whitespace-normal @md:pt-0.5">
         {label}
       </dt>
-      <dd className="min-w-48 max-w-full grow text-small text-ink @md:flex-1">
+      <dd className="min-w-0 basis-48 max-w-full grow wrap-anywhere text-small text-ink @md:flex-1">
         {children}
       </dd>
     </div>

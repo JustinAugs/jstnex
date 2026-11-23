@@ -53,6 +53,9 @@ import { FORMULAS } from "../lib/formulas.ts";
 /* i18n 字典（en 是 Dictionary 的推导源头）：用于「枚举值 ↔ 显示名键」对照 */
 import enDict from "../lib/i18n/en.ts";
 
+import { isCalendarDate, isSourceUrl } from "../lib/data/provenance.ts";
+import { GLOBE_NODES, globeNodeErrors } from "../lib/data/globe-nodes.ts";
+
 const FORMULA_IDS = Object.keys(FORMULAS);
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -110,9 +113,17 @@ function checkProvenance(file, id, value) {
       err(file, `${id} · provenance.${field}`, "存在时必须是非空字符串");
     } else if (
       (field === "retrievedAt" || field === "updatedAt") &&
-      !/^\d{4}-\d{2}-\d{2}$/.test(v)
+      !isCalendarDate(v)
     ) {
-      err(file, `${id} · provenance.${field}`, `日期应为 YYYY-MM-DD 格式，实际: ${v}`);
+      err(file, `${id} · provenance.${field}`, `日期应为有效日历日期 YYYY-MM-DD，实际: ${v}`);
+    }
+  }
+  if (isNonEmptyString(value.url) && !isSourceUrl(value.url)) {
+    err(file, `${id} · provenance.url`, "必须是无凭据的有效 HTTP(S) 来源链接");
+  }
+  if (value.kind === "official" || value.kind === "dataset") {
+    for (const field of ["name", "url", "retrievedAt"]) {
+      if (!isNonEmptyString(value[field])) err(file, `${id} · provenance.${field}`, "真实来源必须填写名称、链接和取用日期");
     }
   }
 }
@@ -143,7 +154,7 @@ function loadArray(relPath) {
       err(relPath, `records[${i}]`, "记录必须是对象");
       return {}; // 只用于后续检查，不修改数据文件；避免 in 运算符抛异常
     }
-    // 内容 ID 是 URL-safe slug；计算器 ID 则由公式注册表约束，允许 camelCase。
+    // 内容 ID 是 URL-safe slug；计算器记录 ID 独立于 formulaId，允许 camelCase。
     if (["data/concepts.json", "data/companies.json", "data/supply-chain-topics.json", "data/scor-processes.json"].includes(relPath) &&
         isNonEmptyString(record.id) && !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(record.id)) {
       err(relPath, `records[${i}] · id`, "应为小写字母/数字组成、单连字符分隔的 slug");
@@ -209,6 +220,9 @@ const calculators = loadArray("data/calculators.json");
 const topicIds = new Set((topics ?? []).map((t) => t?.id).filter(isNonEmptyString));
 const scorIds = new Set((scorProcesses ?? []).map((s) => s?.id).filter(isNonEmptyString));
 const countryCodes = new Set((countries ?? []).map((c) => c?.code).filter(isNonEmptyString));
+for (const message of globeNodeErrors(GLOBE_NODES, countryCodes)) {
+  err("lib/data/globe-nodes.ts", "nodes", message);
+}
 const conceptIds = new Set((concepts ?? []).map((c) => c?.id).filter(isNonEmptyString));
 
 /* ---------- snapshot.json：首页指标卡 ---------- */

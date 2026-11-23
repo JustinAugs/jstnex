@@ -1,3 +1,5 @@
+import type { Provenance } from "@/lib/data/provenance";
+import SourceField from "../ui/SourceField";
 import { Card, CardLink } from "../ui/Card";
 import Badge from "../ui/Badge";
 // 字段名 + 内容这一行，与 CountryCard / ConceptCard 共用同一个原语（TASK 04 提炼）
@@ -34,7 +36,9 @@ type CompanyCardProps = {
   keyActivities: string[];
   strength: string; // 定性描述，不是评分
   risk: string; // 定性描述，不是评分
+  provenance?: Provenance;
   labels: {
+    source?: string;
     location: string;
     keyActivities: string;
     strength: string;
@@ -56,6 +60,7 @@ export default function CompanyCard({
   strength,
   risk,
   labels,
+  provenance,
   href,
   detailsLabel,
 }: CompanyCardProps) {
@@ -92,6 +97,7 @@ export default function CompanyCard({
 
         <Field label={labels.strength}>{strength}</Field>
         <Field label={labels.risk}>{risk}</Field>
+        {labels.source && <SourceField provenance={provenance} label={labels.source} />}
       </dl>
       </details>}
     </>

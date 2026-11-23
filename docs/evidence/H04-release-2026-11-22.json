@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-22",
+  "verifiedAgain": "2026-11-23",
+  "commit": "9a7c3f4fb8b0b12f0c9f0e9a3f58470a72abe9c4",
+  "production": {
+    "id": "dpl_8w4CGPDERxY4dtsHcjXPNUKYjRSK",
+    "target": "production",
+    "state": "READY",
+    "domain": "https://jstnex.vercel.app"
+  },
+  "preview": {
+    "id": "dpl_3ULgBGVeNNEVz8RiEvrH7DALs7Xe",
+    "apiTarget": null,
+    "state": "READY",
+    "sameCommit": true
+  },
+  "checks": {
+    "production": "13 business pages, robots, sitemap (13 URLs), OG PNG and unknown-country 404 passed",
+    "preview": "6 pages + robots/sitemap/OG/unknown-country: HTTP and noindex header checks passed; 0 sitemap URLs",
+    "identity": "Production domain remained on the listed production deployment"
+  },
+  "scope": "Historical H04 HTTP/SEO baseline; no browser JS, real-device, full a11y or performance certification",
+  "source": "STAGE-04-FINAL-REPORT.txt; production-checks.json; preview-checks.json (local original evidence)"
+}

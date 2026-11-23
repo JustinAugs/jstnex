@@ -32,6 +32,7 @@ import { useLanguage } from "@/components/providers/LanguageProvider";
 import { pick } from "@/lib/i18n";
 import {
   COMPANIES,
+  provenanceOf,
   INDUSTRIES,
   COMPANY_ROLES,
   COMPANY_REGIONS,
@@ -198,6 +199,7 @@ export default function CompanyDirectory() {
               )}
               strength={pick(company.supplyChainStrength, language)}
               risk={pick(company.supplyChainRisk, language)}
+              provenance={provenanceOf(company)}
               labels={dict.companies.labels}
             />
           ))}

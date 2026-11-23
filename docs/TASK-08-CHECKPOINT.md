@@ -1,3 +1,5 @@
+> 历史快照：保留当时检查结果。当前状态见 [项目索引](PROJECT-STATUS-AND-NUMBERING.md) 和 [遗留收口报告](LEGACY-CLOSEOUT-2026-11-23.md)。
+
 # TASK 08.01–08.04 development checkpoint
 
 2026-10-28. This checkpoint is not the v0.8.0 release. Version remains 0.7.1; 08.05 data documentation and final closeout are pending.

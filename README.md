@@ -308,3 +308,5 @@ emit noindex metadata, disallow crawling, return an empty sitemap and set
 X-Robots-Tag on responses. Both Production and Preview require an explicit
 NEXT_PUBLIC_SITE_URL at build time; use the canonical production origin for
 Preview. robots.txt is crawler guidance, not access control. Local dev is noindex.
+
+遗留收口与 TASK09 前置：[2026-11-23报告](docs/LEGACY-CLOSEOUT-2026-11-23.md) · [真实来源准入规则](docs/SOURCE-ADMISSION-POLICY.md)。

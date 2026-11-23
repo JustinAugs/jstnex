@@ -75,3 +75,15 @@ Node22.22.2可用；安装的Google Chrome157.0.8103.79路径可查、--version�
 - 初次构建暴露企业provenance允许null的类型边界，已统一通过provenanceOf修复。未设置生产SITE_URL的一次本地构建按既有安全约束失败；显式提供正确生产origin后通过，不删除该约束。
 
 当前未完成的是受环境限制的L10/L05视觉复验与L11浏览器运行恢复，以及条件触发的L16工具链升级；不是“所有问题为零”。L01/L06/L07/L15按明确条件管理，L14数值准入设计进入09.00，不能冒称真实数据已接入。
+
+
+## 7. 推送与云端发布复核
+
+实施提交 `5b1e28f19f8e42b7d001717b00da5646e96825d4` 已推送 main，连同此前两份编号/遗留登记文档归档。
+Production：`dpl_D4mFiibfDwvJ4iCNswtyZ8Dc6hcp`，READY，target=production；正式域名 jstnex.vercel.app 已指向该部署。
+独立 Preview：`dpl_7e9hAFa48qh8ifcrst5WbGWzAvcu`，READY，同一 SHA，API target=null（默认Preview）。保留部署保护，未将 Preview 分配到生产域名。
+
+云端两环境各20条路径、共40条 HTTP/SEO检查通过：13业务页面、小写契约外的4条404路径、robots、sitemap、OG类型。Preview各响应含noindex头，页面metadata不收录，sitemap为空；Production sitemap13条。根canonical为生产origin（无尾斜杠），与根URL语义一致。
+逐项脱敏证据见 [发布记录](evidence/legacy-release-2026-11-23.json)。未保存保护访问令牌、Cookie或原始账号信息。此后只归档本报告和证据的文档提交与实施提交具有相同产品代码；不能将文档HEAD与本节实施验收SHA混淆。
+
+下一步 TASK09.00：按SOURCE-ADMISSION-POLICY完成首批用途、候选来源/许可、字段/时间/口径、更新失败/冲突策略和09.01以后任务书。L10/L11需要可启动浏览器的运行环境；本轮无法通过项目代码修复系统服务限制。无需为进入09.00而先做国家搜索、相邻导航或伪造覆盖关联。

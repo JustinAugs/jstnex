@@ -1,3 +1,5 @@
+> 最新发布补充（2026-11-23）：遗留修复实施提交5b1e28f已上线，Production dpl_D4mFiibfDwvJ4iCNswtyZ8Dc6hcp与独立Preview dpl_7e9hAFa48qh8ifcrst5WbGWzAvcu均READY，同SHA云端40条HTTP/SEO通过。证据见[本轮发布记录](evidence/legacy-release-2026-11-23.json)。下文9a7c3f4为此前H04历史基线。完整浏览器/读屏/性能仍未认证。
+
 > 2026-11-23补充：L01—L15实施/处置及新增L16见 [遗留收口报告](LEGACY-CLOSEOUT-2026-11-23.md)，来源准入见 [规则](SOURCE-ADMISSION-POLICY.md)，H04发布证据见 [摘要](evidence/H04-release-2026-11-22.json)。下文第5节为收口前快照，状态由收口报告更新。
 
 # JSTNEX 总体计划、统一编号与当前进度

@@ -1,10 +1,10 @@
-> 最新发布补充（2026-11-23）：遗留修复实施提交5b1e28f已上线，Production dpl_D4mFiibfDwvJ4iCNswtyZ8Dc6hcp与独立Preview dpl_7e9hAFa48qh8ifcrst5WbGWzAvcu均READY，同SHA云端40条HTTP/SEO通过。证据见[本轮发布记录](evidence/legacy-release-2026-11-23.json)。下文9a7c3f4为此前H04历史基线。完整浏览器/读屏/性能仍未认证。
-
-> 2026-11-23补充：L01—L15实施/处置及新增L16见 [遗留收口报告](LEGACY-CLOSEOUT-2026-11-23.md)，来源准入见 [规则](SOURCE-ADMISSION-POLICY.md)，H04发布证据见 [摘要](evidence/H04-release-2026-11-22.json)。下文第5节为收口前快照，状态由收口报告更新。
-
 # JSTNEX 总体计划、统一编号与当前进度
 
-核对日期：2026-11-23（Asia/Shanghai）。产品/部署基线：`9a7c3f4`。
+核对日期：2026-11-23（Asia/Shanghai）。上一已推送归档HEAD：`eea9f64`，产品实现：`5b1e28f`，两者仅文档差异；本轮为TASK09.00规划与证据归档。
+
+当前：[09.00方案](TASK-09.00-ACQUISITION-PLAN.md)、[来源登记](TASK-09.00-SOURCE-REGISTER.md)、[字段契约](TASK-09.00-DATA-CONTRACT.md)完成；下一步[09.01任务书](TASK-09.01-MODEL-AND-VALIDATION.md)。研究样本未接入产品；核查结果见[09.00完成报告](TASK-09.00-COMPLETION-REPORT.md)。
+
+遗留处置见[收口报告](LEGACY-CLOSEOUT-2026-11-23.md)，来源准入见[规则](SOURCE-ADMISSION-POLICY.md)，实施SHA云端40路径验收见[证据](evidence/legacy-release-2026-11-23.json)。H04及下方发布记录为相应日期的历史基线，不能覆盖最新结论。浏览器/读屏/性能验证限制继续保留。
 本文件为当前状态索引；历史报告按其日期保留，不以旧快照覆盖新结论。
 
 逐项遗留检查与解决方案见[遗留登记L01—L15](LEGACY-ITEMS-BEFORE-TASK-09.md)。
@@ -38,7 +38,7 @@
 | TASK 08.04 | 语义清理、显式地区顺序及回归 | 已完成，Asia→Europe→North America，移除无用Tool.category |
 | TASK 08.05 | 数据模型文档 | 已完成，见DATA-SCHEMA.md |
 | D-03 / D-04后续 | 网络卡锚点、逐项Demo、195+处理 | 已完成；无依据195+已替换为实际目录覆盖8国，不冒称证明全球总数 |
-| TASK 09 | 真实数据采集 | 尚未开始正式实施；下一主线是09.00方案与任务书 |
+| TASK 09 | 真实数据采集 | 09.00来源/字段/任务书已完成；09.01模型实现待执行，产品尚无新观测 |
 | TASK 10 | PostgreSQL、FastAPI、数据管道 | 规划，未实施 |
 | TASK 11 | 分析、图表与地图 | 规划，未实施；现有插图/港口索引不是该阶段成果 |
 | TASK 12 | 基于可溯源语料的RAG/AI | 规划，未实施 |
@@ -99,7 +99,7 @@
 
 结论：当前没有发现阻止进入规划阶段的发布基线错误；存在上表明确限制与待办。因此不使用“所有问题为零”或“总体项目完成”描述当前状态。
 
-## 6. 下一任务：TASK 09.00（规划，尚未实施）
+## 6. 历史规划入口：TASK 09.00（现已完成，结果见顶部链接）
 
 1. 盘点已有国家/企业/概念/计算器真实关联及主要用户路径，确认首批真实数据用途。
 2. 选择首批小规模数据集，核实来源权限、许可、频率、字段、单位、地区/时间口径及可追溯要求。

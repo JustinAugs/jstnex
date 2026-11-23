@@ -222,7 +222,7 @@ date**. A number without a source is not data, it is decoration.
 
 Current status and numbering: [project status index](docs/PROJECT-STATUS-AND-NUMBERING.md).
 Historical TASK numbers remain the product roadmap; takeover maintenance stages
-use H01–H04 to avoid collisions. TASK 09.00 acquisition design is next; the earlier
+use H01–H04 to avoid collisions. TASK 09.00 acquisition design is documented; TASK 09.01 model implementation is next; the earlier
 chat suggestion “05.00 user paths” is not an approved roadmap replacement.
 
 **Numbering standard** (set by TASK 07.00, 2026-10): a task number maps to the
@@ -249,7 +249,7 @@ Data Pipeline), by which point the five-page MVP will long since have shipped.
 | 06 + | v0.7.0 visual upgrades (Field density, Hero, SCOR); then country detail pages, interactive globe, layout-shift fix and the TASK 07.02 Global audit fixes (historical sub-numbers 06.8–06.12) | v0.7.0 / v0.7.1 | Done |
 | 07   | **Product Experience** — page-level visual audits and improvements (07.01 Global audit, 07.02 Global improvement, 07.03 audit closure) | v0.7.x | Done |
 | 08   | Data foundation & quality (shared types, validation) | v0.8.x   | Done        |
-| 09   | Data acquisition — Python crawlers for real datasets | v0.9.x   | Planned     |
+| 09   | Data acquisition — bounded official API pilot, then scoped collection | v0.9.x | 09.00 design complete; implementation pending |
 | 10   | Database & data pipeline — PostgreSQL + FastAPI     | v1.0.x   | Planned     |
 | 11   | Analytics & visualisation (charts, maps)            | v1.1.x   | Planned     |
 | 12   | Intelligence & AI (RAG over curated sources)        | v1.2.x   | Planned     |
@@ -258,7 +258,7 @@ TASK 01–06 delivered the five-page MVP (the **V1 — Structure** phase). TASK 
 closed out that work: **07.01** audited the Global page, **07.02** implemented
 the six findings the audit accepted, and **07.03** closed the audit as
 documentation only — no product change and no new feature phase. Each task ends
-with one commit on `main`. TASK 08.01–08.05 are now complete. Network-anchor and per-card Demo-label follow-ups are also complete; the next phase is TASK 09 acquisition design.
+with one commit on `main`. TASK 08.01–08.05 are now complete. Network-anchor and per-card Demo-label follow-ups are also complete; TASK 09.00 now documents the first acquisition pilot; TASK 09.01 is next.
 
 ## Long-term vision
 
@@ -310,3 +310,7 @@ NEXT_PUBLIC_SITE_URL at build time; use the canonical production origin for
 Preview. robots.txt is crawler guidance, not access control. Local dev is noindex.
 
 遗留收口与 TASK09 前置：[2026-11-23报告](docs/LEGACY-CLOSEOUT-2026-11-23.md) · [真实来源准入规则](docs/SOURCE-ADMISSION-POLICY.md)。
+
+TASK 09.00已完成来源/字段与采集规划（尚未接入产品）：[总方案](docs/TASK-09.00-ACQUISITION-PLAN.md) · [来源登记](docs/TASK-09.00-SOURCE-REGISTER.md) · [字段契约](docs/TASK-09.00-DATA-CONTRACT.md) · [下一任务09.01](docs/TASK-09.01-MODEL-AND-VALIDATION.md)。
+
+TASK09.00核查与交付状态：[完成报告](docs/TASK-09.00-COMPLETION-REPORT.md)。

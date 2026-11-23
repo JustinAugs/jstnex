@@ -1,0 +1,87 @@
+{
+  "task": "09.00",
+  "checkedOn": "2026-11-23",
+  "scope": "feasibility evidence only; not application data or implemented acquisition pipeline",
+  "providerAttribution": "World Bank: World Development Indicators: country official statistics, national accounts data files and World Bank staff estimates",
+  "indicatorId": "NE.EXP.GNFS.CD",
+  "sourceId": "2",
+  "licenseEvidence": {
+    "url": "https://data.worldbank.org/indicator/NE.EXP.GNFS.CD",
+    "excerpt": "License : CC BY-4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "additionalTermsUrl": "https://data.worldbank.org/summary-terms-of-use",
+    "checkedOn": "2026-11-23",
+    "method": "official indicator page, API documentation, summary and current dataset-specific terms read via web tool; dataset terms state precedence over general terms",
+    "datasetTermsUrl": "https://www.worldbank.org/ext/en/legal/terms-conditions/datasets"
+  },
+  "transformations": "raw files retained byte-for-byte; filenames and this manifest are JSTNEX additions; no production business records changed",
+  "files": [
+    {
+      "file": "wdi-indicator.json",
+      "requestUrl": "https://api.worldbank.org/v2/indicator/NE.EXP.GNFS.CD?source=2&format=json",
+      "retrievedAt": "2026-11-23T03:09:54.445106+00:00",
+      "sha256": "add46f767587e60736449ce8b0d365258366a7306e13a2a3a8a8cd0be97a6626",
+      "bytes": 915,
+      "purpose": "indicator definition and provider",
+      "client": "system curl with TLS verification; JSON decoded successfully"
+    },
+    {
+      "file": "wdi-source.json",
+      "requestUrl": "https://api.worldbank.org/v2/source/2?format=json",
+      "retrievedAt": "2026-11-23T03:09:57.061643+00:00",
+      "sha256": "7196c4bf58e63a75c4576fef063b0fd96cba99c118f9c112dadc4afbbd2a0476",
+      "bytes": 236,
+      "purpose": "dataset-level metadata",
+      "client": "system curl with TLS verification; JSON decoded successfully"
+    },
+    {
+      "file": "wdi-sample.json",
+      "requestUrl": "https://api.worldbank.org/v2/country/CHN;USA/indicator/NE.EXP.GNFS.CD?source=2&date=2022:2024&format=json&per_page=100",
+      "retrievedAt": "2026-11-23T03:09:56.299634+00:00",
+      "sha256": "b98e344bbb583944de1486977b3e1c088a43d931a50341b15b062001f9832e12",
+      "bytes": 1492,
+      "purpose": "selected pilot: 2022-2024, six observed values",
+      "client": "system curl with TLS verification; JSON decoded successfully"
+    },
+    {
+      "file": "wdi-pilot-2023-2025.json",
+      "requestUrl": "https://api.worldbank.org/v2/country/CHN;USA/indicator/NE.EXP.GNFS.CD?source=2&date=2023:2025&format=json&per_page=100",
+      "retrievedAt": "2026-11-23T03:10:35.067757+00:00",
+      "sha256": "c61f3a8e8db9d3c2860a7b7964d95f3d009f07190ad8f52e6b50704734e03c02",
+      "bytes": 1483,
+      "purpose": "exploratory window: USA 2025 missing, not publication data",
+      "client": "system curl with TLS verification; JSON decoded successfully"
+    }
+  ],
+  "selectedSample": {
+    "countries": [
+      "CN",
+      "US"
+    ],
+    "years": [
+      "2022",
+      "2023",
+      "2024"
+    ],
+    "returnedRows": 6,
+    "nonNullRows": 6,
+    "pages": 1,
+    "upstreamDatasetLastUpdated": "2026-11-11",
+    "unit": "USD",
+    "priceBasis": "current",
+    "scale": 1
+  },
+  "exploratoryFinding": {
+    "country": "US",
+    "year": "2025",
+    "value": null,
+    "meaning": "missing, not zero; do not relabel 2024 as 2025"
+  },
+  "otherSources": {
+    "ascm": "official search-indexed guidance reviewed; direct page reads 403; do not claim full live-text verification",
+    "ibm": "candidate knowledge pages and terms inspected; not admitted for mirrored/translated content",
+    "dhl": "official report page read; reuse license not established",
+    "openstax": "excluded after purpose/license review; no textbook text retained"
+  },
+  "environmentNote": "Python default certificate-chain validation failed. System curl succeeded with normal certificate verification. No TLS bypass."
+}

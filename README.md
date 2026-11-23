@@ -182,8 +182,9 @@ Requires Node.js 22.18+ (22.22.2 is the verified local version). The data valida
 
 ### Environment variables
 
-Nothing is required for V1.0. When a key becomes necessary (V2 database, V3 AI,
-external APIs):
+Local development can omit the site origin. Production and Preview builds require
+`NEXT_PUBLIC_SITE_URL` (see Production site origin below). When configuring the
+site origin or later database / AI / external API variables:
 
 ```bash
 cp .env.example .env.local
@@ -218,6 +219,11 @@ date**. A number without a source is not data, it is decoration.
 - This repository is **Public**. Assume anything committed is permanent.
 
 ## Roadmap
+
+Current status and numbering: [project status index](docs/PROJECT-STATUS-AND-NUMBERING.md).
+Historical TASK numbers remain the product roadmap; takeover maintenance stages
+use H01–H04 to avoid collisions. TASK 09.00 acquisition design is next; the earlier
+chat suggestion “05.00 user paths” is not an approved roadmap replacement.
 
 **Numbering standard** (set by TASK 07.00, 2026-10): a task number maps to the
 first two segments of the version it belongs to — TASK 07 → v0.7.x, TASK 08 →

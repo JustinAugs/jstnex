@@ -1,3 +1,5 @@
+> 2026-11-24：TASK09.02已完成有限获取、原始批次与在线小样本验证，未发布观测；见[报告](TASK-09.02-COMPLETION-REPORT.md)。下一步[09.03精确清洗/发布](TASK-09.03-NORMALIZATION-AND-PUBLICATION.md)。下文前期状态保留为历史记录。
+
 > 2026-11-24：TASK09.01模型与本地校验已完成，来源1/指标1/观测0；见[报告](TASK-09.01-COMPLETION-REPORT.md)。下一步[09.02有限获取](TASK-09.02-BOUNDED-ACQUISITION.md)。下文09.00快照保留，后续取源/发布/UI尚未完成。
 
 # JSTNEX 总体计划、统一编号与当前进度

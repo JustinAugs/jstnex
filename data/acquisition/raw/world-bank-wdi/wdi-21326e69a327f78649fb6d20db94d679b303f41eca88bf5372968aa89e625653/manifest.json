@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "batchId": "wdi-21326e69a327f78649fb6d20db94d679b303f41eca88bf5372968aa89e625653",
+  "sourceId": "world-bank-wdi",
+  "status": "complete",
+  "retrievedAt": "2026-11-24T13:43:25.156323Z",
+  "completedAt": "2026-11-24T13:43:31.975046Z",
+  "pythonVersion": "3.14.3",
+  "collectorVersion": "1",
+  "upstreamDatasetUpdatedAt": "2026-11-11",
+  "attribution": {
+    "en": "World Bank: World Development Indicators: country official statistics, national accounts data files and World Bank staff estimates. JSTNEX translates and formats labels; no endorsement is implied.",
+    "zh": "世界银行：世界发展指标：各经济体官方统计、国民账户资料及世界银行估算。本站翻译和格式化标签，不表示世界银行背书。"
+  },
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsUrl": "https://www.worldbank.org/ext/en/legal/terms-conditions/datasets",
+  "files": [
+    {
+      "requestUrl": "https://api.worldbank.org/v2/source/2?format=json&per_page=100&page=1",
+      "finalUrl": "https://api.worldbank.org/v2/source/2?format=json&per_page=100&page=1",
+      "httpStatus": 200,
+      "contentType": "application/json;charset=utf-8",
+      "retrievedAt": "2026-11-24T13:43:25.156323Z",
+      "attempts": 1,
+      "file": "source-1.json",
+      "sha256": "c98d3be91c3f74fb777b1cb857e4d187ed357fe91db90ddda4fd852d60d8dabc",
+      "bytes": 237,
+      "page": 1,
+      "pages": 1,
+      "total": 1
+    },
+    {
+      "requestUrl": "https://api.worldbank.org/v2/indicator/NE.EXP.GNFS.CD?format=json&per_page=100&page=1&source=2",
+      "finalUrl": "https://api.worldbank.org/v2/indicator/NE.EXP.GNFS.CD?format=json&per_page=100&page=1&source=2",
+      "httpStatus": 200,
+      "contentType": "application/json;charset=utf-8",
+      "retrievedAt": "2026-11-24T13:43:29.947743Z",
+      "attempts": 1,
+      "file": "indicator-1.json",
+      "sha256": "3d54bf9f65cb61b4e6f14688d3f01e230751f04acd8fe278756e7442244b3429",
+      "bytes": 916,
+      "page": 1,
+      "pages": 1,
+      "total": 1
+    },
+    {
+      "requestUrl": "https://api.worldbank.org/v2/country/CHN;USA/indicator/NE.EXP.GNFS.CD?format=json&per_page=100&page=1&source=2&date=2022%3A2024",
+      "finalUrl": "https://api.worldbank.org/v2/country/CHN;USA/indicator/NE.EXP.GNFS.CD?format=json&per_page=100&page=1&source=2&date=2022%3A2024",
+      "httpStatus": 200,
+      "contentType": "application/json;charset=utf-8",
+      "retrievedAt": "2026-11-24T13:43:31.974154Z",
+      "attempts": 1,
+      "file": "data-1.json",
+      "sha256": "b98e344bbb583944de1486977b3e1c088a43d931a50341b15b062001f9832e12",
+      "bytes": 1492,
+      "page": 1,
+      "pages": 1,
+      "total": 6
+    }
+  ]
+}

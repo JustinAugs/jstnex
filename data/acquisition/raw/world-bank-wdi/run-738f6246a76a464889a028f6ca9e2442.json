@@ -1,0 +1,69 @@
+{
+  "runId": "run-738f6246a76a464889a028f6ca9e2442",
+  "startedAt": "2026-11-24T13:43:23.763527Z",
+  "status": "complete",
+  "events": [
+    {
+      "url": "https://api.worldbank.org/v2/source/2?format=json&per_page=100&page=1",
+      "attempt": 1,
+      "status": 200
+    },
+    {
+      "url": "https://api.worldbank.org/v2/indicator/NE.EXP.GNFS.CD?format=json&per_page=100&page=1&source=2",
+      "attempt": 1,
+      "status": 200
+    },
+    {
+      "url": "https://api.worldbank.org/v2/country/CHN;USA/indicator/NE.EXP.GNFS.CD?format=json&per_page=100&page=1&source=2&date=2022%3A2024",
+      "attempt": 1,
+      "status": 200
+    }
+  ],
+  "upstreamDatasetUpdatedAt": "2026-11-11",
+  "batchId": "wdi-21326e69a327f78649fb6d20db94d679b303f41eca88bf5372968aa89e625653",
+  "requests": [
+    {
+      "requestUrl": "https://api.worldbank.org/v2/source/2?format=json&per_page=100&page=1",
+      "finalUrl": "https://api.worldbank.org/v2/source/2?format=json&per_page=100&page=1",
+      "httpStatus": 200,
+      "contentType": "application/json;charset=utf-8",
+      "retrievedAt": "2026-11-24T13:43:25.156323Z",
+      "attempts": 1,
+      "file": "source-1.json",
+      "sha256": "c98d3be91c3f74fb777b1cb857e4d187ed357fe91db90ddda4fd852d60d8dabc",
+      "bytes": 237,
+      "page": 1,
+      "pages": 1,
+      "total": 1
+    },
+    {
+      "requestUrl": "https://api.worldbank.org/v2/indicator/NE.EXP.GNFS.CD?format=json&per_page=100&page=1&source=2",
+      "finalUrl": "https://api.worldbank.org/v2/indicator/NE.EXP.GNFS.CD?format=json&per_page=100&page=1&source=2",
+      "httpStatus": 200,
+      "contentType": "application/json;charset=utf-8",
+      "retrievedAt": "2026-11-24T13:43:29.947743Z",
+      "attempts": 1,
+      "file": "indicator-1.json",
+      "sha256": "3d54bf9f65cb61b4e6f14688d3f01e230751f04acd8fe278756e7442244b3429",
+      "bytes": 916,
+      "page": 1,
+      "pages": 1,
+      "total": 1
+    },
+    {
+      "requestUrl": "https://api.worldbank.org/v2/country/CHN;USA/indicator/NE.EXP.GNFS.CD?format=json&per_page=100&page=1&source=2&date=2022%3A2024",
+      "finalUrl": "https://api.worldbank.org/v2/country/CHN;USA/indicator/NE.EXP.GNFS.CD?format=json&per_page=100&page=1&source=2&date=2022%3A2024",
+      "httpStatus": 200,
+      "contentType": "application/json;charset=utf-8",
+      "retrievedAt": "2026-11-24T13:43:31.974154Z",
+      "attempts": 1,
+      "file": "data-1.json",
+      "sha256": "b98e344bbb583944de1486977b3e1c088a43d931a50341b15b062001f9832e12",
+      "bytes": 1492,
+      "page": 1,
+      "pages": 1,
+      "total": 6
+    }
+  ],
+  "finishedAt": "2026-11-24T13:43:31.976473Z"
+}

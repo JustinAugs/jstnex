@@ -27,3 +27,16 @@ export type Observation = {
   sourceRevisedAt: string | null; providerObservationStatus: string;
 };
 export type PublishedManifest = { schemaVersion: 1; batches: BatchManifest[] };
+
+/** Raw acquisition receipts are distinct from published observation admission. */
+export type RawPageReceipt = {
+  requestUrl: string; finalUrl: string; httpStatus: 200; contentType: string;
+  retrievedAt: string; attempts: number; file: string; sha256: string;
+  bytes: number; page: number; pages: number; total: number;
+};
+export type RawAcquisitionManifest = {
+  schemaVersion: 1; batchId: string; sourceId: string; status: "complete";
+  retrievedAt: string; completedAt: string; pythonVersion: string; collectorVersion: string;
+  upstreamDatasetUpdatedAt: string; attribution: Text; licenseUrl: string; termsUrl: string;
+  files: RawPageReceipt[];
+};

@@ -1,0 +1,180 @@
+{
+  "changes": [
+    {
+      "key": [
+        "world-bank-wdi",
+        "exports-goods-services-current-usd",
+        "CN",
+        "2022"
+      ],
+      "before": null,
+      "after": {
+        "recordId": "CN",
+        "countryIso3": "CHN",
+        "sourceId": "world-bank-wdi",
+        "indicatorId": "exports-goods-services-current-usd",
+        "period": "2022",
+        "value": "3705070541732.88",
+        "status": "observed",
+        "unit": "USD",
+        "currency": "USD",
+        "priceBasis": "current",
+        "scale": 1,
+        "batchId": "wdi-21326e69a327f78649fb6d20db94d679b303f41eca88bf5372968aa89e625653",
+        "retrievedAt": "2026-11-24T13:43:25.156323Z",
+        "checkedAt": "2026-11-24",
+        "upstreamDatasetUpdatedAt": "2026-11-11",
+        "sourcePublishedAt": null,
+        "sourceRevisedAt": null,
+        "providerObservationStatus": ""
+      }
+    },
+    {
+      "key": [
+        "world-bank-wdi",
+        "exports-goods-services-current-usd",
+        "CN",
+        "2023"
+      ],
+      "before": null,
+      "after": {
+        "recordId": "CN",
+        "countryIso3": "CHN",
+        "sourceId": "world-bank-wdi",
+        "indicatorId": "exports-goods-services-current-usd",
+        "period": "2023",
+        "value": "3544871083631.02",
+        "status": "observed",
+        "unit": "USD",
+        "currency": "USD",
+        "priceBasis": "current",
+        "scale": 1,
+        "batchId": "wdi-21326e69a327f78649fb6d20db94d679b303f41eca88bf5372968aa89e625653",
+        "retrievedAt": "2026-11-24T13:43:25.156323Z",
+        "checkedAt": "2026-11-24",
+        "upstreamDatasetUpdatedAt": "2026-11-11",
+        "sourcePublishedAt": null,
+        "sourceRevisedAt": null,
+        "providerObservationStatus": ""
+      }
+    },
+    {
+      "key": [
+        "world-bank-wdi",
+        "exports-goods-services-current-usd",
+        "CN",
+        "2024"
+      ],
+      "before": null,
+      "after": {
+        "recordId": "CN",
+        "countryIso3": "CHN",
+        "sourceId": "world-bank-wdi",
+        "indicatorId": "exports-goods-services-current-usd",
+        "period": "2024",
+        "value": "3828873971971.62",
+        "status": "observed",
+        "unit": "USD",
+        "currency": "USD",
+        "priceBasis": "current",
+        "scale": 1,
+        "batchId": "wdi-21326e69a327f78649fb6d20db94d679b303f41eca88bf5372968aa89e625653",
+        "retrievedAt": "2026-11-24T13:43:25.156323Z",
+        "checkedAt": "2026-11-24",
+        "upstreamDatasetUpdatedAt": "2026-11-11",
+        "sourcePublishedAt": null,
+        "sourceRevisedAt": null,
+        "providerObservationStatus": ""
+      }
+    },
+    {
+      "key": [
+        "world-bank-wdi",
+        "exports-goods-services-current-usd",
+        "US",
+        "2022"
+      ],
+      "before": null,
+      "after": {
+        "recordId": "US",
+        "countryIso3": "USA",
+        "sourceId": "world-bank-wdi",
+        "indicatorId": "exports-goods-services-current-usd",
+        "period": "2022",
+        "value": "3036430000000",
+        "status": "observed",
+        "unit": "USD",
+        "currency": "USD",
+        "priceBasis": "current",
+        "scale": 1,
+        "batchId": "wdi-21326e69a327f78649fb6d20db94d679b303f41eca88bf5372968aa89e625653",
+        "retrievedAt": "2026-11-24T13:43:25.156323Z",
+        "checkedAt": "2026-11-24",
+        "upstreamDatasetUpdatedAt": "2026-11-11",
+        "sourcePublishedAt": null,
+        "sourceRevisedAt": null,
+        "providerObservationStatus": ""
+      }
+    },
+    {
+      "key": [
+        "world-bank-wdi",
+        "exports-goods-services-current-usd",
+        "US",
+        "2023"
+      ],
+      "before": null,
+      "after": {
+        "recordId": "US",
+        "countryIso3": "USA",
+        "sourceId": "world-bank-wdi",
+        "indicatorId": "exports-goods-services-current-usd",
+        "period": "2023",
+        "value": "3073360000000",
+        "status": "observed",
+        "unit": "USD",
+        "currency": "USD",
+        "priceBasis": "current",
+        "scale": 1,
+        "batchId": "wdi-21326e69a327f78649fb6d20db94d679b303f41eca88bf5372968aa89e625653",
+        "retrievedAt": "2026-11-24T13:43:25.156323Z",
+        "checkedAt": "2026-11-24",
+        "upstreamDatasetUpdatedAt": "2026-11-11",
+        "sourcePublishedAt": null,
+        "sourceRevisedAt": null,
+        "providerObservationStatus": ""
+      }
+    },
+    {
+      "key": [
+        "world-bank-wdi",
+        "exports-goods-services-current-usd",
+        "US",
+        "2024"
+      ],
+      "before": null,
+      "after": {
+        "recordId": "US",
+        "countryIso3": "USA",
+        "sourceId": "world-bank-wdi",
+        "indicatorId": "exports-goods-services-current-usd",
+        "period": "2024",
+        "value": "3215368000000",
+        "status": "observed",
+        "unit": "USD",
+        "currency": "USD",
+        "priceBasis": "current",
+        "scale": 1,
+        "batchId": "wdi-21326e69a327f78649fb6d20db94d679b303f41eca88bf5372968aa89e625653",
+        "retrievedAt": "2026-11-24T13:43:25.156323Z",
+        "checkedAt": "2026-11-24",
+        "upstreamDatasetUpdatedAt": "2026-11-11",
+        "sourcePublishedAt": null,
+        "sourceRevisedAt": null,
+        "providerObservationStatus": ""
+      }
+    }
+  ],
+  "revisions": [],
+  "baseObservationsSha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+}

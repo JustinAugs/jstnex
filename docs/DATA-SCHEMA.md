@@ -235,3 +235,7 @@ value为普通非负十进制字符串或null；observed/missing仅表示完整�
 ## 15. TASK09.02 原始获取层
 
 2026-11-24：scripts/acquire-wdi.py有限获取官方API，输出raw/world-bank-wdi/wdi-<hash>/manifest.json及逐页原始字节，每次请求另记run日志。RawAcquisitionManifest与原published的本地回执不是同一个类型；raw complete不表示可发布。完整操作/限制见TASK-09.02-COMPLETION-REPORT.md。离线命令：python3 scripts/check-wdi-acquisition.py、python3 scripts/check-wdi-raw.py。生产observations及published均未变。
+
+## 16. TASK09.03 观测发布层
+
+2026-11-24：观测6条，11数组共68条。normalize-wdi.py用Decimal离线重放raw并验证观测完全对应；扩展BatchManifest关联原始manifest/hash/清洗版本/输出hash。published的snapshotPath指向curated不可变快照，observations为兼容镜像。独占锁、事务日志与backup支持中断恢复；校验及构建拒绝未完成事务。详见TASK-09.03-COMPLETION-REPORT.md；原始与逐观测日期角色独立，尚无UI接入。

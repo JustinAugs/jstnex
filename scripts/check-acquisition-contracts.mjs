@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import { acquisitionErrors } from './validate-acquisition.mjs';
 const read = name => JSON.parse(readFileSync(new URL(`../data/${name}.json`,import.meta.url),'utf8'));
 const base={sources:read('sources'),indicators:read('indicators'),observations:[],published:{schemaVersion:1,batches:[]}};
-const b={id:'fixture-batch',sourceId:'world-bank-wdi',retrievedAt:'2024-02-29T12:00:00Z',checkedAt:'2024-02-29',upstreamDatasetUpdatedAt:null};
+const b={rawManifestPath:'data/acquisition/raw/world-bank-wdi/wdi-'+ 'a'.repeat(64)+'/manifest.json',rawManifestSha256:'a'.repeat(64),observationsSha256:'b'.repeat(64),normalizerVersion:'1',id:'fixture-batch',sourceId:'world-bank-wdi',retrievedAt:'2024-02-29T12:00:00Z',checkedAt:'2024-02-29',upstreamDatasetUpdatedAt:null};
 const o={recordId:'CN',countryIso3:'CHN',sourceId:b.sourceId,indicatorId:base.indicators[0].id,period:'2024',value:'0',status:'observed',unit:'USD',currency:'USD',priceBasis:'current',scale:1,batchId:b.id,retrievedAt:b.retrievedAt,checkedAt:b.checkedAt,upstreamDatasetUpdatedAt:null,sourcePublishedAt:null,sourceRevisedAt:null,providerObservationStatus:''};
 const run=x=>acquisitionErrors(x,new Set(['CN','US']),()=>true);
 assert.deepEqual(run(base),[]);

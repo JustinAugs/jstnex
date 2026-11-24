@@ -43,6 +43,7 @@ export function acquisitionErrors(input, countryCodes, evidenceExists) {
   if(!object(p)||p.schemaVersion!==1||!Array.isArray(p.batches))fail('published','schemaVersion 1 and batches array required');
   const batches=unique((Array.isArray(p?.batches)?p.batches:[]).filter((b,i)=>{if(!object(b)){fail(`batch[${i}]`,'object required');return false;}return true;}),'batches');
   for(const b of batches.values()){
+    if(typeof b.rawManifestPath!=='string'||!/^data\/acquisition\/raw\/world-bank-wdi\/wdi-[a-f0-9]{64}\/manifest\.json$/.test(b.rawManifestPath)||! /^[a-f0-9]{64}$/.test(b.rawManifestSha256??'')||b.normalizerVersion!=='1'||! /^[a-f0-9]{64}$/.test(b.observationsSha256??''))fail(b.id,'raw/output receipt required');
     if(!sources.has(b.sourceId)||sources.get(b.sourceId)?.admission!=='approved')fail(b.id,'batch source not approved');
     if(!timestamp(b.retrievedAt)||!date(b.checkedAt)||!(b.upstreamDatasetUpdatedAt===null||date(b.upstreamDatasetUpdatedAt)))fail(b.id,'invalid batch dates');
   }

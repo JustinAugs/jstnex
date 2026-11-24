@@ -318,3 +318,5 @@ TASK09.00核查与交付状态：[完成报告](docs/TASK-09.00-COMPLETION-REPOR
 2026-11-24：09.01来源/指标/空观测模型及校验完成，尚无真实观测接入界面。[核查报告](docs/TASK-09.01-COMPLETION-REPORT.md) · [下一步09.02](docs/TASK-09.02-BOUNDED-ACQUISITION.md)。
 
 2026-11-24：09.02有限获取与原始回执完成，在线小样本已归档，生产观测仍为空。[报告](docs/TASK-09.02-COMPLETION-REPORT.md) · [下一步09.03](docs/TASK-09.03-NORMALIZATION-AND-PUBLICATION.md)。
+
+2026-11-24：09.03已完成6条观测的数据层发布与回退演练，尚未接入网页。[报告](docs/TASK-09.03-COMPLETION-REPORT.md) · [下一步09.04](docs/TASK-09.04-COUNTRY-METRIC-UI.md)。构建现在先验证数据，并需要Python3及Node。

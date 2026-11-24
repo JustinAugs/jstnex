@@ -1,0 +1,10 @@
+import { readFileSync, existsSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { acquisitionErrors } from './validate-acquisition.mjs';
+const root=fileURLToPath(new URL('../',import.meta.url));
+const input=JSON.parse(readFileSync(0,'utf8'));
+const codes=new Set(JSON.parse(readFileSync(resolve(root,'data/countries.json'),'utf8')).map(c=>c.code));
+const errors=acquisitionErrors(input,codes,ref=>existsSync(resolve(root,ref)));
+for(const error of errors)console.log(error);
+process.exitCode=errors.length?1:0;

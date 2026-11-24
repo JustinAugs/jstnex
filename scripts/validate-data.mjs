@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { spawnSync } from "node:child_process";
 import { acquisitionErrors } from "./validate-acquisition.mjs";
 /*
   scripts/validate-data.mjs — JSTNEX 数据质量校验器（TASK 08.02）
@@ -698,6 +699,8 @@ try {
   const source = (sources ?? []).find(source => source.id === "world-bank-wdi");
   if (source && source.datasetCode !== reviewed.sourceId) err("data/sources.json", source.id, "dataset code differs from evidence");
 } catch { err("data/acquisition", "evidence", "cannot read reviewed pilot evidence"); }
+const publicationCheck = spawnSync("python3", [path.join(ROOT, "scripts/normalize-wdi.py"), "verify"], { encoding: "utf8" });
+if (publicationCheck.status !== 0) err("data/acquisition", "raw-to-published", publicationCheck.stdout || publicationCheck.stderr || "verification failed");
 FILES.push(["data/sources.json", sources], ["data/indicators.json", indicators], ["data/observations.json", observations]);
 console.log(`Acquisition: ${observations?.length ?? 0} observations; ${observations?.length ? "local contracts only; publication review still required" : "no published metric data"}`);
 

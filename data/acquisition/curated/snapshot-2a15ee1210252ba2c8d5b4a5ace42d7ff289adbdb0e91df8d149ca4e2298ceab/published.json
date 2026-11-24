@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "batches": [
+    {
+      "id": "wdi-21326e69a327f78649fb6d20db94d679b303f41eca88bf5372968aa89e625653",
+      "sourceId": "world-bank-wdi",
+      "retrievedAt": "2026-11-24T13:43:25.156323Z",
+      "checkedAt": "2026-11-24",
+      "upstreamDatasetUpdatedAt": "2026-11-11",
+      "rawManifestPath": "data/acquisition/raw/world-bank-wdi/wdi-21326e69a327f78649fb6d20db94d679b303f41eca88bf5372968aa89e625653/manifest.json",
+      "rawManifestSha256": "388122e977303a5169906167a56e1028305d6bc311b7f3be621e9a231f78c12f",
+      "normalizerVersion": "1",
+      "observationsSha256": "2a15ee1210252ba2c8d5b4a5ace42d7ff289adbdb0e91df8d149ca4e2298ceab"
+    }
+  ],
+  "observationsSha256": "2a15ee1210252ba2c8d5b4a5ace42d7ff289adbdb0e91df8d149ca4e2298ceab",
+  "snapshotPath": "data/acquisition/curated/snapshot-2a15ee1210252ba2c8d5b4a5ace42d7ff289adbdb0e91df8d149ca4e2298ceab"
+}

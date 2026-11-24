@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-24",
+  "actions": [
+    "publish six observations",
+    "verify raw equality",
+    "restore original empty snapshot",
+    "verify byte-exact rollback",
+    "publish same candidate again",
+    "verify byte-exact publication"
+  ],
+  "initialSha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+  "publishedSha256": "2a15ee1210252ba2c8d5b4a5ace42d7ff289adbdb0e91df8d149ca4e2298ceab",
+  "observations": 6,
+  "networkRequests": 0,
+  "uiChanged": false
+}

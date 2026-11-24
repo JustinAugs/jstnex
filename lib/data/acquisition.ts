@@ -13,10 +13,11 @@ export type DataIndicator = {
   countryMapping: Record<string, string>; allowedYears: string[];
   allowedStatuses: (typeof OBSERVATION_STATUSES[number])[];
 };
-// Local admission receipt only. Network/page/hash receipts are added in 09.02/03.
+// Published admission links to an immutable raw batch and normalized output.
 export type BatchManifest = {
   id: string; sourceId: string; retrievedAt: string; checkedAt: string;
   upstreamDatasetUpdatedAt: string | null;
+  rawManifestPath: string; rawManifestSha256: string; normalizerVersion: string; observationsSha256: string;
 };
 export type Observation = {
   recordId: string; countryIso3: string; sourceId: string; indicatorId: string;
@@ -26,7 +27,7 @@ export type Observation = {
   upstreamDatasetUpdatedAt: string | null; sourcePublishedAt: string | null;
   sourceRevisedAt: string | null; providerObservationStatus: string;
 };
-export type PublishedManifest = { schemaVersion: 1; batches: BatchManifest[] };
+export type PublishedManifest = { schemaVersion: 1; batches: BatchManifest[]; observationsSha256?: string; snapshotPath?: string };
 
 /** Raw acquisition receipts are distinct from published observation admission. */
 export type RawPageReceipt = {

@@ -12,7 +12,7 @@ let checks = 0;
 function fixture(name, mutate, expected, diagnostic) {
   const dir = mkdtempSync(join(tmpdir(), "jstnex-contract-"));
   try {
-    for (const entry of ["data", "lib", "scripts"]) cpSync(join(root, entry), join(dir, entry), { recursive: true });
+    for (const entry of ["data", "lib", "scripts", "docs"]) cpSync(join(root, entry), join(dir, entry), { recursive: true });
     const edit = (file, change) => {
       const path = join(dir, file);
       const data = JSON.parse(readFileSync(path, "utf8"));
@@ -45,6 +45,7 @@ fixture("curated default stays optional", edit => edit("data/companies.json", ro
 fixture("calculator ID independent of formula", edit => edit("data/calculators.json", rows => rows[0].id = "independentCalculator"), 0);
 fixture("unknown formula fails", edit => edit("data/calculators.json", rows => rows[0].formulaId = "missingFormula"), 1, /formulaId/);
 fixture("removing a displayed country fails", edit => edit("data/countries.json", rows => rows.splice(rows.findIndex(c => c.code === "CN"), 1)), 1, /unknown country CN/);
+fixture("unreviewed provider code fails", edit => edit("data/indicators.json", rows => rows[0].providerIndicatorId = "OTHER.CODE"), 1, /reviewed evidence/);
 const codes = new Set(GLOBE_NODES.map(n => n.code));
 assert.deepEqual(globeNodeErrors(GLOBE_NODES, codes), []);
 for (const [nodes, message] of [

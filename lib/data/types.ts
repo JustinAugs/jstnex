@@ -244,3 +244,5 @@ export type Country = {
   */
   provenance?: Provenance | null;
 };
+
+export type { DataSource, DataIndicator, Observation, BatchManifest, PublishedManifest } from "./acquisition";

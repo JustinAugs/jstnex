@@ -109,3 +109,9 @@ export const PROVENANCE_KINDS = [
   "dataset",
 ] as const;
 export type ProvenanceKind = (typeof PROVENANCE_KINDS)[number];
+
+// TASK 09.01: acquisition contract vocabulary, shared by types and validation.
+export const SOURCE_ADMISSIONS = ["approved", "hold", "rejected"] as const;
+export const OBSERVATION_STATUSES = ["observed", "missing"] as const;
+export const DATA_FREQUENCIES = ["annual"] as const;
+export const PRICE_BASES = ["current"] as const;

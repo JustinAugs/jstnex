@@ -225,3 +225,9 @@ Implementation references: `lib/data/types.ts`, `lib/data/enums.ts`, `lib/data/p
 首页精选地球节点在 `lib/data/globe-nodes.ts`，不代表全部目录或真实地理位置。校验器检查存在国家、唯一 code、有限坐标及球内边界；新增国家不自动生成坐标。
 
 覆盖警告继续为 5 条，处置与触发条件已归档；不把零 schema 错误解释成知识覆盖完整。补充命令：`node scripts/check-data-contracts.mjs`、`node scripts/check-component-contracts.mjs`。后者是 SSR 契约检查，不代表浏览器交互通过。
+
+## 14. TASK09.01 已实现的来源与观测层
+
+2026-11-24：新增sources.json（1）、indicators.json（1）、observations.json（0）与acquisition/published.json（空batches对象）。总计11数组/62条，旧60业务记录不变。类型见lib/data/acquisition.ts，运行时词表复用enums.ts，validate:data集成validate-acquisition.mjs；额外命令node scripts/check-acquisition-contracts.mjs。
+
+value为普通非负十进制字符串或null；observed/missing仅表示完整性。来源/指标/期间/国家ISO3、单位/当前价格/scale和批次日期须一致；WDI关键注册字段对照审核证据。安全URL、真实日期、非空双语和证据路径均检查。当前BatchManifest只含本地身份/日期，不是完整获取或发布许可；09.02/03负责网络、分页、hash、原始值核对和发布。完整结果见TASK-09.01-COMPLETION-REPORT.md。

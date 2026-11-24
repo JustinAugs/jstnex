@@ -1,0 +1,37 @@
+[
+  {
+    "id": "exports-goods-services-current-usd",
+    "sourceId": "world-bank-wdi",
+    "providerIndicatorId": "NE.EXP.GNFS.CD",
+    "name": {
+      "en": "Exports of goods and services (current US$)",
+      "zh": "货物与服务出口额（当年美元）"
+    },
+    "definition": {
+      "en": "Annual exports of goods and services at current prices in US dollars; not a physical freight measure.",
+      "zh": "按当年价格及美元计价的年度货物与服务出口额，不代表实物货运量。"
+    },
+    "unit": "USD",
+    "currency": "USD",
+    "priceBasis": "current",
+    "scale": 1,
+    "frequency": "annual",
+    "coverage": {
+      "en": "Economy-wide national accounts exports of goods and services.",
+      "zh": "经济体国民账户口径的全部货物与服务出口。"
+    },
+    "countryMapping": {
+      "CN": "CHN",
+      "US": "USA"
+    },
+    "allowedYears": [
+      "2022",
+      "2023",
+      "2024"
+    ],
+    "allowedStatuses": [
+      "observed",
+      "missing"
+    ]
+  }
+]

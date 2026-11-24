@@ -314,3 +314,5 @@ Preview. robots.txt is crawler guidance, not access control. Local dev is noinde
 TASK 09.00已完成来源/字段与采集规划（尚未接入产品）：[总方案](docs/TASK-09.00-ACQUISITION-PLAN.md) · [来源登记](docs/TASK-09.00-SOURCE-REGISTER.md) · [字段契约](docs/TASK-09.00-DATA-CONTRACT.md) · [下一任务09.01](docs/TASK-09.01-MODEL-AND-VALIDATION.md)。
 
 TASK09.00核查与交付状态：[完成报告](docs/TASK-09.00-COMPLETION-REPORT.md)。
+
+2026-11-24：09.01来源/指标/空观测模型及校验完成，尚无真实观测接入界面。[核查报告](docs/TASK-09.01-COMPLETION-REPORT.md) · [下一步09.02](docs/TASK-09.02-BOUNDED-ACQUISITION.md)。

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "world-bank-wdi",
+    "publisher": {
+      "en": "World Bank",
+      "zh": "世界银行"
+    },
+    "name": {
+      "en": "World Development Indicators",
+      "zh": "世界发展指标"
+    },
+    "datasetCode": "2",
+    "datasetUrl": "https://data.worldbank.org/indicator/NE.EXP.GNFS.CD",
+    "apiBase": "https://api.worldbank.org/v2/",
+    "licenseId": "CC-BY-4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "termsUrl": "https://www.worldbank.org/ext/en/legal/terms-conditions/datasets",
+    "attribution": {
+      "en": "World Bank: World Development Indicators: country official statistics, national accounts data files and World Bank staff estimates. JSTNEX translates and formats labels; no endorsement is implied.",
+      "zh": "世界银行：世界发展指标：各经济体官方统计、国民账户资料及世界银行估算。本站翻译和格式化标签，不表示世界银行背书。"
+    },
+    "licenseCheckedAt": "2026-11-23",
+    "admission": "approved",
+    "evidenceRefs": [
+      "docs/evidence/task09-2026-11-23/manifest.json",
+      "docs/TASK-09.00-SOURCE-REGISTER.md"
+    ]
+  }
+]

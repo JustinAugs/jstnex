@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { acquisitionErrors } from "./validate-acquisition.mjs";
 /*
   scripts/validate-data.mjs — JSTNEX 数据质量校验器（TASK 08.02）
 
@@ -32,7 +33,7 @@
   根 package.json 与 Next 配置的模块语义保持不变。
 */
 
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 
@@ -673,6 +674,32 @@ const FILES = [
   ["data/companies.json", companies],
   ["data/calculators.json", calculators],
 ];
+
+const sources = loadArray("data/sources.json");
+const indicators = loadArray("data/indicators.json");
+const observations = loadArray("data/observations.json");
+let published;
+try { published = JSON.parse(readFileSync(path.join(ROOT, "data/acquisition/published.json"), "utf8")); }
+catch { err("data/acquisition/published.json", "manifest", "missing or invalid JSON"); }
+for (const message of acquisitionErrors({ sources, indicators, observations, published }, countryCodes,
+  ref => existsSync(path.join(ROOT, ref)))) err("data/acquisition", "contract", message);
+// Pin this pilot to its reviewed evidence; syntactically valid registry edits are not approval.
+try {
+  const reviewed = JSON.parse(readFileSync(path.join(ROOT, "docs/evidence/task09-2026-11-23/manifest.json"), "utf8"));
+  for (const indicator of indicators ?? []) {
+    if (indicator.sourceId !== "world-bank-wdi") continue;
+    const sample = reviewed.selectedSample;
+    if (indicator.providerIndicatorId !== reviewed.indicatorId || indicator.unit !== sample.unit ||
+        indicator.currency !== sample.unit || indicator.priceBasis !== sample.priceBasis || indicator.scale !== sample.scale ||
+        JSON.stringify(indicator.allowedYears) !== JSON.stringify(sample.years) ||
+        JSON.stringify(indicator.countryMapping) !== JSON.stringify({CN:"CHN", US:"USA"}))
+      err("data/indicators.json", indicator.id, "pilot registry differs from reviewed evidence; re-review required");
+  }
+  const source = (sources ?? []).find(source => source.id === "world-bank-wdi");
+  if (source && source.datasetCode !== reviewed.sourceId) err("data/sources.json", source.id, "dataset code differs from evidence");
+} catch { err("data/acquisition", "evidence", "cannot read reviewed pilot evidence"); }
+FILES.push(["data/sources.json", sources], ["data/indicators.json", indicators], ["data/observations.json", observations]);
+console.log(`Acquisition: ${observations?.length ?? 0} observations; ${observations?.length ? "local contracts only; publication review still required" : "no published metric data"}`);
 
 const totalRecords = FILES.reduce((sum, [, data]) => sum + (data?.length ?? 0), 0);
 

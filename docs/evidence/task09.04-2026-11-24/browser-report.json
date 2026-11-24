@@ -1,0 +1,135 @@
+{
+  "browser": "Chrome",
+  "records": [
+    {
+      "width": 390,
+      "language": "en",
+      "code": "cn",
+      "overflow": false,
+      "rows": 3
+    },
+    {
+      "width": 390,
+      "language": "en",
+      "code": "us",
+      "overflow": false,
+      "rows": 3
+    },
+    {
+      "width": 390,
+      "language": "en",
+      "code": "jp",
+      "overflow": false,
+      "rows": 0
+    },
+    {
+      "width": 390,
+      "language": "zh",
+      "code": "cn",
+      "overflow": false,
+      "rows": 3
+    },
+    {
+      "width": 390,
+      "language": "zh",
+      "code": "us",
+      "overflow": false,
+      "rows": 3
+    },
+    {
+      "width": 390,
+      "language": "zh",
+      "code": "jp",
+      "overflow": false,
+      "rows": 0
+    },
+    {
+      "width": 768,
+      "language": "en",
+      "code": "cn",
+      "overflow": false,
+      "rows": 3
+    },
+    {
+      "width": 768,
+      "language": "en",
+      "code": "us",
+      "overflow": false,
+      "rows": 3
+    },
+    {
+      "width": 768,
+      "language": "en",
+      "code": "jp",
+      "overflow": false,
+      "rows": 0
+    },
+    {
+      "width": 768,
+      "language": "zh",
+      "code": "cn",
+      "overflow": false,
+      "rows": 3
+    },
+    {
+      "width": 768,
+      "language": "zh",
+      "code": "us",
+      "overflow": false,
+      "rows": 3
+    },
+    {
+      "width": 768,
+      "language": "zh",
+      "code": "jp",
+      "overflow": false,
+      "rows": 0
+    },
+    {
+      "width": 1440,
+      "language": "en",
+      "code": "cn",
+      "overflow": false,
+      "rows": 3
+    },
+    {
+      "width": 1440,
+      "language": "en",
+      "code": "us",
+      "overflow": false,
+      "rows": 3
+    },
+    {
+      "width": 1440,
+      "language": "en",
+      "code": "jp",
+      "overflow": false,
+      "rows": 0
+    },
+    {
+      "width": 1440,
+      "language": "zh",
+      "code": "cn",
+      "overflow": false,
+      "rows": 3
+    },
+    {
+      "width": 1440,
+      "language": "zh",
+      "code": "us",
+      "overflow": false,
+      "rows": 3
+    },
+    {
+      "width": 1440,
+      "language": "zh",
+      "code": "jp",
+      "overflow": false,
+      "rows": 0
+    },
+    {
+      "languageToggle": "en→zh→en",
+      "passed": true
+    }
+  ]
+}

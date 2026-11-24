@@ -8,6 +8,20 @@
   少写一个字段就会报错，不用担心漏翻。
 */
 const en = {
+  countryMetrics: {
+    "title": "Macroeconomic context",
+    "uncovered": "This two-economy pilot does not yet cover this economy. No export value is implied.",
+    "scope": "Annual goods and services exports at current prices in US dollars. This national accounts measure is not physical freight volume or a supply-chain ranking.",
+    "caption": "Calendar years 2022–2024 · USD, current prices · unscaled values, displayed to at most two decimal places",
+    "year": "Year",
+    "value": "Exports (USD)",
+    "missing": "Not available",
+    "source": "Source for these observations",
+    "retrieved": "Retrieved on (UTC)",
+    "checked": "Checked on",
+    "license": "License and conditions",
+    "terms": "World Bank additional terms"
+},
   nav: {
     home: "Home",
     global: "Global",

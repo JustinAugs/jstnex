@@ -7,6 +7,20 @@
 import type { Dictionary } from "./index";
 
 const zh: Dictionary = {
+  countryMetrics: {
+    "title": "宏观经济背景",
+    "uncovered": "本次两经济体试点尚未覆盖此经济体，不表示其出口额为零。",
+    "scope": "按当年价格及美元计价的年度货物与服务出口额。这是国民账户指标，不代表实物货运量或供应链实力排名。",
+    "caption": "2022—2024自然年 · 当年美元（USD）· 未缩放，显示最多两位小数",
+    "year": "自然年",
+    "value": "出口额（USD）",
+    "missing": "暂无数据",
+    "source": "这些观测的来源",
+    "retrieved": "取用日期（UTC）",
+    "checked": "本站核对日期",
+    "license": "许可与使用条件",
+    "terms": "世界银行附加条款"
+},
   nav: {
     home: "首页",
     global: "全球",

@@ -45,9 +45,9 @@ export default function Navbar() {
         setIsMenuOpen(false);
         menuButtonRef.current?.focus();
       }
-    }} className="sticky top-0 z-50 border-b border-line bg-white">
+    }} className="@container sticky top-0 z-50 border-b border-line bg-white">
       {/* sticky 导航自己不算「区块」，所以这里用 container-page 而不是 Section */}
-      <nav className="container-page flex h-16 items-center justify-between">
+      <nav className="container-page flex min-h-16 flex-wrap items-center justify-between gap-x-4 gap-y-3 py-3">
         {/* 文字 Logo：品牌名不翻译，任何语言下都显示 JSTNEX */}
         <Link
           href="/"
@@ -60,7 +60,7 @@ export default function Navbar() {
         {/* 右侧一组：桌面导航 + 语言切换 + 手机汉堡按钮 */}
         <div className="flex items-center gap-6">
           {/* 桌面端导航：md 以下隐藏（手机上不显示） */}
-          <ul className="hidden items-center gap-8 md:flex">
+          <ul className="hidden items-center gap-8 @min-[48rem]:flex">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
@@ -89,7 +89,7 @@ export default function Navbar() {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={dict.nav.openMenu}
             aria-expanded={isMenuOpen}
-            className="flex h-9 w-9 flex-col items-center justify-center gap-1.5 md:hidden"
+            className="flex h-9 w-9 flex-col items-center justify-center gap-1.5 @min-[48rem]:hidden"
           >
             <span
               className={`h-px w-5 bg-ink transition-transform ${
@@ -112,7 +112,7 @@ export default function Navbar() {
 
       {/* 手机端展开的菜单：isMenuOpen 为 true 时才渲染 */}
       {
-        <ul id="mobile-navigation" hidden={!isMenuOpen} className="border-t border-line bg-white px-6 py-4 md:hidden">
+        <ul id="mobile-navigation" hidden={!isMenuOpen} className="border-t border-line bg-white px-6 py-4 @min-[48rem]:hidden">
           {navLinks.map((link) => (
             <li key={link.href} className="border-b border-line last:border-0">
               <Link

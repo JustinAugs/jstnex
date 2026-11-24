@@ -1,5 +1,7 @@
 "use client";
 
+import CountryMetrics from "./CountryMetrics";
+import type { MetricSnapshot } from "@/lib/data/published-snapshot";
 import SourceField from "@/components/ui/SourceField";
 
 /*
@@ -24,9 +26,10 @@ import { regionKey, provenanceOf, type Country } from "@/lib/data";
 
 type CountryDetailProps = {
   country: Country;
+  snapshot: MetricSnapshot;
 };
 
-export default function CountryDetail({ country }: CountryDetailProps) {
+export default function CountryDetail({ country, snapshot }: CountryDetailProps) {
   const { language, dict } = useLanguage();
 
   const labels = dict.countryDetail.labels;
@@ -82,6 +85,7 @@ export default function CountryDetail({ country }: CountryDetailProps) {
       <p className="mt-10 border-t border-line pt-6 text-caption text-mist">
         {dict.countryDetail.note}
       </p>
+      <CountryMetrics code={country.code} snapshot={snapshot} />
     </Section>
   );
 }

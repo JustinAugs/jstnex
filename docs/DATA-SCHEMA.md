@@ -239,3 +239,7 @@ value为普通非负十进制字符串或null；observed/missing仅表示完整�
 ## 16. TASK09.03 观测发布层
 
 2026-11-24：观测6条，11数组共68条。normalize-wdi.py用Decimal离线重放raw并验证观测完全对应；扩展BatchManifest关联原始manifest/hash/清洗版本/输出hash。published的snapshotPath指向curated不可变快照，observations为兼容镜像。独占锁、事务日志与backup支持中断恢复；校验及构建拒绝未完成事务。详见TASK-09.03-COMPLETION-REPORT.md；原始与逐观测日期角色独立，尚无UI接入。
+
+## 17. TASK09.04 国家详情消费
+
+published-snapshot.ts在服务端读取指针快照并检查哈希/事务/来源，传递序列化观测与来源到双语指标区；不读镜像、不联网。format-metric.ts用BigInt处理十进制字符串与显示舍入。CN/US展示6条年度观测，其余国家明确未覆盖；来源只支持独立指标区。完整验证和限制见TASK-09.04-COMPLETION-REPORT.md。

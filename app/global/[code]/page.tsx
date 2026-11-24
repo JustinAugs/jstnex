@@ -1,3 +1,4 @@
+import { readPublishedMetrics } from "@/lib/data/published-snapshot";
 import { notFound } from "next/navigation";
 import CountryDetail from "@/components/global/CountryDetail";
 import { COUNTRIES } from "@/lib/data";
@@ -76,5 +77,5 @@ export default async function CountryDetailPage({ params }: Props) {
   }
 
   // CountryDetail 是客户端组件，自己读语言（useLanguage），所以这里传原始数据即可。
-  return <CountryDetail country={country} />;
+  return <CountryDetail country={country} snapshot={readPublishedMetrics()} />;
 }

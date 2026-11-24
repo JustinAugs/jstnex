@@ -9,12 +9,13 @@ companies that move goods between them.
 
 It is built in public, one task at a time, by one student learning to code.
 
-> **Current status:** The five-page MVP is complete. **v0.8.1** includes shared
-> data types and controlled values, a repeatable data validator, conditional
-> source display on concept cards and country details, stable region ordering,
-> and a data maintenance guide. Content remains manually curated; no real data
-> acquisition or new statistical claims are included. Deployment evidence is
-> recorded separately from local acceptance. Calculators are teaching models.
+> **Current status:** The five-page MVP and TASK 09.01–09.04 data pilot are implemented.
+> CN/US country details show six sourced 2022–2024 annual exports-of-goods-and-services
+> observations, with units, dates and license links. Other profiles remain curated;
+> Home demo figures and teaching calculators retain their explicit boundaries.
+> Package version remains **0.8.1** pending the later release decision. Browser coverage
+> is scoped to recorded Chrome samples; broader accessibility and style findings remain.
+
 
 ---
 
@@ -320,3 +321,5 @@ TASK09.00核查与交付状态：[完成报告](docs/TASK-09.00-COMPLETION-REPOR
 2026-11-24：09.02有限获取与原始回执完成，在线小样本已归档，生产观测仍为空。[报告](docs/TASK-09.02-COMPLETION-REPORT.md) · [下一步09.03](docs/TASK-09.03-NORMALIZATION-AND-PUBLICATION.md)。
 
 2026-11-24：09.03已完成6条观测的数据层发布与回退演练，尚未接入网页。[报告](docs/TASK-09.03-COMPLETION-REPORT.md) · [下一步09.04](docs/TASK-09.04-COUNTRY-METRIC-UI.md)。构建现在先验证数据，并需要Python3及Node。
+
+2026-11-24：09.04中英国家详情指标展示及Chrome样本验收完成。[报告](docs/TASK-09.04-COMPLETION-REPORT.md) · [下一步09.05](docs/TASK-09.05-CONTENT-AND-LICENSE-REVIEW.md)。

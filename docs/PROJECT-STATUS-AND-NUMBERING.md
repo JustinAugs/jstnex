@@ -1,3 +1,5 @@
+> 2026-11-24：09.04已将6条指标接入CN/US中英详情，Chrome三宽度及文字重排样本通过；整页审美门禁仍有7 FAIL/6 WARN。见[报告](TASK-09.04-COMPLETION-REPORT.md)，下一步[09.05](TASK-09.05-CONTENT-AND-LICENSE-REVIEW.md)。以下前期状态为历史记录。
+
 > 2026-11-24：09.03精确清洗、6条观测数据层发布及回退演练完成，网页尚未展示。见[报告](TASK-09.03-COMPLETION-REPORT.md)，下一步[09.04](TASK-09.04-COUNTRY-METRIC-UI.md)。以下阶段结论为历史记录。
 
 > 2026-11-24：TASK09.02已完成有限获取、原始批次与在线小样本验证，未发布观测；见[报告](TASK-09.02-COMPLETION-REPORT.md)。下一步[09.03精确清洗/发布](TASK-09.03-NORMALIZATION-AND-PUBLICATION.md)。下文前期状态保留为历史记录。

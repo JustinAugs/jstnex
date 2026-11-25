@@ -250,7 +250,7 @@ Data Pipeline), by which point the five-page MVP will long since have shipped.
 | 06 + | v0.7.0 visual upgrades (Field density, Hero, SCOR); then country detail pages, interactive globe, layout-shift fix and the TASK 07.02 Global audit fixes (historical sub-numbers 06.8–06.12) | v0.7.0 / v0.7.1 | Done |
 | 07   | **Product Experience** — page-level visual audits and improvements (07.01 Global audit, 07.02 Global improvement, 07.03 audit closure) | v0.7.x | Done |
 | 08   | Data foundation & quality (shared types, validation) | v0.8.x   | Done        |
-| 09   | Data acquisition — bounded official API pilot, then scoped collection | v0.9.x | 09.00 design complete; implementation pending |
+| 09   | Data acquisition — bounded official API pilot, then scoped collection | v0.9.x | Limited data pilot accepted; version tag pending |
 | 10   | Database & data pipeline — PostgreSQL + FastAPI     | v1.0.x   | Planned     |
 | 11   | Analytics & visualisation (charts, maps)            | v1.1.x   | Planned     |
 | 12   | Intelligence & AI (RAG over curated sources)        | v1.2.x   | Planned     |
@@ -325,3 +325,5 @@ TASK09.00核查与交付状态：[完成报告](docs/TASK-09.00-COMPLETION-REPOR
 2026-11-24：09.04中英国家详情指标展示及Chrome样本验收完成。[报告](docs/TASK-09.04-COMPLETION-REPORT.md) · [下一步09.05](docs/TASK-09.05-CONTENT-AND-LICENSE-REVIEW.md)。
 
 2026-11-25：09.05内容/许可审查与SCOR归属说明完成；未新增未获准内容，5覆盖警告保留。[报告](docs/TASK-09.05-CONTENT-REVIEW.md) · [下一步09.06](docs/TASK-09.06-RELEASE-ACCEPTANCE.md)。
+
+2026-11-25：TASK09.06全链路技术验收与版本提案完成。[报告](docs/TASK-09.06-COMPLETION-REPORT.md) · [统一当前进度](docs/PROJECT-STATUS-AND-NUMBERING.md)。package仍0.8.1，新版本标签尚未创建，不能报告v0.9.0已发布。

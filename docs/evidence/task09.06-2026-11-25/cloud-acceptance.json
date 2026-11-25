@@ -1,0 +1,258 @@
+{
+  "date": "2026-11-25",
+  "productCommit": "4aa43ba805141496b0bc6935a1cadda3509f8526",
+  "production": {
+    "domain": "jstnex.vercel.app",
+    "deploymentId": "dpl_H6fi7x4etZASzRBT2AUF9MDmVRfF"
+  },
+  "preview": {
+    "id": "dpl_4JvoQeKsdc4aUopC43RFmVtTkD61",
+    "url": "jstnex-d05mg4bzg-justinaugs.vercel.app",
+    "sha": "4aa43ba805141496b0bc6935a1cadda3509f8526",
+    "state": "READY",
+    "target": null
+  },
+  "checks": [
+    {
+      "env": "production",
+      "path": "/",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "production",
+      "path": "/tools",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "production",
+      "path": "/companies",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "production",
+      "path": "/global/cn",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "production",
+      "path": "/supply-chain",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "production",
+      "path": "/global/us",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "production",
+      "path": "/global",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "production",
+      "path": "/global/jp",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "production",
+      "path": "/global/de",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "production",
+      "path": "/global/sg",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "production",
+      "path": "/global/kr",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "production",
+      "path": "/global/vn",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "production",
+      "path": "/global/in",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "production",
+      "path": "/global/CN",
+      "status": 404,
+      "errors": []
+    },
+    {
+      "env": "production",
+      "path": "/robots.txt",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "production",
+      "path": "/global/Cn",
+      "status": 404,
+      "errors": []
+    },
+    {
+      "env": "production",
+      "path": "/sitemap.xml",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "production",
+      "path": "/global/XX",
+      "status": 404,
+      "errors": []
+    },
+    {
+      "env": "production",
+      "path": "/global/xx",
+      "status": 404,
+      "errors": []
+    },
+    {
+      "env": "production",
+      "path": "/opengraph-image",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "preview",
+      "path": "/",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "preview",
+      "path": "/global",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "preview",
+      "path": "/companies",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "preview",
+      "path": "/supply-chain",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "preview",
+      "path": "/tools",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "preview",
+      "path": "/global/cn",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "preview",
+      "path": "/global/us",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "preview",
+      "path": "/global/jp",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "preview",
+      "path": "/global/de",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "preview",
+      "path": "/global/sg",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "preview",
+      "path": "/global/kr",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "preview",
+      "path": "/global/vn",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "preview",
+      "path": "/global/Cn",
+      "status": 404,
+      "errors": []
+    },
+    {
+      "env": "preview",
+      "path": "/global/XX",
+      "status": 404,
+      "errors": []
+    },
+    {
+      "env": "preview",
+      "path": "/global/in",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "preview",
+      "path": "/global/xx",
+      "status": 404,
+      "errors": []
+    },
+    {
+      "env": "preview",
+      "path": "/global/CN",
+      "status": 404,
+      "errors": []
+    },
+    {
+      "env": "preview",
+      "path": "/robots.txt",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "preview",
+      "path": "/sitemap.xml",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "env": "preview",
+      "path": "/opengraph-image",
+      "status": 200,
+      "errors": []
+    }
+  ],
+  "scope": "HTTP/SEO on identical product SHA; not a full accessibility or visual certification"
+}

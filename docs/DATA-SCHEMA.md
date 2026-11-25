@@ -243,3 +243,7 @@ value为普通非负十进制字符串或null；observed/missing仅表示完整�
 ## 17. TASK09.04 国家详情消费
 
 published-snapshot.ts在服务端读取指针快照并检查哈希/事务/来源，传递序列化观测与来源到双语指标区；不读镜像、不联网。format-metric.ts用BigInt处理十进制字符串与显示舍入。CN/US展示6条年度观测，其余国家明确未覆盖；来源只支持独立指标区。完整验证和限制见TASK-09.04-COMPLETION-REPORT.md。
+
+## 18. TASK09.06 维护验收入口
+
+2026-11-25全链路验收见TASK-09.06-COMPLETION-REPORT.md。维护时先validate:data，再按改动运行check-wdi-acquisition.py、check-wdi-raw.py、check-wdi-normalization.py及JS数据/组件/显示契约；发布演练必须隔离副本。浏览器命令check-release-browser.mjs和check-country-metrics-browser.mjs通过JSTNEX_PLAYWRIGHT_MODULE使用已安装模块，不新增项目依赖。冻结批次不因重放改日期；原始抓取、发布、显示与Git标签分别记录。

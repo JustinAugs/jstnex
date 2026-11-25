@@ -1,0 +1,66 @@
+{
+  "browser": "Chrome",
+  "version": "158.0.8127.38",
+  "records": [
+    {
+      "width": 390,
+      "lang": "en",
+      "homeAnchors": true,
+      "countryReturnFilter": true,
+      "companyCombinedFilters": true,
+      "knowledgeFilter": true,
+      "calculators": 4,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "lang": "zh",
+      "homeAnchors": true,
+      "countryReturnFilter": true,
+      "companyCombinedFilters": true,
+      "knowledgeFilter": true,
+      "calculators": 4,
+      "errors": []
+    },
+    {
+      "width": 768,
+      "lang": "en",
+      "homeAnchors": true,
+      "countryReturnFilter": true,
+      "companyCombinedFilters": true,
+      "knowledgeFilter": true,
+      "calculators": 4,
+      "errors": []
+    },
+    {
+      "width": 768,
+      "lang": "zh",
+      "homeAnchors": true,
+      "countryReturnFilter": true,
+      "companyCombinedFilters": true,
+      "knowledgeFilter": true,
+      "calculators": 4,
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "lang": "en",
+      "homeAnchors": true,
+      "countryReturnFilter": true,
+      "companyCombinedFilters": true,
+      "knowledgeFilter": true,
+      "calculators": 4,
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "lang": "zh",
+      "homeAnchors": true,
+      "countryReturnFilter": true,
+      "companyCombinedFilters": true,
+      "knowledgeFilter": true,
+      "calculators": 4,
+      "errors": []
+    }
+  ]
+}

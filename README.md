@@ -323,3 +323,5 @@ TASK09.00核查与交付状态：[完成报告](docs/TASK-09.00-COMPLETION-REPOR
 2026-11-24：09.03已完成6条观测的数据层发布与回退演练，尚未接入网页。[报告](docs/TASK-09.03-COMPLETION-REPORT.md) · [下一步09.04](docs/TASK-09.04-COUNTRY-METRIC-UI.md)。构建现在先验证数据，并需要Python3及Node。
 
 2026-11-24：09.04中英国家详情指标展示及Chrome样本验收完成。[报告](docs/TASK-09.04-COMPLETION-REPORT.md) · [下一步09.05](docs/TASK-09.05-CONTENT-AND-LICENSE-REVIEW.md)。
+
+2026-11-25：09.05内容/许可审查与SCOR归属说明完成；未新增未获准内容，5覆盖警告保留。[报告](docs/TASK-09.05-CONTENT-REVIEW.md) · [下一步09.06](docs/TASK-09.06-RELEASE-ACCEPTANCE.md)。

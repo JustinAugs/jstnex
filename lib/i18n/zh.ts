@@ -122,6 +122,9 @@ const zh: Dictionary = {
     description:
       "概念、流程与指标——货物如何被采购、制造、运输与退回的全部机理。",
     scor: {
+      attribution: "SCOR DS归属于美国供应链管理协会（ASCM）。这里的双语学习说明不是标准原文，也不是获授权的官方译本。",
+      original: "查看原始标准",
+      guidance: "ASCM使用指引",
       eyebrow: "SCOR 数字标准",
       title: "七个流程，覆盖每一条供应链",
       description:

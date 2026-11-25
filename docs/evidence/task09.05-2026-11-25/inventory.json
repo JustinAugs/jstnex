@@ -1,0 +1,205 @@
+{
+  "date": "2026-11-25",
+  "baseline": "ae43fa5",
+  "scope": "inventory and limited source/permission review, not blanket factual or legal certification",
+  "files": {
+    "companies": "366323de897303a3ed433392f8e09aebe9c2bead8a4859a8aa605f12d8881eb7",
+    "concepts": "0b97050c8bd1b02132568c46bdd9c367dc7edfbb314dae5d86ad002b009389e3",
+    "scor-processes": "f2eff65d49cfa70f66012f0d2b25b30bb249a4cf66a0cf04743b8da2e37310e1"
+  },
+  "scor": [
+    {
+      "id": "orchestrate",
+      "conceptCount": 1,
+      "review": "short learning paraphrase; full original expression comparison unavailable; no reproduction clearance inferred"
+    },
+    {
+      "id": "plan",
+      "conceptCount": 8,
+      "review": "short learning paraphrase; full original expression comparison unavailable; no reproduction clearance inferred"
+    },
+    {
+      "id": "order",
+      "conceptCount": 0,
+      "review": "short learning paraphrase; full original expression comparison unavailable; no reproduction clearance inferred"
+    },
+    {
+      "id": "source",
+      "conceptCount": 1,
+      "review": "short learning paraphrase; full original expression comparison unavailable; no reproduction clearance inferred"
+    },
+    {
+      "id": "transform",
+      "conceptCount": 2,
+      "review": "short learning paraphrase; full original expression comparison unavailable; no reproduction clearance inferred"
+    },
+    {
+      "id": "fulfill",
+      "conceptCount": 2,
+      "review": "short learning paraphrase; full original expression comparison unavailable; no reproduction clearance inferred"
+    },
+    {
+      "id": "return",
+      "conceptCount": 0,
+      "review": "short learning paraphrase; full original expression comparison unavailable; no reproduction clearance inferred"
+    }
+  ],
+  "companies": [
+    {
+      "id": "apple",
+      "relatedConcepts": [
+        "lead-time",
+        "total-landed-cost",
+        "supply-chain-risk-management"
+      ],
+      "provenance": null,
+      "status": "curated teaching associations; not evidence of model adoption",
+      "substantiveReview": "inventory only, not individually verified"
+    },
+    {
+      "id": "tsmc",
+      "relatedConcepts": [
+        "lead-time",
+        "make-to-order-vs-make-to-stock",
+        "supply-chain-risk-management"
+      ],
+      "provenance": null,
+      "status": "curated teaching associations; not evidence of model adoption",
+      "substantiveReview": "inventory only, not individually verified"
+    },
+    {
+      "id": "toyota",
+      "relatedConcepts": [
+        "just-in-time",
+        "bullwhip-effect",
+        "lead-time"
+      ],
+      "provenance": null,
+      "status": "curated teaching associations; not evidence of model adoption",
+      "substantiveReview": "inventory only, not individually verified"
+    },
+    {
+      "id": "maersk",
+      "relatedConcepts": [
+        "how-global-shipping-works",
+        "total-landed-cost",
+        "supply-chain-risk-management"
+      ],
+      "provenance": null,
+      "status": "curated teaching associations; not evidence of model adoption",
+      "substantiveReview": "inventory only, not individually verified"
+    },
+    {
+      "id": "walmart",
+      "relatedConcepts": [
+        "cross-docking",
+        "inventory-turnover",
+        "bullwhip-effect",
+        "service-level"
+      ],
+      "provenance": null,
+      "status": "curated teaching associations; not evidence of model adoption",
+      "substantiveReview": "inventory only, not individually verified"
+    },
+    {
+      "id": "shell",
+      "relatedConcepts": [
+        "supply-chain-risk-management",
+        "total-landed-cost",
+        "how-global-shipping-works"
+      ],
+      "provenance": null,
+      "status": "curated teaching associations; not evidence of model adoption",
+      "substantiveReview": "inventory only, not individually verified"
+    },
+    {
+      "id": "microsoft",
+      "relatedConcepts": [
+        "service-level",
+        "supply-chain-risk-management"
+      ],
+      "provenance": null,
+      "status": "curated teaching associations; not evidence of model adoption",
+      "substantiveReview": "inventory only, not individually verified"
+    },
+    {
+      "id": "asml",
+      "relatedConcepts": [
+        "lead-time",
+        "supply-chain-risk-management"
+      ],
+      "provenance": null,
+      "status": "curated teaching associations; not evidence of model adoption",
+      "substantiveReview": "inventory only, not individually verified"
+    },
+    {
+      "id": "volkswagen",
+      "relatedConcepts": [
+        "lead-time",
+        "bullwhip-effect",
+        "supply-chain-risk-management"
+      ],
+      "provenance": null,
+      "status": "curated teaching associations; not evidence of model adoption",
+      "substantiveReview": "inventory only, not individually verified"
+    },
+    {
+      "id": "dhl",
+      "relatedConcepts": [
+        "how-global-shipping-works",
+        "cross-docking",
+        "total-landed-cost"
+      ],
+      "provenance": null,
+      "status": "curated teaching associations; not evidence of model adoption",
+      "substantiveReview": "DHL selected fields only"
+    },
+    {
+      "id": "foxconn",
+      "relatedConcepts": [
+        "just-in-time",
+        "lead-time",
+        "make-to-order-vs-make-to-stock"
+      ],
+      "provenance": null,
+      "status": "curated teaching associations; not evidence of model adoption",
+      "substantiveReview": "inventory only, not individually verified"
+    },
+    {
+      "id": "amazon",
+      "relatedConcepts": [
+        "inventory-turnover",
+        "cross-docking",
+        "service-level"
+      ],
+      "provenance": null,
+      "status": "curated teaching associations; not evidence of model adoption",
+      "substantiveReview": "inventory only, not individually verified"
+    },
+    {
+      "id": "pfizer",
+      "relatedConcepts": [
+        "safety-stock",
+        "service-level",
+        "supply-chain-risk-management"
+      ],
+      "provenance": null,
+      "status": "curated teaching associations; not evidence of model adoption",
+      "substantiveReview": "inventory only, not individually verified"
+    }
+  ],
+  "observedAccess": {
+    "ascmGuidance": "403 on direct read; official indexed guidance available",
+    "scorOrderReturn": "page shell only, not full definitions",
+    "ibmTerms": "official full terms accessible",
+    "dhlBusinessModel": "official indexed result available",
+    "dhlSupplyChain": "direct fetch timeout; no circumvention",
+    "dhlImprint": "unavailable; license not established"
+  },
+  "outcome": {
+    "newConcepts": 0,
+    "newCompanyRelationships": 0,
+    "permissionsGranted": false,
+    "messagesSent": false
+  }
+}

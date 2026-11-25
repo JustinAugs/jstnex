@@ -57,6 +57,13 @@ export default function ScorFramework() {
         </p>
       </div>
 
+      <aside aria-label="SCOR DS / ASCM" className="mt-4 max-w-2xl text-small text-mist wrap-anywhere">
+        <p>{dict.supplyChain.scor.attribution}</p>
+        <p className="mt-2 flex flex-wrap gap-x-5 gap-y-2">
+          <a className="text-deep underline underline-offset-4" href="https://scor.ascm.org/">{dict.supplyChain.scor.original}</a>
+          <a className="text-deep underline underline-offset-4" href="https://www.ascm.org/corporate-solutions/standards-tools/scor-ds/open-access-guidance/">{dict.supplyChain.scor.guidance}</a>
+        </p>
+      </aside>
       <ol className="mt-6 grid gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
         {SCOR_PROCESSES.map((process, index) => (
           <li key={process.id} className="border-b border-line py-4">

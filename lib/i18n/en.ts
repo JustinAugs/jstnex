@@ -143,6 +143,9 @@ const en = {
     description:
       "Concepts, processes and metrics — the mechanics behind how goods are sourced, made, moved and returned.",
     scor: {
+      attribution: "SCOR DS belongs to the Association for Supply Chain Management (ASCM). These bilingual learning notes are not the official standard or an authorized translation.",
+      original: "Original standard",
+      guidance: "ASCM usage guidance",
       eyebrow: "SCOR digital standard",
       title: "Seven processes that cover every supply chain",
       description:

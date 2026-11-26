@@ -15,11 +15,11 @@
   这样以后往 concepts.json 加一条，按钮上的数字自动跟着变。
 */
 
+import SegmentedControl from "@/components/ui/SegmentedControl";
 import { useState } from "react";
 
 import Section from "@/components/ui/Section";
 import SectionHeader from "@/components/ui/SectionHeader";
-import { buttonStyles } from "@/components/ui/Button";
 import { EmptyState } from "@/components/ui/StateBlock";
 import ConceptCard from "@/components/cards/ConceptCard";
 
@@ -81,39 +81,17 @@ export default function ConceptLibrary() {
   return (
     <Section id="concept-library" className="scroll-mt-24 !pt-4">
       <SectionHeader
-        eyebrow={dict.supplyChain.library.eyebrow}
         title={dict.supplyChain.library.title}
         description={dict.supplyChain.library.description}
       />
 
       {/* ---------- 主题筛选 ---------- */}
-      <div
-        role="group"
-        aria-label={dict.supplyChain.library.filterLabel}
-        className="flex flex-wrap gap-3"
-      >
-        {[ALL, ...TOPICS.map((topic) => topic.id)].map((topicId) => {
-          const active = selected === topicId;
-          return (
-            <button
-              key={topicId}
-              type="button"
-              aria-pressed={active}
-              onClick={() => setSelected(topicId)}
-              className={buttonStyles({
-                variant: active ? "secondary" : "ghost",
-                size: "sm",
-                className: active ? "" : "border border-line",
-              })}
-            >
-              {topicLabel(topicId)}
-              <span className="ml-2 text-caption text-mist">
-                {countOf(topicId)}
-              </span>
-            </button>
-          );
-        })}
-      </div>
+      <SegmentedControl
+        label={dict.supplyChain.library.filterLabel}
+        options={[ALL, ...TOPICS.map(topic => topic.id)].map(id => ({ value: id, label: <>{topicLabel(id)} <span className="segment-count">{countOf(id)}</span></> }))}
+        value={selected}
+        onChange={setSelected}
+      />
 
       <p className="mt-6 text-caption text-mist">
         {visible.length} {dict.supplyChain.library.countLabel}

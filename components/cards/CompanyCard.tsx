@@ -78,7 +78,7 @@ export default function CompanyCard({
 
       {/* @container：让 Field 的并排/堆叠按这个 dl 的实际宽度决定，而不是按屏幕宽度 */}
       <p className="mt-3 text-small text-mist">{country} · {region}</p>
-      {!href && <details className="mt-5">
+      {!href && <details className="atlas-disclosure mt-5">
       <summary className="cursor-pointer text-small font-medium text-deep">{detailsLabel}</summary>
       <dl className="@container mt-4">
         <Field label={labels.location}>

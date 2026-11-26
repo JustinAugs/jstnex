@@ -19,6 +19,7 @@
   这是 Next.js 最常见的写法：外壳留在服务端，交互拆到客户端。
 */
 
+import SegmentedControl from "@/components/ui/SegmentedControl";
 import Link from "next/link";
 import { useEffect, useSyncExternalStore } from "react";
 
@@ -169,9 +170,8 @@ export default function CountryDirectory() {
 
   return (
     <>
-    <Section id="country-directory" className="scroll-mt-24">
+    <Section id="country-directory" className="atlas-workspace scroll-mt-24">
       <SectionHeader
-        eyebrow={dict.global.eyebrow}
         title={dict.global.title}
         description={dict.global.description}
         // 页面唯一主标题用 h1（G-01）；视觉仍是 text-h2，只改语义
@@ -181,50 +181,19 @@ export default function CountryDirectory() {
       />
 
       {/* ---------- 大区筛选 ---------- */}
-      <div
-        role="group"
-        aria-label={dict.global.filterLabel}
-        className="flex flex-wrap gap-3"
-      >
-        {/*
-          为什么要先声明 regionFilters 再 map，而不是直接写 [ALL, ...REGIONS]？
+      <SegmentedControl
+        label={dict.global.filterLabel}
+        options={regionFilters.map(region => ({ value: region, label: <>{labelOf(region)} <span className="segment-count">{countOf(region)}</span></> }))}
+        value={selected}
+        onChange={setSavedRegion}
+      />
 
-          数组字面量会把 "all" 这个字面量放宽（widen）成普通 string，
-          整个数组就变成 string[]，再传给 labelOf() / regionKey() 就类型不匹配了。
-          （CompanyDirectory 里也踩过同一个坑，注释写着同样的原因。）
-          TASK 08.01 之后 regionKey 只接受 Region，这里必须先标好类型。
-        */}
-        {regionFilters.map((region) => {
-          const active = selected === region;
-          return (
-            <button
-              key={region}
-              type="button"
-              // aria-pressed 告诉屏幕阅读器这个按钮处于「按下 / 选中」状态
-              aria-pressed={active}
-              onClick={() => setSavedRegion(region)}
-              className={buttonStyles({
-                // 选中的用黑框（secondary），未选中的用弱化样式 + 细边框
-                variant: active ? "secondary" : "ghost",
-                size: "sm",
-                className: active ? "" : "border border-line",
-              })}
-            >
-              {labelOf(region)}
-              <span className="ml-2 text-caption text-mist">
-                {countOf(region)}
-              </span>
-            </button>
-          );
-        })}
-      </div>
-
-      <nav aria-label={dict.global.title} className="my-5 flex flex-wrap gap-4 text-small font-medium text-deep">
+      <nav aria-label={dict.global.title} className="atlas-chapters my-5 flex flex-wrap gap-2 text-small font-medium text-deep">
         <a href="#country-directory">{dict.review.countries}</a><a href="#port-directory">{dict.review.ports}</a><a href="#network-exploration">{dict.review.explore}</a>
       </nav>
       <p className="text-small text-mist">{dict.review.countryScope}</p>
       {/* 当前显示多少个 */}
-      <p className="mt-6 text-caption text-mist">
+      <p role="status" className="mt-6 text-small text-mist">
         {visible.length} {dict.global.countLabel}
       </p>
 
@@ -271,7 +240,7 @@ export default function CountryDirectory() {
       <SectionHeader title={dict.global.exploration.portsTitle} description={dict.global.exploration.portsNote} />
       <div className="grid gap-4 md:grid-cols-2">
         {COUNTRIES.map((country) => (
-          <details key={country.code} className="border-b border-line py-4">
+          <details key={country.code} className="atlas-disclosure border-b border-line py-4">
             <summary className="cursor-pointer text-small font-medium text-ink">{pick(country.name, language)} <span className="text-mist">({country.ports.length})</span></summary>
             <ul className="mt-3 flex flex-col gap-2 text-small text-mist">{country.ports.map((port) => <li key={port}>{port}</li>)}</ul>
           </details>

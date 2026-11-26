@@ -39,7 +39,7 @@ export default function SupplyChainView() {
   return (
     <>
       {/* 1 + 2. 页头 + SCOR 七个流程（同一区块） */}
-      <Section>
+      <Section className="atlas-workspace">
         <SectionHeader
           eyebrow={dict.supplyChain.eyebrow}
           title={dict.supplyChain.title}

@@ -127,14 +127,13 @@ export default function CompanyDirectory() {
   });
 
   return (
-    <Section>
+    <Section className="atlas-workspace">
       {/*
         页头放在同一个 Section 里 —— 和 Global 页的 CountryDirectory 一致。
         最初版本页头是单独一个 Section，结果两段之间空出一大截，
         视觉上像断了；合并后页面是连续的一块。
       */}
       <SectionHeader
-        eyebrow={dict.companies.page.eyebrow}
         title={dict.companies.page.title}
         description={dict.companies.page.description}
         // 页面唯一主标题用 h1（G-01）；视觉仍是 text-h2，只改语义

@@ -148,7 +148,7 @@ export default function CompanyFilters({
       </div>
 
       {/* ---------- 三组筛选 ---------- */}
-      <details className="border-b border-line pb-4">
+      <details className="atlas-disclosure atlas-filter-panel">
         <summary className="cursor-pointer text-small font-medium text-ink">{dict.review.filters}</summary>
         <div className="mt-4 grid gap-6 md:grid-cols-3">
         <FilterGroup

@@ -112,6 +112,18 @@ export default function Calculator({ calculator, formula }: CalculatorProps) {
   >({});
   const [result, setResult] = useState<CalcResult | null>(null);
 
+  const [feedbackCount, setFeedbackCount] = useState(0);
+
+  function showResult(next: CalcResult, event: FormEvent<HTMLFormElement>) {
+    setResult(next);
+    const submitter = (event.nativeEvent as SubmitEvent).submitter;
+    if (next.status === "ok" && submitter?.matches(":focus:not(:focus-visible)")) {
+      setFeedbackCount(count => count + 1);
+    } else {
+      setFeedbackCount(0);
+    }
+  }
+
   function updateValue(key: string, value: string) {
     setValues((previous) => ({ ...previous, [key]: value }));
     // 输入变了，旧结果就不再对应当前输入，先清掉。
@@ -147,7 +159,7 @@ export default function Calculator({ calculator, formula }: CalculatorProps) {
           return;
         }
         setFieldErrors({});
-        setResult(calculateEoq(parsed.value));
+        showResult(calculateEoq(parsed.value), event);
         return;
       }
 
@@ -159,7 +171,7 @@ export default function Calculator({ calculator, formula }: CalculatorProps) {
           return;
         }
         setFieldErrors({});
-        setResult(calculateSafetyStock(parsed.value));
+        showResult(calculateSafetyStock(parsed.value), event);
         return;
       }
 
@@ -171,7 +183,7 @@ export default function Calculator({ calculator, formula }: CalculatorProps) {
           return;
         }
         setFieldErrors({});
-        setResult(calculateReorderPoint(parsed.value));
+        showResult(calculateReorderPoint(parsed.value), event);
         return;
       }
 
@@ -183,7 +195,7 @@ export default function Calculator({ calculator, formula }: CalculatorProps) {
           return;
         }
         setFieldErrors({});
-        setResult(calculateInventoryTurnover(parsed.value));
+        showResult(calculateInventoryTurnover(parsed.value), event);
         return;
       }
 
@@ -334,17 +346,18 @@ export default function Calculator({ calculator, formula }: CalculatorProps) {
 
       {/* ---------- 结果 ---------- */}
       <div
-        className="border-t border-line bg-surface p-5 lg:border-t-0 lg:border-l lg:p-6"
+        className="calculator-result border-t border-line bg-surface p-5 lg:border-t-0 lg:border-l lg:p-6"
         aria-live="polite"
       >
         {result === null ? (
           <p className="text-small text-mist">{dict.tools.enterValues}</p>
         ) : result.status === "ok" ? (
-          <div>
+          <div className="calculator-success">
             <p className="text-caption text-mist">
               {dict.tools.exactValue}
+              <span key={feedbackCount} aria-hidden="true" className={feedbackCount ? "result-flash" : ""} />
             </p>
-            <p className="mt-1 text-h2 text-ink">
+            <p className="mt-1 break-words text-h2 text-ink tabular-nums">
               {formatNumber(result.value, language)}
               <span className="ml-2 text-small text-mist">
                 {formula.resultUnit}

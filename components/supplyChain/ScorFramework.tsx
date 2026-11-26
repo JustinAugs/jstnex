@@ -67,7 +67,7 @@ export default function ScorFramework() {
       <ol className="mt-6 grid gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
         {SCOR_PROCESSES.map((process, index) => (
           <li key={process.id} className="border-b border-line py-4">
-            <details>
+            <details className="atlas-disclosure">
               <summary className="cursor-pointer text-small font-medium text-ink">
                 <span className="mr-3 text-mist">{index + 1}.</span>
                 {pick(process.name, language)}

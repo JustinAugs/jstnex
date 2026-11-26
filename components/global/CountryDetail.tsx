@@ -36,7 +36,7 @@ export default function CountryDetail({ country, snapshot }: CountryDetailProps)
   const provenance = provenanceOf(country);
 
   return (
-    <Section>
+    <Section className="atlas-workspace">
       {/* 返回 Global 目录的明确入口（顶部，一眼可见）
           文案是动作 + 目标（「返回国家目录」），本身就是清晰的可访问名称，
           不再额外加 aria-label —— 否则读屏器会把同一句读两遍。
@@ -51,13 +51,13 @@ export default function CountryDetail({ country, snapshot }: CountryDetailProps)
       </Link>
 
       {/* 头部：代码 + 区域 + 国家名 + 供应链角色 */}
-      <div className="mt-8 border-t border-ink pt-6">
+      <div className="country-masthead mt-6">
         <div className="flex items-center gap-2">
           <Badge tone="accent">{country.code}</Badge>
           <Badge>{dict.regions[regionKey(country.region)]}</Badge>
         </div>
 
-        <h1 className="mt-4 text-h1 text-ink">{pick(country.name, language)}</h1>
+        <h1 className="mt-3 text-h1 text-ink">{pick(country.name, language)}</h1>
 
         {/* 角色用深蓝 —— 数据高亮（与 CountryCard 一致） */}
         <p className="mt-2 text-body font-medium text-deep">
@@ -66,7 +66,7 @@ export default function CountryDetail({ country, snapshot }: CountryDetailProps)
       </div>
 
       {/* 简介 */}
-      <p className="mt-8 max-w-2xl text-body text-mist">
+      <p className="mt-6 max-w-2xl text-body text-ink">
         {pick(country.summary, language)}
       </p>
 

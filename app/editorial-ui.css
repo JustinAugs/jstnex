@@ -23,7 +23,7 @@ html:lang(zh) :is(.atlas-home h1, .atlas-home h2, .atlas-workspace h1) {
 }
 
 .atlas-workspace h1 {
-  font-size: clamp(2rem, 1.65rem + 1.8vw, 3.25rem);
+  font-size: clamp(1.5rem, 1.3rem + .8vw, 2rem);
   line-height: 1.08;
   letter-spacing: -.035em;
   text-wrap: balance;
@@ -162,9 +162,9 @@ html:lang(zh) :is(.atlas-home h1, .atlas-home h2, .atlas-workspace h1) {
 
 .atlas-photo-label {
   position: absolute;
-  inset-inline-start: 0;
-  inset-block-end: 0;
-  max-width: 100%;
+  inset-inline-start: .75rem;
+  inset-block-start: .75rem;
+  max-width: calc(100% - 1.5rem);
   background: var(--color-deep);
   color: white;
   padding: .4rem .65rem;

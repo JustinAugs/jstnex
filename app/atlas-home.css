@@ -16,3 +16,5 @@ body:has(.atlas-home)>header,body:has(.atlas-home)>footer,body:has(.atlas-home)>
 
 /* Demo figures support reading; they are not editorial headlines. */
 .atlas-value{font-size:1.375rem}
+
+.atlas-network-layout{display:grid;grid-template-columns:minmax(0,36fr) minmax(0,58fr);gap:6%}.atlas-network-layout>div{min-width:0}.atlas-network-layout .atlas-globe{float:none;width:100%;margin:0}.atlas-network-layout p{max-width:65ch}.atlas-network-layout .grid{display:flex;flex-direction:column}@media(max-width:600px){.atlas-network-layout{grid-template-columns:1fr;gap:2rem}.atlas-network-layout .atlas-globe{max-width:20rem;margin-inline:auto}}

@@ -86,7 +86,7 @@ export default function Home() {
 
       {/* ---------- 4. Global Network ---------- */}
       <Section>
-        <NetworkIllustration caption={dict.hero.illustrationCaption} className="atlas-globe" />
+        <div className="atlas-network-layout"><NetworkIllustration caption={dict.hero.illustrationCaption} className="atlas-globe" /><div>
         <SectionHeader
           title={dict.network.title}
           description={dict.network.description}
@@ -103,6 +103,7 @@ export default function Home() {
             />
           ))}
         </div>
+        </div></div>
       </Section>
 
       {/* ---------- 5. Supply Chain Insights ---------- */}

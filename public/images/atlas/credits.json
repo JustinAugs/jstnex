@@ -1,0 +1,46 @@
+[
+  {
+    "slug": "hamburg",
+    "title": "Aerial image of the Eurogate and Burchardkai container terminals (view from the southeast).jpg",
+    "creator": "Carsten Steger",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Aerial_image_of_the_Eurogate_and_Burchardkai_container_terminals_(view_from_the_southeast).jpg",
+    "imageURL": "https://upload.wikimedia.org/wikipedia/commons/9/98/Aerial_image_of_the_Eurogate_and_Burchardkai_container_terminals_%28view_from_the_southeast%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "file": "assets/hamburg.jpg",
+    "changes": "Responsive crop/resize; image adaptations remain under the source license."
+  },
+  {
+    "slug": "singapore",
+    "title": "Pasir Panjang Container Terminal, Singapore - 20110227-01.jpg",
+    "creator": "Jacklee.",
+    "license": "CC BY-SA 3.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Pasir_Panjang_Container_Terminal,_Singapore_-_20110227-01.jpg",
+    "imageURL": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Pasir_Panjang_Container_Terminal%2C_Singapore_-_20110227-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "file": "assets/singapore.jpg",
+    "changes": "Responsive crop/resize; image adaptations remain under the source license."
+  },
+  {
+    "slug": "shanghai",
+    "title": "Yangshan Deepwater Port.jpg",
+    "creator": "YHBEST1",
+    "license": "Public domain",
+    "licenseURL": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Yangshan_Deepwater_Port.jpg",
+    "imageURL": "https://upload.wikimedia.org/wikipedia/commons/6/63/Yangshan_Deepwater_Port.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "file": "assets/shanghai.jpg",
+    "changes": "Responsive crop/resize; image adaptations remain under the source license."
+  },
+  {
+    "slug": "los-angeles",
+    "title": "Container ship NYK Themis at the Port of Los Angeles.jpg",
+    "creator": "Downtowngal",
+    "license": "CC BY-SA 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Container_ship_NYK_Themis_at_the_Port_of_Los_Angeles.jpg",
+    "imageURL": "https://upload.wikimedia.org/wikipedia/commons/1/11/Container_ship_NYK_Themis_at_the_Port_of_Los_Angeles.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "file": "assets/los-angeles.jpg",
+    "changes": "Responsive crop/resize; image adaptations remain under the source license."
+  }
+]

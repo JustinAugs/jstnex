@@ -1,4 +1,5 @@
 "use client";
+import "./atlas-home.css";
 
 /*
   首页（Home）
@@ -21,8 +22,10 @@
   注意：客户端组件依然会先在服务端渲染成 HTML，所以 SEO 不受影响。
 */
 
+import NetworkIllustration from "@/components/home/NetworkIllustration";
+import PhotoCredits from "@/components/home/PhotoCredits";
 import Hero from "@/components/home/Hero";
-import DataCard from "@/components/cards/DataCard";
+import { useEffect } from "react";
 import NetworkCard from "@/components/cards/NetworkCard";
 import InsightCard from "@/components/cards/InsightCard";
 import CompanyCard from "@/components/cards/CompanyCard";
@@ -49,36 +52,42 @@ const GRID = "grid gap-4";
 export default function Home() {
   const { language, dict } = useLanguage();
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      for (const entry of entries) if (entry.isIntersecting) {
+        entry.target.classList.add("atlas-arrived"); observer.unobserve(entry.target);
+      }
+    }, {threshold: 0.1});
+    document.querySelectorAll(".atlas-home section h2, .atlas-home section .grid > a, .atlas-home section .grid > div").forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
   return (
-    <>
+    <div className="atlas-home">
       {/* ---------- 2. Hero ---------- */}
       <Hero content={dict.hero} />
 
       {/* ---------- 3. Global Snapshot ---------- */}
       <Section>
         <SectionHeader
-          eyebrow={dict.snapshot.eyebrow}
           title={dict.snapshot.title}
         />
 
         <div className={`${GRID} sm:grid-cols-2 lg:grid-cols-4`}>
           {SNAPSHOT.map((item) => (
-            <DataCard
-              key={pick(item.label, language)}
-              label={pick(item.label, language)}
-              badge={item.kind === "demo" ? <DemoBadge label={dict.snapshot.demoBadge} /> : <Badge>{dict.snapshot.coverageBadge}</Badge>}
-              value={item.value}
-              unit={item.unit}
-              note={pick(item.note, language)}
-            />
+            <div key={pick(item.label, language)}>
+              <p className="atlas-value">{item.value}<span> {item.unit}</span></p>
+              <p>{pick(item.label, language)}</p>
+              <div className="mt-3">{item.kind === "demo" ? <DemoBadge label={dict.snapshot.demoBadge} /> : <Badge>{dict.snapshot.coverageBadge}</Badge>}</div>
+              <p className="mt-3">{pick(item.note, language)}</p>
+            </div>
           ))}
         </div>
       </Section>
 
       {/* ---------- 4. Global Network ---------- */}
       <Section>
+        <NetworkIllustration caption={dict.hero.illustrationCaption} className="atlas-globe" />
         <SectionHeader
-          eyebrow={dict.network.eyebrow}
           title={dict.network.title}
           description={dict.network.description}
         />
@@ -99,7 +108,6 @@ export default function Home() {
       {/* ---------- 5. Supply Chain Insights ---------- */}
       <Section>
         <SectionHeader
-          eyebrow={dict.insights.eyebrow}
           title={dict.insights.title}
           description={dict.insights.description}
         />
@@ -125,7 +133,6 @@ export default function Home() {
       {/* ---------- 6. Companies ---------- */}
       <Section>
         <SectionHeader
-          eyebrow={dict.companies.eyebrow}
           title={dict.companies.title}
           description={dict.companies.description}
         />
@@ -158,7 +165,6 @@ export default function Home() {
       {/* ---------- 7. Tools ---------- */}
       <Section>
         <SectionHeader
-          eyebrow={dict.tools.eyebrow}
           title={dict.tools.title}
           description={dict.tools.description}
         />
@@ -179,6 +185,7 @@ export default function Home() {
         {/* 诚实标注：不要把简单公式包装成企业级预测系统 */}
         <p className="mt-6 text-small text-mist">{dict.tools.disclaimer}</p>
       </Section>
-    </>
+    <PhotoCredits />
+    </div>
   );
 }
